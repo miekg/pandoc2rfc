@@ -1,0 +1,47 @@
+<?xml version='1.0' ?>
+<!DOCTYPE rfc SYSTEM 'rfc2629.dtd'>
+<rfc ipr='trust200902' docName='draft-mrose-writing-rfcs-01' toc='yes'>
+<?rfc toc="yes"?>         <!-- generate a table of contents -->
+<?rfc symrefs="yes"?>     <!-- use anchors instead of numbers for references -->
+<?rfc sortrefs="yes" ?>   <!-- alphabetize the references -->
+<?rfc compact="yes" ?>    <!-- conserve vertical whitespace -->
+<?rfc subcompact="no" ?>  <!-- but keep a blank line between list items -->
+ <front>
+        <title>Writing I-Ds and RFCs using XML</title>
+
+        <author initials='F.J.' surname='Flintstone'
+                fullname='Frederick Flintstone'>
+            <organization>Slate Construction, Inc.</organization>
+
+            <address>
+                <postal>
+                    <street>660 York Street</street>
+                    <street>M/S 40</street>
+                    <city>San Francisco</city> <region>CA</region>
+                    <code>94110</code>
+                    <country>US</country>
+                </postal>
+
+                <phone>+1 916 555 1234</phone>
+                <email>fred@example.com</email>
+                <uri>http://example.com/</uri>
+            </address>
+        </author>
+
+        <date month='September' year='2011' />
+
+        <area>General</area>
+        <workgroup>RFC Beautification Working Group</workgroup>
+        <keyword>RFC</keyword>
+        <keyword>Request for Comments</keyword>
+        <keyword>I-D</keyword>
+        <keyword>Internet-Draft</keyword>
+        <keyword>XML</keyword>
+        <keyword>Extensible Markup Language</keyword>
+        <abstract>
+            <t>This memo presents a technique for using XML
+            (Extensible Markup Language) as a source format
+            for documents in the Internet-Drafts (I-Ds) and
+            Request for Comments (RFC) series.</t>
+        </abstract>
+</front>

@@ -1,7 +1,7 @@
 # Pandoc for RFC
 
 When writing [RFC 4641](http://www.ietf.org/rfc/rfc4641.txt) we directly wrote the
-XML. Needless to say kinda tedious even thought the XML of `xml2rfc` is very "light".
+XML. Needless to say is was kinda tedious even thought the XML of `xml2rfc` is very "light".
 
 Nowadays I'm a fan of the markdown syntax and especially the syntax as supported (created?)
 by [pandoc](http://johnmacfarlane.net/pandoc/).
@@ -15,6 +15,7 @@ the `middle` part of an RFC.
 
 What is supported?
 
+* section with anchor and title attributes
 * list style=symbols
 * list style=numbers
 * list style=letters
@@ -26,9 +27,23 @@ What is supported?
 * refs: internal (xref)
 * spanx style=verb, style=emph
 
+* [Download the XSLT](http://www.miek.nl)
+* [Check out github](http://github.../
+
 # Pandoc constructs
 
 What do you need to type in pandoc to get the correct output:
+
+## section
+Just use the normal sectioning commands available in pandoc, I tend to use
+
+    # Section1
+    Bla
+
+    ## Subsection1
+    Bla bla
+
+Converts to xml2rfc: `<section title="Section1" anchor="Section1">`
 
 ## list style=symbols
 
@@ -75,25 +90,38 @@ Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
 
 Just indent the paragraph with 4 spaces.
 
-Converts to xml2rfc: `<figure><artwork> ... </artwork></figure>`
+Converts to xml2rfc: `<figure><artwork> ...`
+
+## blockquote
+This is not supported by xml2rfc, but any paragraph like:
+
+    > quoted text
+
+Converts to xml2rfc: `<figure><artwork> ...`
 
 ## refs: external
+Any reference like:
 
-Converts to xml2rfc: `<spanx style="verb">`
+    [Click here](URI)
+
+Converts to xml2rfc: `<ulink target="URI">Click here ...`
 
 ## refs: internal
+Any reference like:
 
-Converts to xml2rfc: `<spanx style="verb">`
+    [Click here](#localid)
+
+Converts to xml2rfc: `<link target="localid">Click here ...` 
 
 ## spanx style=...
 The verb style can be selected with back-tics:
 
     `text`
 
-Converts to xml2rfc: `<spanx style="verb">`
+Converts to xml2rfc: `<spanx style="verb"> ...`
 
 And the emphasis style with asterisks
 
     *text*
 
-Converts to xml2rfc: `<spanx style="emph">`
+Converts to xml2rfc: `<spanx style="emph"> ...`

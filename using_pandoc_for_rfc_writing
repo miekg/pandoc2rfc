@@ -1,0 +1,99 @@
+# Pandoc for RFC
+
+When writing [RFC 4641](http://www.ietf.org/rfc/rfc4641.txt) we directly wrote the
+XML. Needless to say kinda tedious even thought the XML of `xml2rfc` is very "light".
+
+Nowadays I'm a fan of the markdown syntax and especially the syntax as supported (created?)
+by [pandoc](http://johnmacfarlane.net/pandoc/).
+
+So for my next RFC (if ever!) I decided I wanted to use pandoc. As `xml2rfc` uses XML
+I thought the easiest way would be to create `docbook` XML and transform that using
+XSLT.
+
+The `front` and `back` matters are not supported. You can use this to generate
+the `middle` part of an RFC.
+
+What is supported?
+
+* list style=symbols
+* list style=numbers
+* list style=letters
+* list style=hanging
+* figure/artwork
+* blockquote - this isn't supported by `xml2rfc`, so this is converted to
+    figure/artwork paragraph.
+* refs: external (eref)
+* refs: internal (xref)
+* spanx style=verb, style=emph
+
+# Pandoc constructs
+
+What do you need to type in pandoc to get the correct output:
+
+## list style=symbols
+
+    A symbol list.
+
+    * Item one;
+    * Item two.
+
+Converts to xml2rfc: `<list style="symbol">`
+
+## list style=numbers
+    
+    A numbered list.
+
+    1. Item one;
+    2. Item two.
+
+Converts to xml2rfc: `<list style="numbers">`
+
+## list style=letters
+    
+    A numbered list.
+
+    a. Item one;
+    b. Item two.
+
+Converts to xml2rfc: `<list style="letters">`
+
+## list style=hanging
+This is more like a description list, so we need to use:
+
+    First item that needs clarification
+
+    :   Explanation one
+
+    Second item that needs clarification
+
+    :   Explanation two
+
+
+Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
+
+## figure/artwork
+
+Just indent the paragraph with 4 spaces.
+
+Converts to xml2rfc: `<figure><artwork> ... </artwork></figure>`
+
+## refs: external
+
+Converts to xml2rfc: `<spanx style="verb">`
+
+## refs: internal
+
+Converts to xml2rfc: `<spanx style="verb">`
+
+## spanx style=...
+The verb style can be selected with back-tics:
+
+    `text`
+
+Converts to xml2rfc: `<spanx style="verb">`
+
+And the emphasis style with asterisks
+
+    *text*
+
+Converts to xml2rfc: `<spanx style="emph">`

@@ -39,7 +39,9 @@ See the Makefile for an example of this. In this case you need to edit
 1. back.mkd
 1. template.xml
 
-The draft (`draft.txt`) is automatically created when you call `make`.
+The draft (`draft.txt`) is automatically created when you call `make`. 
+
+Note that this `README.mkd` is converted to an RFC when you call `make`.
 
 What is supported?
 

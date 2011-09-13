@@ -1,4 +1,4 @@
-# Pandoc for RFC
+# Pandoc to RFC
 
 When writing [RFC 4641](http://www.ietf.org/rfc/rfc4641.txt) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of `xml2rfc` is very "light".
@@ -28,7 +28,7 @@ What is supported?
 * spanx style=verb, style=emph
 
 * [Download the XSLT](http://www.miek.nl)
-* [Check out github](http://github.../
+* [Check out github](https://github.com/miekg/pandoc2rfc)
 
 # Pandoc constructs
 

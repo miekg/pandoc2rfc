@@ -9,8 +9,11 @@ back.xml:  back.mkd transform.xsl
 draft.txt:	front.xml middle.xml back.xml template.xml
 	DISPLAY= xml2rfc template.xml draft.txt
 
+draft.html: 	front.xml middle.xml back.xml template.xml
+	DISPLAY= xml2rfc template.xml draft.html
+
 clean:
 	rm -f middle.xml back.xml
 
 realclean:
-	rm -f draft.txt
+	rm -f draft.txt draft.html

@@ -121,7 +121,7 @@
 <xsl:template match="link">
     <xref>
         <xsl:attribute name="target">
-            <xsl:value-of select="@linked"/>
+            <xsl:value-of select="@linkend"/>
         </xsl:attribute>
     <xsl:apply-templates/>
     </xref>

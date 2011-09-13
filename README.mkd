@@ -4,9 +4,9 @@ When writing [RFC 4641](RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of `xml2rfc` is very "light".
 
 Nowadays I'm a fan of the markdown syntax and especially the syntax as supported (created?)
-by [pandoc](http://johnmacfarlane.net/pandoc/).
+by [Pandoc](http://johnmacfarlane.net/pandoc/).
 
-So for my next RFC (if ever!) I decided I wanted to use pandoc. As `xml2rfc` uses XML
+So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using
 XSLT.
 
@@ -16,18 +16,20 @@ XML:
 
     <?xml version='1.0' ?>
     <!DOCTYPE rfc SYSTEM 'rfc2629.dtd'>
-    <rfc ipr='trust200902' docName='draft-mrose-writing-rfcs-01'>
+
+    <rfc ipr='trust200902' docName='draft-gieben-pandoc-writing-rfcs-01'>
      <front>
-            <title>Writing I-Ds and RFCs using PANDOC</title>
+        <title>Writing I-Ds and RFCs using Pandoc</title>
     </front>
 
     <middle>
-    <?rfc include="middle.xml"?>
+        <?rfc include="middle.xml"?>
     </middle>
 
     <back>
-    <?rfc include="back.xml"?>
+        <?rfc include="back.xml"?>
     </back>
+
     </rfc>
 
 See the Makefile for an example of this. In this case you need to edit
@@ -37,7 +39,7 @@ See the Makefile for an example of this. In this case you need to edit
 1. back.mkd
 1. template.xml
 
-The draft (`draft.txt`) is automatically created.
+The draft (`draft.txt`) is automatically created when you call `make`.
 
 What is supported?
 
@@ -65,10 +67,12 @@ The heavy lifting is done by `transform.xsl` that transforms the XML.
 
 # Pandoc constructs
 
-What do you need to type in pandoc to get the correct output:
+What do you need to type in Pandoc to get the correct output. Note this
+is just basic Pandoc format, so you might be better off reading the
+[README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
 
 ## section
-Just use the normal sectioning commands available in pandoc, I tend to use
+Just use the normal sectioning commands available in Pandoc, I tend to use
 
     # Section1
     Bla
@@ -85,7 +89,7 @@ Converts to xml2rfc: `<section title="Section1" anchor="Section1">`
 Converts to xml2rfc: `<list style="symbol">`
 
 ## list style numbers
-    
+
     A numbered list.
 
     1. Item one;
@@ -94,7 +98,7 @@ Converts to xml2rfc: `<list style="symbol">`
 Converts to xml2rfc: `<list style="numbers">`
 
 ## list style letters
-    
+
     A numbered list.
 
     a. Item one;
@@ -142,6 +146,13 @@ Any reference like:
     [Click here](#localid)
 
 Converts to xml2rfc: `<link target="localid">Click here ...` 
+
+For refering to RFCs (for which you manually need add the reference source in the template), 
+you can just use:
+
+    [](#RFC2119)
+
+And it does the right thing.
 
 ## spanx style
 The verb style can be selected with back-tics:

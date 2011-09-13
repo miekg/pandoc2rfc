@@ -10,8 +10,27 @@ So for my next RFC (if ever!) I decided I wanted to use pandoc. As `xml2rfc` use
 I thought the easiest way would be to create `docbook` XML and transform that using
 XSLT.
 
-The `front` and `back` matters are not supported. You can use this to generate
-the `middle` part of an RFC.
+The XML generated is suitable for inclusion in either the `middle` or `back` section
+of an RFC. The easiest way is to create a template xml file and include the appropriate
+XML:
+
+    <?xml version='1.0' ?>
+    <!DOCTYPE rfc SYSTEM 'rfc2629.dtd'>
+    <rfc ipr='trust200902' docName='draft-mrose-writing-rfcs-01'>
+     <front>
+            <title>Writing I-Ds and RFCs using PANDOC</title>
+    </front>
+
+    <middle>
+    <?rfc include="middle.xml"?>
+    </middle>
+
+    <back>
+    <?rfc include="back.xml"?>
+    </back>
+    </rfc>
+
+See the Makefile for an example of this.
 
 What is supported?
 

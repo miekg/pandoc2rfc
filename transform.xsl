@@ -26,9 +26,9 @@
 </xsl:template>
 
 <xsl:template match="article">
-    <middle>
+    <!--    <middle> -->
     <xsl:apply-templates/>
-    </middle>
+    <!-- </middle> -->
 </xsl:template>
 
 <!-- Remove the article info section, this should be handled

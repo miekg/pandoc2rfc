@@ -7,24 +7,24 @@
 <?rfc compact="yes" ?>    <!-- conserve vertical whitespace -->
 <?rfc subcompact="no" ?>  <!-- but keep a blank line between list items -->
  <front>
-        <title>Writing I-Ds and RFCs using XML</title>
+        <title>Writing I-Ds and RFCs using PANDOC</title>
 
-        <author initials='F.J.' surname='Flintstone'
-                fullname='Frederick Flintstone'>
-            <organization>Slate Construction, Inc.</organization>
+        <author initials='R.' surname='Gieben'
+                fullname='R. (Miek) Gieben'>
+            <organization>SIDN</organization>
 
             <address>
                 <postal>
-                    <street>660 York Street</street>
-                    <street>M/S 40</street>
-                    <city>San Francisco</city> <region>CA</region>
-                    <code>94110</code>
-                    <country>US</country>
+                    <street>Meander 501</street>
+                    <street></street>
+                    <city>Arnhem</city> <region></region>
+                    <code>6825 MD</code>
+                    <country>NL</country>
                 </postal>
 
-                <phone>+1 916 555 1234</phone>
-                <email>fred@example.com</email>
-                <uri>http://example.com/</uri>
+                <phone></phone>
+                <email>mie@miek.nl</email>
+                <uri>http://miek.nl/</uri>
             </address>
         </author>
 
@@ -37,10 +37,11 @@
         <keyword>I-D</keyword>
         <keyword>Internet-Draft</keyword>
         <keyword>XML</keyword>
+        <keyword>Pandoc</keyword>
         <keyword>Extensible Markup Language</keyword>
         <abstract>
-            <t>This memo presents a technique for using XML
-            (Extensible Markup Language) as a source format
+            <t>This memo presents a technique for using Pandoc
+            syntax as a source format
             for documents in the Internet-Drafts (I-Ds) and
             Request for Comments (RFC) series.</t>
         </abstract>

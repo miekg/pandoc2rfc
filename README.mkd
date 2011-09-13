@@ -30,7 +30,14 @@ XML:
     </back>
     </rfc>
 
-See the Makefile for an example of this.
+See the Makefile for an example of this. In this case you need to edit
+3 documents:
+
+1. middle.mdk
+1. back.mkd
+1. template.xml
+
+The rest is automatically created.
 
 What is supported?
 

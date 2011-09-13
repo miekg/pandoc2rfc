@@ -130,12 +130,12 @@
 <!-- Transform <ulink> to <eref> links -->
 <!-- Use [see](uri) in pandoc -->
 <xsl:template match="ulink">
-    <xref>
+    <eref>
         <xsl:attribute name="target">
             <xsl:value-of select="@url"/>
         </xsl:attribute>
     <xsl:apply-templates/>
-    </xref>
+    </eref>
 </xsl:template>
 
 <!-- Transform <blockquote> to <figure><artwork> -->

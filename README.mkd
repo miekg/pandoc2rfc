@@ -27,8 +27,14 @@ What is supported?
 * refs: internal (xref)
 * spanx style=verb, style=emph
 
-* [Download the XSLT](http://www.miek.nl)
-* [Check out github](https://github.com/miekg/pandoc2rfc)
+What not?
+
+* Tables, this could be added, but an `artwork` might be easier;
+* list style=format|empty;
+* refs: index (but I might take a look at citations).
+
+The heavy lifting is done by `transform.xsl` that transforms the XML.
+[Check out the pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc)
 
 # Pandoc constructs
 
@@ -39,9 +45,6 @@ Just use the normal sectioning commands available in pandoc, I tend to use
 
     # Section1
     Bla
-
-    ## Subsection1
-    Bla bla
 
 Converts to xml2rfc: `<section title="Section1" anchor="Section1">`
 
@@ -120,7 +123,7 @@ The verb style can be selected with back-tics:
 
 Converts to xml2rfc: `<spanx style="verb"> ...`
 
-And the emphasis style with asterisks
+And the emphasis style with asterisks:
 
     *text*
 

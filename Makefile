@@ -15,5 +15,5 @@ draft.html: 	front.xml middle.xml back.xml template.xml
 clean:
 	rm -f middle.xml back.xml
 
-realclean:
+realclean:	clean
 	rm -f draft.txt draft.html

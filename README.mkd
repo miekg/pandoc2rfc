@@ -65,7 +65,8 @@ What's not?
 * crefs: for comments.
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
-[Check out the pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc)
+[Check out the pandoc2rfc github
+repository](https://github.com/miekg/pandoc2rfc).
 
 # Pandoc constructs
 

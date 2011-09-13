@@ -37,7 +37,7 @@ See the Makefile for an example of this. In this case you need to edit
 1. back.mkd
 1. template.xml
 
-The rest is automatically created.
+The draft (`draft.txt`) is automatically created.
 
 What is supported?
 

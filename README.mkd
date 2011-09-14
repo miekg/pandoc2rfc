@@ -82,10 +82,12 @@ is just basic Pandoc format, so you might be better off reading the
 ## section
 Just use the normal sectioning commands available in Pandoc, I tend to use
 
-    # Section1
+    # Section1 One
     Bla
 
-Converts to xml2rfc: `<section title="Section1" anchor="Section1">`
+Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
+If you have another section that is also named "Section1 One", that
+anchor will be called "section1-one-1".
 
 ## list style symbols
 

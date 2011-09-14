@@ -61,6 +61,7 @@
         </xsl:attribute>
         <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>
+            <!--            <xsl:value-of select="ancestor::title/@id"/> -->
         </xsl:attribute>
         <xsl:apply-templates/>
     </section>

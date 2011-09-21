@@ -122,6 +122,9 @@ This is more like a description list, so we need to use:
     First item that needs clarification
 
     :   Explanation one
+    More stuff, because item is difficult to explain.
+    * item1
+    * item2
 
     Second item that needs clarification
 

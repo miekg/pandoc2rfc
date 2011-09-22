@@ -168,9 +168,18 @@
         </spanx>
 </xsl:template>
 <xsl:template match="emphasis"> 
-        <spanx style="emph">    <!-- role="strong" TODO -->
-        <xsl:apply-templates/> 
-        </spanx>
+    <xsl:choose>
+        <xsl:when test="contains(@role,'strong')">
+            <spanx style="strong">
+            <xsl:apply-templates/> 
+            </spanx>
+        </xsl:when>
+        <xsl:otherwise>
+            <spanx style="emph">
+            <xsl:apply-templates/> 
+            </spanx>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>

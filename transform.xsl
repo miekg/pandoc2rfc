@@ -21,6 +21,7 @@
 -->
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>
+
 <xsl:template match="/">
     <xsl:apply-templates/>
 </xsl:template>
@@ -111,7 +112,7 @@
     <t>
         <xsl:attribute name="hangText">
             <!-- <xsl:value-of select="./term"/>  -->
-            <xsl:value-of select="translate(./term, '&#x20;&#x9;&#xD;&#xA; ', ' ')"/>
+            <xsl:value-of select="normalize-space(translate(./term, '&#x20;&#x9;&#xD;&#xA;', ' '))"/>
         </xsl:attribute>
         <xsl:value-of select="./listitem"/>
     </t>

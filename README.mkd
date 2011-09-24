@@ -56,14 +56,14 @@ What is supported?
     figure/artwork paragraph.
 * refs: external (eref)
 * refs: internal (xref)
-* spanx style=verb, style=emph
+* spanx style=verb, style=emph, style=strong
 
 What's not?
 
 * Tables, this could be added, but an `artwork` might be easier;
 * list style=format|empty;
 * irefs: index (but I might take a look at citations);
-* crefs: for comments.
+* crefs: for comments (there is no pandoc syntax for this)
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 [Check out the pandoc2rfc github

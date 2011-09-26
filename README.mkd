@@ -40,23 +40,23 @@ See the Makefile for an example of this. In this case you need to edit
 1. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
-Note that this `README.mkd` is converted to an RFC when you call `make`.
+Note that this `README.mkd` is converted to an RFC-like document when you call `make`.
 
 It needs `xsltproc` and `pandoc` to be installed.
 
 What is supported?
 
-* section with anchor and title attributes
-* list style=symbols
-* list style=numbers
-* list style=letters
-* list style=hanging
-* figure/artwork
+* section with anchor and title attributes, see [](http://johnmacfarlane.net/pandoc/README.html#headers);
+* list style=symbols, see [](http://johnmacfarlane.net/pandoc/README.html#lists);
+* list style=numbers;
+* list style=letters;
+* list style=hanging, see [](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
+* figure/artwork, see [](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
 * blockquote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph.
-* refs: external (eref)
-* refs: internal (xref)
-* spanx style=verb, style=emph, style=strong
+* refs: external (eref), see [](http://johnmacfarlane.net/pandoc/README.html#inline-links);
+* refs: internal (xref) see [](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
+* spanx style=verb, style=emph, style=strong, see [](http://johnmacfarlane.net/pandoc/README.html#inline-formatting).
 
 What's not?
 
@@ -87,7 +87,8 @@ Just use the normal sectioning commands available in Pandoc, I tend to use
 
 Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
 If you have another section that is also named "Section1 One", that
-anchor will be called "section1-one-1".
+anchor will be called "section1-one-1". Referencing the section
+is done with `See [](#section1-one)`, see [](#refs-internal).
 
 ## list style symbols
 
@@ -165,7 +166,11 @@ you can just use:
 
     [](#RFC2119)
 
-And it does the right thing.
+And it does the right thing. Referencing sections is done with:
+
+    See [](#pandoc-constructs)
+
+The word 'Section' is inserted automatically: ... See [](#pandoc-constructs) ...
 
 ## spanx style
 The verb style can be selected with back-tics:
@@ -179,3 +184,9 @@ And the emphasis style with asterisks:
     *text*
 
 Converts to xml2rfc: `<spanx style="emph"> ...`
+
+And the emphasis style with double asterisks:
+
+    **text**
+
+Converts to xml2rfc: `<spanx style="strong"> ...`

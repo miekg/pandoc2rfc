@@ -46,16 +46,16 @@ It needs `xsltproc` and `pandoc` to be installed.
 
 What is supported?
 
-* section with anchor and title attributes, see [](http://johnmacfarlane.net/pandoc/README.html#headers);
-* list style=symbols, see [](http://johnmacfarlane.net/pandoc/README.html#lists);
+* section with anchor and title attributes, see [README.html](http://johnmacfarlane.net/pandoc/README.html#headers);
+* list style=symbols, see [README.html](http://johnmacfarlane.net/pandoc/README.html#lists);
 * list style=numbers;
 * list style=letters;
-* list style=hanging, see [](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
-* figure/artwork, see [](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
+* list style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
+* figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
 * blockquote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph.
-* refs: external (eref), see [](http://johnmacfarlane.net/pandoc/README.html#inline-links);
-* refs: internal (xref) see [](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
+* refs: external (eref), see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-links);
+* refs: internal (xref) see [README.html](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
 * spanx style=verb, style=emph, style=strong, see [](http://johnmacfarlane.net/pandoc/README.html#inline-formatting).
 
 What's not?

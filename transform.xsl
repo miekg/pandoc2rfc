@@ -12,12 +12,12 @@
 
      * articleinfo
      * tables, should be done as figures texttable
-     * nested blockquotes (TODO)
+     * nested blockquotes
      * footnotes
 
     Not supported:
 
-    * iref tag (index), use CDATA
+    * iref tag (index)
 -->
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -68,45 +68,75 @@
     </section>
 </xsl:template>
 
-<!-- Transform a <para> to <t> -->
+<!-- Transform a <para> to <t>, except in lists, then it is discarded -->
 <xsl:template match="para">
+    <xsl:choose>
+        <xsl:when test="ancestor::orderedlist">
+                <xsl:apply-templates/>
+        </xsl:when>
+        <xsl:when test="ancestor::itemizedlist">
+                <xsl:apply-templates/>
+        </xsl:when>
+        <xsl:otherwise>
+                <t><xsl:apply-templates/></t>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- Transform a <listitem> to a <t> for lists -->
+<xsl:template match="listitem">
     <t><xsl:apply-templates/></t>
 </xsl:template>
 
-<!-- Transform lists, kill <listitem> in the process -->
+<!-- Transform lists, for lists in list we do not put it in a new <t></t>  -->
 <xsl:template match="orderedlist">
     <xsl:choose>
        <xsl:when test="contains(@numeration,'arabic')">
-            <t>
-                <list style="numbers">
-                    <xsl:apply-templates/>
-                </list>
-            </t>
+        <xsl:choose>
+            <xsl:when test="ancestor::orderedlist">
+                <list style="numbers"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::itemizedlist">
+                <list style="numbers"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t><list style="numbers"><xsl:apply-templates/></list></t>
+            </xsl:otherwise>
+        </xsl:choose>
        </xsl:when>
        <xsl:otherwise> 
-            <t>
-                <list style="letters">
-                    <xsl:apply-templates/>
-                </list>
-            </t>
+        <xsl:choose>
+            <xsl:when test="ancestor::orderedlist">
+                <list style="letters"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::itemizedlist">
+                <list style="letters"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t><list style="letters"><xsl:apply-templates/></list></t>
+            </xsl:otherwise>
+        </xsl:choose>
        </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
 
 <xsl:template match="itemizedlist">
-    <t>
-        <list style="symbols">
-            <xsl:apply-templates/>
-        </list>
-    </t>
+    <xsl:choose>
+        <xsl:when test="ancestor::orderedlist">
+            <list style="symbols"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:when test="ancestor::itemizedlist">
+            <list style="symbols"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:otherwise>
+            <t><list style="symbols"><xsl:apply-templates/></list></t>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
+
 <!-- Hanging lists are specified as <variablelist> -->
 <xsl:template match="variablelist">
-    <t>
-        <list style="hanging">
-            <xsl:apply-templates/>
-        </list>
-    </t>
+    <t><list style="hanging"><xsl:apply-templates/></list></t>
 </xsl:template>
 <xsl:template match="varlistentry">
     <t>

@@ -148,14 +148,14 @@ This is not supported by xml2rfc, but any paragraph like:
 
 Converts to xml2rfc: `<figure><artwork> ...`
 
-## refs: external
+## refs external
 Any reference like:
 
     [Click here](URI)
 
 Converts to xml2rfc: `<ulink target="URI">Click here ...`
 
-## refs: internal
+## refs internal
 Any reference like:
 
     [Click here](#localid)

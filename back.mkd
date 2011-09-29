@@ -32,5 +32,32 @@ Item to explain:
     1. ONE
     2. TWO
 
-Another item to explain
+Another item to explain:
 :   More explaning
+
+Item to explain2:
+:   It works because of
+
+    1. ONE1
+    2. TWO1
+
+Another item to explain2:
+:   More explaning
+
+
+Normal text still works
+
+1. Hallo
+2. Goodbye
+
+This is a list with a description list in it
+
+1. More
+
+    Item to explain3:
+    :   Explanation
+
+    Item to explain4:
+    :   Explantions2
+
+2. Go'bye

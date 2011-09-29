@@ -155,8 +155,22 @@
 
 <!-- Hanging lists are specified as <variablelist> -->
 <xsl:template match="variablelist">
-    <t><list style="hanging"><xsl:apply-templates/></list></t>
+    <xsl:choose>
+        <xsl:when test="ancestor::orderedlist">
+            <list style="hanging"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:when test="ancestor::itemizedlist">
+            <list style="hanging"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:when test="ancestor::variablelist">
+            <list style="hanging"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:otherwise>
+        <t><list style="hanging"><xsl:apply-templates/></list></t>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
+
 <xsl:template match="varlistentry">
     <t>
         <xsl:attribute name="hangText">

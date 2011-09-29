@@ -77,6 +77,9 @@
         <xsl:when test="ancestor::itemizedlist">
                 <xsl:apply-templates/>
         </xsl:when>
+        <xsl:when test="ancestor::variablelist">
+                <xsl:apply-templates/>
+        </xsl:when>
         <xsl:otherwise>
                 <t><xsl:apply-templates/></t>
         </xsl:otherwise>
@@ -85,7 +88,14 @@
 
 <!-- Transform a <listitem> to a <t> for lists -->
 <xsl:template match="listitem">
-    <t><xsl:apply-templates/></t>
+    <xsl:choose>
+        <xsl:when test="parent::varlistentry">
+                <xsl:apply-templates/>
+        </xsl:when>
+        <xsl:otherwise>
+                <t><xsl:apply-templates/></t>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Transform lists, for lists in list we do not put it in a new <t></t>  -->
@@ -99,6 +109,9 @@
             <xsl:when test="ancestor::itemizedlist">
                 <list style="numbers"><xsl:apply-templates/></list>
             </xsl:when>
+            <xsl:when test="ancestor::variablelist">
+                <list style="numbers"><xsl:apply-templates/></list>
+            </xsl:when>
             <xsl:otherwise>
                 <t><list style="numbers"><xsl:apply-templates/></list></t>
             </xsl:otherwise>
@@ -110,6 +123,9 @@
                 <list style="letters"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:when test="ancestor::itemizedlist">
+                <list style="letters"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::variablelist">
                 <list style="letters"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:otherwise>
@@ -128,6 +144,9 @@
         <xsl:when test="ancestor::itemizedlist">
             <list style="symbols"><xsl:apply-templates/></list>
         </xsl:when>
+        <xsl:when test="ancestor::variablelist">
+            <list style="symbols"><xsl:apply-templates/></list>
+        </xsl:when>
         <xsl:otherwise>
             <t><list style="symbols"><xsl:apply-templates/></list></t>
         </xsl:otherwise>
@@ -144,7 +163,8 @@
             <!-- <xsl:value-of select="./term"/>  -->
             <xsl:value-of select="normalize-space(translate(./term, '&#x20;&#x9;&#xD;&#xA;', ' '))"/>
         </xsl:attribute>
-        <xsl:value-of select="./listitem"/>
+        <!-- <xsl:value-of select="./listitem"/> -->
+        <xsl:apply-templates select="./listitem"/>
     </t>
 </xsl:template>
 

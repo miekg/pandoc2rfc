@@ -13,3 +13,24 @@ And the other around
 * Then
     1. Something
     2. Another thing
+
+Description lists work:
+
+Item to explain:
+
+:   It works because of herbs
+
+Another item to explain
+
+:    More explaning
+
+Lists do not work
+
+Item to explain:
+:   It works because of
+
+    1. ONE
+    2. TWO
+
+Another item to explain
+:   More explaning

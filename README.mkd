@@ -65,6 +65,7 @@ What's not?
 * list style=format|empty;
 * irefs: index (but I might take a look at citations);
 * crefs: for comments (there is no pandoc syntax for this)
+* lists in hanging paragraphs
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 

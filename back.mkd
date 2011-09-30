@@ -22,7 +22,7 @@ Item to explain:
 
 Another item to explain
 
-:    More explaning
+:    More explaining
 
 Lists do not work
 
@@ -33,7 +33,7 @@ Item to explain:
     2. TWO
 
 Another item to explain:
-:   More explaning
+:   More explaining
 
 Item to explain2:
 :   It works because of
@@ -42,7 +42,7 @@ Item to explain2:
     2. TWO1
 
 Another item to explain2:
-:   More explaning
+:   More explaining
 
 
 Normal text still works

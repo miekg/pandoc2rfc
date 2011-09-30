@@ -65,15 +65,14 @@ What's not?
 * list style=format|empty;
 * irefs: index (but I might take a look at citations);
 * crefs: for comments (there is no pandoc syntax for this)
-* lists in hanging paragraphs
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 
-[Check out the pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
+[pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
 
 # Newer Pandoc Versions
 
-In 1.8.2 `screen` needs to become `programlisting`.
+In 1.8.2 `screen` needs to become `programlisting` in `transform.xsl`.
 
 # Pandoc Constructs
 

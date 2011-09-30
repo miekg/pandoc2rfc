@@ -27,13 +27,11 @@
 </xsl:template>
 
 <xsl:template match="article">
-    <!--    <middle> -->
     <xsl:apply-templates/>
-    <!-- </middle> -->
 </xsl:template>
 
 <!-- Remove the article info section, this should be handled
-     in the <front> matter of the RFC -->
+     in the <front> matter of the draft -->
 <xsl:template match="articleinfo">
     <xsl:message terminate="no">
         Warning: Author and article information is discarded.
@@ -62,7 +60,6 @@
         </xsl:attribute>
         <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>
-            <!--            <xsl:value-of select="ancestor::title/@id"/> -->
         </xsl:attribute>
         <xsl:apply-templates/>
     </section>
@@ -86,7 +83,7 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Transform a <listitem> to a <t> for lists -->
+<!-- Transform a <listitem> to a <t> for lists, except in description lists -->
 <xsl:template match="listitem">
     <xsl:choose>
         <xsl:when test="parent::varlistentry">
@@ -174,10 +171,8 @@
 <xsl:template match="varlistentry">
     <t>
         <xsl:attribute name="hangText">
-            <!-- <xsl:value-of select="./term"/>  -->
             <xsl:value-of select="normalize-space(translate(./term, '&#x20;&#x9;&#xD;&#xA;', ' '))"/>
         </xsl:attribute>
-        <!-- <xsl:value-of select="./listitem"/> -->
         <xsl:apply-templates select="./listitem"/>
     </t>
 </xsl:template>

@@ -64,3 +64,11 @@ This is a list with a description list in it
     :   Explantions2
 
 2. Go'bye
+
+This is a new list with goods:
+
+(@boe) List item xxx
+(@barf) List item yyy
+(@yank) List item zzz
+
+As (@barf) shows

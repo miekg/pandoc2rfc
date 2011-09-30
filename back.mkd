@@ -24,7 +24,7 @@ Another item to explain
 
 :    More explaining
 
-Lists do not work
+Lists in description lists work:
 
 Item to explain:
 :   It works because of

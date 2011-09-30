@@ -40,6 +40,9 @@ Item to explain2:
 
     1. ONE1
     2. TWO1
+        
+        * Itemize list
+        * Another item
 
 Another item to explain2:
 :   More explaining

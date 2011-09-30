@@ -52,6 +52,7 @@ What is supported?
 * list style=numbers;
 * list style=letters;
 * list style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
+* example lists, see [README.html](http://johnmacfarlane.net/pandoc/README.html#numbered-example-lists);
 * figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
 * blockquote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph. See [README.html](http://johnmacfarlane.net/pandoc/README.html#block-quotations);

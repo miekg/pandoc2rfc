@@ -109,6 +109,9 @@
             <xsl:when test="ancestor::variablelist">
                 <list style="numbers"><xsl:apply-templates/></list>
             </xsl:when>
+            <xsl:when test="ancestor::table">
+                <list style="numbers"><xsl:apply-templates/></list>
+            </xsl:when>
             <xsl:otherwise>
                 <t><list style="numbers"><xsl:apply-templates/></list></t>
             </xsl:otherwise>
@@ -124,6 +127,9 @@
             </xsl:when>
             <xsl:when test="ancestor::variablelist">
                 <list style="letters"><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::table">
+                <list style="numbers"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:otherwise>
                 <t><list style="letters"><xsl:apply-templates/></list></t>
@@ -144,6 +150,9 @@
         <xsl:when test="ancestor::variablelist">
             <list style="symbols"><xsl:apply-templates/></list>
         </xsl:when>
+        <xsl:when test="ancestor::table">
+            <list style="numbers"><xsl:apply-templates/></list>
+        </xsl:when>
         <xsl:otherwise>
             <t><list style="symbols"><xsl:apply-templates/></list></t>
         </xsl:otherwise>
@@ -161,6 +170,9 @@
         </xsl:when>
         <xsl:when test="ancestor::variablelist">
             <list style="hanging"><xsl:apply-templates/></list>
+        </xsl:when>
+        <xsl:when test="ancestor::table">
+            <list style="numbers"><xsl:apply-templates/></list>
         </xsl:when>
         <xsl:otherwise>
         <t><list style="hanging"><xsl:apply-templates/></list></t>
@@ -240,6 +252,37 @@
             </spanx>
         </xsl:otherwise>
     </xsl:choose>
+</xsl:template>
+
+<!-- Tables -->
+<xsl:template match="table">
+    <texttable>
+        <xsl:apply-templates/>
+    </texttable>
+</xsl:template>
+
+<xsl:template match="table/caption">
+    <preamble>
+        <xsl:apply-templates/>
+    </preamble>
+</xsl:template>
+
+<xsl:template match="table/thead/tr/th">
+    <ttcol>
+        <xsl:attribute name="align">
+            <xsl:value-of select="@align"/>
+        </xsl:attribute>
+<!-- width does not work (yet)
+        <xsl:attribute name="width">
+            <xsl:value-of select="col/@width"/>
+        </xsl:attribute>
+-->
+        <xsl:apply-templates/>
+    </ttcol>
+</xsl:template>
+
+<xsl:template match="table/tbody/tr/td">
+    <c><xsl:apply-templates/></c>
 </xsl:template>
 
 </xsl:stylesheet>

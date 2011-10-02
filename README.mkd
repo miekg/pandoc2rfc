@@ -47,29 +47,30 @@ It needs `xsltproc` and `pandoc` to be installed.
 
 What is supported?
 
-* section with anchor and title attributes, see [README.html](http://johnmacfarlane.net/pandoc/README.html#headers);
-* list style=symbols, see [README.html](http://johnmacfarlane.net/pandoc/README.html#lists);
-* list style=numbers;
-* list style=letters;
-* list style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
-* example lists, see [README.html](http://johnmacfarlane.net/pandoc/README.html#numbered-example-lists);
-* figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
-* blockquote - this isn't supported by `xml2rfc`, so this is converted to
+* Sections with anchor and title attributes, see [README.html](http://johnmacfarlane.net/pandoc/README.html#headers);
+* Tables, see [README.html](http://johnmacfarlane.net/pandoc/README.html#tables);
+* List style=symbols, see [README.html](http://johnmacfarlane.net/pandoc/README.html#lists);
+* List style=numbers;
+* List style=letters;
+* List style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
+* Example lists, see [README.html](http://johnmacfarlane.net/pandoc/README.html#numbered-example-lists);
+* Figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
+* Blockquote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph. See [README.html](http://johnmacfarlane.net/pandoc/README.html#block-quotations);
-* refs: external (eref), see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-links);
-* refs: internal (xref) see [README.html](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
-* spanx style=verb, style=emph, style=strong, see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-formatting).
+* Refs: external (eref), see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-links);
+* Refs: internal (xref) see [README.html](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
+* Spanx style=verb, style=emph, style=strong, see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-formatting).
 
 What's not?
 
-* Tables, this could be added, but an `artwork` might be easier;
+* lists inside a table;
 * list style=format|empty;
 * irefs: index (but I might take a look at citations);
-* crefs: for comments (there is no pandoc syntax for this)
+* crefs: for comments (there is no pandoc syntax for this).
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 
-[pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
+[See this pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
 
 # Newer Pandoc Versions
 

@@ -38,13 +38,6 @@
     </xsl:message>
 </xsl:template>
 
-<!-- Remove tables -->
-<xsl:template match="table">
-    <xsl:message terminate="no">
-        Warning: Table is not supported in RFC ouput, use verbatim text.
-    </xsl:message>
-</xsl:template>
-
 <!-- Remove footnotes -->
 <xsl:template match="footnote">
     <xsl:message terminate="no">

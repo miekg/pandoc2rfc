@@ -260,13 +260,63 @@
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>
         </xsl:attribute>
-        <!--
-        <xsl:if test="../../../../table/col[1]">
+        <!-- for some stupid reason position() div 2, does not work -->
+        <!-- first column -->
+        <xsl:if test="position()=2">
+            <xsl:if test="../../../../table/col[1]">
                 <xsl:attribute name="width">
-                    <xsl:value-of select="//col[position()]/@width"/>
+                    <xsl:value-of select="../../../../table/col[1]/@width"/>
                 </xsl:attribute>
             </xsl:if>
-        -->
+        </xsl:if>
+        <!-- second column -->
+        <xsl:if test="position()=4">
+            <xsl:if test="../../../../table/col[2]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[2]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- third column -->
+        <xsl:if test="position()=6">
+            <xsl:if test="../../../../table/col[3]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[3]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- fifth column -->
+        <xsl:if test="position()=8">
+            <xsl:if test="../../../../table/col[4]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[4]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- sixth column -->
+        <xsl:if test="position()=10">
+            <xsl:if test="../../../../table/col[5]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[5]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- seventh column -->
+        <xsl:if test="position()=12">
+            <xsl:if test="../../../../table/col[6]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[6]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- eighth column -->
+        <xsl:if test="position()=14">
+            <xsl:if test="../../../../table/col[7]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[7]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
         <xsl:apply-templates/>
     </ttcol>
 </xsl:template>

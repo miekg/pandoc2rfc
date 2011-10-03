@@ -63,10 +63,10 @@ What is supported?
 
 What's not?
 
-* lists inside a table (xml2rfc doesn't handlt this);
-* list style=format|empty;
+* lists inside a table (xml2rfc doesn't handle this);
+* list style=format|empty (no pandoc syntax available);
+* crefs: for comments (no pandoc syntax available).
 * irefs: index (but I might take a look at citations);
-* crefs: for comments (there is no pandoc syntax for this).
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 

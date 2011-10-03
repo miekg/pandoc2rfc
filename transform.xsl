@@ -212,6 +212,15 @@
     </figure>
 </xsl:template>
 
+<!-- Transform <programlisting> to <figure><artwork> -->
+<xsl:template match="programlisting">
+    <figure>
+        <artwork>
+            <xsl:apply-templates/>
+        </artwork>
+    </figure>
+</xsl:template>
+
 <!-- Kill title tags + content -->
 <xsl:template match="title"> </xsl:template>
 

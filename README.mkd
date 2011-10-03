@@ -72,10 +72,6 @@ The heavy lifting is done by `transform.xsl` that transforms the XML.
 
 [See this pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
 
-# Newer Pandoc Versions
-
-In 1.8.2 `screen` needs to become `programlisting` in `transform.xsl`.
-
 # Pandoc Constructs
 
 What do you need to type in Pandoc to get the correct output. Note this

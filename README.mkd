@@ -63,7 +63,7 @@ What is supported?
 
 What's not?
 
-* lists inside a table;
+* lists inside a table (xml2rfc doesn't handlt this);
 * list style=format|empty;
 * irefs: index (but I might take a look at citations);
 * crefs: for comments (there is no pandoc syntax for this).

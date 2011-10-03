@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- Convert docbook XML as created by pandoc for XML suitable for
-     RFCs. Should be parseble with xml2rfc 
+<!-- Convert DocBook XML as created by Pandoc to XML suitable for
+     RFCs. Should be parseble with xml2rfc.
 
      Some "awkward" conversions:
 
-     * blockquote -> <t<figure><artwork> ... 
+     * blockquote -> <t><figure><artwork> ... 
 
      It emits warnings (and removes the content) when encountering:
 
@@ -216,9 +216,9 @@
 <xsl:template match="title"> </xsl:template>
 
 <xsl:template match="literal"> 
-        <spanx style="verb">
+    <spanx style="verb">
         <xsl:apply-templates/> 
-        </spanx>
+    </spanx>
 </xsl:template>
 <xsl:template match="emphasis"> 
     <xsl:choose>

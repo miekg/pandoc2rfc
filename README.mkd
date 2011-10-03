@@ -65,8 +65,8 @@ What's not?
 
 * lists inside a table (xml2rfc doesn't handle this);
 * list style=format|empty (no pandoc syntax available);
-* crefs: for comments (no pandoc syntax available).
-* irefs: index (but I might take a look at citations);
+* crefs: for comments (no pandoc syntax available);
+* irefs: index (but I might take a look at citations).
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 

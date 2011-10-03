@@ -6,7 +6,7 @@
 
      Some "awkward" conversions:
 
-     * blockquote -> <t><figure><artwork> ... 
+     * blockquote -> <figure><artwork> ... 
 
      It emits warnings (and removes the content) when encountering:
 
@@ -194,13 +194,11 @@
 
 <!-- Transform <blockquote> to <figure><artwork> -->
 <xsl:template match="blockquote">
-    <t>
     <figure>
         <artwork>
             <xsl:value-of select="./para"/>
         </artwork>
     </figure>
-    </t>
 </xsl:template>
 
 <!-- Transform <screen> to <figure><artwork> -->

@@ -285,7 +285,7 @@
                 </xsl:attribute>
             </xsl:if>
         </xsl:if>
-        <!-- fifth column -->
+        <!-- fourth column -->
         <xsl:if test="position()=8">
             <xsl:if test="../../../../table/col[4]">
                 <xsl:attribute name="width">
@@ -293,7 +293,7 @@
                 </xsl:attribute>
             </xsl:if>
         </xsl:if>
-        <!-- sixth column -->
+        <!-- fifth column -->
         <xsl:if test="position()=10">
             <xsl:if test="../../../../table/col[5]">
                 <xsl:attribute name="width">
@@ -301,7 +301,7 @@
                 </xsl:attribute>
             </xsl:if>
         </xsl:if>
-        <!-- seventh column -->
+        <!-- sixth column -->
         <xsl:if test="position()=12">
             <xsl:if test="../../../../table/col[6]">
                 <xsl:attribute name="width">
@@ -309,11 +309,19 @@
                 </xsl:attribute>
             </xsl:if>
         </xsl:if>
-        <!-- eighth column -->
+        <!-- seventh column -->
         <xsl:if test="position()=14">
             <xsl:if test="../../../../table/col[7]">
                 <xsl:attribute name="width">
                     <xsl:value-of select="../../../../table/col[7]/@width"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <!-- eighth column -->
+        <xsl:if test="position()=16">
+            <xsl:if test="../../../../table/col[8]">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="../../../../table/col[8]/@width"/>
                 </xsl:attribute>
             </xsl:if>
         </xsl:if>

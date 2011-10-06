@@ -107,6 +107,38 @@
             </xsl:otherwise>
         </xsl:choose>
        </xsl:when>
+       <xsl:when test="contains(@numeration,'lowerroman')">
+        <xsl:choose>
+            <xsl:when test="ancestor::orderedlist">
+                <list style="format %i."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::itemizedlist">
+                <list style="format %i."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::variablelist">
+                <list style="format %i."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t><list style="format %i."><xsl:apply-templates/></list></t>
+            </xsl:otherwise>
+        </xsl:choose>
+       </xsl:when>
+       <xsl:when test="contains(@numeration,'upperroman')">
+        <xsl:choose>
+            <xsl:when test="ancestor::orderedlist">
+                <list style="format %I."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::itemizedlist">
+                <list style="format %I."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::variablelist">
+                <list style="format %I."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t><list style="format %I."><xsl:apply-templates/></list></t>
+            </xsl:otherwise>
+        </xsl:choose>
+       </xsl:when>
        <xsl:otherwise> 
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">

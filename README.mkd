@@ -52,6 +52,8 @@ What is supported?
 * List style=symbols, see [README.html](http://johnmacfarlane.net/pandoc/README.html#lists);
 * List style=numbers;
 * List style=letters;
+* List style=format %i, roman lowercase numerals;
+* List style=format %I, roman uppercase numerals;
 * List style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
 * Example lists, see [README.html](http://johnmacfarlane.net/pandoc/README.html#numbered-example-lists);
 * Figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
@@ -130,6 +132,11 @@ This is more like a description list, so we need to use:
 
     :   Explanation two
 
+## list style roman
+Use the supported Pandoc syntax:
+
+    ii. First item
+    ii. Second item
 
 Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
 

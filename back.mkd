@@ -60,6 +60,16 @@ Another item to explain2:
 
 2. Go'bye
 
+## Roman lists
+
+i. Item 1
+ii. Item 2
+
+And uppercase
+
+I.  Item1
+II.  Item2
+II.  Item 3
 
 ## Default list markers
 

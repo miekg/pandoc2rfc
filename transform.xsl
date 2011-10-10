@@ -139,6 +139,22 @@
             </xsl:otherwise>
         </xsl:choose>
        </xsl:when>
+       <xsl:when test="contains(@numeration,'upperalpha')">
+        <xsl:choose>
+            <xsl:when test="ancestor::orderedlist">
+                <list style="format %C."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::itemizedlist">
+                <list style="format %C."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:when test="ancestor::variablelist">
+                <list style="format %C."><xsl:apply-templates/></list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t><list style="format %C."><xsl:apply-templates/></list></t>
+            </xsl:otherwise>
+        </xsl:choose>
+       </xsl:when>
        <xsl:otherwise> 
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">

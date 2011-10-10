@@ -73,9 +73,14 @@ II.  Item 3
 
 ## Default list markers
 
-    #. First item
-    #. Second item
-    #. Another item
+#. First item
+#. Second item
+#. Another item
+
+## Uppercase letters
+
+A.  First item
+B.  Second item
 
 # Tables
 

@@ -68,7 +68,9 @@ What's not?
 * lists inside a table (xml2rfc doesn't handle this);
 * list style=empty|format (no pandoc syntax available);
 * crefs: for comments (no pandoc syntax available);
-* irefs: index (no pandoc syntax available).
+* irefs: index (no pandoc syntax available);
+* footnotes, this isn't supported in `xml2rfc`, you will get a warning
+    when these are encountered.
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 
@@ -89,7 +91,7 @@ Just use the normal sectioning commands available in Pandoc, I tend to use
 Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
 If you have another section that is also named "Section1 One", that
 anchor will be called "section1-one-1". Referencing the section
-is done with `See [](#section1-one)`, see [](#refs-internal).
+is done with `see [](#section1-one)`, see [](#refs-internal).
 
 ## list style symbols
 
@@ -132,13 +134,16 @@ This is more like a description list, so we need to use:
 
     :   Explanation two
 
+Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
+
 ## list style roman
 Use the supported Pandoc syntax:
 
     ii. First item
     ii. Second item
 
-Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
+Converts to xml2rfc: `<list style="format %i.">`. Uppercase can also be used, this
+yields: `<list style="format %I.">`
 
 ## figure/artwork
 
@@ -176,7 +181,7 @@ And it does the right thing. Referencing sections is done with:
 
     See [](#pandoc-constructs)
 
-The word 'Section' is inserted automatically: ... See [](#pandoc-constructs) ...
+The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 
 ## spanx style
 The verb style can be selected with back-tics:

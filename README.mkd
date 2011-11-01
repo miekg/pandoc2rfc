@@ -74,6 +74,9 @@ The heavy lifting is done by `transform.xsl` that transforms the XML.
 
 [See this pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
 
+Note: on http://github.com this README.mkd isn't correctly rendered, the references don't
+work. If you download `pandoc2rfc`, run `make`, the resulting `draft.txt` *is* OK.
+
 # Pandoc Constructs
 
 What do you need to type in Pandoc to get the correct output. Note this

@@ -82,6 +82,26 @@ II.  Item 3
 A.  First item
 B.  Second item
 
+## Artwork in description lists
+
+Item1:
+
+:    Tell something about it. Tell something about it. Tell something about it.
+    Tell something about it. Tell something about it. Tell something about it.
+
+
+
+        miek.nl.    IN  NS  a.miek.nl.                             
+        a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue            
+
+    Tell some more about it.
+    Tell some more about it.
+    Tell some more about it.
+
+Item2:
+
+:   Another description
+
 # Tables
 
 ## Simple tables
@@ -122,23 +142,3 @@ multiple lines.
 +---------------+---------------+--------------------+
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
-
-## Artwork in description lists
-
-Item1:
-
-:    Tell something about it. Tell something about it. Tell something about it.
-    Tell something about it. Tell something about it. Tell something about it.
-
-
-
-        miek.nl.    IN  NS  a.miek.nl.                             
-        a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue            
-
-    Tell some more about it.
-    Tell some more about it.
-    Tell some more about it.
-
-Item2:
-
-:   Another description

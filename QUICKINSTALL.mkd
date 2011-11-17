@@ -1,0 +1,7 @@
+QUICK INSTALL
+
+For Linux/Ubuntu:
+
+* apt-get install xsltproc pandoc
+* read the pandoc manual
+* tweak the makefile

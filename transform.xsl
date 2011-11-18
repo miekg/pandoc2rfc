@@ -381,4 +381,8 @@
     <c><xsl:apply-templates/></c>
 </xsl:template>
 
+<xsl:template match="table/tbody/row/entry">
+    <c><xsl:apply-templates/></c>
+</xsl:template>
+
 </xsl:stylesheet>

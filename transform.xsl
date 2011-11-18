@@ -297,13 +297,13 @@
     </texttable>
 </xsl:template>
 
-<xsl:template match="table/caption">
+<xsl:template match="table/caption | table/title">
     <preamble>
         <xsl:apply-templates/>
     </preamble>
 </xsl:template>
 
-<xsl:template match="table/thead/tr/th">
+<xsl:template match="table/thead/tr/th | table/tgroup/thead/row/entry">
     <ttcol>
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>
@@ -377,7 +377,7 @@
     </ttcol>
 </xsl:template>
 
-<xsl:template match="table/tbody/tr/td">
+<xsl:template match="table/tbody/tr/td | table/tgroup/tbody/row/entry">
     <c><xsl:apply-templates/></c>
 </xsl:template>
 

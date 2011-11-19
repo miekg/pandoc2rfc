@@ -172,8 +172,8 @@ Any reference like:
 
 Converts to xml2rfc: `<link target="localid">Click here ...` 
 
-For referring to RFCs (for which you manually need add the reference source in the template), 
-you can just use:
+For referring to RFCs (for which you manually need add the reference source in the template,
+use a `include refs.xml` or something), you can just use:
 
     [](#RFC2119)
 

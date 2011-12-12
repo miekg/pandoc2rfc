@@ -49,7 +49,7 @@
 <xsl:template match="section">
     <section>
         <xsl:attribute name="title">
-            <xsl:value-of select="./title" />
+            <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))" />
         </xsl:attribute>
         <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>

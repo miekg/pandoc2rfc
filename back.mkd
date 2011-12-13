@@ -2,8 +2,7 @@
 
 ## A very long title considerations with regards to the already deployed routing policy.
 
-A very long title
-
+Test a very long title.
 
 ## Lists in lists
 
@@ -107,9 +106,9 @@ Item2:
 
 :   Another description
 
-# Tables
+## Tables
 
-## Simple tables
+### Simple tables
 
   Right     Left     Center     Default
 -------     ------ ----------   -------
@@ -119,7 +118,7 @@ Item2:
 
 Table:  Demonstration of simple table syntax.
 
-## Multiline tables
+### Multiline tables
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -136,7 +135,7 @@ Table:  Demonstration of simple table syntax.
 Table: Here's the caption. It, too, may span
 multiple lines.
 
-## Grid tables
+### Grid tables
 
 : Sample grid table.
 

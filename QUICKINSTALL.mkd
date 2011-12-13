@@ -5,8 +5,10 @@ For Linux/Ubuntu:
 * apt-get install xsltproc pandoc
 * read the pandoc manual
 * tweak the makefile
+* Edit `middle.mkd`, `back.mkd` and/or `template.xml`
+* Make
 
-and you're all set. For other Unix-like systems it should be alike. Note that
-you don't even need xsltproc per se, just a XSLT transformer program.
+And you're all set. For other Unix-like systems it should be alike. Note that
+you don't even need `xsltproc` per se, just a XSLT transformer program.
 
-Miek Gieben - 19 Nov 2011
+Miek Gieben - 2011

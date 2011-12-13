@@ -291,7 +291,7 @@
 </xsl:template>
 
 <!-- Tables -->
-<xsl:template match="table">
+<xsl:template match="table | informaltable">
     <texttable>
         <xsl:apply-templates/>
     </texttable>
@@ -303,7 +303,7 @@
     </preamble>
 </xsl:template>
 
-<xsl:template match="table/thead/tr/th | table/tgroup/thead/row/entry">
+<xsl:template match="table/thead/tr/th | informaltable/thead/tr/th | table/tgroup/thead/row/entry | informaltable/tgroup/thead/row/entry">
     <ttcol>
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>
@@ -377,7 +377,7 @@
     </ttcol>
 </xsl:template>
 
-<xsl:template match="table/tbody/tr/td | table/tgroup/tbody/row/entry">
+<xsl:template match="table/tbody/tr/td | informaltable/tbody/tr/td | table/tgroup/tbody/row/entry | informaltable/tgroup/tbody/row/entry">
     <c><xsl:apply-templates/></c>
 </xsl:template>
 

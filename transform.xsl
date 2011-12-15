@@ -249,17 +249,8 @@
     </figure>
 </xsl:template>
 
-<!-- Transform <screen> to <figure><artwork> -->
-<xsl:template match="screen">
-    <figure>
-        <artwork>
-            <xsl:apply-templates/>
-        </artwork>
-    </figure>
-</xsl:template>
-
-<!-- Transform <programlisting> to <figure><artwork> -->
-<xsl:template match="programlisting">
+<!-- Transform <screen> and <programlisting> to <figure><artwork> -->
+<xsl:template match="screen | programlisting">
     <figure>
         <artwork>
             <xsl:apply-templates/>
@@ -309,7 +300,7 @@
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>
         </xsl:attribute>
-        <!-- for some stupid reason position() div 2, does not work -->
+        <!-- for some stupid reason position() div 2, does not work, so the loop is unrolled and we do it by hand -->
         <!-- first column -->
         <xsl:if test="position()=2">
             <xsl:if test="../../../../table/col[1]">
@@ -378,7 +369,7 @@
     </ttcol>
 </xsl:template>
 
-<!-- Table headers for CALS tables-->
+<!-- Table headers for CALS tables, Pandoc 1.8.2.x+ emit these -->
 <xsl:template match="table/tgroup/thead/row/entry">
     <ttcol>
         <xsl:if test="position()=2">
@@ -386,7 +377,7 @@
                 <xsl:attribute name="align">
                     <xsl:value-of select="../../../../../table/tgroup/colspec[1]/@align"/>
                 </xsl:attribute>
-                <!-- Optionally colwidth -->
+                <!-- Optionally colwidth, translate * to % -->
                 <xsl:if test="../../../../../table/tgroup/colspec[1]/@colwidth">
                     <xsl:attribute name="width">
                         <xsl:value-of select="translate(../../../../../table/tgroup/colspec[1]/@colwidth, '*', '%')"/>
@@ -399,7 +390,6 @@
                 <xsl:attribute name="align">
                     <xsl:value-of select="../../../../../table/tgroup/colspec[2]/@align"/>
                 </xsl:attribute>
-                <!-- Optionally colwidth, where * is translated to % -->
                 <xsl:if test="../../../../../table/tgroup/colspec[2]/@colwidth">
                     <xsl:attribute name="width">
                         <xsl:value-of select="translate(../../../../../table/tgroup/colspec[2]/@colwidth, '*', '%')"/>
@@ -487,6 +477,7 @@
     <c><xsl:apply-templates/></c>
 </xsl:template>
 
+<!-- CALS table -->
 <xsl:template match="table/tbody/row/entry">
     <c><xsl:apply-templates/></c>
 </xsl:template>

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<article>
+  <articleinfo>
+    <title></title>
+  </articleinfo>
+<section id="tests">
+  <title>Tests</title>
+  <section id="a-very-long-title-considerations-with-regards-to-the-already-deployed-routing-policy.">
+    <title>A very long title considerations with regards to the already
+    deployed routing policy.</title>
+    <para>
+      Test a very long title.
+    </para>
+  </section>
+  <section id="lists-in-lists">
+    <title>Lists in lists</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          First we do
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          And then
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              item 1
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              item 2
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </orderedlist>
+    <para>
+      And the other around
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          First we do
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Then
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem>
+            <para>
+              Something
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Another thing
+            </para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Description lists work:
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>
+          Item to explain:
+        </term>
+        <listitem>
+          <para>
+            It works because of herbs
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          Another item to explain
+        </term>
+        <listitem>
+          <para>
+            More explaining
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section id="lists-in-description-lists">
+    <title>Lists in description lists</title>
+    <variablelist>
+      <varlistentry>
+        <term>
+          Item to explain:
+        </term>
+        <listitem>
+          <para>
+            It works because of
+          </para>
+          <orderedlist numeration="arabic">
+            <listitem>
+              <para>
+                ONE
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                TWO
+              </para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          Another item to explain:
+        </term>
+        <listitem>
+          <para>
+            More explaining
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          Item to explain2:
+        </term>
+        <listitem>
+          <para>
+            It works because of
+          </para>
+          <orderedlist numeration="arabic">
+            <listitem>
+              <para>
+                ONE1
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                TWO1
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Itemize list
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Another item
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </orderedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          Another item to explain2:
+        </term>
+        <listitem>
+          <para>
+            More explaining
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section id="list-with-description-list">
+    <title>List with description list</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          More
+        </para>
+        <variablelist>
+          <varlistentry>
+            <term>
+              Item to explain3:
+            </term>
+            <listitem>
+              <para>
+                Explanation
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>
+              Item to explain4:
+            </term>
+            <listitem>
+              <para>
+                Explantions2
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </listitem>
+      <listitem>
+        <para>
+          Go'bye
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="roman-lists">
+    <title>Roman lists</title>
+    <orderedlist numeration="lowerroman">
+      <listitem>
+        <para>
+          Item 1
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Item 2
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      And uppercase
+    </para>
+    <orderedlist numeration="upperroman">
+      <listitem>
+        <para>
+          Item1
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Item2
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Item 3
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="default-list-markers">
+    <title>Default list markers</title>
+    <orderedlist>
+      <listitem>
+        <para>
+          First item
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Second item
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Another item
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="uppercase-letters">
+    <title>Uppercase letters</title>
+    <orderedlist numeration="upperalpha">
+      <listitem>
+        <para>
+          First item
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Second item
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section id="artwork-in-description-lists">
+    <title>Artwork in description lists</title>
+    <variablelist>
+      <varlistentry>
+        <term>
+          Item1:
+        </term>
+        <listitem>
+          <para>
+            Tell something about it. Tell something about it. Tell
+            something about it. Tell something about it. Tell something
+            about it. Tell something about it.
+          </para>
+          <programlisting>
+miek.nl.    IN  NS  a.miek.nl.                             
+a.miek.nl.  IN  A   127.0.0.1    ; &lt;- this is glue            
+</programlisting>
+          <para>
+            Tell some more about it. Tell some more about it. Tell some
+            more about it.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          Item2:
+        </term>
+        <listitem>
+          <para>
+            Another description
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section id="tables">
+    <title>Tables</title>
+    <section id="simple-tables">
+      <title>Simple tables</title>
+      <table>
+        <title>
+          Demonstration of simple table syntax.
+        </title>
+        <tgroup cols="4">
+          <colspec align="right" />
+          <colspec align="left" />
+          <colspec align="center" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                Right
+              </entry>
+              <entry>
+                Left
+              </entry>
+              <entry>
+                Center
+              </entry>
+              <entry>
+                Default
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                12
+              </entry>
+              <entry>
+                12
+              </entry>
+              <entry>
+                12
+              </entry>
+              <entry>
+                12
+              </entry>
+            </row>
+            <row>
+              <entry>
+                123
+              </entry>
+              <entry>
+                123
+              </entry>
+              <entry>
+                123
+              </entry>
+              <entry>
+                123
+              </entry>
+            </row>
+            <row>
+              <entry>
+                1
+              </entry>
+              <entry>
+                1
+              </entry>
+              <entry>
+                1
+              </entry>
+              <entry>
+                1
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section id="multiline-tables">
+      <title>Multiline tables</title>
+      <table>
+        <title>
+          Here's the caption. It, too, may span multiple lines.
+        </title>
+        <tgroup cols="4">
+          <colspec colwidth="16*" align="center" />
+          <colspec colwidth="11*" align="left" />
+          <colspec colwidth="22*" align="right" />
+          <colspec colwidth="34*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                Centered Header
+              </entry>
+              <entry>
+                Default Aligned
+              </entry>
+              <entry>
+                Right Aligned
+              </entry>
+              <entry>
+                Left Aligned
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                First
+              </entry>
+              <entry>
+                row
+              </entry>
+              <entry>
+                12.0
+              </entry>
+              <entry>
+                Example of a row that spans multiple lines.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Second
+              </entry>
+              <entry>
+                row
+              </entry>
+              <entry>
+                5.0
+              </entry>
+              <entry>
+                Here's another one. Note the blank line between rows.
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section id="grid-tables">
+      <title>Grid tables</title>
+      <table>
+        <title>
+          Sample grid table.
+        </title>
+        <tgroup cols="3">
+          <colspec colwidth="22*" align="left" />
+          <colspec colwidth="22*" align="left" />
+          <colspec colwidth="29*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                Fruit
+              </entry>
+              <entry>
+                Price
+              </entry>
+              <entry>
+                Advantages
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                Bananas
+              </entry>
+              <entry>
+                $1.34
+              </entry>
+              <entry>
+                built-in wrapper
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Oranges
+              </entry>
+              <entry>
+                $2.10
+              </entry>
+              <entry>
+                cures scurvy
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </section>
+</section>
+</article>

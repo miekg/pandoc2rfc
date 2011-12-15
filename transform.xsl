@@ -303,7 +303,8 @@
     </preamble>
 </xsl:template>
 
-<xsl:template match="table/thead/tr/th | informaltable/thead/tr/th | table/tgroup/thead/row/entry | informaltable/tgroup/thead/row/entry">
+<!-- Table headers -->
+<xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">
     <ttcol>
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>
@@ -371,6 +372,111 @@
                 <xsl:attribute name="width">
                     <xsl:value-of select="../../../../table/col[8]/@width"/>
                 </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
+        <xsl:apply-templates/>
+    </ttcol>
+</xsl:template>
+
+<!-- Table headers for CALS tables-->
+<xsl:template match="table/tgroup/thead/row/entry">
+    <ttcol>
+        <xsl:if test="position()=2">
+            <xsl:if test="../../../../../table/tgroup/colspec[1]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[1]/@align"/>
+                </xsl:attribute>
+                <!-- Optionally colwidth -->
+                <xsl:if test="../../../../../table/tgroup/colspec[1]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[1]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=4">
+            <xsl:if test="../../../../../table/tgroup/colspec[2]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[2]/@align"/>
+                </xsl:attribute>
+                <!-- Optionally colwidth, where * is translated to % -->
+                <xsl:if test="../../../../../table/tgroup/colspec[2]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[2]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=6">
+            <xsl:if test="../../../../../table/tgroup/colspec[3]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[3]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[3]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[3]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=8">
+            <xsl:if test="../../../../../table/tgroup/colspec[4]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[4]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[4]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[4]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=10">
+            <xsl:if test="../../../../../table/tgroup/colspec[5]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[5]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[5]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[5]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=12">
+            <xsl:if test="../../../../../table/tgroup/colspec[6]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[6]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[6]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[6]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=14">
+            <xsl:if test="../../../../../table/tgroup/colspec[7]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[7]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[7]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[7]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
+            </xsl:if>
+        </xsl:if>
+        <xsl:if test="position()=16">
+            <xsl:if test="../../../../../table/tgroup/colspec[8]">
+                <xsl:attribute name="align">
+                    <xsl:value-of select="../../../../../table/tgroup/colspec[8]/@align"/>
+                </xsl:attribute>
+                <xsl:if test="../../../../../table/tgroup/colspec[8]/@colwidth">
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[8]/@colwidth, '*', '%')"/>
+                    </xsl:attribute>
+                </xsl:if>
             </xsl:if>
         </xsl:if>
         <xsl:apply-templates/>

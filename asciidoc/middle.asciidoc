@@ -76,7 +76,7 @@ The heavy lifting is done by `transform.xsl` that transforms the XML.
 
 [See this pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
 
-=== Pandoc Constructs ===
+== Pandoc Constructs ==
 
 What do you need to type in Pandoc to get the correct output. Note this
 is just basic Pandoc format, so you might be better off reading the
@@ -189,7 +189,7 @@ And it does the right thing. Referencing sections is done with:
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 
-=== spanx style ====
+=== spanx style ===
 
 The verb style can be selected with back-tics:
 

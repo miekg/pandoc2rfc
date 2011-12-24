@@ -1,6 +1,5 @@
-Tests
------
+== Tests ==
 
-A very long title considerations with regards to the already deployed routing policy.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== A very long title considerations with regards to the already deployed routing policy. ===
+
 Test a very long title.

@@ -1,3 +1,4 @@
+# Asciidoc
 all:	draft.txt
 
 %.xml:	%.asciidoc transform.xsl

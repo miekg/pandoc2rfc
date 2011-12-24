@@ -1,3 +1,4 @@
+# Pandoc
 all:	draft.txt
 
 %.xml:	%.mkd transform.xsl

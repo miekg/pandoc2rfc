@@ -183,9 +183,11 @@ syn match pdcLinkTitle /\s*[("'].*[)"']/ contained contains=@Spell
 
 "   Using underscores
 syn match pdcEmphasis   / \(_\|__\)\([^_ ]\|[^_]\( [^_]\)\+\)\+\1/    contains=@Spell
+syn match pdcEmphasis   /^\(_\|__\)\([^_ ]\|[^_]\( [^_]\)\+\)\+\1/    contains=@Spell
 
 "   Using Asterisks
 syn match pdcEmphasis   / \(\*\|\*\*\)\([^\* ]\|[^\*]\( [^\*]\)\+\)\+\1/    contains=@Spell
+syn match pdcEmphasis   /^\(\*\|\*\*\)\([^\* ]\|[^\*]\( [^\*]\)\+\)\+\1/    contains=@Spell
 
 
 """""""""""""""""""""""""""""""""""""""

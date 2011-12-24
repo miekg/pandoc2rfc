@@ -251,7 +251,7 @@
 </xsl:template>
 
 <!-- Transform <screen> and <programlisting> to <figure><artwork> -->
-<xsl:template match="screen | programlisting">
+<xsl:template match="screen | programlisting | literallayout">
     <figure>
         <artwork>
             <xsl:apply-templates/>

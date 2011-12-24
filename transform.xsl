@@ -59,7 +59,7 @@
 </xsl:template>
 
 <!-- Transform a <para> to <t>, except in lists, then it is discarded -->
-<xsl:template match="para">
+<xsl:template match="para | simpara">
     <xsl:choose>
         <xsl:when test="ancestor::orderedlist">
                 <xsl:apply-templates/>
@@ -241,10 +241,11 @@
 </xsl:template>
 
 <!-- Transform <blockquote> to <figure><artwork> -->
+<!-- TODO: does work? ./para | ./simpara -->
 <xsl:template match="blockquote">
     <figure>
         <artwork>
-            <xsl:value-of select="./para"/>
+            <xsl:value-of select="./para | ./simpara"/>
         </artwork>
     </figure>
 </xsl:template>

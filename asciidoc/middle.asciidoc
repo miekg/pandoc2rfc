@@ -1,15 +1,15 @@
-== Pandoc to RFC ==
+== AsciiDoc to RFC ==
 
 When writing [RFC 4641](RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of http://xml.resource.org/[xml2rfc]
 is very "light".
 
 Nowadays I'm a fan of the markdown syntax and especially the syntax as supported (created?)
-by http://johnmacfarlane.net/pandoc/[Pandoc].
+by http://johnmacfarlane.net/pandoc/[Pandoc]. But there are more plain text markup languages
+out there. One of those is AsciiDoc.
 
-So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
-I thought the easiest way would be to create `docbook` XML and transform that using
-XSLT.
+One of the ways to write an RFC is to write in AsciiDoc and output `docbook` XML 
+and transform that using XSLT.
 
 The XML generated is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template xml file and include the appropriate
@@ -36,12 +36,12 @@ XML:
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
 
-1. middle.mdk;
-2. back.mkd;
+1. middle.asciidoc;
+2. back.asciidoc;
 3. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
-Note that this `README.mkd` is converted to an RFC-like document when you call `make`.
+Note that this `README.asciidoc` is converted to an RFC-like document when you call `make`.
 
 It needs `xsltproc` and `pandoc` to be installed.
 
@@ -76,16 +76,17 @@ The heavy lifting is done by `transform.xsl` that transforms the XML.
 
 https://github.com/miekg/pandoc2rfc/[See this pandoc2rfc github repository].
 
-== Pandoc Constructs ==
+== AsciiDoc Constructs ==
 
 What do you need to type in Pandoc to get the correct output. Note this
-is just basic Pandoc format, so you might be better off reading the ...
+is just basic Pandoc format, so you might be better off reading the ASciiDoc
+manual, see `asciidoc --help syntax | less`.
 
 === section ===
 
-Just use the normal sectioning commands available in Pandoc, I tend to use
+Just use the normal sectioning commands available in AsciiDoc.
 
-    # Section1 One
+    == Section1 One ==
     Bla
 
 Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
@@ -122,18 +123,14 @@ Converts to xml2rfc: `<list style="letters">`
 
 === list style hanging ===
 
-This is more like a description list, so we need to use:
+This is more like a labeled list, so we need to use:
 
-    First item that needs clarification
-
-    :   Explanation one
+    First item that needs clarification:: Explanation one
     More stuff, because item is difficult to explain.
     * item1
     * item2
 
-    Second item that needs clarification
-
-    :   Explanation two
+    Second item that needs clarification:: Explanation two
 
 Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
 
@@ -141,13 +138,14 @@ Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
 
 Use the supported Pandoc syntax:
 
-    ii. First item
-    ii. Second item
+    ii) First item
+    ii) Second item
 
 Converts to xml2rfc: `<list style="format %i.">`. Uppercase can also be used, this
 yields: `<list style="format %I.">`
 
 === figure/artwork ===
+
 
 Just indent the paragraph with 4 spaces.
 

@@ -43,25 +43,26 @@ See the Makefile for an example of this. In this case you need to edit
 The draft (`draft.txt`) is automatically created when you call `make`. 
 Note that this `README.mkd` is converted to an RFC-like document when you call `make`.
 
-It needs `xsltproc` and `pandoc` to be installed.
+It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
+the details](http://johnmacfarlane.net/pandoc/README.html).
 
 What is supported?
 
-* Sections with anchor and title attributes, see [README.html](http://johnmacfarlane.net/pandoc/README.html#headers);
-* Tables, see [README.html](http://johnmacfarlane.net/pandoc/README.html#tables);
-* List style=symbols, see [README.html](http://johnmacfarlane.net/pandoc/README.html#lists);
+* Sections with anchor and title attributes;
+* Tables;
+* List style=symbols;
 * List style=numbers;
 * List style=letters;
 * List style=format %i, roman lowercase numerals;
 * List style=format %I, roman uppercase numerals;
-* List style=hanging, see [README.html](http://johnmacfarlane.net/pandoc/README.html#definition-lists);
-* Example lists, see [README.html](http://johnmacfarlane.net/pandoc/README.html#numbered-example-lists);
-* Figure/artwork, see [README.html](http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks);
+* List style=hanging;
+* Example lists; 
+* Figure/artwork;
 * Blockquote - this isn't supported by `xml2rfc`, so this is converted to
-    figure/artwork paragraph. See [README.html](http://johnmacfarlane.net/pandoc/README.html#block-quotations);
-* Refs: external (eref), see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-links);
-* Refs: internal (xref) see [README.html](http://johnmacfarlane.net/pandoc/README.html#header-identifiers-in-html);
-* Spanx style=verb, style=emph, style=strong, see [README.html](http://johnmacfarlane.net/pandoc/README.html#inline-formatting).
+    figure/artwork paragraph;
+* Refs: external (eref); 
+* Refs: internal (xref);
+* Spanx style=verb, style=emph, style=strong.
 
 What's not?
 
@@ -91,7 +92,7 @@ Just use the normal sectioning commands available in Pandoc, I tend to use
 Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
 If you have another section that is also named "Section1 One", that
 anchor will be called "section1-one-1". Referencing the section
-is done with `see [](#section1-one)`, see [](#refs-internal).
+is done with `see [](#section1-one)`, see [](#section).
 
 ## list style symbols
 

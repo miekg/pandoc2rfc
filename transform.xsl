@@ -254,9 +254,21 @@
 </xsl:template>
 
 <!-- Transform <screen> and <programlisting> to <figure><artwork> -->
-<xsl:template match="screen | programlisting | literallayout">
+<xsl:template match="screen | programlisting">
     <figure>
         <artwork>
+            <xsl:apply-templates/>
+        </artwork>
+    </figure>
+</xsl:template>
+
+<!-- AsciiDoc; Transform <literallayout> to <figure><artwork> -->
+<!-- Insert a newline after the <artwork>-tag because AsciiDoc, does not
+     do this automatically -->
+<xsl:template match="literallayout">
+    <figure>
+        <artwork>
+            <xsl:text>&#10;</xsl:text>
             <xsl:apply-templates/>
         </artwork>
     </figure>

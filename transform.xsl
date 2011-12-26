@@ -264,7 +264,7 @@
 
 <!-- AsciiDoc; Transform <literallayout> to <figure><artwork> -->
 <!-- Insert a newline after the <artwork>-tag because AsciiDoc, does not
-     do this automatically -->
+     do this automatically. Check if we are inside a list -->
 <xsl:template match="literallayout">
     <figure>
         <artwork>

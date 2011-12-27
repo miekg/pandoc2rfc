@@ -385,6 +385,9 @@
         <xsl:if test="position() = 16">
             <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="8"/></xsl:call-template>
         </xsl:if>
+        <xsl:attribute name="align">
+            <xsl:value-of select="@align"/>
+        </xsl:attribute>
         <xsl:apply-templates/>
     </ttcol>
 </xsl:template>

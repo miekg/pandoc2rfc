@@ -4,6 +4,17 @@
 
 Test a very long title.
 
+=== Reference ===
+
+Refer to <<RFC2119,RFC2119>> if you will.
+
+=== Spanx ===
+
+_underscores_
+*asterisks*
+**double asterisks**
+`backticks`
+
 === Lists in lists ===
 
 1. First we do

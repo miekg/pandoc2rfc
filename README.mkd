@@ -67,9 +67,9 @@ What is supported?
 What's not?
 
 * lists inside a table (xml2rfc doesn't handle this);
-* list style=empty|format (no pandoc syntax available);
-* crefs: for comments (no pandoc syntax available);
-* irefs: index (no pandoc syntax available);
+* list style=empty|format (no Pandoc syntax available);
+* crefs: for comments (no Pandoc syntax available);
+* irefs: index (no Pandoc syntax available);
 * footnotes, this isn't supported in `xml2rfc`, you will get a warning
     when these are encountered.
 

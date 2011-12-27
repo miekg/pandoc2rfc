@@ -53,6 +53,9 @@
 </middle>
 
 <back>
+    <references title="Normative References">
+        <?rfc include="reference.RFC.2119.xml"?>
+    </references>
 <?rfc include="back.xml"?>
 </back>
 </rfc>

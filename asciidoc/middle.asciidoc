@@ -37,7 +37,7 @@ XML:
 
 See the Makefile for an example of this. In this case you need to edit
 3 documents. Note that `asciidoc` is *not* the official extension for
-asciidoc files:
+AsciiDoc files:
 
 1. middle.asciidoc;
 2. back.asciidoc;
@@ -70,9 +70,9 @@ What is supported?
 What's not?
 
 * lists inside a table (xml2rfc doesn't handle this);
-* list style=empty|format (no pandoc syntax available);
-* crefs: for comments (no pandoc syntax available);
-* irefs: index (no pandoc syntax available);
+* list style=empty|format (no AsciiDoc syntax available);
+* crefs: for comments (no AsciiDoc syntax available);
+* irefs: index (no AsciiDoc syntax available);
 * footnotes, this isn't supported in `xml2rfc`, you will get a warning
     when these are encountered.
 
@@ -97,7 +97,7 @@ Bla
 
 Converts to xml2rfc: `<section title="Section1 One" anchor="_section1_one">`
 If you have another section that is also named "Section1 One", that
-anchor will be called "section1_one_1". Referencing the section
+anchor will be called "_section1_one_2". Referencing the section
 is done with `see <<_section1-one, text>>`, see <<_section, "section">>.
 
 === list style symbols ===
@@ -162,52 +162,54 @@ yields: `<list style="format %I.">`
 
 === figure/artwork ===
 
-
-Just indent the paragraph with 4 spaces.
+Use four dots `....` to start and four dots to end such a paragraph.
 
 Converts to xml2rfc: `<figure><artwork> ...`
 
 === blockquote ===
 
-This is not supported by xml2rfc, but any paragraph like:
-
-    > quoted text
-
-Converts to xml2rfc: `<figure><artwork> ...`
+Not supported by AsciiDoc as far as I can see.
 
 === refs external ===
 
 Any reference like:
 
-    [Click here](URI)
+    URI[Click here]
 
-Converts to xml2rfc: `<ulink target="URI">Click here ...`
+Note that URI should begin with `http://`,
+converts to xml2rfc: `<ulink target="URI">Click here ...`
 
 === refs internal ===
 
 Any reference like:
 
-    [Click here](#localid)
+....
+<<localid,Click here>>
+....
 
 Converts to xml2rfc: `<link target="localid">Click here ...` 
 
 For referring to RFCs (for which you manually need add the reference source in the template,
-use a `include refs.xml` or something), you can just use:
+use a `include refs.xml` or something), you can use:
 
-    [](#RFC2119)
+....
+<<RFC2119,RFC2119>>
+....
 
 And it does the right thing. Referencing sections is done with:
 
-    See [](#pandoc-constructs)
+....
+See <<_asciidoc_constructs, AsciiDoc constructs>>
+....
 
-The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
+The word 'Section' is inserted automatically: ... see <<_asciidoc_constructs, AsciiDoc constructs>> ...
 
 === spanx style ===
 
 The verb style can be selected with back-tics:
 
 ....
-+text+
+`text`
 ....
 
 Converts to xml2rfc: `<spanx style="verb"> ...`

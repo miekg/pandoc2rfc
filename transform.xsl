@@ -322,24 +322,28 @@
         </xsl:attribute>
         <!-- Every even position() need to be dealt with: 2 look back to 1, 4 look back to 2, etc. -->
         <xsl:if test="position() = 2">
-            <xsl:call-template name="get_col">
-                    <xsl:with-param name="column" select="1"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="1"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 4">
-            <xsl:call-template name="get_col">
-                    <xsl:with-param name="column" select="2"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="2"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 6">
-            <xsl:call-template name="get_col">
-                    <xsl:with-param name="column" select="3"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="3"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 8">
-            <xsl:call-template name="get_col">
-                    <xsl:with-param name="column" select="4"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="4"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 10">
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="5"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 12">
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="6"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 14">
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="7"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 16">
+            <xsl:call-template name="get_col"><xsl:with-param name="column" select="8"/></xsl:call-template>
         </xsl:if>
         <xsl:apply-templates/>
     </ttcol>
@@ -358,28 +362,30 @@
 <xsl:template match="table/tgroup/thead/row/entry">
     <ttcol>
         <xsl:if test="position() = 2">
-            <xsl:call-template name="get_colspec">
-                    <xsl:with-param name="column" select="1"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="1"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 4">
-            <xsl:call-template name="get_colspec">
-                    <xsl:with-param name="column" select="2"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="2"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 6">
-            <xsl:call-template name="get_colspec">
-                    <xsl:with-param name="column" select="3"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="3"/></xsl:call-template>
         </xsl:if>
         <xsl:if test="position() = 8">
-            <xsl:call-template name="get_colspec">
-                    <xsl:with-param name="column" select="4"/>
-            </xsl:call-template>
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="4"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 10">
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="5"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 12">
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="6"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 14">
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="7"/></xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 16">
+            <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="8"/></xsl:call-template>
         </xsl:if>
         <xsl:apply-templates/>
-        <xsl:copy-of select="position()"/>
-        <xsl:copy-of select="position() div 2"/>
     </ttcol>
 </xsl:template>
 

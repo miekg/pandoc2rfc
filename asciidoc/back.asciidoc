@@ -6,7 +6,7 @@ Test a very long title.
 
 === Reference ===
 
-Refer to <<RFC2119,RFC2119>> if you will.
+Refer to <<RFC2119,See RFC2119>> if you will.
 
 === Spanx ===
 

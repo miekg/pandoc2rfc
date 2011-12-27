@@ -321,35 +321,81 @@
             <xsl:value-of select="@align"/>
         </xsl:attribute>
         <!-- Every even position() need to be dealt with: 2 look back to 1, 4 look back to 2, etc. -->
-        <xsl:if test="position() mod 2 = 0">
-            <xsl:if test="../../../../table/col[ position() div 2 ]">
-                <xsl:attribute name="width">
-                    <xsl:value-of select="../../../../table/col[ position() div 2 ]/@width"/>
-                </xsl:attribute>
-            </xsl:if>
+        <xsl:if test="position() = 2">
+            <xsl:call-template name="get_col">
+                    <xsl:with-param name="column" select="1"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 4">
+            <xsl:call-template name="get_col">
+                    <xsl:with-param name="column" select="2"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 6">
+            <xsl:call-template name="get_col">
+                    <xsl:with-param name="column" select="3"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 8">
+            <xsl:call-template name="get_col">
+                    <xsl:with-param name="column" select="4"/>
+            </xsl:call-template>
         </xsl:if>
         <xsl:apply-templates/>
     </ttcol>
 </xsl:template>
 
+<xsl:template name="get_col">
+    <xsl:param name="column"/>
+    <xsl:if test="../../../../table/col[$column]">
+        <xsl:attribute name="width">
+            <xsl:value-of select="../../../../table/col[$column]/@width"/>
+        </xsl:attribute>
+    </xsl:if>
+</xsl:template>
+
 <!-- Table headers for CALS tables, Pandoc 1.8.2.x+ emit these -->
 <xsl:template match="table/tgroup/thead/row/entry">
     <ttcol>
-        <xsl:if test="position() mod 2 = 0">
-            <xsl:if test="../../../../../table/tgroup/colspec[ position() div 2 ]">
-                <xsl:attribute name="align">
-                    <xsl:value-of select="../../../../../table/tgroup/colspec[position() div 2 ]/@align"/>
-                </xsl:attribute>
-                <!-- Optionally colwidth, translate * to % -->
-                <xsl:if test="../../../../../table/tgroup/colspec[ position() div 2 ]/@colwidth">
-                    <xsl:attribute name="width">
-                        <xsl:value-of select="translate(../../../../../table/tgroup/colspec[ position div 2 ]/@colwidth, '*', '%')"/>
-                    </xsl:attribute>
-                </xsl:if>
-            </xsl:if>
+        <xsl:if test="position() = 2">
+            <xsl:call-template name="get_colspec">
+                    <xsl:with-param name="column" select="1"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 4">
+            <xsl:call-template name="get_colspec">
+                    <xsl:with-param name="column" select="2"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 6">
+            <xsl:call-template name="get_colspec">
+                    <xsl:with-param name="column" select="3"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="position() = 8">
+            <xsl:call-template name="get_colspec">
+                    <xsl:with-param name="column" select="4"/>
+            </xsl:call-template>
         </xsl:if>
         <xsl:apply-templates/>
+        <xsl:copy-of select="position()"/>
+        <xsl:copy-of select="position() div 2"/>
     </ttcol>
+</xsl:template>
+
+<xsl:template name="get_colspec">
+    <xsl:param name="column"/>
+        <xsl:if test="../../../../../table/tgroup/colspec[$column]">
+            <xsl:attribute name="align">
+                <xsl:value-of select="../../../../../table/tgroup/colspec[$column]/@align"/>
+            </xsl:attribute>
+            <!-- Optionally colwidth, translate * to % -->
+            <xsl:if test="../../../../../table/tgroup/colspec[$column]/@colwidth">
+                <xsl:attribute name="width">
+                    <xsl:value-of select="translate(../../../../../table/tgroup/colspec[$column]/@colwidth, '*', '%')"/>
+                </xsl:attribute>
+            </xsl:if>
+        </xsl:if>
 </xsl:template>
 
 <xsl:template match="table/tbody/tr/td | informaltable/tbody/tr/td | table/tgroup/tbody/row/entry | informaltable/tgroup/tbody/row/entry">

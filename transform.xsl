@@ -3,9 +3,11 @@
 
 <!-- 
      Version: 0.8
+     (c) Miek Gieben
+     Licensed under the GPL version 2.
 
      Convert DocBook XML as created by Pandoc to XML suitable for
-     RFCs. Should be parseble with xml2rfc.
+     RFCs and thus  parseble with xml2rfc.
 
      Some "awkward" conversions:
 

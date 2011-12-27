@@ -116,9 +116,9 @@ Item2::
 
 Another description
 
-== Tables ==
+=== Tables ===
 
-=== Simple tables ===
+==== Simple tables ====
 
 .Demonstration of simple table syntax.
 [options="header",cols=">,<,^,^"]
@@ -130,7 +130,7 @@ Another description
 |============================
 
 
-=== Multiline tables ===
+==== Multiline tables ====
 
 .Here's the caption. It cannot span multiple lines.
 [options="header",cols="^,^,>,<"]
@@ -140,7 +140,7 @@ Another description
 | Second          |          row      |       5.0 | Here's another one. Note the blank line between rows.
 |====================================================================================================
 
-=== Grid tables ===
+==== Grid tables ====
 
 .Sample grid table.
 [options="header",cols="^,^,^"]

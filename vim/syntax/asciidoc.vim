@@ -133,7 +133,7 @@ highlight link asciidocListContinuation Label
 highlight link asciidocListingBlock Identifier
 highlight link asciidocListLabel Label
 highlight link asciidocListNumber Label
-highlight link asciidocLiteralBlock Identifier
+highlight link asciidocLiteralBlock String
 highlight link asciidocLiteralParagraph Identifier
 highlight link asciidocMacroAttributes Label
 highlight link asciidocMacro Macro
@@ -146,9 +146,9 @@ highlight link asciidocQuotedBold Special
 highlight link asciidocQuotedDoubleQuoted Label
 highlight link asciidocQuotedEmphasized2 Type
 highlight link asciidocQuotedEmphasized Type
-highlight link asciidocQuotedMonospaced2 Identifier
-highlight link asciidocQuotedMonospaced Identifier
-highlight link asciidocQuotedSingleQuoted Label
+highlight link asciidocQuotedMonospaced2 String
+highlight link asciidocQuotedMonospaced String
+highlight link asciidocQuotedSingleQuoted String
 highlight link asciidocQuotedSubscript Type
 highlight link asciidocQuotedSuperscript Type
 highlight link asciidocQuotedUnconstrainedBold Special

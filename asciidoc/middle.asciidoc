@@ -65,7 +65,7 @@ What is supported?
     figure/artwork paragraph;
 * Refs: external (eref);
 * Refs: internal (xref);
-* Spanx style=verb, style=emph, style=strong;
+* Spanx style=verb, style=emph, style=strong.
 
 What's not?
 

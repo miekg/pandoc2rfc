@@ -36,8 +36,7 @@ XML:
 ....
 
 See the Makefile for an example of this. In this case you need to edit
-3 documents. Note that `asciidoc` is *not* the official extension for
-AsciiDoc files:
+3 documents:
 
 1. middle.asciidoc;
 2. back.asciidoc;

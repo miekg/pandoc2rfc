@@ -69,9 +69,9 @@ What is supported?
 What's not?
 
 * lists inside a table (xml2rfc doesn't handle this);
-* list style=empty|format (no AsciiDoc syntax available);
-* crefs: for comments (no AsciiDoc syntax available);
-* irefs: index (no AsciiDoc syntax available);
+* list style=empty|format (no input syntax available);
+* crefs: for comments (no input syntax available);
+* irefs: index (no input syntax available);
 * footnotes, this isn't supported in `xml2rfc`, you will get a warning
     when these are encountered.
 

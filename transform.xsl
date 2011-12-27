@@ -73,6 +73,10 @@
         <xsl:when test="ancestor::variablelist">
                 <xsl:apply-templates/>
         </xsl:when>
+        <!-- AsciiDoc puts simpara in each table element, remove it -->
+        <xsl:when test="ancestor::tbody">
+                <xsl:apply-templates/>
+        </xsl:when>
         <xsl:otherwise>
                 <t><xsl:apply-templates/></t>
         </xsl:otherwise>

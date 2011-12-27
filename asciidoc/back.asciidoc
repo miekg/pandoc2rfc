@@ -110,40 +110,31 @@ Another description
 === Simple tables ===
 
 .Demonstration of simple table syntax.
-[width="15%"]
-|===========================
+[options="header",cols=">,<,^,^"]
+|============================
 |Right |Left |Center |Default
 |    12|   12|     12|  12
 |   123|  123|    123|  123
 |     1|    1|      1|  1
-|===========================
+|============================
 
 
-### Multiline tables
+=== Multiline tables ===
 
--------------------------------------------------------------
- Centered   Default           Right Left
-  Header    Aligned         Aligned Aligned
------------ ------- --------------- -------------------------
-   First    row                12.0 Example of a row that
-                                    spans multiple lines.
+.Here's the caption. It cannot span multiple lines.
+[options="header",cols="^,^,>,<"]
+|====================================================================================================
+| Centered Header | Default Aligned   | Right Aligned | Left Aligned
+|  First          |          row      |      12.0 | Example of a row that spans multiple lines.
+| Second          |          row      |       5.0 | Here's another one. Note the blank line between rows.
+|====================================================================================================
 
-  Second    row                 5.0 Here's another one. Note
-                                    the blank line between
-                                    rows.
--------------------------------------------------------------
+=== Grid tables ===
 
-Table: Here's the caption. It, too, may span
-multiple lines.
-
-### Grid tables
-
-: Sample grid table.
-
-+---------------+---------------+--------------------+
-| Fruit         | Price         | Advantages         |
-+===============+===============+====================+
-| Bananas       | $1.34         | built-in wrapper   |
-+---------------+---------------+--------------------+
-| Oranges       | $2.10         | cures scurvy       |
-+---------------+---------------+--------------------+
+.Sample grid table.
+[options="header",cols="^,^,^"]
+|============================
+| Fruit         | Price         | Advantages
+| Bananas       | $1.34         | built-in wrapper
+| Oranges       | $2.10         | cures scurvy
+|============================

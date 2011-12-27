@@ -2,7 +2,7 @@
 all:	draft.txt
 
 %.xml:	%.mkd transform.xsl
-	pandoc $< -t docbook -s | xsltproc transform.xsl - > $@
+	pandoc -t docbook -s $< | xsltproc transform.xsl - > $@
 
 draft.txt:	middle.xml back.xml template.xml
 	DISPLAY= xml2rfc template.xml draft.txt

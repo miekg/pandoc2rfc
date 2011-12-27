@@ -9,10 +9,10 @@ by http://johnmacfarlane.net/pandoc/[Pandoc]. But there are more plain text mark
 out there. One of those is http://www.methods.co.nz/asciidoc/[AsciiDoc].
 
 One of the ways to write an RFC is to write in AsciiDoc and output `docbook` XML 
-and transform that using XSLT.
+and transform that using XSLT. Pandoc2rfc does just that.
 
 The XML generated is suitable for inclusion in either the `middle` or `back` section
-of an RFC. The easiest way is to create a template xml file and include the appropriate
+of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
 
 ....

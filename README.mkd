@@ -9,10 +9,10 @@ by [Pandoc](http://johnmacfarlane.net/pandoc/).
 
 So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using
-XSLT.
+XSLT. Pandoc2rfc does just that.
 
 The XML generated is suitable for inclusion in either the `middle` or `back` section
-of an RFC. The easiest way is to create a template xml file and include the appropriate
+of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
 
     <?xml version='1.0' ?>

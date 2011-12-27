@@ -1,6 +1,7 @@
 pandoc2rfc (0.8.1)
 
   * Assorted bugfixes
+    - syntax coloring more in sync.
 
  -- Miek Gieben <miek@miek.nl>  Tue, 27 Dec 2011 20:32:01 +0100
 
@@ -8,7 +9,7 @@ pandoc2rfc (0.8.1)
 pandoc2rfc (0.8)
 
   * Started a changelog.
-  * Pandoc is supported as input language
+  * Pandoc is supported as input language.
   * AsciiDoc is supported as input language.
 
  -- Miek Gieben <miek@miek.nl>  Sun, 25 Dec 2011 11:05:00 +0100

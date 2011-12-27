@@ -2,12 +2,12 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- 
-     Version: 0.8
+     Version: 0.8.1
      (c) Miek Gieben
      Licensed under the GPL version 2.
 
-     Convert DocBook XML as created by Pandoc to XML suitable for
-     RFCs and thus  parseble with xml2rfc.
+     Convert DocBook XML as created by Pandoc or AsciiDoc to 
+     XML suitable for RFCs and thus parseble with xml2rfc.
 
      Some "awkward" conversions:
 
@@ -22,7 +22,7 @@
     Not supported:
 
     * iref tag (index);
-    * cref tag (comments). Use HTML comments.
+    * cref tag (comments), use HTML comments.
 -->
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -228,7 +228,7 @@
 </xsl:template>
 
 <!-- Transform <link> to <xref> crosslinks -->
-<!-- Use [see](#mysection) in pandoc -->
+<!-- Use [see](#mysection) in Pandoc -->
 <xsl:template match="link">
     <xref>
         <xsl:attribute name="target">
@@ -239,7 +239,7 @@
 </xsl:template>
 
 <!-- Transform <ulink> to <eref> links -->
-<!-- Use [see](uri) in pandoc -->
+<!-- Use [see](uri) in Pandoc -->
 <xsl:template match="ulink">
     <eref>
         <xsl:attribute name="target">
@@ -250,11 +250,10 @@
 </xsl:template>
 
 <!-- Transform <blockquote> to <figure><artwork> -->
-<!-- TODO: does work? ./para | ./simpara -->
 <xsl:template match="blockquote">
     <figure>
         <artwork>
-            <xsl:value-of select="./para | ./simpara"/>
+            <xsl:value-of select="./para"/>
         </artwork>
     </figure>
 </xsl:template>
@@ -270,11 +269,18 @@
 
 <!-- AsciiDoc; Transform <literallayout> to <figure><artwork> -->
 <!-- Insert a newline after the <artwork>-tag because AsciiDoc, does not
-     do this automatically. Check if we are inside a list -->
+     do this automatically. Except when we are inside a list -->
 <xsl:template match="literallayout">
     <figure>
         <artwork>
-            <xsl:text>&#10;</xsl:text>
+            <xsl:choose>
+                <xsl:when test="ancestor::orderedlist"></xsl:when>
+                <xsl:when test="ancestor::itemizedlist"></xsl:when>
+                <xsl:when test="ancestor::variablelist"></xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>&#10;</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:apply-templates/>
         </artwork>
     </figure>
@@ -360,7 +366,7 @@
     </xsl:if>
 </xsl:template>
 
-<!-- Table headers for CALS tables, Pandoc 1.8.2.x+ emit these -->
+<!-- Table headers for CALS tables, Pandoc 1.8.2.x+ emits these -->
 <xsl:template match="table/tgroup/thead/row/entry">
     <ttcol>
         <xsl:if test="position() = 2">

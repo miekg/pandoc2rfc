@@ -1,3 +1,10 @@
+pandoc2rfc (0.8.1)
+
+  * Assorted bugfixes
+
+ -- Miek Gieben <miek@miek.nl>  Tue, 27 Dec 2011 20:32:01 +0100
+
+
 pandoc2rfc (0.8)
 
   * Started a changelog.

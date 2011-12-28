@@ -71,7 +71,7 @@ Another item to explain2:
     :   Explanation
 
     Item to explain4:
-    :   Explantions2
+    :   Explanation2
 
 2. Go'bye
 

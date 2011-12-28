@@ -71,7 +71,7 @@ More explaining
     Explanation
 
     Item to explain4::
-    Explantions2
+    Explanation2
 
 2. Go'bye
 
@@ -103,6 +103,7 @@ Item1::
 Tell something about it. Tell something about it. Tell something about it.
 Tell something about it. Tell something about it. Tell something about it.
 
+[[glue-example]]
 ....
 miek.nl.    IN  NS  a.miek.nl.                             
 a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue            

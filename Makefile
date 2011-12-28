@@ -1,17 +1,19 @@
 # Pandoc
+XML=middle.xml back.xml
+
 all:	draft.txt
 
 %.xml:	%.mkd transform.xsl
 	pandoc -t docbook -s $< | xsltproc transform.xsl - > $@
 
-draft.txt:	middle.xml back.xml template.xml
+draft.txt:	$(XML) template.xml
 	DISPLAY= xml2rfc template.xml draft.txt
 
-draft.html: 	middle.xml back.xml template.xml
+draft.html: 	$(XML) template.xml
 	DISPLAY= xml2rfc template.xml draft.html
 
 clean:
-	rm -f middle.xml back.xml
+	rm -f $(XML)
 
 realclean:	clean
 	rm -f draft.txt draft.html

@@ -272,6 +272,11 @@
      do this automatically. Except when we are inside a list -->
 <xsl:template match="literallayout">
     <figure>
+        <xsl:if test="@id">
+            <xsl:attribute name="anchor">
+                <xsl:value-of select="@id"/>
+            </xsl:attribute>
+        </xsl:if>
         <artwork>
             <xsl:choose>
                 <xsl:when test="ancestor::orderedlist"></xsl:when>

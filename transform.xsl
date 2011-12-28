@@ -38,16 +38,19 @@
 <!-- Remove the article info section, this should be handled
      in the <front> matter of the draft -->
 <xsl:template match="articleinfo">
-    <xsl:message terminate="no">
+    <!--    <xsl:message terminate="no">
         Warning: Author and article information is discarded.
     </xsl:message>
+    -->
 </xsl:template>
 
 <!-- Remove footnotes -->
 <xsl:template match="footnote">
+    <!--
     <xsl:message terminate="no">
         Warning: Footnote is not supported in RFC output.
     </xsl:message>
+    -->
 </xsl:template>
 
 <!-- Merge section with the title tags into one section -->

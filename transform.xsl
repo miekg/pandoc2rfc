@@ -408,9 +408,12 @@
         <xsl:if test="position() = 16">
             <xsl:call-template name="get_colspec"><xsl:with-param name="column" select="8"/></xsl:call-template>
         </xsl:if>
-        <xsl:attribute name="align">
-            <xsl:value-of select="@align"/>
-        </xsl:attribute>
+        <!-- If the entry itself has align, we always use that -->
+        <xsl:if test="@align">
+            <xsl:attribute name="align">
+                <xsl:value-of select="@align"/>
+            </xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates/>
     </ttcol>
 </xsl:template>

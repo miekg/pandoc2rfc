@@ -312,6 +312,11 @@
 <!-- Tables -->
 <xsl:template match="table | informaltable">
     <texttable>
+        <xsl:if test="@id">
+            <xsl:attribute name="anchor">
+                <xsl:value-of select="@id"/>
+            </xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates/>
     </texttable>
 </xsl:template>

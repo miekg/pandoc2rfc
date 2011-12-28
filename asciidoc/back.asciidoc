@@ -142,6 +142,7 @@ Another description
 
 ==== Grid tables ====
 
+[[grid-table]]
 .Sample grid table.
 [options="header",cols="^,^,^"]
 |============================

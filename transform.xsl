@@ -261,6 +261,11 @@
 <!-- Transform <screen> and <programlisting> to <figure><artwork> -->
 <xsl:template match="screen | programlisting">
     <figure>
+        <xsl:if test="@id">
+            <xsl:attribute name="anchor">
+                <xsl:value-of select="@id"/>
+            </xsl:attribute>
+        </xsl:if>
         <artwork>
             <xsl:apply-templates/>
         </artwork>
@@ -269,7 +274,7 @@
 
 <!-- AsciiDoc; Transform <literallayout> to <figure><artwork> -->
 <!-- Insert a newline after the <artwork>-tag because AsciiDoc, does not
-     do this automatically. Except when we are inside a list -->
+     do this automatically, except when we are inside a list -->
 <xsl:template match="literallayout">
     <figure>
         <xsl:if test="@id">

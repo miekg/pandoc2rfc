@@ -26,7 +26,7 @@ For Linux/Ubuntu:
 * apt-get install xsltproc asciidoc
 * Read the AsciiDoc manual
 * Tweak the Makefile
-* Edit `middle.asciidc`, `back.asciidoc` and/or `template.xml`
+* Edit `middle.asciidoc`, `back.asciidoc` and/or `template.xml`
 * make
 
 Note, that `asciidoc` isn't the official extension of AsciiDoc.

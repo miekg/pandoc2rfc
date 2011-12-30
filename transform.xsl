@@ -13,7 +13,7 @@
 
      * blockquote -> <figure><artwork> ... 
 
-     It emits warnings (and removes the content) when encountering:
+     It (silently) removes the content when encountering:
 
      * articleinfo;
      * nested blockquotes;

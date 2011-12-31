@@ -1,7 +1,7 @@
 pandoc2rfc (0.8.1)
 
   * Assorted bugfixes
-    - syntax coloring more in sync.
+    - syntax coloring more in sync between Pandoc and AsciiDoc
 
  -- Miek Gieben <miek@miek.nl>  Tue, 27 Dec 2011 20:32:01 +0100
 

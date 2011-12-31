@@ -15,7 +15,7 @@
 
      It (silently) removes the content when encountering:
 
-     * articleinfo;
+     * articleinfo - use the template.xml for that;
      * nested blockquotes;
      * footnotes.
 

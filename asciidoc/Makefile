@@ -1,16 +1,17 @@
 # Asciidoc
 XML=middle.xml back.xml
+RFC=DISPLAY= xml2rfc template.xml
 
-all:	draft.txt
+all:	draft.txt draft.html
 
 %.xml:	%.asciidoc transform.xsl
 	asciidoc -a 'toc!' -a 'numbered!' -b docbook -o - $< | xsltproc transform.xsl - > $@
 
 draft.txt:	$(XML) template.xml
-	DISPLAY= xml2rfc template.xml draft.txt
+	$(RFC) $@
 
 draft.html: 	$(XML) template.xml
-	DISPLAY= xml2rfc template.xml draft.html
+	$(RFC) $@
 
 clean:
 	rm -f $(XML)

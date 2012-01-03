@@ -14,7 +14,7 @@ draft.html: 	$(XML) template.xml
 	$(RFC) $@
 
 draft.xml:	$(XML) template.xml
-	./single-xml template.xml > draft.xml
+	perl single-xml template.xml > draft.xml
 
 clean:
 	rm -f $(XML)

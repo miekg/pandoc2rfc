@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+
+if ( $ARGV[0] eq "-h" ) {
+    print <<EOF;
+Usage: single [-h] [FILE]...
+Iterate over the FILEs and read all <?rfc included?> files recursively.
+The ouput is one large XML file that can be used for the upload to the IETF.
+Typical use in Pandoc2rfc: ./single template.xml > draft.xml
+
+Options:
+  -h            this help
+EOF
+    exit;
+}
+
+$prog = $0;
+while(<>) {
+    if ( /<\?rfc include=\"(.*)?\"\?>/ ) {
+            print qx|$prog $1|; next;
+    }
+    print;
+}

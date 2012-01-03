@@ -1,6 +1,7 @@
 pandoc2rfc (0.8.2)
 
- * ...
+ * Add `single-xml` to create one large XML file. For easy
+    upload to the IETF.
 
  -- Miek Gieben <miek@miek.nl>  Sun, 01 Jan 2012 22:03:30 +0100
 

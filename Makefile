@@ -13,8 +13,11 @@ draft.txt:	$(XML) template.xml
 draft.html: 	$(XML) template.xml
 	$(RFC) $@
 
+draft.xml:	$(XML) template.xml
+	./single-xml template.xml > draft.xml
+
 clean:
 	rm -f $(XML)
 
 realclean:	clean
-	rm -f draft.txt draft.html
+	rm -f draft.txt draft.html draft.xml

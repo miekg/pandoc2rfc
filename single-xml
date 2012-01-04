@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
-sub include($);
+use warnings;
+use strict;
+use autodie;
 
 if ( @ARGV > 0 and $ARGV[0] eq "-h" ) {
     print <<EOF;
@@ -15,17 +17,17 @@ EOF
     exit;
 }
 
+sub include($);
 if (@ARGV == 0) { $ARGV[0] = "/dev/stdin"; }
 foreach (@ARGV) { include $_; }
 
 sub include($) {
-    local *XML;
-    open XML, "<", shift or die "Can't open: $!\n";
-    while(<XML>) {
+    open my $xml, "<", shift;
+    while(<$xml>) {
         if ( /<\?rfc include=\"(.*)?\"\?>/ ) {
                 include $1; next;
         }
         print;
     }
-    close(XML);
+    close($xml);
 }

@@ -1,3 +1,10 @@
+pandoc2rfc (0.8.3)
+
+ * Assorted fixes
+ 
+
+ -- Miek Gieben <miek@miek.nl>  
+
 pandoc2rfc (0.8.2)
 
  * Add `single-xml` to create one large XML file. For easy

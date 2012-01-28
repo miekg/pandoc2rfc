@@ -54,7 +54,7 @@
 </xsl:template>
 
 <!-- Merge section with the title tags into one section -->
-<xsl:template match="section">
+<xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
     <section>
         <xsl:attribute name="title">
             <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))" />

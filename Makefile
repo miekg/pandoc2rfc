@@ -1,6 +1,5 @@
-# Pandoc
 XML=middle.xml back.xml
-RFC=DISPLAY= xml2rfc template.xml
+RFC=DISPLAY= sh xml-wrap template.xml
 
 all:	draft.txt draft.html
 
@@ -14,7 +13,7 @@ draft.html: 	$(XML) template.xml
 	$(RFC) $@
 
 draft.xml:	$(XML) template.xml
-	perl single-xml template.xml > draft.xml
+	perl xml-single template.xml > draft.xml
 
 clean:
 	rm -f $(XML)

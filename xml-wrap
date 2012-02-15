@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# xml2rfc version 2 behaves differently (but better).
+# Find out what version we have and use it accordingly.
+DISPLAY=
+VERSION=
+
+if xml2rfc -h >/dev/null 2>&1 ;then
+    VERSION=2
+else
+    VERSION=1
+fi
+
+case $VERSION in
+    1)
+        xml2rfc $@
+    ;;
+    2)
+        # $1 = template.xml, $2 = draft.txt, draft.html or draft.xml
+        case $2 in
+        draft.txt)
+            xml2rfc $1 -f $2 --text
+        ;;
+        draft.html)
+            xml2rfc $1 -f $2 --html
+        ;;
+        draft.xml)
+            # don't know yet
+            :
+        ;;
+        esac
+    ;;
+    *)
+        echo "xml2rfc version not recognized" >&2
+        exit 1
+    ;;
+esac

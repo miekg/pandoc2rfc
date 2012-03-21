@@ -341,7 +341,7 @@
 </xsl:template>
 
 <!-- Table headers -->
-<xsl:template match="table/thead/tr/th">
+<xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">
     <ttcol>
         <xsl:attribute name="align">
             <xsl:value-of select="@align"/>

@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- 
-    Version: 0.8.3
+    Version: 0.8.4
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
@@ -67,15 +67,25 @@
 </xsl:template>
 
 <!-- Transform a <para> to <t>, except in lists, then it is discarded -->
+<!-- If somebody tries to use multiple paragraphs, we insert a <vspace> -->
 <xsl:template match="para | simpara">
     <xsl:choose>
         <xsl:when test="ancestor::orderedlist">
+                <xsl:if test="position() > 2">
+                    <vspace blankLines='1' />
+                </xsl:if>
                 <xsl:apply-templates/>
         </xsl:when>
         <xsl:when test="ancestor::itemizedlist">
+                <xsl:if test="position() > 2">
+                    <vspace blankLines='1' />
+                </xsl:if>
                 <xsl:apply-templates/>
         </xsl:when>
         <xsl:when test="ancestor::variablelist">
+                <xsl:if test="position() > 2">
+                    <vspace blankLines='1' />
+                </xsl:if>
                 <xsl:apply-templates/>
         </xsl:when>
         <!-- AsciiDoc puts simpara in each table element, remove it -->

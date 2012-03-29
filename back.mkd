@@ -81,9 +81,17 @@ Another item to explain2:
 
     ... to be explained properly.
 
-2. This is the next bullet. Paragraphs should be indented with 4 fourspaces.
+2. This is the next bullet. New paragraphs should be indented with 4 fourspaces.
 
-xml2rfc does not allow this (as far as I can see.
+3. Another item with some artwork, indented by 8 spaces.
+
+        Artwork
+
+4. Final item.
+
+xml2rfc does not allow this, so the second paragraph is faked with a
+
+    <vspace BlankLines='1'>
 
 ## Roman lists
 

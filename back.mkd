@@ -63,7 +63,7 @@ Another item to explain2:
 :   More explaining
 
 
-## List with description list
+## List with description lists
 
 1. More
 
@@ -74,6 +74,16 @@ Another item to explain2:
     :   Explanation2
 
 2. Go'bye
+
+## Multiple paragraphs in lists
+
+1. This is the first bullet point and it needs multiple paragraphs...
+
+    ... to be explained properly.
+
+2. This is the next bullet. Paragraphs should be indented with 4 fourspaces.
+
+xml2rfc does not allow this (as far as I can see.
 
 ## Roman lists
 

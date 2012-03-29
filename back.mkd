@@ -39,6 +39,8 @@ Another item to explain
 
 :    More explaining
 
+     Multiple paragraphs in such a list
+
 ## Lists in description lists
 
 Item to explain:

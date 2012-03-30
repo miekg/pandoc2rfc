@@ -4,7 +4,7 @@ RFC=DISPLAY= sh xml-wrap template.xml
 all:	draft.txt draft.html
 
 %.xml:	%.mkd transform.xsl
-	pandoc -t docbook -s $< | xsltproc transform.xsl - > $@
+	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
 
 draft.txt:	$(XML) template.xml
 	$(RFC) $@

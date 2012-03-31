@@ -3,10 +3,10 @@
 Installation for other Unix-like systems should be alike. Test with done
 on Ubuntu.
 
-Note that you don't even need `xsltproc` per se, just a XSLT transformer program.
+Note that you don't even need `xsltproc` per se, just an XSLT transformer program.
 Also note that only `xsltproc` is tested.
 
-Pandoc2rfc should work with both xml2rfc version 1 and version 2. If not - it's a bug
+Pandoc2rfc should work with both `xml2rfc` version 1 and version 2. If not - it's a bug
 
 ## Pandoc
 

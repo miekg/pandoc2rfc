@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<reference anchor='RFC4641'>
+
+<front>
+<title>DNSSEC Operational Practices</title>
+<author initials='O.' surname='Kolkman' fullname='O. Kolkman'>
+<organization /></author>
+<author initials='R.' surname='Gieben' fullname='R. Gieben'>
+<organization /></author>
+<date year='2006' month='September' />
+<abstract>
+<t>This document describes a set of practices for operating the DNS with security extensions (DNSSEC). The target audience is zone administrators deploying DNSSEC.&lt;/t>&lt;t> The document discusses operational aspects of using keys and signatures in the DNS. It discusses issues of key generation, key storage, signature generation, key rollover, and related policies.&lt;/t>&lt;t> This document obsoletes RFC 2541, as it covers more operational ground and gives more up-to-date requirements with respect to key sizes and the new DNSSEC specification. This memo provides information for the Internet community.</t></abstract></front>
+
+<seriesInfo name='RFC' value='4641' />
+<format type='TXT' octets='79894' target='http://www.rfc-editor.org/rfc/rfc4641.txt' />
+</reference>

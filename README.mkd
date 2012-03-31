@@ -97,7 +97,7 @@ So, what syntax do you need to use to get the correct output? Well, it
 is *just* Pandoc. The best introduction to the Pandoc style is given
 in this [README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
 
-For convenience we list the most important onces in the following sections.
+For convenience we list the most important ones in the following sections.
 
 ## Paragraphs
 

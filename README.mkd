@@ -1,6 +1,6 @@
 # Pandoc to RFC
 
-When writing [RFC 4641](RFC4641) we directly wrote the
+When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
 is very "light".
 
@@ -44,7 +44,8 @@ The draft (`draft.txt`) is automatically created when you call `make`.
 Note that this `README.mkd` is converted to an RFC-like document when you call `make`.
 
 It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
-the details](http://johnmacfarlane.net/pandoc/README.html).
+the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
+style.
 
 What is supported?
 
@@ -66,7 +67,7 @@ What is supported?
 
 What's not?
 
-* lists inside a table (xml2rfc doesn't handle this);
+* lists inside a table (`xml2rfc` doesn't handle this);
 * list style=empty|format (no input syntax available);
 * crefs: for comments (no input syntax available);
 * irefs: index (no input syntax available);
@@ -75,103 +76,134 @@ What's not?
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 
-[See this pandoc2rfc github repository](https://github.com/miekg/pandoc2rfc).
+The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
+
+# Acknowledgements
+
+The following people have helped to make Pandoc2rfc what it is today:
+
+* Benno Overeinder
+* Erlend Hamnaberg
+* Matthijs Mekking
+* Trygve Laugstøl 
 
 # Pandoc Constructs
 
-What do you need to type in Pandoc to get the correct output. Note this
-is just basic Pandoc format, so you might be better off reading the
-[README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
+So, what syntax do you need to use to get the correct output? Well, it
+is *just* Pandoc. The best introduction to the Pandoc style is given
+in this [README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
 
-## section
+For convenience we list the most important onces in the following sections.
+
+## Paragraphs
+
+Paragraphs are separated with a empty line.
+
+## Section
 Just use the normal sectioning commands available in Pandoc, I tend to use
 
     # Section1 One
     Bla
 
-Converts to xml2rfc: `<section title="Section1 One" anchor="section1-one">`
+Converts to `xml2rfc`: `<section title="Section1 One" anchor="section1-one">`
 If you have another section that is also named "Section1 One", that
-anchor will be called "section1-one-1". Referencing the section
-is done with `see [](#section1-one)`, see [](#section).
+anchor will be called "section1-one-1", but *only* when the sections are in
+*the* *same* file!
 
-## list style symbols
+Referencing the section
+is done with `see [](#section1-one)`, as in see [](#section).
+
+## List Styles
+
+A number of styles are supported.
+
+### Symbols
 
     A symbol list.
 
     * Item one;
     * Item two.
 
-Converts to xml2rfc: `<list style="symbol">`
+Converts to: `<list style="symbol">`
 
-## list style numbers
+### Numbers
 
     A numbered list.
 
     1. Item one;
     2. Item two.
 
-Converts to xml2rfc: `<list style="numbers">`
+Converts to: `<list style="numbers">`
 
-## list style letters
+### Roman
+Use the supported Pandoc syntax:
+
+    ii. First item;
+    ii. Second item.
+
+Or:
+
+    II. First item;
+    II. Second item.
+
+Converts to: `<list style="format %i.">`. Or in the case of uppercase, this
+yields: `<list style="format %I.">`
+
+### Letters
 
     A numbered list.
 
     a. Item one;
     b. Item two.
 
-Converts to xml2rfc: `<list style="letters">`
+Converts to: `<list style="letters">`, uppercasing the letters works too.
 
-## list style hanging
+### Hanging
 This is more like a description list, so we need to use:
 
-    First item that needs clarification
+    First item that needs clarification:
 
     :   Explanation one
     More stuff, because item is difficult to explain.
     * item1
     * item2
 
-    Second item that needs clarification
+    Second item that needs clarification:
 
     :   Explanation two
 
-Converts to xml2rfc: `<list style="hanging">` and `<t hangText="First item...">`
+Converts to: `<list style="hanging">` and `<t hangText="First item that...">`
 
-## list style roman
-Use the supported Pandoc syntax:
+## Figure/Artwork
 
-    ii. First item
-    ii. Second item
+Indent the paragraph with 4 spaces.
 
-Converts to xml2rfc: `<list style="format %i.">`. Uppercase can also be used, this
-yields: `<list style="format %I.">`
+    Like this
 
-## figure/artwork
+Converts to: `<figure><artwork> ...`
+Note that `xml2rfc` supports a caption with `<artwork>`, Pandoc2rfc does not, so you
+will need to fake it yourself (inside the artwork).
 
-Just indent the paragraph with 4 spaces.
-
-Converts to xml2rfc: `<figure><artwork> ...`
-
-## blockquote
-This is not supported by xml2rfc, but any paragraph like:
+## Block quote
+This is not supported by `xml2rfc`, but any paragraph like:
 
     > quoted text
 
-Converts to xml2rfc: `<figure><artwork> ...`
+Converts to: `<figure><artwork> ...`
 
-## refs external
+## Refs External
 Any reference like:
 
     [Click here](URI)
 
-Converts to xml2rfc: `<ulink target="URI">Click here ...`
+Converts to: `<ulink target="URI">Click here ...`
 
-## refs internal
+## Refs Internal
 Any reference like:
 
     [Click here](#localid)
 
-Converts to xml2rfc: `<link target="localid">Click here ...` 
+Converts to: `<link target="localid">Click here ...`
 
 For referring to RFCs (for which you manually need add the reference source in the template,
 use a `include refs.xml` or something), you can just use:
@@ -184,21 +216,35 @@ And it does the right thing. Referencing sections is done with:
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 
-## spanx style
+## Spanx Style
 The verb style can be selected with back-tics:
 
     `text`
 
-Converts to xml2rfc: `<spanx style="verb"> ...`
+Converts to: `<spanx style="verb"> ...`
 
 And the emphasis style with asterisks:
 
     *text*
 
-Converts to xml2rfc: `<spanx style="emph"> ...`
+Converts to: `<spanx style="emph"> ...`
 
 And the emphasis style with double asterisks:
 
     **text**
 
-Converts to xml2rfc: `<spanx style="strong"> ...`
+Converts to: `<spanx style="strong"> ...`
+
+## Tables
+A table can be entered as:
+
+      Right     Left     Center     Default                                                                  
+      -------   ------ ----------   -------                                                                  
+           12     12        12        12                                                                   
+          123     123       123       123                                                                   
+            1     1         1         1       
+
+      Table: A caption describing the table.
+
+Is translated to `<texttable`> element in `xml2rfc`. You can choose multiple styles
+as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.

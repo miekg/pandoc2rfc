@@ -1,5 +1,8 @@
 # Tests
 
+This appendix consists out of a few tests that should all render to proper
+`xml2rfc` XML.
+
 ## A very long title considerations with regards to the already deployed routing policy.
 
 Test a very long title.
@@ -15,21 +18,21 @@ _underscores_
 **double asterisks**
 `backticks`
 
-## Lists in lists
+## Lists in Lists
 
 1. First we do
 2. And then
     * item 1
     * item 2
 
-And the other around
+And the other around.
 
 * First we do
 * Then
     1. Something
     2. Another thing
 
-Description lists work:
+Description lists:
 
 Item to explain:
 
@@ -41,43 +44,43 @@ Another item to explain
 
      Multiple paragraphs in such a list
 
-## Lists in description lists
+## Lists in Description Lists
 
 Item to explain:
 :   It works because of
 
-    1. ONE
-    2. TWO
+    1. One
+    2. Two
 
 Another item to explain:
 :   More explaining
 
-Item to explain2:
+Item to explain:
 :   It works because of
 
-    1. ONE1
-    2. TWO1
+    1. One1
+    2. Two1
         
         * Itemize list
         * Another item
 
-Another item to explain2:
+Another item to explain again:
 :   More explaining
 
 
-## List with description lists
+## List with Description Lists
 
 1. More
 
-    Item to explain3:
-    :   Explanation
+    Item to explain:
+    :   Explanation ...
 
-    Item to explain4:
-    :   Explanation2
+    Item to explain:
+    :   Another explanation ...
 
 2. Go'bye
 
-## Multiple paragraphs in lists
+## Multiple Paragraphs in Lists
 
 1. This is the first bullet point and it needs multiple paragraphs...
 
@@ -95,36 +98,36 @@ xml2rfc does not allow this, so the second paragraph is faked with a
 
     <vspace BlankLines='1'>
 
-## Roman lists
+## Roman Lists
+
+Lowercase:
 
 i. Item 1
 ii. Item 2
 
-And uppercase
+Uppercase:
 
 I.  Item1
 II.  Item2
 II.  Item 3
 
-## Default list markers
+## Default List Markers
 
 #. First item
 #. Second item
 #. Another item
 
-## Uppercase letters
+## Uppercase Letters
 
 A.  First item
 B.  Second item
 
-## Artwork in description lists
+## Artwork in Description Lists
 
 Item1:
 
 :    Tell something about it. Tell something about it. Tell something about it.
     Tell something about it. Tell something about it. Tell something about it.
-
-
 
         miek.nl.    IN  NS  a.miek.nl.                             
         a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue            
@@ -137,9 +140,9 @@ Item2:
 
 :   Another description
 
-## Tables
+## Table Tests
 
-### Simple tables
+### Simple Tables
 
   Right     Left     Center     Default
 -------     ------ ----------   -------
@@ -149,7 +152,7 @@ Item2:
 
 Table:  Demonstration of simple table syntax.
 
-### Multiline tables
+### Multiline Tables
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -166,7 +169,7 @@ Table:  Demonstration of simple table syntax.
 Table: Here's the caption. It, too, may span
 multiple lines.
 
-### Grid tables
+### Grid Tables
 
 : Sample grid table.
 

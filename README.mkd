@@ -54,18 +54,19 @@ What is supported?
 
 * Sections with anchor and title attributes;
 * Tables;
-* List style=symbols;
-* List style=numbers;
-* List style=letters;
-* List style=format %i, roman lowercase numerals;
-* List style=format %I, roman uppercase numerals;
-* List style=hanging;
-* Example lists; 
+* Lists
+    * style=symbols;
+    * style=numbers;
+    * style=letters;
+    * style=format %i, roman lowercase numerals;
+    * style=format %I, roman uppercase numerals;
+    * style=hanging;
 * Figure/artwork;
-* Blockquote - this isn't supported by `xml2rfc`, so this is converted to
+* Block quote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph;
-* Refs: external (eref); 
-* Refs: internal (xref);
+* References 
+    * external (eref); 
+    * internal (xref);
 * Spanx style=verb, style=emph, style=strong.
 
 What's not?

@@ -6,23 +6,8 @@
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
-    Convert DocBook XML as created by Pandoc or AsciiDoc to 
-    XML suitable for RFCs and thus parseble with xml2rfc.
-
-    Some "awkward" conversions:
-
-    * blockquote -> <figure><artwork> ... 
-
-    It (silently) removes the content when encountering:
-
-    * articleinfo - use the template.xml for that;
-    * nested blockquotes;
-    * footnotes.
-
-    Not supported:
-
-    * iref tag (index);
-    * cref tag (comments), use HTML comments.
+    Convert DocBook XML as created by Pandoc to XML suitable for RFCs and thus
+    parseble with xml2rfc. 
 -->
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -38,19 +23,10 @@
 <!-- Remove the article info section, this should be handled
      in the <front> matter of the draft -->
 <xsl:template match="articleinfo">
-    <!--    <xsl:message terminate="no">
-        Warning: Author and article information is discarded.
-    </xsl:message>
-    -->
 </xsl:template>
 
 <!-- Remove footnotes -->
 <xsl:template match="footnote">
-    <!--
-    <xsl:message terminate="no">
-        Warning: Footnote is not supported in RFC output.
-    </xsl:message>
-    -->
 </xsl:template>
 
 <!-- Merge section with the title tags into one section -->
@@ -67,7 +43,7 @@
 </xsl:template>
 
 <!-- Transform a <para> to <t>, except in lists, then it is discarded -->
-<!-- If somebody tries to use multiple paragraphs, we insert a <vspace> -->
+<!-- If somebody tries to use multiple paragraphs, we insert a <vspace> *yech* -->
 <xsl:template match="para | simpara">
     <xsl:choose>
         <xsl:when test="ancestor::orderedlist">
@@ -110,7 +86,7 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Transform lists, for lists in list we do not put it in a new <t></t>  -->
+<!-- Transform lists, for lists in list we do not put it in a new <t></t> -->
 <xsl:template match="orderedlist">
     <xsl:choose>
        <xsl:when test="contains(@numeration,'arabic')">

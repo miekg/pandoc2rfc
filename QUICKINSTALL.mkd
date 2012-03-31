@@ -12,10 +12,10 @@ Pandoc2rfc should work with both xml2rfc version 1 and version 2. If not - it's 
 
 For Linux/Ubuntu:
 
-* `apt-get install xsltproc pandoc xml2rfc`
-* Read the Pandoc manual
-* Tweak the Makefile
-* Edit `middle.mkd`, `back.mkd` and/or `template.xml`
-* `make`
+* `apt-get install xsltproc pandoc xml2rfc`;
+* Read the Pandoc manual;
+* Tweak the Makefile;
+* Edit `middle.mkd`, `back.mkd` and/or `template.xml`;
+* `make`.
 
 Miek Gieben - 2012

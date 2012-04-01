@@ -7,7 +7,7 @@ pandoc2rfc (0.8.6)
  
 pandoc2rfc (0.8.5)
 
- * Use the default list markers (#.) to signal a <list style="hanging">
+ * Use the default list markers (#.) to signal a <list style="empty">
    paragraph.
 
  -- Miek Gieben <miek@miek.nl>  

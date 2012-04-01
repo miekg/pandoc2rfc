@@ -1,5 +1,6 @@
 pandoc2rfc (0.8.6)
 
+ * Dropped AsciiDoc
  * ... to be released ...
 
  -- Miek Gieben <miek@miek.nl>  

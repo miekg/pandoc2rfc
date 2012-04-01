@@ -78,7 +78,10 @@ What is supported?
     figure/artwork paragraph;
 * References 
     * external (eref); 
-    * internal (xref);
+    * internal (xref), you can refer to:
+        * sections;
+        * tables;
+        * figures.
 * Spanx style=verb, style=emph, style=strong.
 
 What's not?

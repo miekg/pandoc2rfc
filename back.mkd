@@ -88,7 +88,7 @@ Another item to explain again:
 
     ... to be explained properly.
 
-2. This is the next bullet. New paragraphs should be indented with 4 fourspaces.
+2. This is the next bullet. New paragraphs should be indented with 4 four spaces.
 
 3. Another item with some artwork, indented by 8 spaces.
 
@@ -164,7 +164,7 @@ Item2:
 
 Table:  Demonstration of simple table syntax.
 
-### Multiline Tables
+### Multi Line Tables
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -193,7 +193,7 @@ Table: Sample grid table.
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-### Grid Tables without caption
+### Grid Tables without a Caption
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |

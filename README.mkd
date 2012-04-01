@@ -57,20 +57,20 @@ See the Makefile for an example of this. In this case you need to edit
 1. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
-Note that this `README.mkd` is converted to an RFC-like document when you call `make`.
+This also works for this `README.mkd`.
 
 It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
-What is supported?
+## What is supported?
 
-* Sections with anchor and title attributes;
+* Sections with an anchor and title attributes;
 * Tables;
 * Lists
     * style=symbols;
     * style=numbers;
-    * style=letters;
+    * style=letters (lower- and uppercase);
     * style=format %i, roman lowercase numerals;
     * style=format %I, roman uppercase numerals;
     * style=hanging;
@@ -86,16 +86,15 @@ What is supported?
         * figures.
 * Spanx style=verb, style=emph, style=strong.
 
-What's not?
+## What's not?
 
-* lists inside a table (`xml2rfc` doesn't handle this);
+* Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available);
 * irefs: index (no input syntax available);
-* footnotes, this isn't supported in `xml2rfc`, you will get a warning
+* Footnotes, this isn't supported in `xml2rfc`, you will get a warning
     when these are encountered.
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
-
 The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
 
 # Acknowledgements
@@ -210,7 +209,7 @@ Indent the paragraph with 4 spaces.
     Like this
 
 Converts to: `<figure><artwork> ...`
-Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but pandoc2rfc
+Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
 does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
 after `Figure: `. It will also be possible to reference the artwork. 
 
@@ -300,7 +299,7 @@ attribute will be: `tab:` + `first 10 (normalized) characters from the caption`.
 * Spaces are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
-So the first table wht a caption will get `tab:a-caption-`
+So the first table with a caption will get `tab:a-caption-`
 for reference use. See for instance [](tab:a-caption-).
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence

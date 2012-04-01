@@ -250,14 +250,31 @@
 <!-- Transform <screen> and <programlisting> to <figure><artwork> -->
 <xsl:template match="screen | programlisting">
     <figure>
-        <xsl:if test="@id">
-            <xsl:attribute name="anchor">
-                <xsl:value-of select="@id"/>
-            </xsl:attribute>
-        </xsl:if>
-        <artwork>
-            <xsl:apply-templates/>
-        </artwork>
+        <xsl:choose>
+            <xsl:when test="contains(., 'Figure: ')">
+                <xsl:attribute name="anchor">
+                <xsl:value-of select="$localanchor"/>
+                <xsl:text>:fig:</xsl:text>
+                <xsl:if test="name() = 'screen'">
+                    <xsl:value-of select="1+count(preceding::screen)"/>
+                </xsl:if>
+                <xsl:if test="name() = 'programlisting'">
+                    <xsl:value-of select="1+count(preceding::programlisting)"/>
+                </xsl:if>
+                </xsl:attribute>
+                <preamble>
+                    <xsl:value-of select="substring-after(., 'Figure: ')"/>
+                </preamble>
+                <artwork>
+                    <xsl:value-of select="substring-before(., 'Figure: ')"/>
+                </artwork>
+            </xsl:when>
+            <xsl:otherwise>
+                <artwork>
+                    <xsl:value-of select="."/>
+                </artwork>
+            </xsl:otherwise>
+        </xsl:choose>
     </figure>
 </xsl:template>
 

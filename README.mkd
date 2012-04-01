@@ -12,7 +12,17 @@ by [Pandoc](http://johnmacfarlane.net/pandoc/).
 
 So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using
-XSLT. Pandoc2rfc does just that.
+XSLT. Pandoc2rfc does just that. The conversions are, in some way amusing, as we start
+off with (almost) plain text, use elaborate XML and end up with plain text again.
+
+    +--------+      +---------+  
+    | PANDOC | ->   | DOCBOOK |  
+    +--------+      +---------+  
+                           |
+                           v
+    +------------+      +---------+ 
+    | PLAIN TEXT |  <-  | XML2RFC | 
+    +------------+      +---------+ 
 
 The XML generated is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate
@@ -35,6 +45,7 @@ XML:
     </back>
 
     </rfc>
+    Figure: A minimal template.xml.
 
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
@@ -101,7 +112,7 @@ For convenience we list the most important ones in the following sections.
 
 ## Paragraphs
 
-Paragraphs are separated with a empty line.
+Paragraphs are separated with an empty line.
 
 ## Section
 Just use the normal sectioning commands available in Pandoc, I tend to use
@@ -195,8 +206,13 @@ Indent the paragraph with 4 spaces.
     Like this
 
 Converts to: `<figure><artwork> ...`
-Note that `xml2rfc` supports a caption with `<artwork>`, Pandoc2rfc does not, so you
-will need to fake it yourself (inside the artwork).
+Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but pandoc2rfc
+does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
+after `Figure: `. It will also be possible to reference the artwork. 
+The reference anchor
+attribute will be: `filename without the extension` + `:fig:` + `sequence number`.
+So the second artwork with a caption in the file `middle.mkd` will get `middle:fig:2`
+for reference use. See for instance [](#middle:fig:2).
 
 ## Block quote
 This is not supported by `xml2rfc`, but any paragraph like:
@@ -262,3 +278,9 @@ A table can be entered as:
 
 Is translated to `<texttable`> element in `xml2rfc`. You can choose multiple styles
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
+The caption is *always* translated to a `<preamble`>. The `<postamble>` tag isn't supported.
+
+If a table has a caption, it will *also* get a reference. The reference anchor
+attribute will be: `filename without the extension` + `:tab:` + `sequence number`.
+So the first table with a caption in the file `back.mkd` will get `back:tab:1`
+for reference use. See for instance [](#back:tab:1).

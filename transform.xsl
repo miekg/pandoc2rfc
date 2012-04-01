@@ -332,6 +332,12 @@
                 <xsl:value-of select="translate( translate(substring(normalize-space(translate(./caption, '&#xA;', ' ')), 1, 10), ' ', '-'), $uppercase, $smallcase)" />
             </xsl:attribute>
         </xsl:if>
+        <xsl:if test="./title">
+            <xsl:attribute name="anchor">
+                <xsl:text>tab:</xsl:text>
+                <xsl:value-of select="translate( translate(substring(normalize-space(translate(./title, '&#xA;', ' ')), 1, 10), ' ', '-'), $uppercase, $smallcase)" />
+            </xsl:attribute>
+        </xsl:if>
         <xsl:apply-templates/>
     </texttable>
 </xsl:template>

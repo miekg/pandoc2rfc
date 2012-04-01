@@ -1,7 +1,7 @@
 pandoc2rfc (0.8.6)
 
  * Dropped AsciiDoc
- * ... to be released ...
+ * Make it possible to reference figure/artworks and tables
 
  -- Miek Gieben <miek@miek.nl>  
 

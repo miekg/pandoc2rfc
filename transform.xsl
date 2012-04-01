@@ -12,6 +12,9 @@
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>
 
+<xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>
+<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+
 <xsl:template match="/">
     <xsl:apply-templates/>
 </xsl:template>
@@ -254,7 +257,7 @@
             <xsl:when test="contains(., 'Figure: ')">
                 <xsl:attribute name="anchor">
                     <xsl:text>fig:</xsl:text>
-                    <xsl:value-of select="translate(substring(normalize-space(translate( substring-after(., 'Figure: ') , '&#xA;', ' ')), 1, 10), ' ', '_')" />
+                    <xsl:value-of select="translate( translate(substring(normalize-space(translate( substring-after(., 'Figure: ') , '&#xA;', ' ')), 1, 10), ' ', '_'), $uppercase, $smallcase)"/>
                 </xsl:attribute>
                 <preamble>
                     <xsl:value-of select="substring-after(., 'Figure: ')"/>
@@ -326,7 +329,7 @@
         <xsl:if test="./caption">
             <xsl:attribute name="anchor">
                 <xsl:text>tab:</xsl:text>
-                <xsl:value-of select="translate(substring(normalize-space(translate(./caption, '&#xA;', ' ')), 1, 10), ' ', '_')" />
+                <xsl:value-of select="translate( translate(substring(normalize-space(translate(./caption, '&#xA;', ' ')), 1, 10), ' ', '_'), $uppercase, $smallcase)" />
             </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates/>

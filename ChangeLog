@@ -1,7 +1,8 @@
 pandoc2rfc (0.8.6)
 
  * Dropped AsciiDoc
- * Make it possible to reference figure/artworks and tables
+ * Make it possible to reference figure/artworks and tables, in very much
+   the same way as referencing sections.
 
  -- Miek Gieben <miek@miek.nl>  
 

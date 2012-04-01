@@ -212,7 +212,7 @@ after `Figure: `. It will also be possible to reference the artwork.
 The reference anchor
 attribute will be: `filename without the extension` + `:fig:` + `sequence number`.
 So the second artwork with a caption in the file `middle.mkd` will get `middle:fig:2`
-for reference use. See for instance [](#middle:fig:2).
+as a reference. See for instance [](#middle:fig:2).
 
 ## Block quote
 This is not supported by `xml2rfc`, but any paragraph like:

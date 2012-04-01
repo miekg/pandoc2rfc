@@ -72,7 +72,7 @@ What is supported?
     * style=format %i, roman lowercase numerals;
     * style=format %I, roman uppercase numerals;
     * style=hanging;
-    * styke=empty;
+    * style=empty;
 * Figure/artwork;
 * Block quote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph;

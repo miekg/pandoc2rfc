@@ -311,9 +311,12 @@
 <!-- Tables -->
 <xsl:template match="table | informaltable">
     <texttable>
-        <xsl:if test="@id">
+        <!-- If there is a caption, fake an anchor -->
+        <xsl:if test="./caption">
             <xsl:attribute name="anchor">
-                <xsl:value-of select="@id"/>
+            <xsl:value-of select="$localanchor"/>
+            <xsl:text>:tab:</xsl:text>
+            <xsl:value-of select="1+count(preceding::table)"/>
             </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates/>
@@ -366,6 +369,11 @@
     <xsl:if test="../../../../table/col[$column]">
         <xsl:attribute name="width">
             <xsl:value-of select="../../../../table/col[$column]/@width"/>
+        </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="../../../../informaltable/col[$column]">
+        <xsl:attribute name="width">
+            <xsl:value-of select="../../../../informaltable/col[$column]/@width"/>
         </xsl:attribute>
     </xsl:if>
 </xsl:template>

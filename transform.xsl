@@ -253,14 +253,8 @@
         <xsl:choose>
             <xsl:when test="contains(., 'Figure: ')">
                 <xsl:attribute name="anchor">
-                <xsl:value-of select="$localanchor"/>
-                <xsl:text>:fig:</xsl:text>
-                <xsl:if test="name() = 'screen'">
-                    <xsl:value-of select="1+count(preceding::screen)"/>
-                </xsl:if>
-                <xsl:if test="name() = 'programlisting'">
-                    <xsl:value-of select="1+count(preceding::programlisting)"/>
-                </xsl:if>
+                    <xsl:text>fig:</xsl:text>
+                    <xsl:value-of select="translate(substring(normalize-space(translate( substring-after(., 'Figure: ') , '&#xA;', ' ')), 1, 10), ' ', '_')" />
                 </xsl:attribute>
                 <preamble>
                     <xsl:value-of select="substring-after(., 'Figure: ')"/>
@@ -328,12 +322,11 @@
 <!-- Tables -->
 <xsl:template match="table | informaltable">
     <texttable>
-        <!-- If there is a caption, fake an anchor -->
+        <!-- If there is a caption, fake an anchor attribute -->
         <xsl:if test="./caption">
             <xsl:attribute name="anchor">
-            <xsl:value-of select="$localanchor"/>
-            <xsl:text>:tab:</xsl:text>
-            <xsl:value-of select="1+count(preceding::table)"/>
+                <xsl:text>tab:</xsl:text>
+                <xsl:value-of select="translate(substring(normalize-space(translate(./caption, '&#xA;', ' ')), 1, 10), ' ', '_')" />
             </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates/>

@@ -209,10 +209,12 @@ Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but pandoc2rfc
 does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
 after `Figure: `. It will also be possible to reference the artwork. 
+
 The reference anchor
 attribute will be: `filename without the extension` + `:fig:` + `sequence number`.
-So the second artwork with a caption in the file `middle.mkd` will get `middle:fig:2`
-as a reference. See for instance [](#middle:fig:2).
+So the second artwork in the file `middle.mkd` will get `middle:fig:2`
+as a reference. See for instance [](#fig:A_minimal_). When counting the sequence numbers you'll
+need to count *all* artworks in the current file - even those without a caption.
 
 ## Block quote
 This is not supported by `xml2rfc`, but any paragraph like:
@@ -282,5 +284,6 @@ The caption is *always* translated to a `<preamble`>. The `<postamble>` tag isn'
 
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `filename without the extension` + `:tab:` + `sequence number`.
-So the first table with a caption in the file `back.mkd` will get `back:tab:1`
-for reference use. See for instance [](#back:tab:1).
+So the first table in the file `back.mkd` will get `back:tab:1`
+for reference use. See for instance [](tab:A_caption_). When couting the sequence numbers you'll
+need to count *all* tables in the current file - even those without a caption.

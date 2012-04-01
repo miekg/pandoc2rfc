@@ -201,4 +201,9 @@ Table: Sample grid table.
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-This table has no caption, and therefor no reference.
+This table has no caption, and therefor no reference. But you can refer to 
+some of the other tables, with for instance:
+
+    See [](#tab:Here's_the)
+
+Which will become "See [](#tab:Here's_the)".

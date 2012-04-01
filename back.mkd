@@ -10,13 +10,15 @@ Test a very long title.
 ## Reference
 
 Refer to [RFC 2119](#RFC2119) if you will.
+Or maybe you want to inspect [](#fig:a-minimal-) in [](#pandoc-to-rfc)
+again.
 
 ## Spanx
 
-_underscores_
-*asterisks*
-**double asterisks**
-`backticks`
+#. underscores: _underscores_
+#. asterisks: *asterisks*
+#. double asterisks: **double asterisks**
+#. backticks: `backticks`
 
 ## Lists in Lists
 
@@ -204,6 +206,6 @@ Table: Sample grid table.
 This table has no caption, and therefor no reference. But you can refer to 
 some of the other tables, with for instance:
 
-    See [](#tab:here's_the)
+    See [](#tab:here's-the)
 
-Which will become "See [](#tab:here's_the)".
+Which will become "See [](#tab:here's-the)".

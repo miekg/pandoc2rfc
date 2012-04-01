@@ -118,9 +118,14 @@ II.  Item 3
 
 ## Default List Markers
 
-#. First item
-#. Second item
-#. Another item
+Some surrounding text, to make it look better.
+
+#. First item. Use lot of text to get a real paragraphs sense.
+    First item. Use lot of text to get a real paragraphs sense.
+    First item. Use lot of text to get a real paragraphs sense.
+    First item. Use lot of text to get a real paragraphs sense.
+#. Second item. So this is the second para in your list. Enjoy;
+#. Another item.
 
 ## Uppercase Letters
 

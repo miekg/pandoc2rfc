@@ -61,6 +61,7 @@ What is supported?
     * style=format %i, roman lowercase numerals;
     * style=format %I, roman uppercase numerals;
     * style=hanging;
+    * styke=empty;
 * Figure/artwork;
 * Block quote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph;
@@ -72,7 +73,6 @@ What is supported?
 What's not?
 
 * lists inside a table (`xml2rfc` doesn't handle this);
-* list style=empty|format (no input syntax available);
 * crefs: for comments (no input syntax available);
 * irefs: index (no input syntax available);
 * footnotes, this isn't supported in `xml2rfc`, you will get a warning
@@ -119,7 +119,7 @@ is done with `see [](#section1-one)`, as in see [](#section).
 
 ## List Styles
 
-A number of styles are supported.
+A good number of styles are supported.
 
 ### Symbols
 
@@ -138,6 +138,16 @@ Converts to: `<list style="symbol">`
     2. Item two.
 
 Converts to: `<list style="numbers">`
+
+### Empty
+Using the default list markers from Pandoc:
+
+    A list using the default list markers.
+
+    #. First item;
+    #. Second item.
+
+Converts to: `<list style="empty">`
 
 ### Roman
 Use the supported Pandoc syntax:

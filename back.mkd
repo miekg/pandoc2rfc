@@ -98,6 +98,11 @@ xml2rfc does not allow this, so the second paragraph is faked with a
 
     <vspace BlankLines='1'>
 
+## Ordered Lists
+
+1. First item
+2. Second item
+
 ## Roman Lists
 
 Lowercase:

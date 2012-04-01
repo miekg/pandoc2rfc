@@ -156,16 +156,16 @@
        <xsl:otherwise> 
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">
-                <list style="letters"><xsl:apply-templates/></list>
+                <list style="empty"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:when test="ancestor::itemizedlist">
-                <list style="letters"><xsl:apply-templates/></list>
+                <list style="empty"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:when test="ancestor::variablelist">
-                <list style="letters"><xsl:apply-templates/></list>
+                <list style="empty"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:otherwise>
-                <t><list style="letters"><xsl:apply-templates/></list></t>
+                <t><list style="empty"><xsl:apply-templates/></list></t>
             </xsl:otherwise>
         </xsl:choose>
        </xsl:otherwise>

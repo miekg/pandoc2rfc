@@ -17,14 +17,16 @@ I thought the easiest way would be to create `docbook` XML and transform that us
 XSLT. Pandoc2rfc does just that. The conversions are, in some way amusing, as we start
 off with (almost) plain text, use elaborate XML and end up with plain text again.
 
-    +-------------------+     +---------+  
-    | ALMOST PLAIN TEXT | ->  | DOCBOOK |  
-    +-------------------+     +---------+  
-                                   |
-                                   v
-    +------------+            +---------+ 
-    | PLAIN TEXT |  <-------- | XML2RFC | 
-    +------------+            +---------+ 
+    +-------------------+   pandoc   +---------+  
+    | ALMOST PLAIN TEXT |   ------>  | DOCBOOK |  
+    +-------------------+            +---------+  
+                  |                       |
+    non-existent  |                       | xslt
+     quicker way  |                       |
+                  v                       v
+          +------------+    xml2rfc  +---------+ 
+          | PLAIN TEXT |  <--------  | XML2RFC | 
+          +------------+             +---------+ 
 
 The XML generated is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate

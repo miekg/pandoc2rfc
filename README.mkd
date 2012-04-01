@@ -223,7 +223,7 @@ So the first artwork with a caption will get `fig:a_minimal_`
 as a reference. See for instance [](#fig:a_minimal_). 
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicated isn't supported.
+numbers in case of duplicates isn't supported.
 
 ## Block quote
 This is not supported by `xml2rfc`, but any paragraph like:
@@ -302,4 +302,4 @@ So the first table wht a caption will get `tab:a_caption_`
 for reference use. See for instance [](tab:a_caption_).
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicated isn't supported.
+numbers in case of duplicates isn't supported.

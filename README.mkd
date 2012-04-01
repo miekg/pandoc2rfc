@@ -21,7 +21,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
     | ALMOST PLAIN TEXT |   ------>  | DOCBOOK |  
     +-------------------+            +---------+  
                   |                       |
-    non-existent  |                       | xslt
+    non-existent  |                       | xsltproc
      quicker way  |                       |
                   v                       v
           +------------+    xml2rfc  +---------+ 

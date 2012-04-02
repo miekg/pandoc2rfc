@@ -292,7 +292,7 @@ A table can be entered as:
       Table: A caption describing the table.
       Figure: A caption describing the figure describing the table.
 
-Is translated to `<texttable`> element in `xml2rfc`. You can choose multiple styles
+Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple styles
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
 The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
 

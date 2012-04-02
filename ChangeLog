@@ -3,8 +3,7 @@ pandoc2rfc (0.8.7)
  * If you enter a caption for a figure - center the figure, otherwise leave it to
    the default (left aligned).
  * <blockquote> is converted to hanging list with one item. The content is
-    handled is any other paragraph
- * An option is added in the Makefile: vspaceAfterHang
+    handled as any other paragraph
 
  -- Miek Gieben <miek@miek.nl>  
 

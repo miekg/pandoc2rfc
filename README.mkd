@@ -4,7 +4,7 @@ When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
 is very "light".
 
-> Readers on Github: the rendering you are now viewing looks 
+> Github reader: the rendering you are now viewing looks 
 > different than intended. This is because this file is 
 > formatted in Pandoc, not the Markdown+Ruby dialect Github uses.
 
@@ -70,7 +70,7 @@ style.
 ## What is supported?
 
 * Sections with an anchor and title attributes;
-* Tables;
+* Tables with an anchor and preamble;
 * Lists
     * style=symbols;
     * style=numbers;
@@ -79,7 +79,7 @@ style.
     * style=format %I, roman uppercase numerals;
     * style=hanging;
     * style=empty;
-* Figure/artwork;
+* Figure/artwork with an anchor an preamble;
 * Block quote - this isn't supported by `xml2rfc`, so this is converted to
     figure/artwork paragraph;
 * References 
@@ -93,10 +93,9 @@ style.
 ## What's not?
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
-* crefs: for comments (no input syntax available);
-* irefs: index (no input syntax available);
-* Footnotes, this isn't supported in `xml2rfc`, you will get a warning
-    when these are encountered.
+* Footnotes, this isn't supported in `xml2rfc`, content is silently discarded!
+* crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
+* irefs: index (no input syntax available).
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
@@ -123,15 +122,15 @@ For convenience we list the most important ones in the following sections.
 Paragraphs are separated with an empty line.
 
 ## Section
-Just use the normal sectioning commands available in Pandoc, I tend to use
+Just use the normal sectioning commands available in Pandoc, for instance:
 
     # Section1 One
     Bla
 
-Converts to `xml2rfc`: `<section title="Section1 One" anchor="section1-one">`
+Converts to: `<section title="Section1 One" anchor="section1-one">`
 If you have another section that is also named "Section1 One", that
 anchor will be called "section1-one-1", but *only* when the sections are in
-*the* *same* file!
+the *same* source file!
 
 Referencing the section
 is done with `see [](#section1-one)`, as in see [](#section).

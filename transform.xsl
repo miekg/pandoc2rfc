@@ -243,11 +243,9 @@
 
 <!-- Transform <blockquote> to <figure><artwork> -->
 <xsl:template match="blockquote">
-    <figure>
-        <artwork>
-            <xsl:value-of select="./para"/>
-        </artwork>
-    </figure>
+    <t><list style="hanging" hangIndent="4">
+        <xsl:apply-templates/>   
+    </list></t>
 </xsl:template>
 
 <!-- Transform <screen> and <programlisting> to <figure><artwork> -->

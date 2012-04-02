@@ -293,7 +293,7 @@ A table can be entered as:
 
 Is translated to `<texttable`> element in `xml2rfc`. You can choose multiple styles
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
-The caption is *always* translated to a `<preamble`>. The `<postamble>` tag isn't supported.
+The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
 
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:

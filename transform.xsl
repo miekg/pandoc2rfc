@@ -245,7 +245,7 @@
 
 <!-- Transform <blockquote> to <list style="hanging"> -->
 <xsl:template match="blockquote">
-    <t><list style="hanging" hangIndent="4">
+    <t><list style="hanging" hangIndent="3">
         <xsl:apply-templates/>   
     </list></t>
 </xsl:template>

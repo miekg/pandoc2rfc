@@ -80,8 +80,8 @@ style.
     * style=hanging;
     * style=empty;
 * Figure/artwork with an anchor an preamble;
-* Block quote - this isn't supported by `xml2rfc`, so this is converted to
-    figure/artwork paragraph;
+* Block quote - not supported by `xml2rfc`, this is converted to
+    `<list style="hanging>` paragraph;
 * References 
     * external (eref); 
     * internal (xref), you can refer to:

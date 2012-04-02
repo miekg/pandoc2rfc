@@ -241,7 +241,7 @@
     </eref>
 </xsl:template>
 
-<!-- Transform <blockquote> to <figure><artwork> -->
+<!-- Transform <blockquote> to <list style="hanging"> -->
 <xsl:template match="blockquote">
     <t><list style="hanging" hangIndent="4">
         <xsl:apply-templates/>   

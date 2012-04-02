@@ -1,7 +1,7 @@
 pandoc2rfc (0.8.7)
 
- * If you enter a caption for a figure - center it, otherwise leave it to
-   the default.
+ * If you enter a caption for a figure - center the figure, otherwise leave it to
+   the default (left aligned).
 
  -- Miek Gieben <miek@miek.nl>  
 

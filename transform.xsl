@@ -439,17 +439,17 @@
 
 <xsl:template name="get_colspec">
     <xsl:param name="column"/>
-        <xsl:if test="../../../../../table/tgroup/colspec[$column]">
-            <xsl:attribute name="align">
-                <xsl:value-of select="../../../../../table/tgroup/colspec[$column]/@align"/>
+    <xsl:if test="../../../../tgroup/colspec[$column]">
+        <xsl:attribute name="align">
+            <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
+        </xsl:attribute>
+        <!-- Optionally colwidth, translate * to % -->
+        <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
+            <xsl:attribute name="width">
+                <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
             </xsl:attribute>
-            <!-- Optionally colwidth, translate * to % -->
-            <xsl:if test="../../../../../table/tgroup/colspec[$column]/@colwidth">
-                <xsl:attribute name="width">
-                    <xsl:value-of select="translate(../../../../../table/tgroup/colspec[$column]/@colwidth, '*', '%')"/>
-                </xsl:attribute>
-            </xsl:if>
         </xsl:if>
+    </xsl:if>
 </xsl:template>
 
 <!-- Table headers for CALS tables, Pandoc 1.9.x+ emits these -->
@@ -491,17 +491,17 @@
 
 <xsl:template name="get_colspec_informal">
     <xsl:param name="column"/>
-        <xsl:if test="../../../../../informaltable/tgroup/colspec[$column]">
-            <xsl:attribute name="align">
-                <xsl:value-of select="../../../../../informaltable/tgroup/colspec[$column]/@align"/>
+    <xsl:if test="../../../../tgroup/colspec[$column]">
+        <xsl:attribute name="align">
+            <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
+        </xsl:attribute>
+        <!-- Optionally colwidth, translate * to % -->
+        <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
+            <xsl:attribute name="width">
+                <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
             </xsl:attribute>
-            <!-- Optionally colwidth, translate * to % -->
-            <xsl:if test="../../../../../informaltable/tgroup/colspec[$column]/@colwidth">
-                <xsl:attribute name="width">
-                    <xsl:value-of select="translate(../../../../../informaltable/tgroup/colspec[$column]/@colwidth, '*', '%')"/>
-                </xsl:attribute>
-            </xsl:if>
         </xsl:if>
+    </xsl:if>
 </xsl:template>
 
 <xsl:template match="table/tbody/tr/td | informaltable/tbody/tr/td | table/tgroup/tbody/row/entry | informaltable/tgroup/tbody/row/entry">

@@ -29,7 +29,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+             +---------+ 
     Figure: Attempt to justify Pandoc2rfc.
 
-The XML generared (the output after the `xsltproc` step in [](#fig:attempt-to)) 
+The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to)) 
 is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
@@ -206,7 +206,7 @@ This is more like a description list, so we need to use:
 
 Converts to: `<list style="hanging">` and `<t hangText="First item that...">`
 
-If we want a newline after the hangTexts, search for the string `OPTION` in `transform.xsl`
+If you want a newline after the hangTexts, search for the string `OPTION` in `transform.xsl`
 and uncomment it.
 
 ## Figure/Artwork

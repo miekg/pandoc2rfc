@@ -388,14 +388,9 @@
 
 <xsl:template name="get_col">
     <xsl:param name="column"/>
-    <xsl:if test="../../../../table/col[$column]">
+    <xsl:if test="../../../col[$column]">
         <xsl:attribute name="width">
-            <xsl:value-of select="../../../../table/col[$column]/@width"/>
-        </xsl:attribute>
-    </xsl:if>
-    <xsl:if test="../../../../informaltable/col[$column]">
-        <xsl:attribute name="width">
-            <xsl:value-of select="../../../../informaltable/col[$column]/@width"/>
+            <xsl:value-of select="../../../col[$column]/@width"/>
         </xsl:attribute>
     </xsl:if>
 </xsl:template>

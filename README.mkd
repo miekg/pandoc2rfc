@@ -88,7 +88,7 @@ style.
         * sections;
         * tables;
         * figures.
-* Spanx style=verb, style=emph, style=strong.
+* Spanx style=verb, style=emph and style=strong.
 
 ## What's not?
 
@@ -118,7 +118,7 @@ in this [README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html
 
 For convenience we list the most important ones in the following sections.
 
-## Paragraphs
+## Paragraph
 
 Paragraphs are separated with an empty line.
 
@@ -140,7 +140,7 @@ is done with `see [](#section1-one)`, as in see [](#section).
 
 A good number of styles are supported.
 
-### Symbols
+### Symbol
 
     A symbol list.
 
@@ -149,7 +149,7 @@ A good number of styles are supported.
 
 Converts to: `<list style="symbol">`
 
-### Numbers
+### Number
 
     A numbered list.
 
@@ -182,7 +182,7 @@ Or:
 Converts to: `<list style="format %i.">`. Or in the case of uppercase, this
 yields: `<list style="format %I.">`
 
-### Letters
+### Letter
 
     A numbered list.
 
@@ -238,14 +238,15 @@ This is not supported by `xml2rfc`, but any paragraph like:
 
 Converts to: `<figure><artwork> ...`
 
-## Refs External
+## References
+### External
 Any reference like:
 
     [Click here](URI)
 
 Converts to: `<ulink target="URI">Click here ...`
 
-## Refs Internal
+### Internal
 Any reference like:
 
     [Click here](#localid)
@@ -262,27 +263,21 @@ And it does the right thing. Referencing sections is done with:
     See [](#pandoc-constructs)
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
+For referencing figures/artworks see [](#figureartwork).
+For referencing tables see [](#table).
 
-## Spanx Style
-The verb style can be selected with back-tics:
+## Spanx Styles
 
-    `text`
+#. The verb style can be selected with back-tics: `` `text` ``
+    Converts to: `<spanx style="verb"> ...`
 
-Converts to: `<spanx style="verb"> ...`
+#. And the emphasis style with asterisks: `*text*` or underscores: `_text_`
+    Converts to: `<spanx style="emph"> ...`
 
-And the emphasis style with asterisks:
+#. And the emphasis style with double asterisks: `**text**`
+    Converts to: `<spanx style="strong"> ...`
 
-    *text*
-
-Converts to: `<spanx style="emph"> ...`
-
-And the emphasis style with double asterisks:
-
-    **text**
-
-Converts to: `<spanx style="strong"> ...`
-
-## Tables
+## Table
 A table can be entered as:
 
       Right     Left     Center     Default                                                                  

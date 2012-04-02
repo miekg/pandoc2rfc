@@ -7,20 +7,20 @@ This appendix consists out of a few tests that should all render to proper
 
 Test a very long title.
 
-## Reference
+## Reference Tests
 
 Refer to [RFC 2119](#RFC2119) if you will.
 Or maybe you want to inspect [](#fig:a-minimal-) in [](#pandoc-to-rfc)
 again.
 
-## Spanx
+## Spanx Tests
 
 #. underscores: _underscores_
 #. asterisks: *asterisks*
 #. double asterisks: **double asterisks**
 #. backticks: `backticks`
 
-## Lists in Lists
+## List Tests
 
 1. First we do
 2. And then
@@ -38,15 +38,15 @@ Description lists:
 
 Item to explain:
 
-:   It works because of herbs
+:   It works because of herbs.
 
 Another item to explain:
 
-:    More explaining
+:    More explaining.
 
-     Multiple paragraphs in such a list
+     Multiple paragraphs in such a list.
 
-## Lists in Description Lists
+lists in description lists.
 
 Item to explain:
 :   It works because of
@@ -69,8 +69,7 @@ Item to explain:
 Another item to explain again:
 :   More explaining
 
-
-## List with Description Lists
+list with description lists.
 
 1. More
 
@@ -82,7 +81,7 @@ Another item to explain again:
 
 2. Go'bye
 
-## Multiple Paragraphs in Lists
+Multiple paragraphs in a list.
 
 1. This is the first bullet point and it needs multiple paragraphs...
 
@@ -100,25 +99,23 @@ xml2rfc does not allow this, so the second paragraph is faked with a
 
     <vspace BlankLines='1'>
 
-## Ordered Lists
+Ordered lists.
 
 1. First item
 2. Second item
 
-## Roman Lists
-
-Lowercase:
+A lowercase roman list.
 
 i. Item 1
 ii. Item 2
 
-Uppercase:
+An uppercase roman list.
 
 I.  Item1
 II.  Item2
 II.  Item 3
 
-## Default List Markers
+And default list markers
 
 Some surrounding text, to make it look better.
 
@@ -129,12 +126,14 @@ Some surrounding text, to make it look better.
 #. Second item. So this is the second para in your list. Enjoy;
 #. Another item.
 
-## Uppercase Letters
+Text at the end.
+
+Uppercase letters list.
 
 A.  First item
 B.  Second item
 
-## Artwork in Description Lists
+And artwork in a description list.
 
 Item1:
 
@@ -154,8 +153,6 @@ Item2:
 
 ## Table Tests
 
-### Simple Tables
-
   Right     Left     Center     Default
 -------     ------ ----------   -------
      12     12        12            12
@@ -163,8 +160,6 @@ Item2:
       1     1          1             1
 
 Table:  Demonstration of simple table syntax.
-
-### Multi Line Tables
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -179,11 +174,8 @@ Table:  Demonstration of simple table syntax.
 -------------------------------------------------------------
 
 Table: Here's the caption. It, too, may span
-multiple lines.
+multiple lines. This is a multiline table.
 
-### Grid Tables
-
-Table: Sample grid table.
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -193,7 +185,9 @@ Table: Sample grid table.
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-### Grid Tables without a Caption
+Table: Sample grid table.
+
+Grid tables without a caption
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |

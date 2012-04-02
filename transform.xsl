@@ -215,6 +215,9 @@
         <xsl:attribute name="hangText">
             <xsl:value-of select="normalize-space(translate(./term, '&#x20;&#x9;&#xD;&#xA;', ' '))"/>
         </xsl:attribute>
+            <xsl:if test="$vspaceAfterHang='1'">
+                <xsl:element name="vspace"/>
+            </xsl:if>
         <xsl:apply-templates select="./listitem"/>
     </t>
 </xsl:template>

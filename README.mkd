@@ -206,6 +206,9 @@ This is more like a description list, so we need to use:
 
 Converts to: `<list style="hanging">` and `<t hangText="First item that...">`
 
+If we want a newline after the hangText, you should set `vspaceAfterHang` to `1` in
+the `Makefile`.
+
 ## Figure/Artwork
 Indent the paragraph with 4 spaces.
 

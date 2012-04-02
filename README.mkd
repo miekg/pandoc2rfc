@@ -304,7 +304,7 @@ attribute will be: `tab:` + `first 10 (normalized) characters from the caption`.
 * Uppercase letters translated to lowercase.
 
 So the first table with a caption will get `tab:a-caption-`
-for reference use. See for instance [](tab:a-caption-).
+for reference use. See for instance [](#tab:demonstrat).
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
 numbers in case of duplicates isn't supported.

@@ -27,8 +27,10 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+    xml2rfc  +---------+ 
           | PLAIN TEXT |  <--------  | XML2RFC | 
           +------------+             +---------+ 
+    Figure: Attempt to justify Pandoc2rfc.
 
-The XML generated is suitable for inclusion in either the `middle` or `back` section
+The XML generared (the output after the `xsltproc` step in [](#fig:attempt-to)) 
+is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
 

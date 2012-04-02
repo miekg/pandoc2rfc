@@ -1,9 +1,10 @@
 pandoc2rfc (0.8.7)
 
- * If you enter a caption for a figure - center the figure, otherwise leave it to
-   the default (left aligned).
+ * If you enter a caption for a figure - center the figure, otherwise leave it
+   left aligned.
  * <blockquote> is converted to hanging list with one item. The content is
-    handled as any other paragraph
+    handled as any other paragraph.
+ * Bugfixes in how table width lookups are done.
 
  -- Miek Gieben <miek@miek.nl>  
 

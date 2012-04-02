@@ -279,29 +279,6 @@
     </figure>
 </xsl:template>
 
-<!-- AsciiDoc: TODO(mg) this can go
-<xsl:template match="literallayout">
-    <figure>
-        <xsl:if test="@id">
-            <xsl:attribute name="anchor">
-                <xsl:value-of select="@id"/>
-            </xsl:attribute>
-        </xsl:if>
-        <artwork>
-            <xsl:choose>
-                <xsl:when test="ancestor::orderedlist"></xsl:when>
-                <xsl:when test="ancestor::itemizedlist"></xsl:when>
-                <xsl:when test="ancestor::variablelist"></xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>&#10;</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-            <xsl:apply-templates/>
-        </artwork>
-    </figure>
-</xsl:template>
--->
-
 <!-- Kill title tags + content -->
 <xsl:template match="title"> </xsl:template>
 

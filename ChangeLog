@@ -1,6 +1,7 @@
 pandoc2rfc (0.8.7)
 
- * ... to be released ...
+ * If you enter a caption for a figure - center it, otherwise leave it to
+   the default.
 
  -- Miek Gieben <miek@miek.nl>  
 

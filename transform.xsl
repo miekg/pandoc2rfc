@@ -259,6 +259,10 @@
                     <xsl:text>fig:</xsl:text>
                     <xsl:value-of select="translate( translate(substring(normalize-space(translate( substring-after(., 'Figure: ') , '&#xA;', ' ')), 1, 10), ' ', '-'), $uppercase, $smallcase)"/>
                 </xsl:attribute>
+                <!-- If there is an caption, center the figure -->
+                <xsl:attribute name="align">
+                    <xsl:text>center</xsl:text>
+                </xsl:attribute>
                 <preamble>
                     <xsl:value-of select="substring-after(., 'Figure: ')"/>
                 </preamble>
@@ -275,9 +279,7 @@
     </figure>
 </xsl:template>
 
-<!-- AsciiDoc; Transform <literallayout> to <figure><artwork> -->
-<!-- Insert a newline after the <artwork>-tag because AsciiDoc, does not
-     do this automatically, except when we are inside a list -->
+<!-- AsciiDoc: TODO(mg) this can go
 <xsl:template match="literallayout">
     <figure>
         <xsl:if test="@id">
@@ -298,6 +300,7 @@
         </artwork>
     </figure>
 </xsl:template>
+-->
 
 <!-- Kill title tags + content -->
 <xsl:template match="title"> </xsl:template>

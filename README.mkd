@@ -90,7 +90,7 @@ style.
         * figures.
 * Spanx style=verb, style=emph and style=strong.
 
-## What's not?
+## What is not supported?
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * Footnotes, this isn't supported in `xml2rfc`, content is silently discarded!

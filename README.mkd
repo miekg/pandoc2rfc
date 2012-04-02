@@ -213,7 +213,8 @@ Indent the paragraph with 4 spaces.
 Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
 does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
-after `Figure: `. It will also be possible to reference the artwork. 
+after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
+will be centered.
 
 The reference anchor
 attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:

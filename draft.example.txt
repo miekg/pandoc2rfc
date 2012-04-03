@@ -60,8 +60,8 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 Table of Contents
 
    1.  Pandoc to RFC  . . . . . . . . . . . . . . . . . . . . . . . .  3
-     1.1.  What is supported? . . . . . . . . . . . . . . . . . . . .  4
-     1.2.  What is not supported? . . . . . . . . . . . . . . . . . .  5
+     1.1.  Supported  . . . . . . . . . . . . . . . . . . . . . . . .  4
+     1.2.  Unsupported  . . . . . . . . . . . . . . . . . . . . . . .  5
    2.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . .  6
    3.  Pandoc Constructs  . . . . . . . . . . . . . . . . . . . . . .  6
      3.1.  Paragraph  . . . . . . . . . . . . . . . . . . . . . . . .  6
@@ -83,8 +83,8 @@ Table of Contents
      3.9.  Indexes  . . . . . . . . . . . . . . . . . . . . . . . . . 11
    4.  Normative References . . . . . . . . . . . . . . . . . . . . . 11
    Appendix A.  Tests . . . . . . . . . . . . . . . . . . . . . . . . 12
-     A.1.  A very long title considerations with regards to the
-           already deployed routing policy. . . . . . . . . . . . . . 12
+     A.1.  A Very Long Title Considerations With Regards to the
+           Already Deployed Routing Policy  . . . . . . . . . . . . . 12
      A.2.  Reference Tests  . . . . . . . . . . . . . . . . . . . . . 12
      A.3.  Spanx Tests  . . . . . . . . . . . . . . . . . . . . . . . 12
      A.4.  List Tests . . . . . . . . . . . . . . . . . . . . . . . . 12
@@ -206,7 +206,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    It needs "xsltproc" and "pandoc" to be installed.  See the Pandoc
    user manual for the details [4] on how to type in Pandoc style.
 
-1.1.  What is supported?
+1.1.  Supported
 
    o  Sections with an anchor and title attributes;
 
@@ -260,7 +260,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    o  Indexes, by using footnotes;
 
-1.2.  What is not supported?
+1.2.  Unsupported
 
    o  Lists inside a table ("xml2rfc" doesn't handle this);
 
@@ -622,8 +622,8 @@ Appendix A.  Tests
    This appendix consists out of a few tests that should all render to
    proper "xml2rfc" XML.
 
-A.1.  A very long title considerations with regards to the already
-      deployed routing policy.
+A.1.  A Very Long Title Considerations With Regards to the Already
+      Deployed Routing Policy
 
    Test a very long title.
 

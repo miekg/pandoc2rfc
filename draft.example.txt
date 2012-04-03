@@ -74,7 +74,7 @@ Table of Contents
        3.3.5.  Letter . . . . . . . . . . . . . . . . . . . . . . . .  8
        3.3.6.  Hanging  . . . . . . . . . . . . . . . . . . . . . . .  8
      3.4.  Figure/Artwork . . . . . . . . . . . . . . . . . . . . . .  8
-     3.5.  Block quote  . . . . . . . . . . . . . . . . . . . . . . .  9
+     3.5.  Block Quote  . . . . . . . . . . . . . . . . . . . . . . .  9
      3.6.  References . . . . . . . . . . . . . . . . . . . . . . . .  9
        3.6.1.  External . . . . . . . . . . . . . . . . . . . . . . .  9
        3.6.2.  Internal . . . . . . . . . . . . . . . . . . . . . . .  9
@@ -463,7 +463,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    Pandoc stuff, like adding sequence numbers in case of duplicates
    isn't supported.
 
-3.5.  Block quote
+3.5.  Block Quote
 
    This is not supported by "xml2rfc", but any paragraph like:
 

@@ -3,7 +3,7 @@
 This appendix consists out of a few tests that should all render to proper
 `xml2rfc` XML.
 
-## A very long title considerations with regards to the already deployed routing policy.
+## A Very Long Title Considerations With Regards to the Already Deployed Routing Policy
 
 Test a very long title.
 

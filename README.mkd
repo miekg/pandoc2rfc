@@ -67,7 +67,7 @@ It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual fo
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
-## What is supported?
+## Supported
 
 * Sections with an anchor and title attributes;
 * Tables with an anchor and preamble;
@@ -92,7 +92,7 @@ style.
 * Spanx style=verb, style=emph and style=strong.
 * Indexes, by using footnotes;
 
-## What is not supported?
+## Unsupported
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;

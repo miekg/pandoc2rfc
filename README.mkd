@@ -270,14 +270,14 @@ For referencing tables see [](#table).
 
 ## Spanx Styles
 
-#. The verb style can be selected with back-tics: `` `text` ``
-    Converts to: `<spanx style="verb"> ...`
+The verb style can be selected with back-tics: `` `text` ``
+Converts to: `<spanx style="verb"> ...`
 
-#. And the emphasis style with asterisks: `*text*` or underscores: `_text_`
-    Converts to: `<spanx style="emph"> ...`
+And the emphasis style with asterisks: `*text*` or underscores: `_text_`
+Converts to: `<spanx style="emph"> ...`
 
-#. And the emphasis style with double asterisks: `**text**`
-    Converts to: `<spanx style="strong"> ...`
+And the emphasis style with double asterisks: `**text**`
+Converts to: `<spanx style="strong"> ...`
 
 ## Table
 A table can be entered as:

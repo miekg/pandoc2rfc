@@ -6,9 +6,7 @@ When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
 is very "light".
 
-> Github reader: the rendering you are now viewing looks 
-> different than intended. This is because this file is 
-> formatted in Pandoc, not the Markdown+Ruby dialect Github uses.
+> Github reader: see `draft.example.txt` for the actual rendering.
 
 Nowadays I'm a fan of the [Markdown](http://daringfireball.net/projects/markdown/) 
 syntax and especially the syntax as supported (created?)

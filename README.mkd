@@ -308,7 +308,7 @@ for reference use. See for instance [](#tab:demonstrat).
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
 numbers in case of duplicates isn't supported.
 
-# Indexes
+## Indexes
 The footnotes syntax of Pandoc is slightly abused to support an index. Footnote are entered in two steps,
 you have a marker in the text, and later you give actual footnote text. Like this:
 

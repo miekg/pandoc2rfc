@@ -121,9 +121,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    was kinda tedious even thought the XML of xml2rfc [1] is very
    "light".
 
-      Github reader: the rendering you are now viewing looks different
-      than intended.  This is because this file is formatted in Pandoc,
-      not the Markdown+Ruby dialect Github uses.
+      Github reader: see "draft.example.txt" for the actual rendering.
 
    Nowadays I'm a fan of the Markdown [2] syntax and especially the
    syntax as supported (created?) by Pandoc [3].
@@ -154,6 +152,8 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    is suitable for inclusion in either the "middle" or "back" section of
    an RFC.  The easiest way is to create a template XML file and include
    the appropriate XML:
+
+
 
 
 

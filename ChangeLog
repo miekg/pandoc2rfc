@@ -1,9 +1,14 @@
+pandoc2rfc (0.8.8)
+
+ * Bugfixes in how table width lookups are done (i.e. use the correct table).
+ * Misuse footnote ([^1]) as iref.
+
+ -- Miek Gieben <miek@miek.nl>  
+
 pandoc2rfc (0.8.7)
 
  * If a figure has a caption, center it, otherwise leave it left aligned.
  * <blockquote> is converted to hanging list with one paragraph. 
- * Bugfixes in how table width lookups are done (i.e. use the correct table).
- * Misuse footnote ([^1]) as iref.
 
  -- Miek Gieben <miek@miek.nl>  
 

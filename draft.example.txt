@@ -513,14 +513,14 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 3.7.  Spanx Styles
 
-      The verb style can be selected with back-tics: "`text`" Converts
-      to: "<spanx style="verb"> ..."
+   The verb style can be selected with back-tics: "`text`" Converts to:
+   "<spanx style="verb"> ..."
 
-      And the emphasis style with asterisks: "*text*" or underscores:
-      "_text_" Converts to: "<spanx style="emph"> ..."
+   And the emphasis style with asterisks: "*text*" or underscores:
+   "_text_" Converts to: "<spanx style="emph"> ..."
 
-      And the emphasis style with double asterisks: "**text**" Converts
-      to: "<spanx style="strong"> ..."
+   And the emphasis style with double asterisks: "**text**" Converts to:
+   "<spanx style="strong"> ..."
 
 3.8.  Table
 

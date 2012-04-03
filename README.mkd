@@ -95,7 +95,6 @@ style.
 ## What is not supported?
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
-* Footnotes, as we use these for indexes;
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.

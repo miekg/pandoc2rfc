@@ -115,6 +115,8 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 1.  Pandoc to RFC
 
+      Pandoc2rfc - designed to do the right thing, until is doesn't
+
    When writing [RFC4641] we directly wrote the XML.  Needless to say is
    was kinda tedious even thought the XML of xml2rfc [1] is very
    "light".
@@ -152,8 +154,6 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    is suitable for inclusion in either the "middle" or "back" section of
    an RFC.  The easiest way is to create a template XML file and include
    the appropriate XML:
-
-
 
 
 

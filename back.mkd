@@ -115,7 +115,9 @@ I.  Item1
 II.  Item2
 II.  Item 3
 
-And default list markers
+And default list markers.[^1]
+
+[^1]: list!default markers
 
 Some surrounding text, to make it look better.
 
@@ -132,6 +134,10 @@ Uppercase letters list.
 
 A.  First item
 B.  Second item
+
+[^4]
+
+[^4]: list!uppercase letters
 
 And artwork in a description list.
 
@@ -176,6 +182,9 @@ Table:  Demonstration of simple table syntax.
 Table: Here's the caption. It, too, may span
 multiple lines. This is a multiline table.
 
+[^2]
+
+[^2]: table!simple
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -203,3 +212,7 @@ some of the other tables, with for instance:
     See [](#tab:here's-the)
 
 Which will become "See [](#tab:here's-the)".
+
+[^3]
+
+[^3]: table!grid

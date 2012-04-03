@@ -79,7 +79,7 @@ style.
     * style=format %I, roman uppercase numerals;
     * style=hanging;
     * style=empty;
-* Figure/artwork with an anchor an preamble;
+* Figure/artwork with an anchor and preamble;
 * Block quote - not supported by `xml2rfc`, this is converted to
     `<list style="hanging>` paragraph;
 * References 
@@ -88,14 +88,15 @@ style.
         * sections;
         * tables;
         * figures.
+* Citations, by using interal references;
 * Spanx style=verb, style=emph and style=strong.
+* Indexes, by using footnotes;
 
 ## What is not supported?
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
-* Footnotes, this isn't supported in `xml2rfc`, content is silently discarded!
+* Footnotes, as we use these for indexes;
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
-* irefs: index (no input syntax available).
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.
 The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
@@ -307,3 +308,19 @@ for reference use. See for instance [](#tab:demonstrat).
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
 numbers in case of duplicates isn't supported.
+
+# Indexes
+The footnotes syntax of Pandoc is slightly abused to support an index. Footnote are entered in two steps,
+you have a marker in the text, and later you give actual footnote text. Like this:
+
+    [^1]
+
+    [^1]: footnote text
+
+We re-use this syntax for the `<iref>` tag. The above text translates to:
+
+    <iref item="footnote text"/>
+
+Sub items are also supported. Use an exclamation mark (`!`) to separate them:
+
+    [^1]: item!sub item

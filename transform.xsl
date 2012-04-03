@@ -28,8 +28,25 @@
 <xsl:template match="articleinfo">
 </xsl:template>
 
-<!-- Remove footnotes -->
+<!-- Use footnotes for indexes (iref) -->
 <xsl:template match="footnote">
+    <xsl:element name="iref">
+        <xsl:choose>
+        <xsl:when test="contains(./para, '!')">
+            <xsl:attribute name="item">
+                <xsl:value-of select="substring-before (normalize-space(translate(./para, '&#xA;', ' ')), '!')" />               
+            </xsl:attribute>
+            <xsl:attribute name="subitem">
+                <xsl:value-of select="substring-after (normalize-space(translate(./para, '&#xA;', ' ')), '!')" />               
+            </xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:attribute name="item">
+                <xsl:value-of select="normalize-space(translate(./para, '&#xA;', ' '))" />               
+            </xsl:attribute>
+        </xsl:otherwise>
+        </xsl:choose>
+    </xsl:element>
 </xsl:template>
 
 <!-- Merge section with the title tags into one section -->

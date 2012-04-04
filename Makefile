@@ -1,7 +1,7 @@
 XML=middle.xml back.xml
 RFC=DISPLAY= sh xml-wrap template.xml
 
-all:	draft.txt draft.html
+all:	draft.txt
 
 %.xml:	%.mkd transform.xsl
 	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@

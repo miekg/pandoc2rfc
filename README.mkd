@@ -10,7 +10,7 @@ for editing RFC-like documents.
 
 # Pandoc to RFC
 
-> Pandoc2rfc - designed to do the right thing, until it doesn't
+> Pandoc2rfc - designed to do the right thing, until it doesn't.
 
 When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)

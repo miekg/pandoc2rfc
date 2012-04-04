@@ -335,7 +335,7 @@ Sub items are also supported. Use an exclamation mark (`!`) to separate them:
 
 # Security Considerations
 
-This document does not deal with security.
+This memo raises no security issues.
 
 # IANA Considerations
-This document has no actions for IANA.
+This memo has no actions for IANA.

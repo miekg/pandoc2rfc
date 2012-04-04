@@ -1,3 +1,13 @@
+# Introduction
+
+This memo presents a technique for using Pandoc syntax as a source format for
+documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
+
+Pandoc is an "almost plain text" format and therefor particularly well suited
+for editing RFC-like documents.
+
+> Github reader: see `draft.example.txt` for the actual rendering.
+
 # Pandoc to RFC
 
 > Pandoc2rfc - designed to do the right thing, until it doesn't
@@ -5,8 +15,6 @@
 When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
 is very "light".
-
-> Github reader: see `draft.example.txt` for the actual rendering.
 
 Nowadays I'm a fan of the [Markdown](http://daringfireball.net/projects/markdown/) 
 syntax and especially the syntax as supported (created?)
@@ -309,7 +317,8 @@ This anchoring is completely handled from within the `xslt`, so cool Pandoc stuf
 numbers in case of duplicates isn't supported.
 
 ## Indexes
-The footnotes syntax of Pandoc is slightly abused to support an index. Footnote are entered in two steps,
+The footnote syntax of Pandoc is slightly abused to support an index. 
+Footnotes are entered in two steps,
 you have a marker in the text, and later you give actual footnote text. Like this:
 
     [^1]
@@ -323,3 +332,10 @@ We re-use this syntax for the `<iref>` tag. The above text translates to:
 Sub items are also supported. Use an exclamation mark (`!`) to separate them:
 
     [^1]: item!sub item
+
+# Security Considerations
+
+This document does not deal with security.
+
+# IANA Considerations
+This document has no actions for IANA.

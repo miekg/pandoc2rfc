@@ -147,7 +147,7 @@ Item1:
     Tell something about it. Tell something about it. Tell something about it.
 
         miek.nl.    IN  NS  a.miek.nl.                             
-        a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue            
+        a.miek.nl.  IN  A   192.0.2.1    ; <- this is glue            
 
     Tell some more about it.
     Tell some more about it.

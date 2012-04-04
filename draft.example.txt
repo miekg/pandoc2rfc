@@ -3,11 +3,12 @@
 
 RFC Beautification Working Group                               R. Gieben
 Internet-Draft                                                      SIDN
-Expires: October 5, 2012                                   April 3, 2012
+Intended status: Informational                             April 4, 2012
+Expires: October 6, 2012
 
 
                    Writing I-Ds and RFCs using Pandoc
-                  draft-gieben-writing-rfcs-pandoc-01
+                  draft-gieben-writing-rfcs-pandoc-00
 
 Abstract
 
@@ -17,9 +18,8 @@ Abstract
 
 Status of this Memo
 
-   This document is an Internet-Draft and is NOT offered in accordance
-   with Section 10 of RFC 2026, and the author does not provide the IETF
-   with any rights other than to publish as an Internet-Draft.
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
 
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
@@ -31,57 +31,60 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 5, 2012.
+   This Internet-Draft will expire on October 6, 2012.
+
+Copyright Notice
+
+   Copyright (c) 2012 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Gieben                   Expires October 5, 2012                [Page 1]
+Gieben                   Expires October 6, 2012                [Page 1]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 Table of Contents
 
-   1.  Pandoc to RFC  . . . . . . . . . . . . . . . . . . . . . . . .  3
-     1.1.  Supported  . . . . . . . . . . . . . . . . . . . . . . . .  4
-     1.2.  Unsupported  . . . . . . . . . . . . . . . . . . . . . . .  5
-   2.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . .  6
-   3.  Pandoc Constructs  . . . . . . . . . . . . . . . . . . . . . .  6
-     3.1.  Paragraph  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     3.2.  Section  . . . . . . . . . . . . . . . . . . . . . . . . .  6
-     3.3.  List Styles  . . . . . . . . . . . . . . . . . . . . . . .  6
-       3.3.1.  Symbol . . . . . . . . . . . . . . . . . . . . . . . .  7
-       3.3.2.  Number . . . . . . . . . . . . . . . . . . . . . . . .  7
-       3.3.3.  Empty  . . . . . . . . . . . . . . . . . . . . . . . .  7
-       3.3.4.  Roman  . . . . . . . . . . . . . . . . . . . . . . . .  7
-       3.3.5.  Letter . . . . . . . . . . . . . . . . . . . . . . . .  8
-       3.3.6.  Hanging  . . . . . . . . . . . . . . . . . . . . . . .  8
-     3.4.  Figure/Artwork . . . . . . . . . . . . . . . . . . . . . .  8
-     3.5.  Block Quote  . . . . . . . . . . . . . . . . . . . . . . .  9
-     3.6.  References . . . . . . . . . . . . . . . . . . . . . . . .  9
-       3.6.1.  External . . . . . . . . . . . . . . . . . . . . . . .  9
-       3.6.2.  Internal . . . . . . . . . . . . . . . . . . . . . . .  9
-     3.7.  Spanx Styles . . . . . . . . . . . . . . . . . . . . . . . 10
-     3.8.  Table  . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-     3.9.  Indexes  . . . . . . . . . . . . . . . . . . . . . . . . . 11
-   4.  Normative References . . . . . . . . . . . . . . . . . . . . . 11
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
+   2.  Pandoc to RFC  . . . . . . . . . . . . . . . . . . . . . . . .  3
+     2.1.  Supported  . . . . . . . . . . . . . . . . . . . . . . . .  4
+     2.2.  Unsupported  . . . . . . . . . . . . . . . . . . . . . . .  5
+   3.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . .  6
+   4.  Pandoc Constructs  . . . . . . . . . . . . . . . . . . . . . .  6
+     4.1.  Paragraph  . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.2.  Section  . . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.3.  List Styles  . . . . . . . . . . . . . . . . . . . . . . .  6
+       4.3.1.  Symbol . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.2.  Number . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.3.  Empty  . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.4.  Roman  . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.5.  Letter . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.3.6.  Hanging  . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.4.  Figure/Artwork . . . . . . . . . . . . . . . . . . . . . .  8
+     4.5.  Block Quote  . . . . . . . . . . . . . . . . . . . . . . .  9
+     4.6.  References . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.6.1.  External . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.6.2.  Internal . . . . . . . . . . . . . . . . . . . . . . .  9
+     4.7.  Spanx Styles . . . . . . . . . . . . . . . . . . . . . . . 10
+     4.8.  Table  . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+     4.9.  Indexes  . . . . . . . . . . . . . . . . . . . . . . . . . 11
+   5.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   6.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
+   7.  Normative References . . . . . . . . . . . . . . . . . . . . . 11
    Appendix A.  Tests . . . . . . . . . . . . . . . . . . . . . . . . 12
      A.1.  A Very Long Title Considerations With Regards to the
            Already Deployed Routing Policy  . . . . . . . . . . . . . 12
@@ -90,7 +93,7 @@ Table of Contents
      A.4.  List Tests . . . . . . . . . . . . . . . . . . . . . . . . 12
      A.5.  Table Tests  . . . . . . . . . . . . . . . . . . . . . . . 15
    Index  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 16
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 17
 
 
 
@@ -105,23 +108,30 @@ Table of Contents
 
 
 
-
-
-
-Gieben                   Expires October 5, 2012                [Page 2]
+Gieben                   Expires October 6, 2012                [Page 2]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
-1.  Pandoc to RFC
+1.  Introduction
+
+   This memo presents a technique for using Pandoc syntax as a source
+   format for documents in the Internet-Drafts (I-Ds) and Request for
+   Comments (RFC) series.
+
+   Pandoc is an "almost plain text" format and therefor particularly
+   well suited for editing RFC-like documents.
+
+      Github reader: see "draft.example.txt" for the actual rendering.
+
+
+2.  Pandoc to RFC
 
       Pandoc2rfc - designed to do the right thing, until it doesn't
 
    When writing [RFC4641] we directly wrote the XML.  Needless to say is
    was kinda tedious even thought the XML of xml2rfc [1] is very
    "light".
-
-      Github reader: see "draft.example.txt" for the actual rendering.
 
    Nowadays I'm a fan of the Markdown [2] syntax and especially the
    syntax as supported (created?) by Pandoc [3].
@@ -151,23 +161,15 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    The XML generated (the output after the "xsltproc" step in Figure 1)
    is suitable for inclusion in either the "middle" or "back" section of
    an RFC.  The easiest way is to create a template XML file and include
-   the appropriate XML:
 
 
 
-
-
-
-
-
-
-
-
-
-Gieben                   Expires October 5, 2012                [Page 3]
+Gieben                   Expires October 6, 2012                [Page 3]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+   the appropriate XML:
 
                           A minimal template.xml.
 
@@ -206,7 +208,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    It needs "xsltproc" and "pandoc" to be installed.  See the Pandoc
    user manual for the details [4] on how to type in Pandoc style.
 
-1.1.  Supported
+2.1.  Supported
 
    o  Sections with an anchor and title attributes;
 
@@ -214,16 +216,16 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    o  Lists
 
-      *  style=symbols;
 
 
 
 
-
-Gieben                   Expires October 5, 2012                [Page 4]
+Gieben                   Expires October 6, 2012                [Page 4]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+      *  style=symbols;
 
       *  style=numbers;
 
@@ -260,7 +262,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    o  Indexes, by using footnotes;
 
-1.2.  Unsupported
+2.2.  Unsupported
 
    o  Lists inside a table ("xml2rfc" doesn't handle this);
 
@@ -274,14 +276,12 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-
-
-Gieben                   Expires October 5, 2012                [Page 5]
+Gieben                   Expires October 6, 2012                [Page 5]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
-2.  Acknowledgements
+3.  Acknowledgements
 
    The following people have helped to make Pandoc2rfc what it is today:
 
@@ -294,7 +294,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    o  Trygve Laugstoel
 
 
-3.  Pandoc Constructs
+4.  Pandoc Constructs
 
    So, what syntax do you need to use to get the correct output?  Well,
    it is _just_ Pandoc.  The best introduction to the Pandoc style is
@@ -303,11 +303,11 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    For convenience we list the most important ones in the following
    sections.
 
-3.1.  Paragraph
+4.1.  Paragraph
 
    Paragraphs are separated with an empty line.
 
-3.2.  Section
+4.2.  Section
 
    Just use the normal sectioning commands available in Pandoc, for
    instance:
@@ -321,9 +321,9 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    are in the _same_ source file!
 
    Referencing the section is done with "see [](#section1-one)", as in
-   see Section 3.2.
+   see Section 4.2.
 
-3.3.  List Styles
+4.3.  List Styles
 
    A good number of styles are supported.
 
@@ -332,12 +332,12 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 5, 2012                [Page 6]
+Gieben                   Expires October 6, 2012                [Page 6]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
-3.3.1.  Symbol
+4.3.1.  Symbol
 
    A symbol list.
 
@@ -346,7 +346,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Converts to: "<list style="symbol">"
 
-3.3.2.  Number
+4.3.2.  Number
 
    A numbered list.
 
@@ -355,7 +355,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Converts to: "<list style="numbers">"
 
-3.3.3.  Empty
+4.3.3.  Empty
 
    Using the default list markers from Pandoc:
 
@@ -366,7 +366,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Converts to: "<list style="empty">"
 
-3.3.4.  Roman
+4.3.4.  Roman
 
    Use the supported Pandoc syntax:
 
@@ -388,12 +388,12 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 5, 2012                [Page 7]
+Gieben                   Expires October 6, 2012                [Page 7]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
-3.3.5.  Letter
+4.3.5.  Letter
 
    A numbered list.
 
@@ -403,7 +403,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    Converts to: "<list style="letters">", uppercasing the letters works
    too.
 
-3.3.6.  Hanging
+4.3.6.  Hanging
 
    This is more like a description list, so we need to use:
 
@@ -424,7 +424,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    If you want a newline after the hangTexts, search for the string
    "OPTION" in "transform.xsl" and uncomment it.
 
-3.4.  Figure/Artwork
+4.4.  Figure/Artwork
 
    Indent the paragraph with 4 spaces.
 
@@ -444,7 +444,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 5, 2012                [Page 8]
+Gieben                   Expires October 6, 2012                [Page 8]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -463,7 +463,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    Pandoc stuff, like adding sequence numbers in case of duplicates
    isn't supported.
 
-3.5.  Block Quote
+4.5.  Block Quote
 
    This is not supported by "xml2rfc", but any paragraph like:
 
@@ -472,9 +472,9 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    Converts to: "<t><list style="hanging" hangIndent="3"> ..."
    paragraph.
 
-3.6.  References
+4.6.  References
 
-3.6.1.  External
+4.6.1.  External
 
    Any reference like:
 
@@ -482,7 +482,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Converts to: "<ulink target="URI">Click here ..."
 
-3.6.2.  Internal
+4.6.2.  Internal
 
    Any reference like:
 
@@ -500,18 +500,18 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 5, 2012                [Page 9]
+Gieben                   Expires October 6, 2012                [Page 9]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
 
    See [](#pandoc-constructs)
 
-   The word 'Section' is inserted automatically: ... see Section 3 ...
-   For referencing figures/artworks see Section 3.4.  For referencing
-   tables see Section 3.8.
+   The word 'Section' is inserted automatically: ... see Section 4 ...
+   For referencing figures/artworks see Section 4.4.  For referencing
+   tables see Section 4.8.
 
-3.7.  Spanx Styles
+4.7.  Spanx Styles
 
    The verb style can be selected with back-tics: "`text`" Converts to:
    "<spanx style="verb"> ..."
@@ -522,7 +522,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    And the emphasis style with double asterisks: "**text**" Converts to:
    "<spanx style="strong"> ..."
 
-3.8.  Table
+4.8.  Table
 
    A table can be entered as:
 
@@ -556,7 +556,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 5, 2012               [Page 10]
+Gieben                   Expires October 6, 2012               [Page 10]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -570,11 +570,11 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    Pandoc stuff, like adding sequence numbers in case of duplicates
    isn't supported.
 
-3.9.  Indexes
+4.9.  Indexes
 
-   The footnotes syntax of Pandoc is slightly abused to support an
-   index.  Footnote are entered in two steps, you have a marker in the
-   text, and later you give actual footnote text.  Like this:
+   The footnote syntax of Pandoc is slightly abused to support an index.
+   Footnotes are entered in two steps, you have a marker in the text,
+   and later you give actual footnote text.  Like this:
 
    [^1]
 
@@ -591,13 +591,31 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    [^1]: item!sub item
 
 
-4.  Normative References
+5.  Security Considerations
+
+   This document does not deal with security.
+
+
+6.  IANA Considerations
+
+   This document has no actions for IANA.
+
+
+7.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC4641]  Kolkman, O. and R. Gieben, "DNSSEC Operational Practices",
               RFC 4641, September 2006.
+
+
+
+
+Gieben                   Expires October 6, 2012               [Page 11]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
 
    [1]  <http://xml.resource.org/>
 
@@ -608,13 +626,6 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    [4]  <http://johnmacfarlane.net/pandoc/README.html>
 
    [5]  <https://github.com/miekg/pandoc2rfc>
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 11]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 Appendix A.  Tests
@@ -630,7 +641,7 @@ A.1.  A Very Long Title Considerations With Regards to the Already
 A.2.  Reference Tests
 
    Refer to RFC 2119 [RFC2119] if you will.  Or maybe you want to
-   inspect Figure 2 in Section 1 again.
+   inspect Figure 2 in Section 2 again.
 
 A.3.  Spanx Tests
 
@@ -654,6 +665,14 @@ A.4.  List Tests
 
    And the other around.
 
+
+
+
+Gieben                   Expires October 6, 2012               [Page 12]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
+
    o  First we do
 
    o  Then
@@ -663,15 +682,6 @@ A.4.  List Tests
       2.  Another thing
 
    Description lists:
-
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 12]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
-
 
    Item to explain:  It works because of herbs.
 
@@ -709,6 +719,16 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
        Item to explain:  Another explanation ...
 
+
+
+
+
+
+Gieben                   Expires October 6, 2012               [Page 13]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
+
    2.  Go'bye
 
    Multiple paragraphs in a list.
@@ -720,14 +740,6 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    2.  This is the next bullet.  New paragraphs should be indented with
        4 four spaces.
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 13]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
-
 
    3.  Another item with some artwork, indented by 8 spaces.
 
@@ -763,6 +775,16 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Some surrounding text, to make it look better.
 
+
+
+
+
+
+Gieben                   Expires October 6, 2012               [Page 14]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
+
       First item.  Use lot of text to get a real paragraphs sense.
       First item.  Use lot of text to get a real paragraphs sense.
       First item.  Use lot of text to get a real paragraphs sense.
@@ -776,15 +798,6 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Uppercase letters list.
 
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 14]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
-
-
    A.  First item
 
    B.  Second item
@@ -796,7 +809,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
       about it.  Tell something about it.
 
    miek.nl.    IN  NS  a.miek.nl.
-   a.miek.nl.  IN  A   127.0.0.1    ; <- this is glue
+   a.miek.nl.  IN  A   192.0.2.1    ; <- this is glue
 
 
       Tell some more about it.  Tell some more about it.  Tell some more
@@ -818,6 +831,16 @@ A.5.  Table Tests
 
                                   Table 1
 
+
+
+
+
+
+Gieben                   Expires October 6, 2012               [Page 15]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
+
      Here's the caption.  It, too, may span multiple lines.  This is a
                              multiline table.
 
@@ -833,13 +856,6 @@ A.5.  Table Tests
    +-----------+----------+---------------+----------------------------+
 
                                   Table 2
-
-
-
-Gieben                   Expires October 5, 2012               [Page 15]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
-
 
                             Sample grid table.
 
@@ -873,6 +889,14 @@ Index
 
    L
       list
+
+
+
+Gieben                   Expires October 6, 2012               [Page 16]
+
+Internet-Draft                 Pandoc2rfc                     April 2012
+
+
          default markers  14
          uppercase letters  15
 
@@ -880,21 +904,6 @@ Index
       table
          grid  16
          simple  16
-
-
-
-
-
-
-
-
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 16]
-
-Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 Author's Address
@@ -939,14 +948,5 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-Gieben                   Expires October 5, 2012               [Page 17]
+Gieben                   Expires October 6, 2012               [Page 17]
 

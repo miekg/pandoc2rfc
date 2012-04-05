@@ -3,8 +3,8 @@
 
 RFC Beautification Working Group                               R. Gieben
 Internet-Draft                                                      SIDN
-Intended status: Informational                             April 4, 2012
-Expires: October 6, 2012
+Intended status: Informational                             April 5, 2012
+Expires: October 7, 2012
 
 
                    Writing I-Ds and RFCs using Pandoc
@@ -31,7 +31,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 6, 2012.
+   This Internet-Draft will expire on October 7, 2012.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Gieben                   Expires October 6, 2012                [Page 1]
+Gieben                   Expires October 7, 2012                [Page 1]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -61,8 +61,8 @@ Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Pandoc to RFC  . . . . . . . . . . . . . . . . . . . . . . . .  3
-     2.1.  Supported  . . . . . . . . . . . . . . . . . . . . . . . .  4
-     2.2.  Unsupported  . . . . . . . . . . . . . . . . . . . . . . .  5
+     2.1.  Supported Features . . . . . . . . . . . . . . . . . . . .  4
+     2.2.  Unsupported Features . . . . . . . . . . . . . . . . . . .  5
    3.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . .  6
    4.  Pandoc Constructs  . . . . . . . . . . . . . . . . . . . . . .  6
      4.1.  Paragraph  . . . . . . . . . . . . . . . . . . . . . . . .  6
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Gieben                   Expires October 6, 2012                [Page 2]
+Gieben                   Expires October 7, 2012                [Page 2]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -127,7 +127,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 2.  Pandoc to RFC
 
-      Pandoc2rfc - designed to do the right thing, until it doesn't.
+      Pandoc2rfc -- designed to do the right thing, until it doesn't.
 
    When writing [RFC4641] we directly wrote the XML.  Needless to say is
    was kinda tedious even thought the XML of xml2rfc [1] is very
@@ -164,7 +164,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 3]
+Gieben                   Expires October 7, 2012                [Page 3]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -208,7 +208,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
    It needs "xsltproc" and "pandoc" to be installed.  See the Pandoc
    user manual for the details [4] on how to type in Pandoc style.
 
-2.1.  Supported
+2.1.  Supported Features
 
    o  Sections with an anchor and title attributes;
 
@@ -220,7 +220,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 4]
+Gieben                   Expires October 7, 2012                [Page 4]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -262,7 +262,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    o  Indexes, by using footnotes;
 
-2.2.  Unsupported
+2.2.  Unsupported Features
 
    o  Lists inside a table ("xml2rfc" doesn't handle this);
 
@@ -276,7 +276,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 5]
+Gieben                   Expires October 7, 2012                [Page 5]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -332,7 +332,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 6]
+Gieben                   Expires October 7, 2012                [Page 6]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -388,7 +388,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 7]
+Gieben                   Expires October 7, 2012                [Page 7]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -444,7 +444,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 8]
+Gieben                   Expires October 7, 2012                [Page 8]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -500,7 +500,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-Gieben                   Expires October 6, 2012                [Page 9]
+Gieben                   Expires October 7, 2012                [Page 9]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -540,26 +540,28 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
    Is translated to "<texttable>" element in "xml2rfc".  You can choose
    multiple styles as input, but they all are converted to the same
-   style (plain "<texttable>") table in "xml2rfc".  The caption is
-   _always_ translated to a "<preamble>".  The "<postamble>" tag isn't
-   supported.
+   style (plain "<texttable>") table in "xml2rfc".  The column alignment
+   is copied over to the generated XML.
 
-   If a table has a caption, it will _also_ get a reference.  The
-   reference anchor attribute will be: "tab:" + "first 10 (normalized)
-   characters from the caption".  Where normalized means:
+   The caption is _always_ translated to a "<preamble>".  The
+   "<postamble>" tag isn't supported.  If a table has a caption, it will
+   _also_ get a reference.  The reference anchor attribute will be:
+   "tab:" + "first 10 (normalized) characters from the caption".  Where
+   normalized means:
 
    o  Take the first 10 characters of the caption (i.e. this is the text
       _after_ the string "Table:");
 
-   o  Spaces are translated to a minus "-";
 
 
 
 
-Gieben                   Expires October 6, 2012               [Page 10]
+Gieben                   Expires October 7, 2012               [Page 10]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+   o  Spaces are translated to a minus "-";
 
    o  Uppercase letters translated to lowercase.
 
@@ -593,12 +595,12 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 5.  Security Considerations
 
-   This document does not deal with security.
+   This memo raises no security issues.
 
 
 6.  IANA Considerations
 
-   This document has no actions for IANA.
+   This memo has no actions for IANA.
 
 
 7.  Normative References
@@ -607,15 +609,15 @@ Internet-Draft                 Pandoc2rfc                     April 2012
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC4641]  Kolkman, O. and R. Gieben, "DNSSEC Operational Practices",
-              RFC 4641, September 2006.
 
 
 
-
-Gieben                   Expires October 6, 2012               [Page 11]
+Gieben                   Expires October 7, 2012               [Page 11]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+              RFC 4641, September 2006.
 
    [1]  <http://xml.resource.org/>
 
@@ -663,15 +665,15 @@ A.4.  List Tests
 
        *  item 2
 
-   And the other around.
 
 
 
-
-Gieben                   Expires October 6, 2012               [Page 12]
+Gieben                   Expires October 7, 2012               [Page 12]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+   And the other around.
 
    o  First we do
 
@@ -717,17 +719,17 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
        Item to explain:  Explanation ...
 
-       Item to explain:  Another explanation ...
 
 
 
 
 
-
-Gieben                   Expires October 6, 2012               [Page 13]
+Gieben                   Expires October 7, 2012               [Page 13]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
+
+       Item to explain:  Another explanation ...
 
    2.  Go'bye
 
@@ -778,9 +780,7 @@ Internet-Draft                 Pandoc2rfc                     April 2012
 
 
 
-
-
-Gieben                   Expires October 6, 2012               [Page 14]
+Gieben                   Expires October 7, 2012               [Page 14]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -836,7 +836,7 @@ A.5.  Table Tests
 
 
 
-Gieben                   Expires October 6, 2012               [Page 15]
+Gieben                   Expires October 7, 2012               [Page 15]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -892,7 +892,7 @@ Index
 
 
 
-Gieben                   Expires October 6, 2012               [Page 16]
+Gieben                   Expires October 7, 2012               [Page 16]
 
 Internet-Draft                 Pandoc2rfc                     April 2012
 
@@ -948,5 +948,5 @@ Author's Address
 
 
 
-Gieben                   Expires October 6, 2012               [Page 17]
+Gieben                   Expires October 7, 2012               [Page 17]
 

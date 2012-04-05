@@ -10,7 +10,7 @@ for editing RFC-like documents.
 
 # Pandoc to RFC
 
-> Pandoc2rfc - designed to do the right thing, until it doesn't.
+> Pandoc2rfc -- designed to do the right thing, until it doesn't.
 
 When writing [](#RFC4641) we directly wrote the
 XML. Needless to say is was kinda tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
@@ -75,7 +75,7 @@ It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual fo
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
-## Supported
+## Supported Features
 
 * Sections with an anchor and title attributes;
 * Tables with an anchor and preamble;
@@ -100,7 +100,7 @@ style.
 * Spanx style=verb, style=emph and style=strong.
 * Indexes, by using footnotes;
 
-## Unsupported
+## Unsupported Features
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
@@ -301,8 +301,9 @@ A table can be entered as:
 
 Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple styles
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
-The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
+The column alignment is copied over to the generated XML.
 
+The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 

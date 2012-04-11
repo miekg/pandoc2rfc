@@ -14,14 +14,14 @@ When writing [](#RFC4641) we directly wrote the
 XML. Needless to say it was tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
 is very "light".
 
-In the mean time people have been developing markup languages that are very easy to remember
+During the last few years people have been developing markup languages that are very easy to remember
 and type. These languages have become known as `almost plain text`-markup languages.
 One of the first was the [Markdown](http://daringfireball.net/projects/markdown/) 
-syntax. One that was developed later and has found a good balance between
+syntax. One that was developed later and also has found a good balance between
 the power of expression and its syntax is 
 [Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
-fact that it can be translated to numerous output formats, including: HTML, Markdown 
-and `docbook` XML.
+fact that it can be translated to numerous output formats, including, but not limited to:
+HTML, Markdown and `docbook` XML.
 
 So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using

@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- 
-    Version: 0.8.8
+    Version: 0.8.9
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
@@ -144,16 +144,16 @@
        <xsl:when test="contains(@numeration,'upperroman')">
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">
-                <list style="format %I."><xsl:apply-templates/></list>
+                <list style="format (%d)"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:when test="ancestor::itemizedlist">
-                <list style="format %I."><xsl:apply-templates/></list>
+                <list style="format (%d)"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:when test="ancestor::variablelist">
-                <list style="format %I."><xsl:apply-templates/></list>
+                <list style="format (%d)"><xsl:apply-templates/></list>
             </xsl:when>
             <xsl:otherwise>
-                <t><list style="format %I."><xsl:apply-templates/></list></t>
+                <t><list style="format (%d)"><xsl:apply-templates/></list></t>
             </xsl:otherwise>
         </xsl:choose>
        </xsl:when>

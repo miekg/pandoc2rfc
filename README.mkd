@@ -184,13 +184,13 @@ Use the supported Pandoc syntax:
     ii. First item;
     ii. Second item.
 
-Or:
+Converts to: `<list style="format %i.">`. If you use uppercase Roman
+numerals, they convert to a different style:
 
     II. First item;
     II. Second item.
 
-Converts to: `<list style="format %i.">`. Or in the case of uppercase, this
-yields: `<list style="format %I.">`
+yields: `<list style="format (%d) ">`
 
 ### Letter
 

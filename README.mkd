@@ -87,7 +87,7 @@ style.
     * style=numbers;
     * style=letters (lower- and uppercase);
     * style=format %i, roman lowercase numerals;
-    * style=format %I, roman uppercase numerals;
+    * style=format (%d), roman uppercase numerals;
     * style=hanging;
     * style=empty;
 * Figure/artwork with an anchor and preamble;

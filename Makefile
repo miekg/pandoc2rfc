@@ -1,6 +1,6 @@
 XML=middle.xml back.xml
 RFC=DISPLAY= sh xml-wrap template.xml
-# This assumes double quotes in the docName
+# This assumes double quotes in the docName!
 TITLE=$(shell grep docName template.xml | sed -e 's/.*docName=\"//' -e 's/\">//')
 .PHONY: txt html xml
 

@@ -7,6 +7,12 @@ This appendix consists out of a few tests that should all render to proper
 
 Test a very long title.
 
+## Verbatim code blocks
+
+~~~~~
+A verbatim code block
+~~~~~
+
 ## Reference Tests
 
 Refer to [RFC 2119](#RFC2119) if you will.
@@ -139,6 +145,11 @@ B.  Second item
 
 [^4]: list!uppercase letters
 
+Lowercase letters list.
+
+a.  First item
+b.  Second item
+
 And artwork in a description list.
 
 Item1:
@@ -156,6 +167,18 @@ Item1:
 Item2:
 
 :   Another description
+
+
+List with a sublist with a paragraph above the sublist
+
+a.  First Item
+a.  Second item
+a.  Third item
+
+  This is of course beautiful
+
+  1. But what do you know
+  2. This is another list
 
 ## Table Tests
 

@@ -78,7 +78,7 @@ It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual fo
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
-When using Pandoc2rfc consider addeding the following sentence to an Acknowledgements
+When using Pandoc2rfc consider adding the following sentence to an Acknowledgements
 section:
 
      This document was prepared using Pandoc2rfc.

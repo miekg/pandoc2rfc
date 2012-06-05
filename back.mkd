@@ -171,14 +171,14 @@ Item2:
 
 List with a sublist with a paragraph above the sublist
 
-a.  First Item
-a.  Second item
-a.  Third item
+1.  First Item
+1.  Second item
+1.  Third item
 
-  This is of course beautiful
+    A paragraph that comes first
 
-  1. But what do you know
-  2. This is another list
+    a. But what do you know
+    a. This is another list
 
 ## Table Tests
 

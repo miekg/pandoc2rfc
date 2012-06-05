@@ -136,6 +136,11 @@ Some surrounding text, to make it look better.
 
 Text at the end.
 
+Lowercase letters list.
+
+a.  First item
+b.  Second item
+
 Uppercase letters list.
 
 A.  First item
@@ -144,11 +149,6 @@ B.  Second item
 [^4]
 
 [^4]: list!uppercase letters
-
-Lowercase letters list.
-
-a.  First item
-b.  Second item
 
 And artwork in a description list.
 

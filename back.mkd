@@ -103,7 +103,7 @@ Multiple paragraphs in a list.
 
 xml2rfc does not allow this, so the second paragraph is faked with a
 
-    <vspace BlankLines='1'>
+    <vspace blankLines='1'>
 
 Ordered lists.
 

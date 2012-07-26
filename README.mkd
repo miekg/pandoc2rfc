@@ -86,7 +86,7 @@ section:
 ## Supported Features
 
 * Sections with an anchor and title attributes;
-* Tables with an anchor and preamble;
+* Tables with an anchor and postamble;
 * Lists
     * style=symbols;
     * style=numbers;
@@ -95,7 +95,7 @@ section:
     * style=format (%d), roman uppercase numerals;
     * style=hanging;
     * style=empty;
-* Figure/artwork with an anchor and preamble;
+* Figure/artwork with an anchor and postamble;
 * Block quote - not supported by `xml2rfc`, this is converted to
     `<list style="hanging>` paragraph;
 * References 
@@ -234,7 +234,8 @@ Indent the paragraph with 4 spaces.
 
 Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
-does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
+does. If you add a `Figure: some text` as the last line, the artwork gets a
+`<postamble>` with the text
 after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered.
 
@@ -313,7 +314,7 @@ Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple sty
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
 The column alignment is copied over to the generated XML.
 
-The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
+The caption is *always* translated to a `<postamble>`. The `<preamble>` tag isn't supported.
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 

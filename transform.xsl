@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- 
-    Version: 0.8.10
+    Version: 0.8.9
     (c) Miek Gieben
     Licensed under the GPL version 2.
 

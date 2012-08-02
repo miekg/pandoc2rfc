@@ -67,8 +67,8 @@ XML:
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
 
-1. middle.mdk;
-1. back.mkd;
+1. middle.pdc;
+1. back.pdc;
 1. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
@@ -91,8 +91,8 @@ When starting a new project with `pandoc2rfc` you'll need to copy the following 
 * `xml-wrap` (wraps differences between `xml2rfc` 1.3.x and `xml2rfc` 2.x)
 * `transform.xslt`
 * And the above mentioned files:
-    * `middle.mkd`
-    * `back.mkd`
+    * `middle.pdc`
+    * `back.pdc`
     * `template.xml`
 
 After that you can start editing.

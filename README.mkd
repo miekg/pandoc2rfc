@@ -83,7 +83,7 @@ section:
 
      This document was prepared using Pandoc2rfc.
 
-## Starting a new project
+# Starting a new project
 When starting a new project with `pandoc2rfc` you'll need to copy the following files:
 
 * `Makefile`
@@ -97,7 +97,7 @@ When starting a new project with `pandoc2rfc` you'll need to copy the following 
 
 After that you can start editing.
 
-## Supported Features
+# Supported Features
 
 * Sections with an anchor and title attributes;
 * Tables with an anchor and postamble;
@@ -122,7 +122,7 @@ After that you can start editing.
 * Spanx style=verb, style=emph and style=strong.
 * Indexes, by using footnotes;
 
-## Unsupported Features
+# Unsupported Features
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;

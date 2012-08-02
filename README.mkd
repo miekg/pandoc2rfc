@@ -360,7 +360,6 @@ Sub items are also supported. Use an exclamation mark (`!`) to separate them:
     [^1]: item!sub item
 
 # Security Considerations
-
 This document raises no security issues.
 
 # IANA Considerations

@@ -6,6 +6,9 @@ documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.
 
+> Note: this document is typeset in Pandoc and does not render completely correct when
+> reading it on github.
+
 # Pandoc to RFC
 
 > Pandoc2rfc -- designed to do the right thing, until it doesn't.

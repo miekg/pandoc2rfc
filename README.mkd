@@ -1,10 +1,13 @@
 # Introduction
 
-This memo presents a technique for using Pandoc syntax as a source format for
+This document presents a technique for using Pandoc syntax as a source format for
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.
+
+> Note: this document is typeset in Pandoc and does not render completely correct when
+> reading it on github.
 
 # Pandoc to RFC
 
@@ -67,8 +70,8 @@ XML:
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
 
-1. middle.mdk;
-1. back.mkd;
+1. middle.pdc;
+1. back.pdc;
 1. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
@@ -83,10 +86,24 @@ section:
 
      This document was prepared using Pandoc2rfc.
 
-## Supported Features
+# Starting a new project
+When starting a new project with `pandoc2rfc` you'll need to copy the following files:
+
+* `Makefile`
+* `xml-single` (for creating a single .xml file)
+* `xml-wrap` (wraps differences between `xml2rfc` 1.3.x and `xml2rfc` 2.x)
+* `transform.xslt`
+* And the above mentioned files:
+    * `middle.pdc`
+    * `back.pdc`
+    * `template.xml`
+
+After that you can start editing.
+
+# Supported Features
 
 * Sections with an anchor and title attributes;
-* Tables with an anchor and preamble;
+* Tables with an anchor and postamble;
 * Lists
     * style=symbols;
     * style=numbers;
@@ -95,7 +112,7 @@ section:
     * style=format (%d), roman uppercase numerals;
     * style=hanging;
     * style=empty;
-* Figure/artwork with an anchor and preamble;
+* Figure/artwork with an anchor and postamble;
 * Block quote - not supported by `xml2rfc`, this is converted to
     `<list style="hanging>` paragraph;
 * References 
@@ -108,7 +125,7 @@ section:
 * Spanx style=verb, style=emph and style=strong.
 * Indexes, by using footnotes;
 
-## Unsupported Features
+# Unsupported Features
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
@@ -234,7 +251,8 @@ Indent the paragraph with 4 spaces.
 
 Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
-does. If you add a `Figure: some text` as the last line, the artwork gets a `<preamble>` with the text
+does. If you add a `Figure: some text` as the last line, the artwork gets a
+`<postamble>` with the text
 after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered.
 
@@ -313,7 +331,7 @@ Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple sty
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
 The column alignment is copied over to the generated XML.
 
-The caption is *always* translated to a `<preamble>`. The `<postamble>` tag isn't supported.
+The caption is *always* translated to a `<postamble>`. The `<preamble>` tag isn't supported.
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
@@ -344,9 +362,22 @@ Sub items are also supported. Use an exclamation mark (`!`) to separate them:
 
     [^1]: item!sub item
 
-# Security Considerations
+# Usage guidelines
 
-This memo raises no security issues.
+## Working with multiple files
+As an author you will probably break up a draft in multiple files, each dealing with a
+subject or section. When doing so sections with the same title will clash with each other. 
+Pandoc can deal with this situation, but only if the different section are in the *same* 
+file. Concatenating the different section files before processing them is a solution
+to this problem. You can for instance amend the `Makefile` and add something like this:
+
+    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc3
+            cat $@ > allsections.pdc
+
+And then process `allsection.pdc` in the normal way.
+
+# Security Considerations
+This document raises no security issues.
 
 # IANA Considerations
-This memo has no actions for IANA.
+This document has no actions for IANA.

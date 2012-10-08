@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- 
-    Version: 0.8.9
+    Version: 0.8.10
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
@@ -298,12 +298,12 @@
                 <xsl:attribute name="align">
                     <xsl:text>center</xsl:text>
                 </xsl:attribute>
-                <preamble>
-                    <xsl:value-of select="substring-after(., 'Figure: ')"/>
-                </preamble>
                 <artwork>
                     <xsl:value-of select="substring-before(., 'Figure: ')"/>
                 </artwork>
+                <postamble>
+                    <xsl:value-of select="substring-after(., 'Figure: ')"/>
+                </postamble>
             </xsl:when>
             <xsl:otherwise>
                 <artwork>
@@ -354,14 +354,25 @@
             </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates/>
+        <xsl:if test="./title"> <!-- create postamble of the title -->
+            <postamble>
+                <xsl:value-of select="./title" />
+            </postamble>
+        </xsl:if>
+        <xsl:if test="./caption"> <!-- create postamble of the caption -->
+            <postamble>
+                <xsl:value-of select="./caption" />
+            </postamble>
+        </xsl:if>
     </texttable>
 </xsl:template>
 
-<xsl:template match="table/caption | table/title">
-    <preamble>
+<!-- <xsl:template match="table/caption | table/title">
+    <postamble>
         <xsl:apply-templates/>
-    </preamble>
+    </postamble>
 </xsl:template>
+-->
 
 <!-- Table headers -->
 <xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">

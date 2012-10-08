@@ -12,7 +12,12 @@ html:	$(TITLE).html
 
 xml:	$(TITLE).xml
 
+# mkd is OK
 %.xml:	%.mkd transform.xsl
+	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
+
+# pdc is also OK
+%.xml:	%.pdc transform.xsl
 	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
 
 draft.txt:	$(XML) template.xml

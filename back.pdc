@@ -188,7 +188,7 @@ List with a sublist with a paragraph above the sublist
     123     123       123          123
       1     1          1             1
 
-Table:  Demonstration of simple table syntax.
+Table:  Demonstration of **simple** table syntax.
 
 -------------------------------------------------------------
  Centered   Default           Right Left

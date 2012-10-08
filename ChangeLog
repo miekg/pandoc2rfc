@@ -1,6 +1,16 @@
+pandoc2rfc (0.8.10)
+
+ * Documentation
+
+ -- Miek Gieben <miek@miek.nl>  
+
 pandoc2rfc (0.8.9)
 
  * Uppercase Roman numerals convert to (1), (2), etc. instead of I. II. etc.
+ * Caption are now typeset as postamble (was preamble). This look better in 
+   the text output.
+
+ -- Miek Gieben <miek@miek.nl>  
 
 pandoc2rfc (0.8.8)
 

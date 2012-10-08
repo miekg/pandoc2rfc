@@ -12,7 +12,7 @@ html:	$(TITLE).html
 
 xml:	$(TITLE).xml
 
-# mkd is Ok
+# mkd is OK
 %.xml:	%.mkd transform.xsl
 	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
 

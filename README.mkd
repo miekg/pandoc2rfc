@@ -36,7 +36,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
     +-------------------+            +---------+  
                   |                       |
     non-existent  |                       | xsltproc
-     quicker way  |                       |
+      faster way  |                       |
                   v                       v
           +------------+    xml2rfc  +---------+ 
           | PLAIN TEXT |  <--------  | XML2RFC | 

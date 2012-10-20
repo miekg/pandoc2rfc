@@ -7,7 +7,7 @@
     Licensed under the GPL version 2.
 
     Convert DocBook XML as created by Pandoc to XML suitable for RFCs and thus
-    parseble with xml2rfc. 
+    parseable with xml2rfc. 
 -->
 
 <xsl:output method="xml" omit-xml-declaration="yes"/>

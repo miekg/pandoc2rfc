@@ -121,7 +121,7 @@ After that you can start editing.
         * sections;
         * tables;
         * figures.
-* Citations, by using interal references;
+* Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong.
 * Indexes, by using footnotes;
 
@@ -214,7 +214,7 @@ numerals, they convert to a different style:
     II. First item;
     II. Second item.
 
-yields: `<list style="format (%d) ">`
+Yields: `<list style="format (%d) ">`
 
 ### Letter
 
@@ -381,7 +381,7 @@ If you use double quotes in the documents title in the `docName` attribute, like
 
     <rfc ipr="trust200902" docName="draft-gieben-writing-rfcs-pandoc-00">
 
-The Makefile will pick this up automatically and make a symlink:
+The Makefile will pick this up automatically and make a symbolic link:
 
     draft-gieben-writing-rfcs-pandoc-00.txt -> draft.txt
 

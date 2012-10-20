@@ -11,7 +11,7 @@
 
         <author initials="R." surname="Gieben"
                 fullname="R. (Miek) Gieben">
-            <organization>SIDN</organization>
+            <organization>SIDN Labs</organization>
 
             <address>
                 <postal>
@@ -28,7 +28,7 @@
             </address>
         </author>
 
-        <date month="April" year="2012"/>
+        <date month="October" year="2012"/>
 
         <area>General</area>
         <workgroup>RFC Beautification Working Group</workgroup>

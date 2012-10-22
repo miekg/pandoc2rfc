@@ -70,12 +70,12 @@ XML:
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
 
-1. middle.pdc;
-1. back.pdc;
+1. middle.pdc - contains the main body of text;
+1. back.pdc - holds appendices;
 1. template.xml (probably a fairly static file).
 
 The draft (`draft.txt`) is automatically created when you call `make`. 
-This also works for this `README.mkd`.
+This also works for this `README.pdc`.
 
 It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc

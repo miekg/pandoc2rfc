@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<reference anchor='VIM'>
+
+<front>
+<title abbrev='Syntax file for RFCs'>VIM syntax file for RFCs and I-Ds</title>
+<author initials='R.' surname='Gieben' fullname='R. (Miek) Gieben'>
+<organization>Atoom Inc.</organization>
+<address>
+<email>miek@miek.nl</email></address></author>
+<date year='2012' month='October' />
+</front>
+<format type='Syntax file' target='http://github.com/miekg/rfc' />
+</reference>

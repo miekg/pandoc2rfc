@@ -388,9 +388,8 @@ The Makefile will pick this up automatically and make a symbolic link:
 This makes uploading the file to the i-d tracker a bit easier.
 
 ## VIM syntax highlighting
-If you are a VIM user you might be interested in a syntax highlighting file that
-slightly lightens up your draft while viewing it from VIM. See this repository 
-on github: https://github.com/miekg/rfc .
+If you are a VIM user you might be interested in a syntax highlighting file (see [](#VIM)) that
+slightly lightens up your reading experience while viewing it from VIM.
 
 # Security Considerations
 This document raises no security issues.

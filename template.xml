@@ -52,9 +52,12 @@
 </middle>
 
 <back>
+    <references title="Informative References">
+        <?rfc include="bib/reference.github.vim.xml"?>
+    </references>
     <references title="Normative References">
-        <?rfc include="ref/reference.RFC.2119.xml"?>
-        <?rfc include="ref/reference.RFC.4641.xml"?>
+        <?rfc include="bib/reference.RFC.2119.xml"?>
+        <?rfc include="bib/reference.RFC.4641.xml"?>
     </references>
 <?rfc include="back.xml"?>
 </back>

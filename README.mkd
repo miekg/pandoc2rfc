@@ -389,7 +389,7 @@ This makes uploading the file to the i-d tracker a bit easier.
 
 ## VIM syntax highlighting
 If you are a VIM user you might be interested in a syntax highlighting file (see [](#VIM)) that
-slightly lightens up your reading experience while viewing it from VIM.
+slightly lightens up your reading experience while viewing a draft.txt from VIM.
 
 # Security Considerations
 This document raises no security issues.

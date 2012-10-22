@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<reference anchor='VIM' target='http://github.com/miekg/rfc' />
+<reference anchor='VIM' target='http://github.com/miekg/rfc' >
 
 <front>
 <title abbrev='Syntax file for RFCs'>VIM syntax file for RFCs and I-Ds</title>

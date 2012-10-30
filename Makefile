@@ -27,7 +27,7 @@ draft.html: 	$(XML) template.xml
 	$(RFC) template.xml -f $@ --html
 
 draft.xml:	$(XML) template.xml
-	perl xml-single template.xml > draft.xml
+	xmllint --noent template.xml > draft.xml
 
 $(TITLE).txt:	draft.txt
 	ln -sf $< $@

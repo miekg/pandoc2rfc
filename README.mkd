@@ -115,7 +115,7 @@ After that you can start editing.
     * style=symbols;
     * style=numbers;
     * style=letters (lower- and uppercase);
-    * style=format %i, roman lowercase numerals;
+    * style=format %i, roman lowercase numerals (not implemented in v2);
     * style=format (%d), roman uppercase numerals;
     * style=hanging;
     * style=empty;

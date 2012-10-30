@@ -292,7 +292,7 @@
             <xsl:when test="contains(., 'Figure: ')">
                 <xsl:attribute name="anchor">
                     <xsl:text>fig:</xsl:text>
-                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., "Figure: ") , "&#xA;&apos;", " ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
+                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., "Figure: ") , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
                 </xsl:attribute>
                 <!-- If there is an caption, center the figure -->
                 <xsl:attribute name="align">
@@ -344,13 +344,13 @@
         <xsl:if test="./caption">
             <xsl:attribute name="anchor">
                 <xsl:text>tab:</xsl:text>
-                <xsl:value-of select='translate( translate(substring(normalize-space(translate(./caption, "&#xA;&#x27;", " ")), 1, 10), " ", "-"), $uppercase, $smallcase)' />
+                <xsl:value-of select='translate( translate(substring(normalize-space(translate(./caption, "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)' />
             </xsl:attribute>
         </xsl:if>
         <xsl:if test="./title">
             <xsl:attribute name="anchor">
                 <xsl:text>tab:</xsl:text>
-                <xsl:value-of select='translate( translate(substring(normalize-space(translate(./title, "&#xA;&#x27;", " ")), 1, 10), " ", "-"), $uppercase, $smallcase)' />
+                <xsl:value-of select='translate( translate(substring(normalize-space(translate(./title, "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)' />
             </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates/>

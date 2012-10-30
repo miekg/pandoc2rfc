@@ -15,7 +15,7 @@
 <?rfc compact="yes" ?>    <!-- conserve vertical whitespace -->
 <?rfc subcompact="no" ?>  <!-- but keep a blank line between list items -->
  <front>
-        <title abbrev="Pandoc2rfc">Writing I-Ds and RFCs using Pandoc</title>
+        <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
 
         <author initials="R." surname="Gieben"
                 fullname="R. (Miek) Gieben">

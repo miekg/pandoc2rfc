@@ -251,7 +251,7 @@
             <xsl:value-of select="normalize-space(translate(./term, '&#x20;&#x9;&#xD;&#xA;', ' '))"/>
         </xsl:attribute>
         <!-- OPTION: enable this to get a newline after the hangText -->
-        <!-- <xsl:element name="vspace"/> -->
+        <xsl:element name="vspace"/>
         <xsl:apply-templates select="./listitem"/>
     </t>
 </xsl:template>

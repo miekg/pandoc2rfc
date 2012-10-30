@@ -3,7 +3,7 @@
 This document presents a technique for using Pandoc syntax as a source format for
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
-This version is adapted to work with xml2rfc version 2.x. As this version is
+This version is adapted to work with `xml2rfc` version 2.x. As this version is
 much stricter with respect to XML compliance and does not implement some of
 the hidden features of its predecessor the generated draft might look different.
 If there is a feature difference between version 1.3.x and 2.x this document 
@@ -20,17 +20,16 @@ for editing RFC-like documents.
 > Pandoc2rfc -- designed to do the right thing, until it doesn't.
 
 When writing [](#RFC4641) we directly wrote the
-XML. Needless to say it was tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
-is very "light".
+XML. Needless to say it was tedious even thought the XML of
+[xml2rfc](http://xml.resource.org/experimental) is very "light".
 
 During the last few years people have been developing markup languages that are very easy to remember
 and type. These languages have become known as `almost plain text`-markup languages.
 One of the first was the [Markdown](http://daringfireball.net/projects/markdown/) 
-syntax. One that was developed later and also has found a good balance between
-the power of expression and its syntax is 
-[Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
+syntax. One that was developed later and incorporates Markdown and a number of extensions 
+is [Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
 fact that it can be translated to numerous output formats, including, but not limited to:
-HTML, Markdown and `docbook` XML.
+HTML, (plain) Markdown and `docbook` XML.
 
 So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using

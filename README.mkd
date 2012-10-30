@@ -86,7 +86,7 @@ See the Makefile for an example of this. In this case you need to edit
 The draft (`draft.txt`) is automatically created when you call `make`. 
 This also works for this `README.pdc`.
 
-It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
+It needs `xsltproc`, `pandoc` and optionally `xmllint` to be installed. See the [Pandoc user manual for
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
@@ -267,7 +267,7 @@ The reference anchor
 attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
 * Take the first 10 characters of the caption (i.e. this is the text *after* the string `Figure: `);
-* Spaces are translated to a minus `-`;
+* Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
 So the first artwork with a caption will get `fig:a-minimal-`
@@ -299,7 +299,7 @@ Any reference like:
 Converts to: `<link target="localid">Click here ...`
 
 For referring to RFCs (for which you manually need add the reference source in the template,
-use a `include refs.xml` or something), you can just use:
+with an external XML entity), you can just use:
 
     [](#RFC2119)
 
@@ -343,7 +343,7 @@ If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
 * Take the first 10 characters of the caption (i.e. this is the text *after* the string `Table: `);
-* Spaces are translated to a minus `-`;
+* Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
 So the first table with a caption will get `tab:a-caption-`
@@ -378,7 +378,7 @@ Pandoc can deal with this situation, but only if the different section are in th
 file. Concatenating the different section files before processing them is a solution
 to this problem. You can for instance amend the `Makefile` and add something like this:
 
-    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc3
+    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc.3
             cat $@ > allsections.pdc
 
 And then process `allsection.pdc` in the normal way.

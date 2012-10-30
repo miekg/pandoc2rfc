@@ -93,13 +93,13 @@ Multiple paragraphs in a list.
 
     ... to be explained properly.
 
-2. This is the next bullet. New paragraphs should be indented with 4 four spaces.
+1. This is the next bullet. New paragraphs should be indented with 4 four spaces.
 
-3. Another item with some artwork, indented by 8 spaces.
+1. Another item with some artwork, indented by 8 spaces.
 
         Artwork
 
-4. Final item.
+1. Final item.
 
 xml2rfc does not allow this, so the second paragraph is faked with a
 
@@ -110,7 +110,7 @@ Ordered lists.
 1. First item
 2. Second item
 
-A lowercase roman list.
+A lowercase roman list:
 
 i. Item 1
 ii. Item 2

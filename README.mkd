@@ -3,11 +3,8 @@
 This document presents a technique for using Pandoc syntax as a source format for
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
-This version is adapted to work with `xml2rfc` version 2.x. As this version is
-much stricter with respect to XML compliance and does not implement some of
-the hidden features of its predecessor the generated draft might look different.
-If there is a feature difference between version 1.3.x and 2.x this document 
-will highlight the difference.
+This version is adapted to work with `xml2rfc` version 2.x. This version is
+much stricter with respect to XML compliance so some things are different.
 
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.

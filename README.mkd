@@ -21,7 +21,8 @@ for editing RFC-like documents.
 
 When writing [](#RFC4641) we directly wrote the
 XML. Needless to say it was tedious even thought the XML of
-[xml2rfc](http://xml.resource.org/experimental) is very "light".
+[xml2rfc](http://xml.resource.org/experimental) is very "light". The [latest version
+of xml2rfc version 2 can be found here](http://pypi.python.org/pypi/xml2rfc/)
 
 During the last few years people have been developing markup languages that are very easy to remember
 and type. These languages have become known as `almost plain text`-markup languages.

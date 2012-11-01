@@ -107,28 +107,28 @@ After that you can start editing.
 
 # Supported Features
 
-* Sections with an anchor and title attributes;
-* Tables with an anchor and postamble;
+* Sections with an anchor and title attributesi ([](#section));
 * Lists
-    * style=symbols;
-    * style=numbers;
-    * style=letters (lower- and uppercase);
-    * style=format %i, roman lowercase numerals;
-    * style=format (%d), roman uppercase numerals;
-    * style=hanging;
-    * style=empty;
-* Figure/artwork with an anchor and postamble;
+    * style=symbols ([](#symbol));
+    * style=numbers ([](#number));
+    * style=empty ([](#empty));
+    * style=format %i, use roman lowercase numerals, ([](#roman));
+    * style=format (%d), use roman uppercase numerals ([](#roman));
+    * style=letters (lower- and uppercase, [](#letter));
+    * style=hanging ([](#hanging));
+* Figure/artwork with an anchor and postamble ([](#figureartwork));
 * Block quote - not supported by `xml2rfc`, this is converted to
-    `<list style="hanging>` paragraph;
+    `<list style="hanging>` paragraph ([](#block-quote));
 * References 
-    * external (eref); 
-    * internal (xref), you can refer to:
+    * external (eref) ([](#external)); 
+    * internal (xref) ([](#internal)), you can refer to:
         * sections;
         * tables;
         * figures.
 * Citations, by using internal references;
-* Spanx style=verb, style=emph and style=strong.
-* Indexes, by using footnotes;
+* Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
+* Tables with an anchor and postamble ([](#table));
+* Indexes, by using footnotesi ([](#indexes)).
 
 # Unsupported Features
 

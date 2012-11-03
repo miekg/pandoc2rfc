@@ -1,5 +1,5 @@
 XML=middle.xml back.xml
-RFC=DISPLAY= sh xml-wrap template.xml
+RFC=xml2rfc
 # This assumes double quotes in the docName!
 TITLE=$(shell grep docName template.xml | sed -e 's/.*docName=\"//' -e 's/\">//')
 .PHONY: txt html xml
@@ -21,13 +21,13 @@ xml:	$(TITLE).xml
 	pandoc -t docbook -s $< | xsltproc --nonet transform.xsl - > $@
 
 draft.txt:	$(XML) template.xml
-	$(RFC) $@
+	$(RFC) template.xml -f $@ --text
 
 draft.html: 	$(XML) template.xml
-	$(RFC) $@
+	$(RFC) template.xml -f $@ --html
 
 draft.xml:	$(XML) template.xml
-	perl xml-single template.xml > draft.xml
+	xmllint --noent template.xml > draft.xml
 
 $(TITLE).txt:	draft.txt
 	ln -sf $< $@

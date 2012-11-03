@@ -3,6 +3,9 @@
 This document presents a technique for using Pandoc syntax as a source format for
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
+This version is adapted to work with `xml2rfc` version 2.x. This version is
+much stricter with respect to XML compliance so some things are different.
+
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.
 
@@ -14,17 +17,18 @@ for editing RFC-like documents.
 > Pandoc2rfc -- designed to do the right thing, until it doesn't.
 
 When writing [](#RFC4641) we directly wrote the
-XML. Needless to say it was tedious even thought the XML of [xml2rfc](http://xml.resource.org/)
-is very "light".
+XML. Needless to say it was tedious even thought the XML of
+[xml2rfc](http://xml.resource.org/experimental) is very "light". The [latest version
+of xml2rfc version 2 can be found here](http://pypi.python.org/pypi/xml2rfc/). See
+[](#installing-xml2rfc-version-2.x) on how to install `xml2rfc` version 2.x.
 
 During the last few years people have been developing markup languages that are very easy to remember
 and type. These languages have become known as `almost plain text`-markup languages.
 One of the first was the [Markdown](http://daringfireball.net/projects/markdown/) 
-syntax. One that was developed later and also has found a good balance between
-the power of expression and its syntax is 
-[Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
+syntax. One that was developed later and incorporates Markdown and a number of extensions 
+is [Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
 fact that it can be translated to numerous output formats, including, but not limited to:
-HTML, Markdown and `docbook` XML.
+HTML, (plain) Markdown and `docbook` XML.
 
 So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
 I thought the easiest way would be to create `docbook` XML and transform that using
@@ -49,19 +53,22 @@ of an RFC. The easiest way is to create a template XML file and include the appr
 XML:
 
     <?xml version='1.0' ?>
-    <!DOCTYPE rfc SYSTEM 'rfc2629.dtd'>
+    <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
+    <!ENTITY pandocMiddle PUBLIC '' 'middle.xml'>
+    <!ENTITY pandocBack   PUBLIC '' 'back.xml'>
+    ]>
 
     <rfc ipr='trust200902' docName='draft-gieben-pandoc-rfcs-01'>
      <front>
-        <title>Writing I-Ds and RFCs using Pandoc</title>
+        <title>Writing I-Ds and RFCs using Pandoc v2</title>
     </front>
 
     <middle>
-        <?rfc include="middle.xml"?>
+        &pandocMiddle;
     </middle>
 
     <back>
-        <?rfc include="back.xml"?>
+        &pandocBack;
     </back>
 
     </rfc>
@@ -77,7 +84,7 @@ See the Makefile for an example of this. In this case you need to edit
 The draft (`draft.txt`) is automatically created when you call `make`. 
 This also works for this `README.pdc`.
 
-It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
+It needs `xsltproc`, `pandoc` and optionally `xmllint` to be installed. See the [Pandoc user manual for
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
 style.
 
@@ -90,8 +97,6 @@ section:
 When starting a new project with `pandoc2rfc` you'll need to copy the following files:
 
 * `Makefile`
-* `xml-single` (for creating a single .xml file)
-* `xml-wrap` (wraps differences between `xml2rfc` 1.3.x and `xml2rfc` 2.x)
 * `transform.xslt`
 * And the above mentioned files:
     * `middle.pdc`
@@ -102,28 +107,28 @@ After that you can start editing.
 
 # Supported Features
 
-* Sections with an anchor and title attributes;
-* Tables with an anchor and postamble;
+* Sections with an anchor and title attributesi ([](#section));
 * Lists
-    * style=symbols;
-    * style=numbers;
-    * style=letters (lower- and uppercase);
-    * style=format %i, roman lowercase numerals;
-    * style=format (%d), roman uppercase numerals;
-    * style=hanging;
-    * style=empty;
-* Figure/artwork with an anchor and postamble;
+    * style=symbols ([](#symbol));
+    * style=numbers ([](#number));
+    * style=empty ([](#empty));
+    * style=format %i, use roman lowercase numerals, ([](#roman));
+    * style=format (%d), use roman uppercase numerals ([](#roman));
+    * style=letters (lower- and uppercase, [](#letter));
+    * style=hanging ([](#hanging));
+* Figure/artwork with an anchor and postamble ([](#figureartwork));
 * Block quote - not supported by `xml2rfc`, this is converted to
-    `<list style="hanging>` paragraph;
+    `<list style="hanging>` paragraph ([](#block-quote));
 * References 
-    * external (eref); 
-    * internal (xref), you can refer to:
+    * external (eref) ([](#external)); 
+    * internal (xref) ([](#internal)), you can refer to:
         * sections;
         * tables;
         * figures.
 * Citations, by using internal references;
-* Spanx style=verb, style=emph and style=strong.
-* Indexes, by using footnotes;
+* Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
+* Tables with an anchor and postamble ([](#table));
+* Indexes, by using footnotesi ([](#indexes)).
 
 # Unsupported Features
 
@@ -260,7 +265,7 @@ The reference anchor
 attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
 * Take the first 10 characters of the caption (i.e. this is the text *after* the string `Figure: `);
-* Spaces are translated to a minus `-`;
+* Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
 So the first artwork with a caption will get `fig:a-minimal-`
@@ -292,7 +297,7 @@ Any reference like:
 Converts to: `<link target="localid">Click here ...`
 
 For referring to RFCs (for which you manually need add the reference source in the template,
-use a `include refs.xml` or something), you can just use:
+with an external XML entity), you can just use:
 
     [](#RFC2119)
 
@@ -336,11 +341,11 @@ If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
 * Take the first 10 characters of the caption (i.e. this is the text *after* the string `Table: `);
-* Spaces are translated to a minus `-`;
+* Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
 So the first table with a caption will get `tab:a-caption-`
-for reference use. See for instance [](#tab:demonstrat).
+for reference use. See for instance <!-- [](#tab:demonstrat). -->
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
 numbers in case of duplicates isn't supported.
@@ -364,6 +369,24 @@ Sub items are also supported. Use an exclamation mark (`!`) to separate them:
 
 # Usage guidelines
 
+## Installing xml2rfc version 2.x
+Get the latest version from [here](http://pypi.python.org/pypi/xml2rfc/). Unpack the `tar`
+file and then:
+
+    cd xml2rfc-2.3.9
+    mkdir ~/xmlrfc
+    export PYTHONPATH=~/xml2rfc/lib/python2.7/site-packages/
+    python setup.py install --prefix=~/xml2rfc
+
+Everything should be installed in `~/xml2rfc`. Next create a small shell script that 
+calls xml2rfc:
+
+    #!/bin/bash
+    export PYTHONPATH=/home/miekg/xml2rfc/lib/python2.7/site-packages/
+    ~/xml2rfc/bin/xml2rfc "$@"
+
+And place that somewhere in your path.
+
 ## Working with multiple files
 As an author you will probably break up a draft in multiple files, each dealing with a
 subject or section. When doing so sections with the same title will clash with each other. 
@@ -371,7 +394,7 @@ Pandoc can deal with this situation, but only if the different section are in th
 file. Concatenating the different section files before processing them is a solution
 to this problem. You can for instance amend the `Makefile` and add something like this:
 
-    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc3
+    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc.3
             cat $@ > allsections.pdc
 
 And then process `allsection.pdc` in the normal way.

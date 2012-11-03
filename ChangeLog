@@ -1,3 +1,9 @@
+pandoc2rfc (2.0.1)
+
+*  Semi rewrite for XML2RFC v2.x
+
+ -- Miek Gieben <miek@miek.nl>
+
 pandoc2rfc (0.8.10)
 
  * Documentation

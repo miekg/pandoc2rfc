@@ -1,5 +1,5 @@
 XML=middle.xml back.xml
-RFC=/home/miekg/xml2rfc/xml2rfc
+RFC=xml2rfc
 # This assumes double quotes in the docName!
 TITLE=$(shell grep docName template.xml | sed -e 's/.*docName=\"//' -e 's/\">//')
 .PHONY: txt html xml

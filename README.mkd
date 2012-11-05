@@ -4,7 +4,7 @@ This document presents a technique for using Pandoc syntax as a source format fo
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
 THIS VERSION IS ADAPTED TO WORK WITH `XML2RFC` VERSION 2.X. THIS VERSION IS
-MUCH STRICTER WITH RESPECT TO XML COMPLIANCE SO SOME THINGS ARE DIFFERENT.
+MUCH STRICTER WITH RESPECT TO XML COMPLIANCE THAN VERSION 1.X.
 
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.
@@ -127,7 +127,7 @@ After that you can start editing.
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
 * Tables with an anchor and postamble ([](#table));
-* Indexes, by using footnotesi ([](#indexes)).
+* Indexes, by using footnotes ([](#indexes)).
 
 # Unsupported Features
 
@@ -140,11 +140,7 @@ The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/
 # Acknowledgements
 
 The following people have helped to make Pandoc2rfc what it is today:
-
-* Benno Overeinder
-* Erlend Hamnaberg
-* Matthijs Mekking
-* Trygve Laugstøl 
+Benno Overeinder, Erlend Hamnaberg, Matthijs Mekking, Trygve Laugstøl.
 
 This document was prepared using Pandoc2rfc.
 

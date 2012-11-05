@@ -55,7 +55,7 @@
             </t>
             <t>
             THIS VERSION IS ADAPTED TO WORK WITH `XML2RFC` VERSION 2.X. THIS VERSION IS 
-            MUCH STRICTER WITH RESPECT TO XML COMPLIANCE SO SOME THINGS ARE DIFFERENT.   
+            MUCH STRICTER WITH RESPECT TO XML COMPLIANCE THAN VERSION 1.X.
             </t>
         </abstract>
 </front>

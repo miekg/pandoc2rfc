@@ -54,7 +54,7 @@
             Request for Comments (RFC) series.
             </t>
             <t>
-            This version is adapted to work with `xml2rfc` version 2.x.
+            This version is adapted to work with "xml2rfc" version 2.x.
             </t>
         </abstract>
 </front>

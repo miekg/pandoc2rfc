@@ -120,9 +120,9 @@ After that you can start editing.
 * References 
     * external (eref) ([](#external)); 
     * internal (xref) ([](#internal)), you can refer to:
-        * sections;
-        * tables;
-        * figures.
+        * section (handled by Pandoc, see [](#references-1)));
+        * figures (handled by XSLT, see [](#references));
+        * tables (handled by XSLT, see [](#references-2)).
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
 * Tables with an anchor and postamble ([](#table));
@@ -255,6 +255,7 @@ does. If you add a `Figure: some text` as the last line, the artwork gets a
 after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered.
 
+### References
 The reference anchor
 attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
@@ -265,8 +266,8 @@ attribute will be: `fig:` + `first 10 (normalized) characters from the caption`.
 So the first artwork with a caption will get `fig:a-minimal-`
 as a reference. See for instance [](#fig:a-minimal-). 
 
-This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicates isn't supported.
+This anchoring is completely handled from within the `xslt`. Note that duplicate anchors are an
+XML validation error which will make `xml2rfc` fail.
 
 ## Block Quote
 This is not supported by `xml2rfc`, but any paragraph like:
@@ -330,6 +331,7 @@ Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple sty
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
 The column alignment is copied over to the generated XML.
 
+### References
 The caption is *always* translated to a `<postamble>`. The `<preamble>` tag isn't supported.
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
@@ -341,8 +343,8 @@ attribute will be: `tab:` + `first 10 (normalized) characters from the caption`.
 So the first table with a caption will get `tab:a-caption-`
 for reference use. See for instance <!-- [](#tab:demonstrat). -->
 
-This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicates isn't supported.
+This anchoring is completely handled from within the `xslt`.
+Note that duplicate anchors are an XML validation error which will make `xml2rfc` fail.
 
 ## Indexes
 The footnote syntax of Pandoc is slightly abused to support an index. 

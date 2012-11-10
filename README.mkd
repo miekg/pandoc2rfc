@@ -45,7 +45,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+             +---------+ 
     Figure: Attempt to justify Pandoc2rfc.
 
-The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to:1)) 
+The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to)) 
 is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
@@ -262,8 +262,8 @@ attribute will be: `fig:` + `first 10 (normalized) characters from the caption`.
 * Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 
-So the first artwork with a caption will get `fig:a-minimal-:2`
-as a reference. See for instance [](#fig:a-minimal-:2). 
+So the first artwork with a caption will get `fig:a-minimal-`
+as a reference. See for instance [](#fig:a-minimal-). 
 
 This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
 numbers in case of duplicates isn't supported.

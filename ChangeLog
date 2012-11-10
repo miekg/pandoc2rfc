@@ -1,3 +1,10 @@
+pandoc2rfc (2.0.2)
+
+*  Always use a sequence number for Figure and Table references.
+   This completely overhauls how you reference a figure.
+
+ -- Miek Gieben <miek@miek.nl>
+
 pandoc2rfc (2.0.1)
 
 *  Semi rewrite for XML2RFC v2.x

@@ -16,7 +16,7 @@ A verbatim code block
 ## Reference Tests
 
 Refer to [RFC 2119](#RFC2119) if you will.
-Or maybe you want to inspect [](#fig:a-minimal-:2) in [](#pandoc-to-rfc)
+Or maybe you want to inspect [](#fig:2) in [](#pandoc-to-rfc)
 again.
 
 ## Spanx Tests
@@ -232,9 +232,9 @@ Grid tables without a caption
 This table has no caption, and therefor no reference. But you can refer to 
 some of the other tables, with for instance:
 
-    See [](#tab:here-s-the)
+    See [](#tab:3)
 
-Which will become "See [](#tab:here-s-the)".
+Which will become "See [](#tab:3)".
 
 [^3]
 

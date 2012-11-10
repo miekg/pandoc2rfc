@@ -45,7 +45,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+             +---------+ 
     Figure: Attempt to justify Pandoc2rfc.
 
-The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to:1)) 
+The XML generated (the output after the `xsltproc` step in [](#fig:1)) 
 is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The easiest way is to create a template XML file and include the appropriate
 XML:
@@ -249,6 +249,7 @@ Indent the paragraph with 4 spaces.
     Like this
 
 Converts to: `<figure><artwork> ...`
+
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
 does. If you add a `Figure: some text` as the last line, the artwork gets a
 `<postamble>` with the text
@@ -256,17 +257,14 @@ after `Figure: `. It will also be possible to reference the artwork. If a captio
 will be centered.
 
 The reference anchor
-attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:
+attribute will be: `fig:` + `sequence number of the figure`. 
 
-* Take the first 10 characters of the caption (i.e. this is the text *after* the string `Figure: `);
-* Spaces and single quotes (') are translated to a minus `-`;
-* Uppercase letters translated to lowercase.
+So the first artwork with a caption will get `fig:1` as a reference. See for
+instance [](#fig:1). As for the numbering *all* figures are counted, also those
+without a caption. The sequence number starts at one.
 
-So the first artwork with a caption will get `fig:a-minimal-:2`
-as a reference. See for instance [](#fig:a-minimal-:2). 
-
-This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicates isn't supported.
+Note that this reference-by-sequence number isn't the best solution, but as this
+anchoring is completely handled from within the `xslt` the choices are limited.
 
 ## Block Quote
 This is not supported by `xml2rfc`, but any paragraph like:
@@ -304,7 +302,6 @@ For referencing figures/artworks see [](#figureartwork).
 For referencing tables see [](#table).
 
 ## Spanx Styles
-
 The verb style can be selected with back-tics: `` `text` ``
 Converts to: `<spanx style="verb"> ...`
 
@@ -331,18 +328,15 @@ as input, but they all are converted to the same style (plain `<texttable>`) tab
 The column alignment is copied over to the generated XML.
 
 The caption is *always* translated to a `<postamble>`. The `<preamble>` tag isn't supported.
-If a table has a caption, it will *also* get a reference. The reference anchor
-attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
-* Take the first 10 characters of the caption (i.e. this is the text *after* the string `Table: `);
-* Spaces and single quotes (') are translated to a minus `-`;
-* Uppercase letters translated to lowercase.
+The reference anchor attribute will be `tab:` + `sequence number of the table`.
 
-So the first table with a caption will get `tab:a-caption-`
-for reference use. See for instance <!-- [](#tab:demonstrat). -->
+So the first table with a caption will get `tab:1` as a reference. See for
+for instance [](#tab:1). As for the numbering *all* tables are counted, also those
+without a caption. The sequence number starts at one.
 
-This anchoring is completely handled from within the `xslt`, so cool Pandoc stuff, like adding sequence
-numbers in case of duplicates isn't supported.
+Note that this reference-by-sequence number isn't the best solution, but as this
+anchoring is completely handled from within the `xslt` the choices are limited.
 
 ## Indexes
 The footnote syntax of Pandoc is slightly abused to support an index. 

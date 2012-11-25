@@ -57,7 +57,7 @@
 <xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
     <section>
         <xsl:attribute name="title">
-            <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))" />
+            <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))"/>
         </xsl:attribute>
         <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>

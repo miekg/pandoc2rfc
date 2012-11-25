@@ -9,12 +9,13 @@ Test a very long title.
 
 ## *Markup* in heading
 
-This is discarded by Pandoc2rfc
+This is discarded by `xml2rfc`.
 
 ## Verbatim code blocks
 
 ~~~~~
 A verbatim code block
+jkasjksajassjasjsajsajkas
 ~~~~~
 
 ## Reference Tests

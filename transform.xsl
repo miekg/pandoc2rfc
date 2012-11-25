@@ -4,7 +4,7 @@
     extension-element-prefixes="exsl">
 
 <!-- 
-    Version: 2.0.1 - for xml2rfc version 2.x
+    Version: 2.0.2 - for xml2rfc version 2.x
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
@@ -304,8 +304,9 @@
                     <xsl:value-of select="substring-before(., 'Figure: ')"/>
                 </artwork>
                 <postamble>
-                    <!--                    <xsl:value-of select="substring-after(., 'Figure: ')"/> -->
-                    <xsl:apply-templates select="exsl:node-set(substring-after(., 'Figure: '))" mode="raw"/>
+                    <!-- Should use something like mode="post", but this isn't xml yet, 
+                         its raw text -->
+                    <xsl:value-of select="substring-after(., 'Figure: ')"/>
                 </postamble>
             </xsl:when>
             <xsl:otherwise>
@@ -361,14 +362,6 @@
             </spanx>
         </xsl:otherwise>
     </xsl:choose>
-</xsl:template>
-
-<!-- raw post processing for caption, we mimic pandoc itself here, and output the correct XML -->
-<xsl:template mode="raw"> 
-    XXX
-    <spanx style="verb">
-        <xsl:value-of select="."/>
-    </spanx>
 </xsl:template>
 
 <!-- Tables -->

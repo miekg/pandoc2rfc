@@ -7,6 +7,10 @@ This appendix consists out of a few tests that should all render to proper
 
 Test a very long title.
 
+## *Markup* in heading
+
+This is discarded by Pandoc2rfc
+
 ## Verbatim code blocks
 
 ~~~~~
@@ -203,7 +207,7 @@ Table:  Demonstration of **simple** table syntax.
 -------------------------------------------------------------
 
 Table: Here's the caption. It, too, may span
-multiple lines. This is a multiline table.
+multiple lines. This is a multiline table. This is `verbatim` text.
 
 [^2]
 
@@ -239,3 +243,11 @@ Which will become "See [](#tab:here-s-the)".
 [^3]
 
 [^3]: table!grid
+
+## Figure tests
+
+    This is a figure
+    This is a figure
+    This is a figure
+    This is a figure
+    Figure: This is the caption, with text in `typewriter`.

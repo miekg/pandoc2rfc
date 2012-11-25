@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:exsl="http://exslt.org/common"
+    extension-element-prefixes="exsl">
 
 <!-- 
-    Version: 2.0.1 - for xml2rfc version 2.x
+    Version: 2.0.2 - for xml2rfc version 2.x
     (c) Miek Gieben
     Licensed under the GPL version 2.
 
@@ -302,6 +304,8 @@
                     <xsl:value-of select="substring-before(., 'Figure: ')"/>
                 </artwork>
                 <postamble>
+                    <!-- Should use something like mode="post", but this isn't xml yet, 
+                         its raw text -->
                     <xsl:value-of select="substring-after(., 'Figure: ')"/>
                 </postamble>
             </xsl:when>
@@ -315,13 +319,14 @@
 </xsl:template>
 
 <!-- Kill title tags + content -->
-<xsl:template match="title"> </xsl:template>
+<xsl:template match="title"></xsl:template>
 
 <xsl:template match="literal"> 
     <spanx style="verb">
         <xsl:apply-templates/> 
     </spanx>
 </xsl:template>
+
 <xsl:template match="emphasis"> 
     <xsl:choose>
         <xsl:when test="contains(@role,'strong')">
@@ -332,6 +337,28 @@
         <xsl:otherwise>
             <spanx style="emph">
             <xsl:apply-templates/> 
+            </spanx>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- post processing for caption -->
+<xsl:template match="literal" mode="post"> 
+    <spanx style="verb">
+        <xsl:apply-templates mode="post"/> 
+    </spanx>
+</xsl:template>
+
+<xsl:template match="emphasis" mode="post"> 
+    <xsl:choose>
+        <xsl:when test="contains(@role,'strong')">
+            <spanx style="strong">
+            <xsl:apply-templates mode="post"/> 
+            </spanx>
+        </xsl:when>
+        <xsl:otherwise>
+            <spanx style="emph">
+            <xsl:apply-templates mode="post"/> 
             </spanx>
         </xsl:otherwise>
     </xsl:choose>
@@ -356,23 +383,16 @@
         <xsl:apply-templates/>
         <xsl:if test="./title"> <!-- create postamble of the title -->
             <postamble>
-                <xsl:value-of select="./title" />
+                <xsl:apply-templates select="./title" mode="post"/>
             </postamble>
         </xsl:if>
         <xsl:if test="./caption"> <!-- create postamble of the caption -->
             <postamble>
-                <xsl:value-of select="./caption" />
+                <xsl:apply-templates select="./caption" mode="post"/>
             </postamble>
         </xsl:if>
     </texttable>
 </xsl:template>
-
-<!-- <xsl:template match="table/caption | table/title">
-    <postamble>
-        <xsl:apply-templates/>
-    </postamble>
-</xsl:template>
--->
 
 <!-- Table headers -->
 <xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">

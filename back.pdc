@@ -250,4 +250,5 @@ Which will become "See [](#tab:here-s-the)".
     This is a figure
     This is a figure
     This is a figure
-    Figure: This is the caption, with text in `typewriter`.
+    Figure: This is the caption, with text in `typewriter`. Which isnt converted
+    to a <spanx> style, because this is copied as-is.

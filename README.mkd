@@ -116,7 +116,7 @@ After that you can start editing.
     * style=hanging ([](#hanging));
 * Figure/artwork with an anchor and postamble ([](#figureartwork));
 * Block quote - not supported by `xml2rfc`, this is converted to
-    `<list style="hanging>` paragraph ([](#block-quote));
+    `<list style="hanging">` paragraph ([](#block-quote));
 * References 
     * external (eref) ([](#external)); 
     * internal (xref) ([](#internal)), you can refer to:
@@ -131,6 +131,8 @@ After that you can start editing.
 # Unsupported Features
 
 * Lists inside a table (`xml2rfc` doesn't handle this);
+* Pandoc markup in the caption for figures/artwork. Pandoc markup for table captions
+  *is* supported;
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
 
 The heavy lifting is done by `transform.xsl` that transforms the XML.

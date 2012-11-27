@@ -368,9 +368,10 @@ Sub items are also supported. Use an exclamation mark (`!`) to separate them:
 ## Working with multiple files
 As an author you will probably break up a draft in multiple files, each dealing with a
 subject or section. When doing so sections with the same title will clash with each other. 
-Pandoc can deal with this situation, but only if the different section are in the *same* 
-file. Concatenating the different section files before processing them is a solution
-to this problem. You can for instance amend the `Makefile` and add something like this:
+Pandoc can deal with this situation, but only if the different sections are in the *same*
+file or processed in the same Pandoc run. 
+Concatenating the different section files before processing them is a solution
+to this problem. You can, for instance, amend the `Makefile` and add something like this:
 
     allsections.pdc: section.pdc.1 section.pdc.2 section.pdc.3
             cat $@ > allsections.pdc

@@ -245,6 +245,14 @@ Which will become "See [](#tab:here-s-the)".
 
 [^3]: table!grid
 
+# Numbered examples
+
+This is another example:
+
+(@good) Another bla bla..
+
+as (@good) shows...
+
 ## Figure tests
 
     This is a figure

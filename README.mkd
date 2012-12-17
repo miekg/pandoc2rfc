@@ -127,7 +127,7 @@ After that you can start editing.
         * tables (handled by XSLT, see [](#references-2)).
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
-* Tables with an anchor and postamble ([](#table));
+* Tables with an anchor and postamble ([](#tables));
 * Indexes, by using footnotes ([](#indexes)).
 
 # Unsupported Features
@@ -332,7 +332,7 @@ And it does the right thing. Referencing sections is done with:
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 For referencing figures/artworks see [](#figureartwork).
-For referencing tables see [](#table).
+For referencing tables see [](#tables).
 
 ## Spanx Styles
 

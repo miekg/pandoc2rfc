@@ -28,8 +28,8 @@ is [Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes f
 fact that it can be translated to numerous output formats, including, but not limited to:
 HTML, (plain) Markdown and `docbook` XML.
 
-So for my next RFC (if ever!) I decided I wanted to use Pandoc. As `xml2rfc` uses XML
-I thought the easiest way would be to create `docbook` XML and transform that using
+So using Pandoc for writing RFCs seems like a sane choice. As `xml2rfc` uses XML,
+the easiest way would be to create `docbook` XML and transform that using
 XSLT. Pandoc2rfc does just that. The conversions are, in some way amusing, as we start
 off with (almost) plain text, use elaborate XML and end up with plain text again.
 
@@ -47,7 +47,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
 
 The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to)) 
 is suitable for inclusion in either the `middle` or `back` section
-of an RFC. The easiest way is to create a template XML file and include the appropriate
+of an RFC. The simplest way is to create a template XML file and include the appropriate
 XML:
 
     <?xml version='1.0' ?>
@@ -56,7 +56,7 @@ XML:
     <!ENTITY pandocBack   PUBLIC '' 'back.xml'>
     ]>
 
-    <rfc ipr='trust200902' docName='draft-gieben-pandoc-rfcs-01'>
+    <rfc ipr='trust200902' docName='draft-gieben-pandoc-rfcs-02'>
      <front>
         <title>Writing I-Ds and RFCs using Pandoc v2</title>
     </front>
@@ -76,15 +76,17 @@ See the Makefile for an example of this. In this case you need to edit
 3 documents:
 
 1. middle.pdc - contains the main body of text;
-1. back.pdc - holds appendices;
+1. back.pdc - holds appendices and references;
 1. template.xml (probably a fairly static file).
 
-The draft (`draft.txt`) is automatically created when you call `make`. 
-This also works for this `README.pdc`.
+The draft (`draft.txt`) you are reading now, is automatically created when you call `make`. 
+The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
+
+## Dependencies
 
 It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
 the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
-style.
+style. And ofcourse `xml2rfc` version two.
 
 When using Pandoc2rfc consider adding the following sentence to an Acknowledgements
 section:
@@ -116,7 +118,7 @@ After that you can start editing.
     * style=hanging ([](#hanging));
 * Figure/artwork with an anchor and postamble ([](#figureartwork));
 * Block quote - not supported by `xml2rfc`, this is converted to
-    `<list style="hanging>` paragraph ([](#block-quote));
+    `<list style="hanging">` paragraph ([](#block-quote));
 * References 
     * external (eref) ([](#external)); 
     * internal (xref) ([](#internal)), you can refer to:
@@ -133,8 +135,6 @@ After that you can start editing.
 * Lists inside a table (`xml2rfc` doesn't handle this);
 * crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
 
-The heavy lifting is done by `transform.xsl` that transforms the XML.
-The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
 
 # Acknowledgements
 
@@ -180,49 +180,79 @@ A good number of styles are supported.
     * Item one;
     * Item two.
 
-Converts to: `<list style="symbol">`
+Converts to `<list style="symbol">`:
+
+* Item one;
+* Item two.
 
 ### Number
 
     A numbered list.
 
     1. Item one;
-    2. Item two.
+    1. Item two.
 
-Converts to: `<list style="numbers">`
+Converts to `<list style="numbers">`:
+
+1. Item one;
+1. Item two.
 
 ### Empty
 Using the default list markers from Pandoc:
 
     A list using the default list markers.
 
-    #. First item;
-    #. Second item.
+    #. Item one;
+    #. Item two.
 
-Converts to: `<list style="empty">`
+Converts to `<list style="empty">`:
+
+#. Item one;
+#. Item two.
 
 ### Roman
 Use the supported Pandoc syntax:
 
-    ii. First item;
-    ii. Second item.
+    ii. Item one;
+    ii. Item two.
 
-Converts to: `<list style="format %i.">`. If you use uppercase Roman
+Converts to `<list style="format %i.">`:
+
+ii. Item one;
+ii. Item two.
+
+If you use uppercase Roman
 numerals, they convert to a different style:
 
-    II. First item;
-    II. Second item.
+    II. Item one;
+    II. Item two.
 
-Yields: `<list style="format (%d) ">`
+Yields `<list style="format (%d) ">`:
+
+II. Item one;
+II. Item two.
 
 ### Letter
 
-    A numbered list.
+A numbered list.
 
-    a. Item one;
-    b. Item two.
+    a.  Item one;
+    b.  Item two.
 
-Converts to: `<list style="letters">`, uppercasing the letters works too.
+Converts to `<list style="letters">`: 
+
+a.  Item one;
+b.  Item two.
+
+Uppercasing the letters works too (note two spaces after the letter.
+
+    A.  Item one;
+    B.  Item two.
+
+Becomes:
+
+A.  Item one;
+B.  Item two.
 
 ### Hanging
 This is more like a description list, so we need to use:
@@ -315,7 +345,7 @@ Converts to: `<spanx style="emph"> ...`
 And the emphasis style with double asterisks: `**text**`
 Converts to: `<spanx style="strong"> ...`
 
-## Table
+## Tables
 A table can be entered as:
 
       Right     Left     Center     Default                                                                  
@@ -380,13 +410,18 @@ And then process `allsection.pdc` in the normal way.
 ## Setting the title
 If you use double quotes in the documents title in the `docName` attribute, like:
 
-    <rfc ipr="trust200902" docName="draft-gieben-writing-rfcs-pandoc-00">
+    <rfc ipr="trust200902" docName="draft-gieben-writing-rfcs-pandoc-02">
 
 The Makefile will pick this up automatically and make a symbolic link:
 
     draft-gieben-writing-rfcs-pandoc-00.txt -> draft.txt
 
 This makes uploading the file to the i-d tracker a bit easier.
+
+## Uploading the XML/txt
+
+The `draft.xml` target will generate an XML file with all XML included, so you can upload
+just one file to the I-D tracker.
 
 ## VIM syntax highlighting
 If you are a VIM user you might be interested in a syntax highlighting file (see [](#VIM)) that

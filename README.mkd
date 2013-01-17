@@ -91,7 +91,7 @@ style. And ofcourse `xml2rfc` version two.
 When using Pandoc2rfc consider adding the following sentence to an Acknowledgements
 section:
 
-     This document was prepared using Pandoc2rfc.
+     This document was produced using the Pandoc2rfc tool.
 
 # Starting a new project
 When starting a new project with `pandoc2rfc` you'll need to copy the following files:

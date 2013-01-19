@@ -19,15 +19,15 @@
 
         <author initials="R." surname="Gieben"
                 fullname="R. (Miek) Gieben">
-            <organization>SIDN Labs</organization>
+            <organization>Google</organization>
 
             <address>
                 <postal>
-                    <street>Meander 501</street>
+                    <street>123 Buckingham Palace Road</street>
                     <street></street>
-                    <city>Arnhem</city> <region></region>
-                    <code>6825 MD</code>
-                    <country>NL</country>
+                    <city>London</city> <region></region>
+                    <code>SW1W 9SH</code>
+                    <country>UK</country>
                 </postal>
 
                 <phone></phone>
@@ -36,7 +36,7 @@
             </address>
         </author>
 
-        <date month="October" year="2012"/>
+        <date month="January" year="2013"/>
 
         <area>General</area>
         <workgroup>RFC Beautification Working Group</workgroup>

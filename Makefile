@@ -42,7 +42,7 @@ nits:   $(TITLE).txt
 	if idnits --help 2>/dev/null >&2; then idnits --year $(date +%Y) --verbose $<; fi
 
 clean:
-	rm -f $(XML) $(TITLE).txt $(TITLE).html  $(TITLE).xml
+	rm -f $(XML) *.txt *.html $(TITLE).xml
 
 realclean:	clean
 	rm -f draft.txt draft.html draft.xml $(TITLE).txt $(TITLE).html $(TITLE).xml

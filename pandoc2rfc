@@ -1,25 +1,56 @@
 #!/bin/bash
-# A small wrapper to create the XML2RFC xml
+
+# (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and
+# xml2rfc to create an I-D.
 TRANS=transform.xsl
+TEMPLATE=template.xml
+
+function usage {
+    echo "Usage: pandoc2rfc [-thxnr] [FILE]..."
+    echo "Process files with Pandoc syntax and run xml2rfc on them."
+    echo 
+    echo "  -t      Create a draft.txt (with page breaks). This is the default"
+    echo "  -H      Create a draft.html"
+    echo "  -x      Create a draft.xml"
+    echo "  -n      Create a draft.nroff"
+    echo "  -r      Create a draft.txt (unpaginated)"
+    echo "  -h      This help"
+}
 
 # As the extension for Pandoc is not really fixed, we try
 # .pdc, .pandoc, .mkd, .markdown and .txt
 function extension {
-    for ext in ".pdc .pandoc .mkd .markdown .txt"; do
+    for ext in .pdc .pandoc .mkd .markdown .txt; do
         base=$(basename "$1" $ext)
         if [[ "$base" != $1 ]]; then
-            return $base
+            echo $base
+            return 0
         fi
     done
-    return ""
+    echo ""
 }
 
+OUT="-f draft.txt --text"
+while getopts "tHhxnr" o; do
+    case $o in
+    t) OUT="-f draft.txt --text";;
+    H) OUT="-f draft.html --html";;
+    x) OUT="-f draft.xml --exp";;
+    n) OUT="-f draft.nroff --nroff";;
+    r) OUT="-f draft.txt --raw";;
+    h) usage && exit 0;;
+    esac
+done
+shift $((OPTIND - 1))
 
+XML=""
 for f in "$@"; do
     base=$(extension "$f")   
-    if [[ -z $base ]]; then
+    if [[ -z "$base" ]]; then
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
-    pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > $base.xml
+    pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
+    XML="$XML $base.xml"
 done
+[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT

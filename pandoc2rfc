@@ -6,7 +6,7 @@ TRANS=transform.xsl
 TEMPLATE=template.xml
 
 function usage {
-    echo "Usage: pandoc2rfc [-thxnr] [FILE]..."
+    echo "Usage: pandoc2rfc [-tHxnrh] [FILE]..."
     echo "Process files with Pandoc syntax and run xml2rfc on them."
     echo 
     echo "  -t      Create a draft.txt (with page breaks). This is the default"
@@ -18,9 +18,9 @@ function usage {
 }
 
 # As the extension for Pandoc is not really fixed, we try
-# .pdc, .pandoc, .mkd, .markdown and .txt
+# .pdc, .pandoc, .mkd, .markdown, .md and .txt
 function extension {
-    for ext in .pdc .pandoc .mkd .markdown .txt; do
+    for ext in .pdc .pandoc .mkd .markdown .md .txt; do
         base=$(basename "$1" $ext)
         if [[ "$base" != $1 ]]; then
             echo $base

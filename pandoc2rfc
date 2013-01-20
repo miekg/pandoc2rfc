@@ -1,0 +1,25 @@
+#!/bin/bash
+# A small wrapper to create the XML2RFC xml
+TRANS=transform.xsl
+
+# As the extension for Pandoc is not really fixed, we try
+# .pdc, .pandoc, .mkd, .markdown and .txt
+function extension {
+    for ext in ".pdc .pandoc .mkd .markdown .txt"; do
+        base=$(basename "$1" $ext)
+        if [[ "$base" != $1 ]]; then
+            return $base
+        fi
+    done
+    return ""
+}
+
+
+for f in "$@"; do
+    base=$(extension "$f")   
+    if [[ -z $base ]]; then
+        echo $0: Could not detect extension for $f >&2
+        exit 1
+    fi
+    pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > $base.xml
+done

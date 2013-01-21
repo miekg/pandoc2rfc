@@ -11,6 +11,9 @@ Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML
 file.
 When all files are converted, xml2rfc is called and a draft is created.
 The intermediate XML files are removed afterwards.
+.PP
+The current directory must contain a file \f[C]template.xml\f[] which
+holds the "front" section of the I-D you are building.
 .SH OPTIONS
 .TP
 .B -T

@@ -12,12 +12,19 @@ file.
 When all files are converted, xml2rfc is called and a draft is created.
 The intermediate XML files are removed afterwards.
 .PP
-The current directory must contain a file \f[C]template.xml\f[] which
-holds the "front" section of the I-D you are building.
+The current directory must contain a file \f[C]template.xml\f[]
+(otherwise use the \f[C]-t\f[] switch) which holds the "front" section
+of the I-D you are building.
+.PP
+Currently there isn\[aq]t a standard extension for Pandoc source files,
+so the following extension are recognized for the input files:
+\f[C]\&.pdc\f[], \f[C]\&.pandoc\f[], \f[C]\&.mkd\f[],
+\f[C]\&.markdown\f[], \f[C]\&.md\f[] and \f[C]\&.txt\f[]
 .SH OPTIONS
 .TP
 .B -T
 Output a draft.txt, a text version with page breaks.
+This is the default.
 .RS
 .RE
 .TP
@@ -42,7 +49,13 @@ Output a draft.txt, a unpaginated text version.
 .RE
 .TP
 .B -t TEMPLATE
-Give the path to the template.xml.
+Path to the template.xml, defaults to the current directory.
+.RS
+.RE
+.TP
+.B -x TRANSFORM
+Path to the transform.xsl XSLT file, defaults to
+/usr/lib/pandoc2rfc/transform.xsl.
 .RS
 .RE
 .TP
@@ -54,5 +67,8 @@ Show a short help message.
 .PP
 \f[C]PANDOC\f[] (1) and the Pandoc documentation found at
 <http://johnmacfarlane.net/pandoc/>.
+.PP
+See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-00 for more
+information on how to typeset an I-D.
 .SH AUTHORS
 Miek Gieben.

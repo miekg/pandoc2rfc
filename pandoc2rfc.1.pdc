@@ -19,6 +19,10 @@ The intermediate XML files are removed afterwards.
 The current directory must contain a file `template.xml` (otherwise use the
 `-t` switch) which holds the "front" section of the I-D you are building.
 
+Currently there isn't a standard extension for Pandoc source files, so the
+following extension are recognized for the input files: `.pdc`, `.pandoc`,
+`.mkd`, `.markdown`, `.md` and `.txt`
+
 # OPTIONS
 
 -T
@@ -48,3 +52,6 @@ The current directory must contain a file `template.xml` (otherwise use the
 # SEE ALSO
 `PANDOC` (1) and
 the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
+
+See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-00 for more information
+on how to typeset an I-D.

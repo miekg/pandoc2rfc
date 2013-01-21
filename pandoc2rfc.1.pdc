@@ -8,7 +8,7 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-THXNRh*] [*FILE*]...
+pandoc2rfc [*-THXNRhvtx*] [*FILE*]...
 
 # DESCRIPTION
 
@@ -45,6 +45,9 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 
 -x TRANSFORM
 :   Path to the transform.xsl XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl.
+
+-v
+:   Be verbose and show the commands that are run.
 
 -h
 :   Show a short help message.

@@ -1,4 +1,4 @@
-pandoc2rfc (2.0.4)
+pandoc2rfc (2.1.0)
 
 * Create a pandoc2rfc shell script, to replace the Makefile.
 

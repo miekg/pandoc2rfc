@@ -55,4 +55,4 @@ for f in "$@"; do
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT
+[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT && rm $XML

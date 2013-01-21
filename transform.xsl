@@ -4,7 +4,7 @@
     extension-element-prefixes="exsl">
 
 <!-- 
-    Version: 2.0.2 - for xml2rfc version 2.x
+    Version: 2.0.3 - for xml2rfc version 2.x
     (c) Miek Gieben
     Licensed under the GPL version 2.
 

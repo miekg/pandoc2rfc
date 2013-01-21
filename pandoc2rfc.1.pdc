@@ -46,6 +46,9 @@ the output will default to HTML.  Thus, for example,
 -R
 :   Output a draft.txt, a unpaginated text version.
 
+-t TEMPLATE
+:   Give the path to the template.xml.
+
 -h
 :   Show a short help message.
 

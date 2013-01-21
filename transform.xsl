@@ -4,9 +4,7 @@
     extension-element-prefixes="exsl">
 
 <!-- 
-    Version: 2.1.1 - for xml2rfc version 2.x, (c) Miek Gieben
-    Licensed under the GPL version 2.
-
+    (c) Miek Gieben 2013, Licensed under the GPL version 2.
     Convert DocBook XML as created by Pandoc to XML suitable for RFCs and thus
     parseable with xml2rfc version 2.x. 
 -->

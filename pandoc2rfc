@@ -14,7 +14,8 @@ function usage {
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
     echo "  -R                  Create a draft.txt (unpaginated)"
-    echo "  -t template.xml     Give the path to the template.xml. Defaults to current directory."
+    echo "  -t template.xml     Path to template.xml. Defaults to current directory."
+    echo "  -x transform.xsl    Path to transform.xsl. Default to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
 }
 
@@ -32,7 +33,7 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
-while getopts "ht:THXNR" o; do
+while getopts "ht:x:THXNR" o; do
     case $o in
     T) OUT="-f draft.txt --text";;
     H) OUT="-f draft.html --html";;
@@ -41,6 +42,7 @@ while getopts "ht:THXNR" o; do
     R) OUT="-f draft.txt --raw";;
     h) usage && exit 0;;
     t) TEMPLATE="$OPTARG";;
+    x) TRANS="$OPTARG";;
     esac
 done
 shift $((OPTIND - 1))

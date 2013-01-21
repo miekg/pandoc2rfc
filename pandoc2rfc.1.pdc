@@ -16,8 +16,8 @@ Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML file.
 When all files are converted, xml2rfc is called and a draft is created. 
 The intermediate XML files are removed afterwards.
 
-The current directory must contain a file `template.xml` which holds the 
-"front" section of the I-D you are building.
+The current directory must contain a file `template.xml` (otherwise use the
+`-t` switch) which holds the "front" section of the I-D you are building.
 
 # OPTIONS
 
@@ -37,7 +37,10 @@ The current directory must contain a file `template.xml` which holds the
 :   Output a draft.txt, a unpaginated text version.
 
 -t TEMPLATE
-:   Give the path to the template.xml.
+:   Path to the template.xml, defaults to the current directory.
+
+-x TRANSFORM
+:   Path to the transform.xsl XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl.
 
 -h
 :   Show a short help message.

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bash pandoc2rfc middle.pdc back.pdc

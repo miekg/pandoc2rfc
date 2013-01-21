@@ -15,7 +15,7 @@ function usage {
     echo "  -N                  Create a draft.nroff"
     echo "  -R                  Create a draft.txt (unpaginated)"
     echo "  -t template.xml     Path to template.xml. Defaults to current directory."
-    echo "  -x transform.xsl    Path to transform.xsl. Default to /usr/lib/pandoc2rfc/transform.xsl"
+    echo "  -x transform.xsl    Path to transform.xsl. Defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
 }
 

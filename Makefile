@@ -1,4 +1,4 @@
-all:	pandoc2rfc.1 draft.txt
+all:	install
 
 pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
@@ -6,7 +6,7 @@ pandoc2rfc.1: pandoc2rfc.1.pdc
 draft.txt: back.pdc middle.pdc
 	bash makedraft
 
-install: all
+install: pandoc2rfc.1 draft.txt
 	mkdir -p $(DESTDIR)/usr/bin
 	mkdir -p $(DESTDIR)/usr/share/man/man1
 	mkdir -p $(DESTDIR)/usr/lib/pandoc2rfc

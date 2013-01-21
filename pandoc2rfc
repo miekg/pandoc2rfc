@@ -6,15 +6,16 @@ TRANS=transform.xsl
 TEMPLATE=template.xml
 
 function usage {
-    echo "Usage: pandoc2rfc [-tHxnrh] [FILE]..."
+    echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
     echo "Process files with Pandoc syntax and run xml2rfc on them."
     echo 
-    echo "  -t      Create a draft.txt (with page breaks). This is the default"
-    echo "  -H      Create a draft.html"
-    echo "  -x      Create a draft.xml"
-    echo "  -n      Create a draft.nroff"
-    echo "  -r      Create a draft.txt (unpaginated)"
-    echo "  -h      This help"
+    echo "  -T                  Create a draft.txt (with page breaks). This is the default"
+    echo "  -H                  Create a draft.html"
+    echo "  -X                  Create a draft.xml"
+    echo "  -N                  Create a draft.nroff"
+    echo "  -R                  Create a draft.txt (unpaginated)"
+    echo "  -t template.xml     Give the path to the template.xml. Defaults to current directory."
+    echo "  -h                  This help"
 }
 
 # As the extension for Pandoc is not really fixed, we try
@@ -31,14 +32,15 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
-while getopts "tHhxnr" o; do
+while getopts "ht:THXNR" o; do
     case $o in
-    t) OUT="-f draft.txt --text";;
+    T) OUT="-f draft.txt --text";;
     H) OUT="-f draft.html --html";;
-    x) OUT="-f draft.xml --exp";;
-    n) OUT="-f draft.nroff --nroff";;
-    r) OUT="-f draft.txt --raw";;
+    X) OUT="-f draft.xml --exp";;
+    N) OUT="-f draft.nroff --nroff";;
+    R) OUT="-f draft.txt --raw";;
     h) usage && exit 0;;
+    t) TEMPLATE="$OPTARG";;
     esac
 done
 shift $((OPTIND - 1))
@@ -53,4 +55,4 @@ for f in "$@"; do
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT
+[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT && rm $XML

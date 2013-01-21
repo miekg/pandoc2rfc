@@ -15,8 +15,7 @@ For Linux/Ubuntu:
 * `apt-get install xsltproc pandoc`;
 * Get the version 2 of xml2rfc;
 * Read the Pandoc manual;
-* Tweak the Makefile;
 * Edit `middle.pdc`, `back.pdc` and/or `template.xml`;
-* `make`.
+* ./pandoc2rfc middle.pdc back.pdc
 
 Miek Gieben - 2012

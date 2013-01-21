@@ -8,43 +8,33 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc [*-tHxnrh*] [*FILE*]...
+pandoc2rfc [*-THXNRh*] [*FILE*]...
 
 # DESCRIPTION
 
-
-    pandoc -o output.html input.txt
-
-Instead of a file, an absolute URI may be given.  In this case
-pandoc will fetch the content using HTTP:
-
-    pandoc -f html -t markdown http://www.fsf.org
-
-The input and output formats may be specified using command-line options
-(see **OPTIONS**, below, for details).  If these formats are not
-specified explicitly, Pandoc will attempt to determine them
-from the extensions of the input and output filenames.  If input comes
-from *stdin* or from a file with an unknown extension, the input is assumed
-to be markdown.  If no output filename is specified using the `-o`
-option, or if a filename is specified but its extension is unknown,
-the output will default to HTML.  Thus, for example,
+Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML file.
+When all files are converted, xml2rfc is called and a draft is created. 
+The intermediate XML files are removed afterwards.
 
 # OPTIONS
 
--t
+-T
 :   Output a draft.txt, a text version with page breaks.
 
 -H
 :   Output a draft.html.
 
--x
+-X
 :   Output a draft.xml, with all references expanded.
 
--n
+-N
 :   Output a draft.nroff.
 
--r
+-R
 :   Output a draft.txt, a unpaginated text version.
+
+-t TEMPLATE
+:   Give the path to the template.xml.
 
 -h
 :   Show a short help message.

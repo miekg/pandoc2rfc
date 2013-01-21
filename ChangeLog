@@ -1,8 +1,16 @@
+pandoc2rfc (2.0.3)
+
+* Create a pandoc2rfc shell script, to replace the Makefile.
+
+ -- Miek Gieben <miek@miek.nl>
+
+
 pandoc2rfc (2.0.2)
 
 * Incremental release - some documentation fixes
 
  -- Miek Gieben <miek@miek.nl>
+
 
 pandoc2rfc (2.0.1)
 
@@ -10,11 +18,13 @@ pandoc2rfc (2.0.1)
 
  -- Miek Gieben <miek@miek.nl>
 
+
 pandoc2rfc (0.8.10)
 
  * Documentation
 
  -- Miek Gieben <miek@miek.nl>  
+
 
 pandoc2rfc (0.8.9)
 
@@ -24,12 +34,14 @@ pandoc2rfc (0.8.9)
 
  -- Miek Gieben <miek@miek.nl>  
 
+
 pandoc2rfc (0.8.8)
 
  * Bugfixes in how table width lookups are done (i.e. use the correct table).
  * Misuse footnote ([^1]) as iref.
 
  -- Miek Gieben <miek@miek.nl>  
+
 
 pandoc2rfc (0.8.7)
 

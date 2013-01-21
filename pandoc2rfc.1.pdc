@@ -22,7 +22,7 @@ The current directory must contain a file `template.xml` which holds the
 # OPTIONS
 
 -T
-:   Output a draft.txt, a text version with page breaks.
+:   Output a draft.txt, a text version with page breaks. This is the default.
 
 -H
 :   Output a draft.html.

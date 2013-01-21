@@ -7,9 +7,9 @@ pandoc2rfc.1:	pandoc2rfc.1.pdc
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin
+	mkdir -p $(DESTDIR)/usr/share/man/man1
+	mkdir -p $(DESTDIR)/usr/lib/pandoc2rfc
 	cp pandoc2rfc $(DESTDIR)/usr/bin/pandoc2rfc
 	chmod 755 $(DESTDIR)/usr/bin/pandoc2rfc
-	mkdir -p $(DESTDIR)/usr/share/man/man1
-	cp pandoc2rfc.1: $(DESTDIR)/usr/share/man/man1
-	mkdir -p $(DESTDIR)/usr/lib/pandoc2rfc
+	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
 	cp transform.xsl $(DESTDIR)/usr/lib/pandoc2rfc

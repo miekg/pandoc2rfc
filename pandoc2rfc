@@ -9,14 +9,14 @@ function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
     echo "Process files with Pandoc syntax and run xml2rfc on them."
     echo 
-    echo "  -T                  Create a draft.txt (with page breaks). This is the default"
+    echo "  -T                  Create a draft.txt (with page breaks), this is the default"
     echo "  -H                  Create a draft.html"
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
     echo "  -R                  Create a draft.txt (unpaginated)"
     echo "  -v                  Be verbose"
-    echo "  -t template.xml     Path to template.xml. Defaults to current directory."
-    echo "  -x transform.xsl    Path to transform.xsl. Defaults to /usr/lib/pandoc2rfc/transform.xsl"
+    echo "  -t template.xml     Path to template.xml, defaults to current directory"
+    echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
 }
 

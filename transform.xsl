@@ -11,6 +11,9 @@
 
 <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>
 <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+<xsl:variable name="ure" select="'igure: '"/>
+<xsl:variable name="Fig" select="concat('F', $ure)"/>
+<xsl:variable name="fig" select="concat('f', $ure)"/>
 
 <xsl:template match="/">
     <xsl:comment> This document was prepared using Pandoc2rfc </xsl:comment>
@@ -286,36 +289,36 @@
 <xsl:template match="screen | programlisting">
     <figure>
         <xsl:choose>
-            <xsl:when test="contains(., 'Figure: ')">
+            <xsl:when test="contains(., $Fig)">
                 <xsl:attribute name="anchor">
                     <xsl:text>fig:</xsl:text>
-                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., "Figure: ") , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
+                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., $Fig) , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
                 </xsl:attribute>
                 <!-- If there is an caption, center the figure -->
                 <xsl:attribute name="align">
                     <xsl:text>center</xsl:text>
                 </xsl:attribute>
                 <artwork>
-                    <xsl:value-of select="substring-before(., 'Figure: ')"/>
+                    <xsl:value-of select="substring-before(., $Fig)"/>
                 </artwork>
                 <postamble>
                     <!-- Should use something like mode="post", but this isn't xml yet, 
                          its raw text -->
-                    <xsl:value-of select="substring-after(., 'Figure: ')"/>
+                    <xsl:value-of select="substring-after(., $Fig)"/>
                 </postamble>
             </xsl:when>
-            <xsl:when test="contains(., 'figure: ')">
+            <xsl:when test="contains(., $fig)">
                 <xsl:attribute name="anchor">
                     <xsl:text>fig:</xsl:text>
-                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., "figure: ") , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
+                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., $fig) , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
                 </xsl:attribute>
                 <artwork>
-                    <xsl:value-of select="substring-before(., 'figure: ')"/>
+                    <xsl:value-of select="substring-before(., $fig)"/>
                 </artwork>
                 <postamble>
                     <!-- Should use something like mode="post", but this isn't xml yet, 
                          its raw text -->
-                    <xsl:value-of select="substring-after(., 'figure: ')"/>
+                    <xsl:value-of select="substring-after(., $fig)"/>
                 </postamble>
             </xsl:when>
             <xsl:otherwise>

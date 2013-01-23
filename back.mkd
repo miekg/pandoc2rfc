@@ -259,11 +259,11 @@ as (@good) shows...
     This is a figure
     This is a figure
     This is a figure
-    Figure: This is the caption, with text in `typewriter`. Which isnt converted
+    @Figure: This is the caption, with text in `typewriter`. Which isnt converted
     to a <spanx> style, because this is copied as-is.
 
 And how a figure that is not centered, do to using `figure` and not `Figure`.
 
     This is a figure
     This is a figure
-    figure: A non centered figure.
+    @figure: A non centered figure.

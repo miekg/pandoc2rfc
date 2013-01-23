@@ -2,6 +2,8 @@ pandoc2rfc (2.1.5)
 
 * Up the version to 2.1.5.
 * Add a 'figure' caption, which will not center the figure.
+* Make it possible to include the stylesheet itself in an I-D
+  describing the stylesheet.
 
  -- Miek Gieben <miek@miek.nl>
 

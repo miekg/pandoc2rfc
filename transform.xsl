@@ -5,10 +5,8 @@
 
 <!-- 
     (c) Miek Gieben 2013, Licensed under the GPL version 2.
-    Convert DocBook XML as created by Pandoc to XML suitable for RFCs and thus
-    parseable with xml2rfc version 2.x. 
+    Figure: The XSLT stylesheet.
 -->
-
 <xsl:output method="xml" omit-xml-declaration="yes"/>
 
 <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>

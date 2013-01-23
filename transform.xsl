@@ -304,6 +304,20 @@
                     <xsl:value-of select="substring-after(., 'Figure: ')"/>
                 </postamble>
             </xsl:when>
+            <xsl:when test="contains(., 'figure: ')">
+                <xsl:attribute name="anchor">
+                    <xsl:text>fig:</xsl:text>
+                    <xsl:value-of select='translate( translate(substring(normalize-space(translate( substring-after(., "figure: ") , "&#xA;&#x27;", "  ")), 1, 10), " ", "-"), $uppercase, $smallcase)'/>
+                </xsl:attribute>
+                <artwork>
+                    <xsl:value-of select="substring-before(., 'figure: ')"/>
+                </artwork>
+                <postamble>
+                    <!-- Should use something like mode="post", but this isn't xml yet, 
+                         its raw text -->
+                    <xsl:value-of select="substring-after(., 'figure: ')"/>
+                </postamble>
+            </xsl:when>
             <xsl:otherwise>
                 <artwork>
                     <xsl:value-of select="."/>

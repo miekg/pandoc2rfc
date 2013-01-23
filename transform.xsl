@@ -2,10 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:exsl="http://exslt.org/common"
     extension-element-prefixes="exsl">
-
 <!-- 
     (c) Miek Gieben 2013, Licensed under the GPL version 2.
-    Figure: The XSLT stylesheet.
 -->
 <xsl:output method="xml" omit-xml-declaration="yes"/>
 
@@ -25,8 +23,10 @@
     <xsl:apply-templates/>
 </xsl:template>
 
-<!-- Remove the article info section, this should be handled
-     in the <front> matter of the draft -->
+<!-- 
+Remove the article info section, this should be handled
+in the <front> matter of the draft 
+-->
 <xsl:template match="articleinfo">
 </xsl:template>
 
@@ -64,8 +64,9 @@
     </section>
 </xsl:template>
 
-<!-- Transform a <para> to <t>, except in lists, then it is discarded -->
-<!-- If somebody tries to use multiple paragraphs, we insert a <vspace> *yech* -->
+<!-- 
+Transform a <para> to <t>, except in lists, then it is discarded 
+-->
 <xsl:template match="para | simpara">
     <xsl:choose>
         <xsl:when test="ancestor::orderedlist">
@@ -86,7 +87,6 @@
                 </xsl:if>
                 <xsl:apply-templates/>
         </xsl:when>
-        <!-- AsciiDoc puts simpara in each table element, remove it -->
         <xsl:when test="ancestor::tbody">
                 <xsl:apply-templates/>
         </xsl:when>
@@ -96,7 +96,9 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Transform a <listitem> to a <t> for lists, except in description lists -->
+<!-- 
+Transform a <listitem> to a <t> for lists, except in description lists
+-->
 <xsl:template match="listitem">
     <xsl:choose>
         <xsl:when test="parent::varlistentry">
@@ -108,7 +110,9 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Transform lists, for lists in list we do not put it in a new <t></t> -->
+<!--
+Transform lists, for lists in list we do not put it in a new <t></t>
+-->
 <xsl:template match="orderedlist">
     <xsl:choose>
        <xsl:when test="contains(@numeration,'arabic')">
@@ -227,7 +231,9 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Hanging lists are specified as <variablelist> -->
+<!-- 
+Hanging lists are specified as <variablelist> 
+-->
 <xsl:template match="variablelist">
     <xsl:choose>
         <xsl:when test="ancestor::orderedlist">
@@ -256,8 +262,9 @@
     </t>
 </xsl:template>
 
-<!-- Transform <link> to <xref> crosslinks -->
-<!-- Use [see](#mysection) in Pandoc -->
+<!-- 
+Transform <link> to <xref> crosslinks 
+-->
 <xsl:template match="link">
     <xref>
         <xsl:attribute name="target">
@@ -267,8 +274,9 @@
     </xref>
 </xsl:template>
 
-<!-- Transform <ulink> to <eref> links -->
-<!-- Use [see](uri) in Pandoc -->
+<!-- 
+Transform <ulink> to <eref> links 
+-->
 <xsl:template match="ulink">
     <eref>
         <xsl:attribute name="target">
@@ -278,14 +286,18 @@
     </eref>
 </xsl:template>
 
-<!-- Transform <blockquote> to <list style="hanging"> -->
+<!-- 
+Transform <blockquote> to <list style="hanging">
+-->
 <xsl:template match="blockquote">
     <t><list style="hanging" hangIndent="3">
         <xsl:apply-templates/>   
     </list></t>
 </xsl:template>
 
-<!-- Transform <screen> and <programlisting> to <figure><artwork> -->
+<!-- 
+Transform <screen> and <programlisting> to <figure><artwork>
+-->
 <xsl:template match="screen | programlisting">
     <figure>
         <xsl:choose>
@@ -302,8 +314,6 @@
                     <xsl:value-of select="substring-before(., $Fig)"/>
                 </artwork>
                 <postamble>
-                    <!-- Should use something like mode="post", but this isn't xml yet, 
-                         its raw text -->
                     <xsl:value-of select="substring-after(., $Fig)"/>
                 </postamble>
             </xsl:when>
@@ -316,8 +326,6 @@
                     <xsl:value-of select="substring-before(., $fig)"/>
                 </artwork>
                 <postamble>
-                    <!-- Should use something like mode="post", but this isn't xml yet, 
-                         its raw text -->
                     <xsl:value-of select="substring-after(., $fig)"/>
                 </postamble>
             </xsl:when>
@@ -330,7 +338,6 @@
     </figure>
 </xsl:template>
 
-<!-- Kill title tags + content -->
 <xsl:template match="title"></xsl:template>
 
 <xsl:template match="literal"> 
@@ -354,7 +361,6 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- post processing for caption -->
 <xsl:template match="literal" mode="post"> 
     <spanx style="verb">
         <xsl:apply-templates mode="post"/> 

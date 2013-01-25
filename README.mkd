@@ -43,7 +43,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+    xml2rfc  +---------+ 
           | PLAIN TEXT |  <--------  | XML2RFC | 
           +------------+             +---------+ 
-    Figure: Attempt to justify Pandoc2rfc.
+    @Figure: Attempt to justify Pandoc2rfc.
 
 The XML generated (the output after the `xsltproc` step in [](#fig:attempt-to)) 
 is suitable for inclusion in either the `middle` or `back` section
@@ -70,7 +70,7 @@ XML:
     </back>
 
     </rfc>
-    Figure: A minimal template.xml.
+    @Figure: A minimal template.xml.
 
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
@@ -285,7 +285,8 @@ Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support
 does. If you add a `Figure: some text` as the last line, the artwork gets a
 `<postamble>` with the text
 after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
-will be centered.
+will be centered. If a caption is needed
+but the figure should not be centered use "@figure:\ ". 
 
 ### References
 The reference anchor
@@ -357,7 +358,7 @@ A table can be entered as:
             1     1         1         1       
 
       Table: A caption describing the table.
-      Figure: A caption describing the figure describing the table.
+      @Figure: A caption describing the figure describing the table.
 
 Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple styles
 as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.

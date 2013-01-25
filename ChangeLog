@@ -1,4 +1,20 @@
-pandoc2rfc (2.0.3)
+pandoc2rfc (2.1.6)
+
+* Prefix the figure caption string with @, so we have @Figure: and @figure: .
+
+ -- Miek Gieben <miek@miek.nl>
+
+
+pandoc2rfc (2.1.5)
+
+* Up the version to 2.1.5.
+* Add a 'figure' caption, which will not center the figure.
+* Make it possible to include the stylesheet itself in an I-D describing the stylesheet.
+
+ -- Miek Gieben <miek@miek.nl>
+
+
+pandoc2rfc (2.1.3)
 
 * Create a pandoc2rfc shell script, to replace the Makefile.
 

@@ -2,19 +2,21 @@
 
 # (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and
 # xml2rfc to create an I-D.
-TRANS=transform.xsl
+TRANS=/usr/lib/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
     echo "Process files with Pandoc syntax and run xml2rfc on them."
     echo 
-    echo "  -T                  Create a draft.txt (with page breaks). This is the default"
+    echo "  -T                  Create a draft.txt (with page breaks), this is the default"
     echo "  -H                  Create a draft.html"
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
     echo "  -R                  Create a draft.txt (unpaginated)"
-    echo "  -t template.xml     Give the path to the template.xml. Defaults to current directory."
+    echo "  -v                  Be verbose"
+    echo "  -t template.xml     Path to template.xml, defaults to current directory"
+    echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
 }
 
@@ -32,7 +34,7 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
-while getopts "ht:THXNR" o; do
+while getopts "vht:x:THXNR" o; do
     case $o in
     T) OUT="-f draft.txt --text";;
     H) OUT="-f draft.html --html";;
@@ -41,6 +43,8 @@ while getopts "ht:THXNR" o; do
     R) OUT="-f draft.txt --raw";;
     h) usage && exit 0;;
     t) TEMPLATE="$OPTARG";;
+    x) TRANS="$OPTARG";;
+    v) VERBOSE="y";;
     esac
 done
 shift $((OPTIND - 1))
@@ -52,7 +56,9 @@ for f in "$@"; do
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
+    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc --nonet $TRANS - \> "$base".xml
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && xml2rfc $TEMPLATE $XML $OUT && rm $XML
+[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $TEMPLATE $OUT \&\& rm $XML
+[[ -n "$XML" ]] && xml2rfc $TEMPLATE $OUT && rm $XML

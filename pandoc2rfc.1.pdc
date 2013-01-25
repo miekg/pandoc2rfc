@@ -8,7 +8,7 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-THXNRh*] [*FILE*]...
+pandoc2rfc [*-THXNRhvtx*] [*FILE*]...
 
 # DESCRIPTION
 
@@ -16,10 +16,17 @@ Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML file.
 When all files are converted, xml2rfc is called and a draft is created. 
 The intermediate XML files are removed afterwards.
 
+The current directory must contain a file `template.xml` (otherwise use the
+`-t` switch) which holds the "front" section of the I-D you are building.
+
+Currently there isn't a standard extension for Pandoc source files, so the
+following extension are recognized for the input files: `.pdc`, `.pandoc`,
+`.mkd`, `.markdown`, `.md` and `.txt`
+
 # OPTIONS
 
 -T
-:   Output a draft.txt, a text version with page breaks.
+:   Output a draft.txt, a text version with page breaks. This is the default.
 
 -H
 :   Output a draft.html.
@@ -34,7 +41,13 @@ The intermediate XML files are removed afterwards.
 :   Output a draft.txt, a unpaginated text version.
 
 -t TEMPLATE
-:   Give the path to the template.xml.
+:   Path to the template.xml, defaults to the current directory.
+
+-x TRANSFORM
+:   Path to the transform.xsl XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl.
+
+-v
+:   Be verbose and show the commands that are run.
 
 -h
 :   Show a short help message.
@@ -42,3 +55,6 @@ The intermediate XML files are removed afterwards.
 # SEE ALSO
 `PANDOC` (1) and
 the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
+
+See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-00 for more information
+on how to typeset an I-D.

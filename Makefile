@@ -1,30 +1,16 @@
-PDC=middle.pdc back.pdc
-RFC=bash pandoc2rfc
-# This assumes double quotes in the docName!
-TITLE=$(shell grep docName template.xml | sed -e 's/.*docName=\"//' -e 's/\">//')
+all:	pandoc2rfc.1 draft.txt
 
-all:	draft.txt 
+pandoc2rfc.1: pandoc2rfc.1.pdc
+	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
 
-draft.txt:	template.xml
-	$(RFC) $(PDC)
+draft.txt: back.mkd README.mkd transform.xsl
+	bash makedraft
 
-draft.html: 	template.xml
-	$(RFC) -H $(PDC)
-
-draft.xml:	template.xml
-	$(RFC) -X $(PDC)
-
-$(TITLE).txt:	draft.txt
-	ln -sf $< $@
-
-$(TITLE).html:	draft.html
-	ln -sf $< $@
-
-$(TITLE).xml:	draft.xml
-	ln -sf $< $@
-
-nits:   $(TITLE).txt
-	if idnits --help 2>/dev/null >&2; then idnits --year $(date +%Y) --verbose $<; fi
-
-clean: 
-	rm -f draft.txt draft.html draft.xml $(TITLE).txt $(TITLE).html $(TITLE).xml
+install:
+	mkdir -p $(DESTDIR)/usr/bin
+	mkdir -p $(DESTDIR)/usr/share/man/man1
+	mkdir -p $(DESTDIR)/usr/lib/pandoc2rfc
+	cp pandoc2rfc $(DESTDIR)/usr/bin/pandoc2rfc
+	chmod 755 $(DESTDIR)/usr/bin/pandoc2rfc
+	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
+	cp transform.xsl $(DESTDIR)/usr/lib/pandoc2rfc

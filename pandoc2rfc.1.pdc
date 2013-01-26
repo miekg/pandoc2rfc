@@ -28,6 +28,9 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -T
 :   Output a draft.txt, a text version with page breaks. This is the default.
 
+-R
+:   Output a draft.txt, a unpaginated text version.
+
 -H
 :   Output a draft.html.
 
@@ -37,8 +40,8 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -N
 :   Output a draft.nroff.
 
--R
-:   Output a draft.txt, a unpaginated text version.
+-C
+:   Remove all drafts.
 
 -t TEMPLATE
 :   Path to the template.xml, defaults to the current directory.

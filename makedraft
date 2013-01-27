@@ -1,3 +1,0 @@
-#!/bin/bash
-
-bash pandoc2rfc -t template.xml -x transform.xsl *.mkd

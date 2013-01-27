@@ -1,19 +1,19 @@
 #!/bin/bash
-
-# (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and
-# xml2rfc to create an I-D.
+# (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and xml2rfc 
+# to create an I-D.
 TRANS=/usr/lib/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
     echo "Process files with Pandoc syntax and run xml2rfc on them."
-    echo 
+    echo
     echo "  -T                  Create a draft.txt (with page breaks), this is the default"
+    echo "  -R                  Create a draft.txt (unpaginated)"
     echo "  -H                  Create a draft.html"
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
-    echo "  -R                  Create a draft.txt (unpaginated)"
+    echo "  -C                  Remove all drafts"
     echo "  -v                  Be verbose"
     echo "  -t template.xml     Path to template.xml, defaults to current directory"
     echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
@@ -34,13 +34,15 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
-while getopts "vht:x:THXNR" o; do
+while getopts "vht:x:THXNRC" o; do
     case $o in
     T) OUT="-f draft.txt --text";;
+    R) OUT="-f draft.txt --raw";;
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;
     N) OUT="-f draft.nroff --nroff";;
-    R) OUT="-f draft.txt --raw";;
+    C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff}
+       rm -f draft.{txt,html,xml,nroff} && exit 0;;
     h) usage && exit 0;;
     t) TEMPLATE="$OPTARG";;
     x) TRANS="$OPTARG";;
@@ -51,7 +53,7 @@ shift $((OPTIND - 1))
 
 XML=""
 for f in "$@"; do
-    base=$(extension "$f")   
+    base=$(extension "$f")
     if [[ -z "$base" ]]; then
         echo $0: Could not detect extension for $f >&2
         exit 1

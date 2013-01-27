@@ -7,14 +7,17 @@
     (c) Miek Gieben 2013, Licensed under the GPL version 2.
 -->
   <xsl:output method="xml" omit-xml-declaration="yes"/>
-  <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>
-  <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+  <xsl:variable name="smallcase" 
+    select="'abcdefghijklmnopqrstuvwxyz'"/>
+  <xsl:variable name="uppercase" 
+    select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
   <xsl:variable name="ure" select="'igure: '"/>
   <xsl:variable name="Fig" select="concat('@F', $ure)"/>
   <xsl:variable name="fig" select="concat('@f', $ure)"/>
   <xsl:template match="/">
-    <xsl:comment> This document was prepared using Pandoc2rfc </xsl:comment>
-    <xsl:comment> https://github.com/miekg/pandoc2rfc </xsl:comment>
+      <xsl:comment>This document was prepared using Pandoc2rfc
+      </xsl:comment>
+  <xsl:comment>https://github.com/miekg/pandoc2rfc</xsl:comment>
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="article">
@@ -32,25 +35,30 @@ in the <front> matter of the draft
       <xsl:choose>
         <xsl:when test="contains(./para, '!')">
           <xsl:attribute name="item">
-            <xsl:value-of select="substring-before (normalize-space(translate(./para, '&#10;', ' ')), '!')"/>
+              <xsl:value-of select="substring-before
+(normalize-space(translate(./para, '&#10;', ' ')), '!')"/>
           </xsl:attribute>
           <xsl:attribute name="subitem">
-            <xsl:value-of select="substring-after (normalize-space(translate(./para, '&#10;', ' ')), '!')"/>
+              <xsl:value-of select="substring-after
+(normalize-space(translate(./para, '&#10;', ' ')), '!')"/>
           </xsl:attribute>
         </xsl:when>
         <xsl:otherwise>
           <xsl:attribute name="item">
-            <xsl:value-of select="normalize-space(translate(./para, '&#10;', ' '))"/>
+              <xsl:value-of select="normalize-space
+(translate(./para, '&#10;', ' '))"/>
           </xsl:attribute>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:element>
   </xsl:template>
   <!-- Merge section with the title tags into one section -->
-  <xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
+  <xsl:template match="section|simplesect|sect1|sect2|sect3|sect4
+|sect5">
     <section>
       <xsl:attribute name="title">
-        <xsl:value-of select="normalize-space(translate(./title, '&#10;', ' '))"/>
+          <xsl:value-of select="normalize-space
+(translate(./title, '&#10;', ' '))"/>
       </xsl:attribute>
       <xsl:attribute name="anchor">
         <xsl:value-of select="@id"/>
@@ -92,7 +100,7 @@ Transform a <para> to <t>, except in lists, then it is discarded
     </xsl:choose>
   </xsl:template>
   <!-- 
-Transform a <listitem> to a <t> for lists, except in description lists
+Transform a <listitem> to a <t> for lists, except in desc. lists
 -->
   <xsl:template match="listitem">
     <xsl:choose>
@@ -327,10 +335,10 @@ Hanging lists are specified as <variablelist>
   <xsl:template match="varlistentry">
     <t>
       <xsl:attribute name="hangText">
-        <xsl:value-of select="normalize-space(translate(./term, 
-          ' &#9;&#13;&#10;', ' '))"/>
+        <xsl:value-of select="normalize-space(translate(./term,
+' &#9;&#13;&#10;', ' '))"/>
       </xsl:attribute>
-      <!-- OPTION: enable this to get a newline after the hangText -->
+      <!-- OPTION: enable to get a newline after the hangText -->
       <!-- <xsl:element name="vspace"/> -->
       <xsl:apply-templates select="./listitem"/>
     </t>
@@ -376,7 +384,10 @@ Transform <screen> and <programlisting> to <figure><artwork>
         <xsl:when test="contains(., $Fig)">
           <xsl:attribute name="anchor">
             <xsl:text>fig:</xsl:text>
-            <xsl:value-of select="translate( translate(substring(normalize-space(translate( substring-after(., $Fig) , &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
+            <xsl:value-of select="translate(translate(substring(
+normalize-space(translate( substring-after(., $Fig),
+&quot;&#10;'&quot;, &quot;  &quot;)), 1, 10),
+&quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
           </xsl:attribute>
           <!-- If there is an caption, center the figure -->
           <xsl:attribute name="align">
@@ -392,7 +403,10 @@ Transform <screen> and <programlisting> to <figure><artwork>
         <xsl:when test="contains(., $fig)">
           <xsl:attribute name="anchor">
             <xsl:text>fig:</xsl:text>
-            <xsl:value-of select="translate( translate(substring(normalize-space(translate( substring-after(., $fig) , &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
+            <xsl:value-of select="translate(translate(substring(
+normalize-space(translate( substring-after(., $fig),
+&quot;&#10;'&quot;, &quot;  &quot;)), 1, 10),
+&quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
           </xsl:attribute>
           <artwork>
             <xsl:value-of select="substring-before(., $fig)"/>
@@ -455,13 +469,19 @@ Transform <screen> and <programlisting> to <figure><artwork>
       <xsl:if test="./caption">
         <xsl:attribute name="anchor">
           <xsl:text>tab:</xsl:text>
-          <xsl:value-of select="translate( translate(substring(normalize-space(translate(./caption, &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
+          <xsl:value-of select="translate( translate(substring(
+normalize-space(translate(./caption, &quot;&#10;'&quot;,
+&quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;),
+$uppercase, $smallcase)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="./title">
         <xsl:attribute name="anchor">
           <xsl:text>tab:</xsl:text>
-          <xsl:value-of select="translate( translate(substring(normalize-space(translate(./title, &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
+          <xsl:value-of select="translate( translate(substring(
+normalize-space(translate(./title,
+&quot;&#10;'&quot;, &quot;  &quot;)), 1, 10),
+&quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:apply-templates/>
@@ -480,7 +500,7 @@ Transform <screen> and <programlisting> to <figure><artwork>
     </texttable>
   </xsl:template>
   <!-- Table headers -->
-  <xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">
+  <xsl:template match="table/thead/tr/th|informaltable/thead/tr/th">
     <ttcol>
       <xsl:attribute name="align">
         <xsl:value-of select="@align"/>
@@ -596,12 +616,14 @@ Every even position() need to be dealt with:
     <xsl:param name="column"/>
     <xsl:if test="../../../../tgroup/colspec[$column]">
       <xsl:attribute name="align">
-        <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
+          <xsl:value-of
+select="../../../../tgroup/colspec[$column]/@align"/>
       </xsl:attribute>
       <!-- Optionally colwidth, translate * to % -->
       <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
         <xsl:attribute name="width">
-          <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
+            <xsl:value-of select="translate(
+../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
         </xsl:attribute>
       </xsl:if>
     </xsl:if>
@@ -662,17 +684,20 @@ Every even position() need to be dealt with:
     <xsl:param name="column"/>
     <xsl:if test="../../../../tgroup/colspec[$column]">
       <xsl:attribute name="align">
-        <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
+          <xsl:value-of 
+select="../../../../tgroup/colspec[$column]/@align"/>
       </xsl:attribute>
       <!-- Optionally colwidth, translate * to % -->
       <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
         <xsl:attribute name="width">
-          <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
+            <xsl:value-of select="translate(
+../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
         </xsl:attribute>
       </xsl:if>
     </xsl:if>
   </xsl:template>
-  <xsl:template match="table/tbody/tr/td | informaltable/tbody/tr/td | table/tgroup/tbody/row/entry | informaltable/tgroup/tbody/row/entry">
+  <xsl:template match="table/tbody/tr/td|informaltable/tbody/tr/td|
+table/tgroup/tbody/row/entry | informaltable/tgroup/tbody/row/entry">
     <c>
       <xsl:apply-templates/>
     </c>

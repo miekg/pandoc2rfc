@@ -1,3 +1,11 @@
+pandoc2rfc (2.1.7)
+
+* Some minor fixes
+* Documentation updates for xml2rfc 2.4.0
+
+ -- Miek Gieben <miek@miek.nl>
+
+
 pandoc2rfc (2.1.6)
 
 * Prefix the figure caption string with @, so we have @Figure: and @figure: .

@@ -35,9 +35,10 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
-while getopts "vht:x:THXNRC" o; do
+while getopts "vht:x:THMXNRC" o; do
     case $o in
-    T) OUT="-f draft.txt --text";;
+    T) ;;
+    M) MARKUP="1";;
     R) OUT="-f draft.txt --raw";;
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;
@@ -65,3 +66,5 @@ for f in "$@"; do
 done
 [[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $TEMPLATE $OUT \&\& rm $XML
 [[ -n "$XML" ]] && xml2rfc $TEMPLATE $OUT && rm $XML
+[[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && [[ -n "$VERBOSE" ]] && echo python rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
+[[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && python rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt

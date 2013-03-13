@@ -1,4 +1,4 @@
-pandoc2rfc (2.1.7)
+pandoc2rfc (2.1.8)
 
 * Add rfcmarkup and let pandoc2rfc output the html it creates.
 

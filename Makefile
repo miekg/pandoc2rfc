@@ -6,6 +6,9 @@ pandoc2rfc.1: pandoc2rfc.1.pdc
 draft.txt: back.mkd README.mkd transform.xsl
 	bash pandoc2rfc -t template.xml -x transform.xsl *.mkd
 
+draft.html: back.mkd README.mkd transform.xsl
+	base pandoc2rfc -t template.xml -x transform.xsl -M *.mkd
+
 install:
 	mkdir -p $(DESTDIR)/usr/bin
 	mkdir -p $(DESTDIR)/usr/share/man/man1
@@ -13,5 +16,6 @@ install:
 	cp pandoc2rfc $(DESTDIR)/usr/bin/pandoc2rfc
 	cp rfcmarkup $(DESTDIR)/usr/bin/rfcmarkup
 	chmod 755 $(DESTDIR)/usr/bin/pandoc2rfc
+	chmod 755 $(DESTDIR)/usr/bin/rfcmarkup
 	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
 	cp transform.xsl $(DESTDIR)/usr/lib/pandoc2rfc

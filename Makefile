@@ -7,7 +7,7 @@ draft.txt: back.mkd README.mkd transform.xsl
 	bash pandoc2rfc -t template.xml -x transform.xsl *.mkd
 
 draft.html: back.mkd README.mkd transform.xsl
-	base pandoc2rfc -t template.xml -x transform.xsl -M *.mkd
+	bash pandoc2rfc -t template.xml -x transform.xsl -M *.mkd
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin

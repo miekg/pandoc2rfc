@@ -1,3 +1,10 @@
+pandoc2rfc (2.1.7)
+
+* Add rfcmarkup and let pandoc2rfc output the html it creates.
+
+ -- Miek Gieben <miek@miek.nl>
+
+
 pandoc2rfc (2.1.6)
 
 * Prefix the figure caption string with @, so we have @Figure: and @figure: .

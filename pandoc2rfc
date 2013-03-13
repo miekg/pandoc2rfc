@@ -11,6 +11,7 @@ function usage {
     echo "  -T                  Create a draft.txt (with page breaks), this is the default"
     echo "  -R                  Create a draft.txt (unpaginated)"
     echo "  -H                  Create a draft.html"
+    echo "  -M                  Create a draft.html (using rfcmarkup)"
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
     echo "  -C                  Remove all drafts"

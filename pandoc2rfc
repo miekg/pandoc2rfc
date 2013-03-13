@@ -68,5 +68,7 @@ for f in "$@"; do
 done
 [[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& rm $XML
 [[ -n "$XML" ]] && xml2rfc $Q $TEMPLATE $OUT && rm $XML
-[[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && [[ -n "$VERBOSE" ]] && echo python rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
-[[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && python rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt
+if [[ -n "$MARKUP" ]]; then
+    [[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo python rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
+    [[ -n "$XML" ]] && python rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt
+fi

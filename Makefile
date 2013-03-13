@@ -4,10 +4,10 @@ pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
 
 draft.txt: back.mkd README.mkd transform.xsl
-	bash pandoc2rfc -t template.xml -x transform.xsl *.mkd
+	bash pandoc2rfc -t template.xml -x transform.xsl back.mkd README.mkd || exit 0
 
 draft.html: back.mkd README.mkd transform.xsl
-	bash pandoc2rfc -t template.xml -x transform.xsl -M *.mkd
+	bash pandoc2rfc -t template.xml -x transform.xsl -M back.mkd README.mkd || exit 0
 
 install:
 	mkdir -p $(DESTDIR)/usr/bin

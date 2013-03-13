@@ -35,6 +35,8 @@ function extension {
 }
 
 OUT="-f draft.txt --text"
+MARKUP=""
+Q="-q"
 while getopts "vht:x:THMXNRC" o; do
     case $o in
     T) ;;
@@ -48,7 +50,7 @@ while getopts "vht:x:THMXNRC" o; do
     h) usage && exit 0;;
     t) TEMPLATE="$OPTARG";;
     x) TRANS="$OPTARG";;
-    v) VERBOSE="y";;
+    v) VERBOSE="y"; Q="";;
     esac
 done
 shift $((OPTIND - 1))
@@ -64,7 +66,7 @@ for f in "$@"; do
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $TEMPLATE $OUT \&\& rm $XML
-[[ -n "$XML" ]] && xml2rfc $TEMPLATE $OUT && rm $XML
+[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& rm $XML
+[[ -n "$XML" ]] && xml2rfc $Q $TEMPLATE $OUT && rm $XML
 [[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && [[ -n "$VERBOSE" ]] && echo python rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
 [[ -n "$XML" ]] && [[ -n "$MARKUP" ]] && python rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt

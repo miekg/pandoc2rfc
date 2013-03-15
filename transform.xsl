@@ -3,7 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:exsl="http://exslt.org/common" version="1.0" 
   extension-element-prefixes="exsl">
-  <!-- 
+<!-- 
     (c) Miek Gieben 2013, Licensed under the GPL version 2.
 -->
   <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -20,13 +20,13 @@
   <xsl:template match="article">
     <xsl:apply-templates/>
   </xsl:template>
-  <!-- 
+<!-- 
 Remove the article info section, this should be handled
 in the <front> matter of the draft 
 -->
   <xsl:template match="articleinfo">
 </xsl:template>
-  <!-- Use footnotes for indexes (iref) -->
+<!-- Use footnotes for indexes (iref) -->
   <xsl:template match="footnote">
     <xsl:element name="iref">
       <xsl:choose>
@@ -46,7 +46,7 @@ in the <front> matter of the draft
       </xsl:choose>
     </xsl:element>
   </xsl:template>
-  <!-- Merge section with the title tags into one section -->
+<!-- Merge section with the title tags into one section -->
   <xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
     <section>
       <xsl:attribute name="title">
@@ -58,7 +58,7 @@ in the <front> matter of the draft
       <xsl:apply-templates/>
     </section>
   </xsl:template>
-  <!-- 
+<!--
 Transform a <para> to <t>, except in lists, then it is discarded 
 -->
   <xsl:template match="para | simpara">
@@ -91,7 +91,7 @@ Transform a <para> to <t>, except in lists, then it is discarded
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <!-- 
+<!--
 Transform a <listitem> to a <t> for lists, except in description lists
 -->
   <xsl:template match="listitem">
@@ -106,7 +106,7 @@ Transform a <listitem> to a <t> for lists, except in description lists
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <!--
+<!--
 Transform lists, for lists in list we do not put it in a new <t></t>
 -->
   <xsl:template match="orderedlist">
@@ -295,7 +295,7 @@ Transform lists, for lists in list we do not put it in a new <t></t>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <!-- 
+<!--
 Hanging lists are specified as <variablelist> 
 -->
   <xsl:template match="variablelist">
@@ -335,7 +335,7 @@ Hanging lists are specified as <variablelist>
       <xsl:apply-templates select="./listitem"/>
     </t>
   </xsl:template>
-  <!-- 
+<!--
 Transform <link> to <xref> crosslinks 
 -->
   <xsl:template match="link">
@@ -346,7 +346,7 @@ Transform <link> to <xref> crosslinks
       <xsl:apply-templates/>
     </xref>
   </xsl:template>
-  <!-- 
+<!--
 Transform <ulink> to <eref> links 
 -->
   <xsl:template match="ulink">
@@ -357,7 +357,7 @@ Transform <ulink> to <eref> links
       <xsl:apply-templates/>
     </eref>
   </xsl:template>
-  <!-- 
+<!--
 Transform <blockquote> to <list style="hanging">
 -->
   <xsl:template match="blockquote">
@@ -367,7 +367,7 @@ Transform <blockquote> to <list style="hanging">
       </list>
     </t>
   </xsl:template>
-  <!-- 
+<!--
 Transform <screen> and <programlisting> to <figure><artwork>
 -->
   <xsl:template match="screen | programlisting">
@@ -378,7 +378,7 @@ Transform <screen> and <programlisting> to <figure><artwork>
             <xsl:text>fig:</xsl:text>
             <xsl:value-of select="translate( translate(substring(normalize-space(translate( substring-after(., $Fig) , &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10), &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
           </xsl:attribute>
-          <!-- If there is an caption, center the figure -->
+<!-- If there is an caption, center the figure -->
           <xsl:attribute name="align">
             <xsl:text>center</xsl:text>
           </xsl:attribute>
@@ -448,10 +448,10 @@ Transform <screen> and <programlisting> to <figure><artwork>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <!-- Tables -->
+<!-- Tables -->
   <xsl:template match="table | informaltable">
     <texttable>
-      <!-- If there is a caption, fake an anchor attribute -->
+<!-- If there is a caption, fake an anchor attribute -->
       <xsl:if test="./caption">
         <xsl:attribute name="anchor">
           <xsl:text>tab:</xsl:text>
@@ -466,26 +466,26 @@ Transform <screen> and <programlisting> to <figure><artwork>
       </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="./title">
-        <!-- create postamble of the title -->
+<!-- create postamble of the title -->
         <postamble>
           <xsl:apply-templates select="./title" mode="post"/>
         </postamble>
       </xsl:if>
       <xsl:if test="./caption">
-        <!-- create postamble of the caption -->
+<!-- create postamble of the caption -->
         <postamble>
           <xsl:apply-templates select="./caption" mode="post"/>
         </postamble>
       </xsl:if>
     </texttable>
   </xsl:template>
-  <!-- Table headers -->
+<!-- Table headers -->
   <xsl:template match="table/thead/tr/th | informaltable/thead/tr/th">
     <ttcol>
       <xsl:attribute name="align">
         <xsl:value-of select="@align"/>
       </xsl:attribute>
-      <!-- 
+<!--
 Every even position() need to be dealt with: 
 2 look back to 1, 4 look back to 2, etc.
 -->
@@ -540,7 +540,7 @@ Every even position() need to be dealt with:
       </xsl:attribute>
     </xsl:if>
   </xsl:template>
-  <!-- Table headers for CALS tables -->
+<!-- Table headers for CALS tables -->
   <xsl:template match="table/tgroup/thead/row/entry">
     <ttcol>
       <xsl:if test="position() = 2">
@@ -583,7 +583,7 @@ Every even position() need to be dealt with:
           <xsl:with-param name="column" select="8"/>
         </xsl:call-template>
       </xsl:if>
-      <!-- If the entry itself has align, we use that -->
+<!-- If the entry itself has align, we use that -->
       <xsl:if test="@align">
         <xsl:attribute name="align">
           <xsl:value-of select="@align"/>
@@ -598,7 +598,7 @@ Every even position() need to be dealt with:
       <xsl:attribute name="align">
         <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
       </xsl:attribute>
-      <!-- Optionally colwidth, translate * to % -->
+<!-- Optionally colwidth, translate * to % -->
       <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
         <xsl:attribute name="width">
           <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
@@ -606,7 +606,7 @@ Every even position() need to be dealt with:
       </xsl:if>
     </xsl:if>
   </xsl:template>
-  <!-- Table headers for CALS tables, Pandoc 1.9.x+ -->
+<!-- Table headers for CALS tables, Pandoc 1.9.x+ -->
   <xsl:template match="informaltable/tgroup/thead/row/entry">
     <ttcol>
       <xsl:if test="position() = 2">
@@ -649,7 +649,7 @@ Every even position() need to be dealt with:
           <xsl:with-param name="column" select="8"/>
         </xsl:call-template>
       </xsl:if>
-      <!-- If the entry itself has align, we use that -->
+<!-- If the entry itself has align, we use that -->
       <xsl:if test="@align">
         <xsl:attribute name="align">
           <xsl:value-of select="@align"/>
@@ -664,7 +664,7 @@ Every even position() need to be dealt with:
       <xsl:attribute name="align">
         <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
       </xsl:attribute>
-      <!-- Optionally colwidth, translate * to % -->
+<!-- Optionally colwidth, translate * to % -->
       <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
         <xsl:attribute name="width">
           <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth, '*', '%')"/>
@@ -677,7 +677,7 @@ Every even position() need to be dealt with:
       <xsl:apply-templates/>
     </c>
   </xsl:template>
-  <!-- CALS table -->
+<!-- CALS table -->
   <xsl:template match="table/tbody/row/entry">
     <c>
       <xsl:apply-templates/>

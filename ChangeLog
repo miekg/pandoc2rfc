@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.11)
+
+* Whitespace fixes in XSLT
+
+ -- Miek Gieben <miek@miek.nl>, Fri, 15 Mar 2013 20:26:57 +0100
+
 pandoc2rfc (2.1.10)
 
 * Don't use python in front of rfcmarkup

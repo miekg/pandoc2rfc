@@ -67,7 +67,7 @@ in the <front> matter of the draft
    </section>
   </xsl:template>
 <!--
-Transform a <para> to <t>, except in lists, then it is discarded 
+Transform a <para> to <t>, not in lists, then it is discarded 
 -->
   <xsl:template match="para | simpara">
    <xsl:choose>
@@ -338,8 +338,10 @@ Hanging lists are specified as <variablelist>
      <xsl:value-of select="normalize-space(translate(./term, 
       ' &#9;&#13;&#10;', ' '))"/>
     </xsl:attribute>
-    <!-- OPTION: enable this to get a newline after the hangText -->
-    <!-- <xsl:element name="vspace"/> -->
+<!-- 
+OPTION: enable this to get a newline after the hangText
+-->
+<!-- <xsl:element name="vspace"/> -->
     <xsl:apply-templates select="./listitem"/>
    </t>
   </xsl:template>

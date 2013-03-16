@@ -3,6 +3,7 @@
 # to create an I-D.
 TRANS=/usr/lib/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
+VERSION="2.1.10"
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
@@ -19,6 +20,7 @@ function usage {
     echo "  -t template.xml     Path to template.xml, defaults to current directory"
     echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
+    echo "  -V                  Show version ($VERSION)"
 }
 
 # As the extension for Pandoc is not really fixed, we try
@@ -37,7 +39,7 @@ function extension {
 OUT="-f draft.txt --text"
 MARKUP=""
 Q="-q"
-while getopts "vht:x:THMXNRC" o; do
+while getopts "vht:x:THMXNRCV" o; do
     case $o in
     T) ;;
     M) MARKUP="1";;
@@ -48,6 +50,7 @@ while getopts "vht:x:THMXNRC" o; do
     C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff}
        rm -f draft.{txt,html,xml,nroff} && exit 0;;
     h) usage && exit 0;;
+    V) echo $VERSION && exit 0;;
     t) TEMPLATE="$OPTARG";;
     x) TRANS="$OPTARG";;
     v) VERBOSE="y"; Q="";;

@@ -53,7 +53,10 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Path to the transform.xsl XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl.
 
 -v
-:   Be verbose and show the commands that are run.
+:   Be verbose and show the commands that are run and any warnings.
+
+-d
+:   Debug mode, do not remove the intermediate XML files.
 
 -h
 :   Show a short help message.

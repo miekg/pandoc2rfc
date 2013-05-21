@@ -16,7 +16,8 @@ function usage {
     echo "  -X                  Create a draft.xml"
     echo "  -N                  Create a draft.nroff"
     echo "  -C                  Remove all drafts"
-    echo "  -v                  Be verbosei (show warnings)"
+    echo "  -v                  Be verbose (show warnings)"
+    echo "  -d                  Debug mode, do not delete intermediate xml files"
     echo "  -t template.xml     Path to template.xml, defaults to current directory"
     echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"
@@ -38,6 +39,7 @@ function extension {
 
 OUT="-f draft.txt --text"
 MARKUP=""
+RM=rm
 Q="-q"
 while getopts "vht:x:THMXNRCV" o; do
     case $o in
@@ -54,6 +56,7 @@ while getopts "vht:x:THMXNRCV" o; do
     t) TEMPLATE="$OPTARG";;
     x) TRANS="$OPTARG";;
     v) VERBOSE="y"; Q="";;
+    d) RM=":"
     esac
 done
 shift $((OPTIND - 1))
@@ -69,8 +72,8 @@ for f in "$@"; do
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& rm $XML
-[[ -n "$XML" ]] && xml2rfc $Q $TEMPLATE $OUT && rm $XML
+[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML
+[[ -n "$XML" ]] && xml2rfc $Q $TEMPLATE $OUT && $RM $XML
 if [[ -n "$MARKUP" ]]; then
     [[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
     [[ -n "$XML" ]] && rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt

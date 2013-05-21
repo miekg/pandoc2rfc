@@ -1,8 +1,9 @@
 pandoc2rfc (2.1.11)
 
 * Whitespace fixes in XSLT
+* Add @Title, to be used in figure to get a title=
 
- -- Miek Gieben <miek@miek.nl>, Fri, 15 Mar 2013 20:26:57 +0100
+ -- Miek Gieben <miek@miek.nl>, Tue, 21 May 2013 16:46:13 +0200
 
 pandoc2rfc (2.1.10)
 

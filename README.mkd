@@ -286,7 +286,11 @@ does. If you add a `@Figure: some text` as the last line, the artwork gets a
 `<postamble>` with the text
 after `@Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered. If a caption is needed
-but the figure should not be centered use "@figure:\ ". 
+but the figure should not be centered use `@figure:\ `. 
+
+The above mentioned `@Figure: ` hack, does not generate a title for the artwork. If you want a title you
+can use the magic string `@Title: ` instead. Do not that due to XSLT 1.0 constraints mixing both `@Figure: `
+and `@Title: ` isn't supported, you must choose one or the other.
 
 ### References
 The reference anchor

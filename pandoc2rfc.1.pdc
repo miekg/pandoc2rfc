@@ -58,6 +58,9 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -h
 :   Show a short help message.
 
+-V
+:   Show version.
+
 # SEE ALSO
 `PANDOC` (1) and
 the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.

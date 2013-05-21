@@ -14,7 +14,7 @@
   <xsl:variable name="Fig" select="concat('@F', $ure)"/>
   <xsl:variable name="fig" select="concat('@f', $ure)"/>
   <xsl:variable name="itle" select="'itle: '"/>
-  <xsl:variable name="title" select="concat('@t', $itle)"/>
+  <xsl:variable name="title" select="concat('@T', $itle)"/>
   <xsl:template match="/">
    <xsl:comment>
     This document was prepared using Pandoc2rfc

@@ -5,7 +5,7 @@
  xmlns:exsl="http://exslt.org/common" version="1.0" 
  extension-element-prefixes="exsl">
 <!-- 
-    (c) Miek Gieben 2013, Licensed under the GPL version 2.
+    (c) Miek Gieben 2013. Hereby put in the public domain.
 -->
   <xsl:output method="xml" omit-xml-declaration="yes"/>
   <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>

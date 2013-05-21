@@ -13,6 +13,8 @@
   <xsl:variable name="ure" select="'igure: '"/>
   <xsl:variable name="Fig" select="concat('@F', $ure)"/>
   <xsl:variable name="fig" select="concat('@f', $ure)"/>
+  <xsl:variable name="itle" select="'itle: '"/>
+  <xsl:variable name="title" select="concat('@T', $itle)"/>
   <xsl:template match="/">
    <xsl:comment>
     This document was prepared using Pandoc2rfc
@@ -418,6 +420,26 @@ Transform <screen> and <programlisting> to <figure><artwork>
           <postamble>
            <xsl:value-of select="substring-after(., $fig)"/>
           </postamble>
+         </xsl:when>
+         <xsl:when test="contains(., $title)">
+          <xsl:attribute name="title">
+           <xsl:value-of select="normalize-space(
+            substring-after(., $title))"/>
+          </xsl:attribute>
+          <xsl:attribute name="align">
+           <xsl:text>center</xsl:text>
+          </xsl:attribute>
+          <xsl:attribute name="anchor">
+           <xsl:text>fig:</xsl:text>
+           <xsl:value-of select="translate(
+            translate(substring(normalize-space(
+            translate( substring-after(., $title) ,
+            &quot;&#10;'&quot;, &quot;  &quot;)), 1, 10),
+            &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)"/>
+          </xsl:attribute>
+          <artwork>
+           <xsl:value-of select="substring-before(., $title)"/>
+          </artwork>
          </xsl:when>
          <xsl:otherwise>
           <artwork>

@@ -282,17 +282,21 @@ Indent the paragraph with 4 spaces.
 
 Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
-does. If you add a `Figure: some text` as the last line, the artwork gets a
+does. If you add a `@Figure: some text` as the last line, the artwork gets a
 `<postamble>` with the text
-after `Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
+after `@Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered. If a caption is needed
-but the figure should not be centered use "@figure:\ ". 
+but the figure should not be centered use `@figure:\ `. 
+
+The above mentioned `@Figure: ` hack, does not generate a title for the artwork. If you want a title you
+can use the magic string `@Title: ` instead. Do not that due to XSLT 1.0 constraints mixing both `@Figure: `
+and `@Title: ` isn't supported, you must choose one or the other.
 
 ### References
 The reference anchor
 attribute will be: `fig:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 
-* Take the first 10 characters of the caption (i.e. this is the text *after* the string `Figure: `);
+* Take the first 10 characters of the caption (i.e. this is the text *after* the string `@Figure: `);
 * Spaces and single quotes (') are translated to a minus `-`;
 * Uppercase letters translated to lowercase.
 

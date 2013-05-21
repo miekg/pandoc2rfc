@@ -3,7 +3,7 @@
 # to create an I-D.
 TRANS=/usr/lib/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
-VERSION="2.1.11"
+VERSION="2.1.12"
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."

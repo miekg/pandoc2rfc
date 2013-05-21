@@ -426,6 +426,9 @@ Transform <screen> and <programlisting> to <figure><artwork>
            <xsl:value-of select="normalize-space(
             substring-after(., $title))"/>
           </xsl:attribute>
+          <xsl:attribute name="align">
+           <xsl:text>center</xsl:text>
+          </xsl:attribute>
           <xsl:attribute name="anchor">
            <xsl:text>fig:</xsl:text>
            <xsl:value-of select="translate(

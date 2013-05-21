@@ -41,7 +41,7 @@ OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
 Q="-q"
-while getopts "vht:x:THMXNRCV" o; do
+while getopts "vdht:x:THMXNRCV" o; do
     case $o in
     T) ;;
     M) MARKUP="1";;

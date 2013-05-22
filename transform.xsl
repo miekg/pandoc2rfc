@@ -14,10 +14,8 @@
   <xsl:variable name="Fig" select="concat('@F', $ure)"/>
   <xsl:variable name="fig" select="concat('@f', $ure)"/>
   <xsl:template match="/">
-   <xsl:comment>
-    This document was prepared using Pandoc2rfc
-    https://github.com/miekg/pandoc2rfc
-   </xsl:comment>
+   <xsl:comment> This document was prepared using Pandoc2rfc
+     https://github.com/miekg/pandoc2rfc </xsl:comment>
    <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="article">

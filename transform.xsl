@@ -368,11 +368,11 @@ Transform <ulink> to <eref> links
    </eref>
   </xsl:template>
 <!--
-Transform <blockquote> to <list style="hanging">
+Transform <blockquote> to <list style="empty">
 -->
   <xsl:template match="blockquote">
    <t>
-    <list style="hanging" hangIndent="3">
+    <list style="empty">
      <xsl:apply-templates/>
     </list>
    </t>

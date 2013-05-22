@@ -117,8 +117,8 @@ After that you can start editing.
     * style=letters (lower- and uppercase, [](#letter));
     * style=hanging ([](#hanging));
 * Figure/artwork with a title ([](#figureartwork));
-* Block quote - not supported by `xml2rfc`, this is converted to
-    `<list style="hanging">` paragraph ([](#block-quote));
+* Block quote this is converted to
+    `<list style="empty">` paragraph ([](#block-quote));
 * References 
     * external (eref) ([](#external)); 
     * internal (xref) ([](#internal)), you can refer to:
@@ -303,11 +303,11 @@ This anchoring is completely handled from within the `xslt`. Note that duplicate
 XML validation error which will make `xml2rfc` fail.
 
 ## Block Quote
-This is not supported by `xml2rfc`, but any paragraph like:
+Any paragraph like:
 
     > quoted text
 
-Converts to: `<t><list style="hanging" hangIndent="3"> ...` paragraph.
+Converts to: `<t><list style="empty"> ...` paragraph, making it indented.
 
 ## References
 ### External

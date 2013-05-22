@@ -116,7 +116,7 @@ After that you can start editing.
     * style=format (%d), use roman uppercase numerals ([](#roman));
     * style=letters (lower- and uppercase, [](#letter));
     * style=hanging ([](#hanging));
-* Figure/artwork with an anchor and postamble ([](#figureartwork));
+* Figure/artwork with a title ([](#figureartwork));
 * Block quote - not supported by `xml2rfc`, this is converted to
     `<list style="hanging">` paragraph ([](#block-quote));
 * References 
@@ -127,7 +127,7 @@ After that you can start editing.
         * tables (handled by XSLT, see [](#references-2)).
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
-* Tables with an anchor and postamble ([](#tables));
+* Tables with an anchor and title ([](#tables));
 * Indexes, by using footnotes ([](#indexes)).
 
 # Unsupported Features
@@ -283,14 +283,10 @@ Indent the paragraph with 4 spaces.
 Converts to: `<figure><artwork> ...`
 Note that `xml2rfc` supports a caption with `<artwork>`. Pandoc does not support this, but Pandoc2rfc
 does. If you add a `@Figure: some text` as the last line, the artwork gets a
-`<postamble>` with the text
+`title` attribute with the text
 after `@Figure: `. It will also be possible to reference the artwork. If a caption is supplied the artwork
 will be centered. If a caption is needed
 but the figure should not be centered use `@figure:\ `. 
-
-The above mentioned `@Figure: ` hack, does not generate a title for the artwork. If you want a title you
-can use the magic string `@Title: ` instead. Do not that due to XSLT 1.0 constraints mixing both `@Figure: `
-and `@Title: ` isn't supported, you must choose one or the other.
 
 ### References
 The reference anchor
@@ -369,7 +365,7 @@ as input, but they all are converted to the same style (plain `<texttable>`) tab
 The column alignment is copied over to the generated XML.
 
 ### References
-The caption is *always* translated to a `<postamble>`. The `<preamble>` tag isn't supported.
+The caption is *always* translated to a `title` attribute.
 If a table has a caption, it will *also* get a reference. The reference anchor
 attribute will be: `tab:` + `first 10 (normalized) characters from the caption`. Where normalized means:
 

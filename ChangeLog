@@ -1,3 +1,10 @@
+pandoc2rfc (2.1.13)
+
+* Remove @Title
+* Make @Figure and @figure and Table caption generate title attribute
+
+ -- Miek Gieben <miek@miek.nl>, Wed, 22 May 2013 13:10:30 +0200
+
 pandoc2rfc (2.1.12)
 
 * Add @Title, to be used in figure to get a title=

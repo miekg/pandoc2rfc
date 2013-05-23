@@ -5,7 +5,7 @@
  xmlns:exsl="http://exslt.org/common" version="1.0" 
  extension-element-prefixes="exsl">
 <!-- 
-    (c) Miek Gieben 2013, Licensed under the GPL version 2.
+    (c) Miek Gieben 2013. Hereby put in the public domain.
 -->
   <xsl:output method="xml" omit-xml-declaration="yes"/>
   <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>
@@ -366,11 +366,11 @@ Transform <ulink> to <eref> links
    </eref>
   </xsl:template>
 <!--
-Transform <blockquote> to <list style="hanging">
+Transform <blockquote> to <list style="empty">
 -->
   <xsl:template match="blockquote">
    <t>
-    <list style="hanging" hangIndent="3">
+    <list style="empty">
      <xsl:apply-templates/>
     </list>
    </t>

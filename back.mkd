@@ -11,6 +11,10 @@ Test a very long title.
 
 This is discarded by `xml2rfc`.
 
+## Blockquote
+
+> This is a blockquote, how does it look?
+
 ## Verbatim code blocks
 
 ~~~~~

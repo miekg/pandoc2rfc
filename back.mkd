@@ -15,6 +15,12 @@ This is discarded by `xml2rfc`.
 
 > This is a blockquote, how does it look?
 
+And
+
+> This is another
+>
+> > Quote in Quote
+
 ## Verbatim code blocks
 
 ~~~~~

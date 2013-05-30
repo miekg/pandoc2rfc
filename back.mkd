@@ -49,6 +49,24 @@ And the other around.
     1. Something
     2. Another thing
 
+And more                                                                   
+
+* Item 1
+
+        artwork
+        artwork
+        @figure: test2
+ 
+* Item 2
+    * SubItem 1
+    * SubItem 2
+
+            artwork
+            artwork
+            @figure: test
+
+    * SubItem 3 
+
 Description lists:
 
 Item to explain:

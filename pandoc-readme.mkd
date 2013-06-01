@@ -1,6 +1,3 @@
-# Test with Pandoc README
-
-
 Synopsis
 ========
 

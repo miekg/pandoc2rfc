@@ -415,15 +415,23 @@ Transform <screen> and <programlisting> to <figure><artwork>
     </xsl:template>
     <xsl:template match="emphasis">
         <xsl:choose>
-            <xsl:when test="contains(@role,'strong')">
-                <spanx style="strong">
-                    <xsl:apply-templates />
-                </spanx>
+            <!-- spanx inside spanx it not supported -->
+            <xsl:when test="parent::emphasis">
+                <xsl:apply-templates />
             </xsl:when>
             <xsl:otherwise>
-                <spanx style="emph">
-                    <xsl:apply-templates />
-                </spanx>
+                <xsl:choose>
+                    <xsl:when test="contains(@role,'strong')">
+                        <spanx style="strong">
+                            <xsl:apply-templates />
+                        </spanx>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <spanx style="emph">
+                            <xsl:apply-templates />
+                        </spanx>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -434,15 +442,23 @@ Transform <screen> and <programlisting> to <figure><artwork>
     </xsl:template>
     <xsl:template match="emphasis" mode="post">
         <xsl:choose>
-            <xsl:when test="contains(@role,'strong')">
-                <spanx style="strong">
-                    <xsl:apply-templates mode="post" />
-                </spanx>
+            <!-- spanx inside spanx it not supported -->
+            <xsl:when test="parent::emphasis">
+                <xsl:apply-templates />
             </xsl:when>
             <xsl:otherwise>
-                <spanx style="emph">
-                    <xsl:apply-templates mode="post" />
-                </spanx>
+                <xsl:choose>
+                    <xsl:when test="contains(@role,'strong')">
+                        <spanx style="strong">
+                            <xsl:apply-templates mode="post" />
+                        </spanx>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <spanx style="emph">
+                            <xsl:apply-templates mode="post" />
+                        </spanx>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>

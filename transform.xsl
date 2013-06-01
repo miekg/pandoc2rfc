@@ -409,9 +409,16 @@ Transform <screen> and <programlisting> to <figure><artwork>
     </xsl:template>
     <xsl:template match="title" />
     <xsl:template match="literal">
-        <spanx style="verb">
-            <xsl:apply-templates />
-        </spanx>
+        <xsl:choose>
+            <xsl:when test="parent::emphasis">
+                <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+                <spanx style="verb">
+                    <xsl:apply-templates />
+                </spanx>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <xsl:template match="emphasis">
         <xsl:choose>
@@ -436,9 +443,16 @@ Transform <screen> and <programlisting> to <figure><artwork>
         </xsl:choose>
     </xsl:template>
     <xsl:template match="literal" mode="post">
-        <spanx style="verb">
-            <xsl:apply-templates mode="post" />
-        </spanx>
+        <xsl:choose>
+            <xsl:when test="parent::emphasis">
+                <xsl:apply-templates mode="post" />
+            </xsl:when>
+            <xsl:otherwise>
+                <spanx style="verb">
+                    <xsl:apply-templates mode="post" />
+                </spanx>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <xsl:template match="emphasis" mode="post">
         <xsl:choose>

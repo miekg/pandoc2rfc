@@ -42,6 +42,7 @@ again. Or you might want to [Click here](http://miek.nl).
 #. asterisks: *asterisks*
 #. double asterisks: **double asterisks**
 #. backticks: `backticks`
+#. *_underscores&and_stars_*
 
 ## List Tests
 

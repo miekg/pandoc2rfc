@@ -2,6 +2,7 @@
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
 <!ENTITY pandocMiddle PUBLIC '' 'README.xml'>
 <!ENTITY pandocBack   PUBLIC '' 'back.xml'>
+<!ENTITY pandocReadme PUBLIC '' 'pandoc-readme.xml'>
 
 <!ENTITY pandocRefVim   PUBLIC '' 'bib/reference.github.vim.xml'>
 <!ENTITY pandocRef2119  PUBLIC '' 'bib/reference.RFC.2119.xml'>

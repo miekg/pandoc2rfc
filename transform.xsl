@@ -451,23 +451,19 @@ Transform <screen> and <programlisting> to <figure><artwork>
                     <xsl:text>tab:</xsl:text>
                     <xsl:value-of select="translate(          translate(substring(normalize-space(translate(          ./caption, &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),          &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
                 </xsl:attribute>
+                <!-- create title attribute from the caption -->
+                <xsl:attribute name="title">
+                    <xsl:value-of select="./caption" />
+                </xsl:attribute>
             </xsl:if>
             <xsl:if test="./title">
                 <xsl:attribute name="anchor">
                     <xsl:text>tab:</xsl:text>
                     <xsl:value-of select="translate( translate(          substring(normalize-space(translate(./title,          &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),          &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
                 </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="./title">
-                <!-- create title of the title -->
+                <!-- create title attribute from the title -->
                 <xsl:attribute name="title">
                     <xsl:value-of select="./title" />
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="./caption">
-                <!-- create title of the caption -->
-                <xsl:attribute name="title">
-                    <xsl:value-of select="./caption" />
                 </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates />

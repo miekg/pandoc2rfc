@@ -42,7 +42,7 @@ again. Or you might want to [Click here](http://miek.nl).
 #. asterisks: *asterisks*
 #. double asterisks: **double asterisks**
 #. backticks: `backticks`
-#. *_underscores&and_stars_*
+#. *_underscores&andstars_*
 
 ## List Tests
 
@@ -301,7 +301,7 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
 
     This is a figure
     This is a figure
-    @figure: A non centered figure.
+    @figure: A non centered figure, and some *markup*, and more `ls`
 
 
 Test the use of `@title`:

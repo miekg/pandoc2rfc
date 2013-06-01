@@ -442,40 +442,6 @@ Transform <screen> and <programlisting> to <figure><artwork>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <xsl:template match="literal" mode="post">
-        <xsl:choose>
-            <xsl:when test="parent::emphasis">
-                <xsl:apply-templates mode="post" />
-            </xsl:when>
-            <xsl:otherwise>
-                <spanx style="verb">
-                    <xsl:apply-templates mode="post" />
-                </spanx>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    <xsl:template match="emphasis" mode="post">
-        <xsl:choose>
-            <!-- spanx inside spanx it not supported -->
-            <xsl:when test="parent::emphasis">
-                <xsl:apply-templates />
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:choose>
-                    <xsl:when test="contains(@role,'strong')">
-                        <spanx style="strong">
-                            <xsl:apply-templates mode="post" />
-                        </spanx>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <spanx style="emph">
-                            <xsl:apply-templates mode="post" />
-                        </spanx>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
     <!-- Tables -->
     <xsl:template match="table | informaltable">
         <texttable>
@@ -495,13 +461,13 @@ Transform <screen> and <programlisting> to <figure><artwork>
             <xsl:if test="./title">
                 <!-- create title of the title -->
                 <xsl:attribute name="title">
-                    <xsl:value-of select="./title" mode="post" />
+                    <xsl:value-of select="./title" />
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="./caption">
                 <!-- create title of the caption -->
                 <xsl:attribute name="title">
-                    <xsl:value-of select="./caption" mode="post" />
+                    <xsl:value-of select="./caption" />
                 </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates />

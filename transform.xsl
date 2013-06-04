@@ -673,4 +673,19 @@ Every even position() need to be dealt with:
             <xsl:apply-templates />
         </c>
     </xsl:template>
+    <!-- Allow embedded PIs and other one-offs -->
+    <xsl:template match="processing-instruction('rfc')">
+      <xsl:processing-instruction name="rfc">
+      <xsl:value-of select="."/>
+      </xsl:processing-instruction> 
+    </xsl:template>
+    <xsl:template match="para/vspace">
+     <vspace>
+       <xsl:if test="@blankLines">
+      <xsl:attribute name="blankLines">
+          <xsl:value-of select="@blankLines"/>
+     </xsl:attribute>
+       </xsl:if>
+     </vspace>
+    </xsl:template>
 </xsl:stylesheet>

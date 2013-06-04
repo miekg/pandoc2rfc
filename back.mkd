@@ -308,3 +308,9 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
 
 | This is a verse text
 | This is another line
+
+## vspace
+
+This is text, now insert 4 blank lines
+<vspace blankLines="4"/>
+And some more text

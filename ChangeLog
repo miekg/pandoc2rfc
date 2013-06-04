@@ -1,3 +1,10 @@
+pandoc2rfc (2.1.15)
+
+* Allow PIs to filter through
+* Propagate vspace
+
+ -- Miek Gieben <miek@miek.nl>
+
 pandoc2rfc (2.1.14)
 
 * spanx in spanx is not supported check for this

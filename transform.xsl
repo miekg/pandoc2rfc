@@ -674,7 +674,7 @@ Every even position() need to be dealt with:
         </c>
     </xsl:template>
     <!-- Allow embedded PIs and other one-offs -->
-    <xsl:template match="processing-instruction('rfc')">
+    <xsl:template match="para/processing-instruction('rfc')">
       <xsl:processing-instruction name="rfc">
       <xsl:value-of select="."/>
       </xsl:processing-instruction> 

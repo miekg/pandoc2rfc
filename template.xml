@@ -10,10 +10,6 @@
 ]>
 
 <rfc ipr="trust200902" category="info" docName="draft-gieben-writing-rfcs-pandoc-02">
-<?rfc symrefs="yes"?>     <!-- use anchors instead of numbers for references -->
-<?rfc sortrefs="yes" ?>   <!-- alphabetize the references -->
-<?rfc compact="yes" ?>    <!-- conserve vertical whitespace -->
-<?rfc subcompact="no" ?>  <!-- but keep a blank line between list items -->
  <front>
         <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
 

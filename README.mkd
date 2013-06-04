@@ -1,6 +1,7 @@
+<?rfc compact="yes"?>    <!-- conserve vertical whitespace -->                                                                               
+
 # Introduction
 
-<?rfc compact="yes"?>    <!-- conserve vertical whitespace -->                                                                               
 <?rfc toc="yes"?>        <!-- create table of contents -->
 <?rfc symrefs="yes"?>    <!-- use anchors instead of numbers for references -->                                                              
 <?rfc sortrefs="yes"?>   <!-- alphabetize the references -->                                                                                 

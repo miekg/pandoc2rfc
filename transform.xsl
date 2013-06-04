@@ -81,11 +81,6 @@ Transform a <para> to <t>, not in lists, then it is discarded
             <xsl:when test="ancestor::tbody">
                 <xsl:apply-templates />
             </xsl:when>
-            <!-- when the ancestor isn't a sect1, we have a <para> outside the main sections.
-                 this is mostly due to a <rfc? PI being placed at the beginning -->
-            <xsl:when test="not(ancestor::sect1) and not(ancestor::abstract)">
-                    <xsl:apply-templates />
-            </xsl:when>
             <xsl:otherwise>
                 <t>
                     <xsl:apply-templates />

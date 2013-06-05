@@ -1,7 +1,7 @@
 pandoc2rfc (2.1.15)
 
-* Allow PIs to filter through
-* Propagate vspace
+* Allow PIs to filter through, add them *after* the first paragraph
+* Propagate vspace to the generated XML
 
  -- Miek Gieben <miek@miek.nl>
 

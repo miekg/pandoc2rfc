@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.16)
+
+* Process stdin when no arguments are given to pandoc2rfc
+
+ -- Miek Gieben <miek@miek.nl>, Thu, 06 Jun 2013 08:13:29 +0100
+
 pandoc2rfc (2.1.15)
 
 * Allow PIs to filter through, add them *after* the first paragraph

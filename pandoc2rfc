@@ -2,7 +2,7 @@
 # (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and xml2rfc to create an I-D.
 TRANS=/usr/lib/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
-VERSION="2.1.15"
+VERSION="2.1.16"
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."
@@ -71,9 +71,20 @@ for f in "$@"; do
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
-[[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML
-[[ -n "$XML" ]] && xml2rfc $Q $TEMPLATE $OUT && $RM $XML
-if [[ -n "$MARKUP" ]]; then
-    [[ -n "$XML" ]] && [[ -n "$VERBOSE" ]] && echo rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
-    [[ -n "$XML" ]] && rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt
+# if XML is filled we have files to process otherwise process stdin
+if [[ -n "$XML" ]]; then
+    [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML
+    xml2rfc $Q $TEMPLATE $OUT && $RM $XML
+    if [[ -n "$MARKUP" ]]; then
+        [[ -n "$VERBOSE" ]] && echo rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
+        rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt
+    fi
+else
+    if [[ -n "$MARKUP" ]]; then
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - \| rfcmarkup url=file:///dev/stdin >&2  # to stderr, not clobber stdout
+        pandoc -t docbook -s | xsltproc --nonet $TRANS - | rfcmarkup url=file:///dev/stdin || exit 1
+    else 
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - >&2  # to stderr, not clobber stdout
+        pandoc -t docbook -s | xsltproc --nonet $TRANS - || exit 1
+    fi
 fi

@@ -1,12 +1,7 @@
-.PHONY: clean
-
 all:	pandoc2rfc.1
 
 pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
-
-clean:
-	rm draft.txt
 
 draft.txt: back.mkd README.mkd transform.xsl pandoc-readme.mkd
 	bash pandoc2rfc -t template.xml -x transform.xsl back.mkd README.mkd pandoc-readme.mkd
@@ -24,3 +19,8 @@ install:
 	chmod 755 $(DESTDIR)/usr/bin/rfcmarkup
 	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
 	cp transform.xsl $(DESTDIR)/usr/lib/pandoc2rfc
+
+.PHONY: clean
+clean:
+	rm -f draft.txt
+

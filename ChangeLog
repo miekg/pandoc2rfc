@@ -1,3 +1,5 @@
+pandoc2rfc (2.1.19)
+
 pandoc2rfc (2.1.16)
 
 * Process stdin when no arguments are given to pandoc2rfc

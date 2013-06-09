@@ -27,6 +27,11 @@ install:
 	sed -i "s/\@VERSION\@/$(TAG)/" $(DESTDIR)/usr/bin/pandoc2rfc
 	sed -i "s/\@VERSION\@/$(TAG)/" $(DESTDIR)/usr/lib/pandoc2rfc/transform.xsl
 
+uninstall:
+	rm -rf $(DESTDIR)/usr/lib/pandoc2rfc/
+	rm -f $(DESTDIR)/usr/share/man/man1/pandoc2rfc.1
+	rm -f $(DESTDIR)/usr/bin/pandoc2rfc
+
 .PHONY: clean
 clean:
 	rm -f draft.txt

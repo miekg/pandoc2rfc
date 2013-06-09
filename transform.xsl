@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" extension-element-prefixes="exsl">
     <!-- 
     (c) Miek Gieben 2013. Hereby put in the public domain.
-    Version: 2.1.19
+    Version: @VERSION@
 -->
     <xsl:output method="xml" omit-xml-declaration="yes" />
     <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'" />

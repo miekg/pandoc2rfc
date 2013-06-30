@@ -4,6 +4,11 @@ endif
 
 all:	pandoc2rfc.1
 
+.PHONY: version
+version:
+	sed -i "s/\@VERSION\@/$(TAG)/" pandoc2rfc
+	sed -i "s/\@VERSION\@/$(TAG)/" transform.xsl
+
 pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
 
@@ -24,8 +29,6 @@ install:
 	chmod 755 $(DESTDIR)/usr/bin/rfcmarkup
 	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
 	cp transform.xsl $(DESTDIR)/usr/lib/pandoc2rfc
-	sed -i "s/\@VERSION\@/$(TAG)/" $(DESTDIR)/usr/bin/pandoc2rfc
-	sed -i "s/\@VERSION\@/$(TAG)/" $(DESTDIR)/usr/lib/pandoc2rfc/transform.xsl
 
 uninstall:
 	rm -rf $(DESTDIR)/usr/lib/pandoc2rfc/
@@ -35,4 +38,5 @@ uninstall:
 .PHONY: clean
 clean:
 	rm -f draft.txt
+	rm -f pandoc2rfc.1
 

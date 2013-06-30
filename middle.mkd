@@ -1,0 +1,394 @@
+# Introduction
+
+<?rfc toc="yes"?>        <!-- create table of contents -->
+<?rfc symrefs="yes"?>    <!-- use anchors instead of numbers for references -->
+<?rfc sortrefs="yes"?>   <!-- alphabetize the references -->
+<?rfc subcompact="no"?>  <!-- but keep a blank line between list items -->
+<?rfc compact="yes"?>    <!-- conserve vertical whitespace -->
+
+This document presents a technique for using Pandoc syntax as a source format for
+documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
+
+This version is adapted to work with `xml2rfc` version 2.x.
+
+Pandoc is an "almost plain text" format and therefor particularly well suited
+for editing RFC-like documents.
+
+> Note: this document is typeset in Pandoc and does not render completely correct when
+> reading it on github.
+
+> NB: this is mostly text to test Pandoc2rfc, the canonical documentation
+> is [draft-gieben-pandoc2rfc](http://tools.ietf.org/html/draft-gieben-pandoc2rfc-01).
+
+# Pandoc to RFC
+
+> Pandoc2rfc -- designed to do the right thing, until it doesn't.
+
+When writing [](#RFC4641) we directly wrote the
+XML. Needless to say it was tedious even thought the XML of
+[xml2rfc](http://xml.resource.org/experimental) is very "light". The [latest version
+of xml2rfc version 2 can be found here](http://pypi.python.org/pypi/xml2rfc/).
+
+During the last few years people have been developing markup languages that are very easy to remember
+and type. These languages have become known as `almost plain text`-markup languages.
+One of the first was the [Markdown](http://daringfireball.net/projects/markdown/) 
+syntax. One that was developed later and incorporates Markdown and a number of extensions 
+is [Pandoc](http://johnmacfarlane.net/pandoc/). The power of Pandoc also comes from the
+fact that it can be translated to numerous output formats, including, but not limited to:
+HTML, (plain) Markdown and `docbook` XML.
+
+So using Pandoc for writing RFCs seems like a sane choice. As `xml2rfc` uses XML,
+the easiest way would be to create `docbook` XML and transform that using
+XSLT. Pandoc2rfc does just that. The conversions are, in some way amusing, as we start
+off with (almost) plain text, use elaborate XML and end up with plain text again.
+
+
+    +-------------------+   pandoc   +---------+  
+    | ALMOST PLAIN TEXT |   ------>  | DOCBOOK |  
+    +-------------------+            +---------+  
+                  |                       |
+    non-existent  |                       | xsltproc
+      faster way  |                       |
+                  v                       v
+          +------------+    xml2rfc  +---------+ 
+          | PLAIN TEXT |  <--------  | XML2RFC | 
+          +------------+             +---------+ 
+^[fig:flow::This is an *inline* note for the above figure.]
+
+The XML generated (the output after the `xsltproc` step in [](#fig:flow)) 
+is suitable for inclusion in either the `middle` or `back` section
+of an RFC. The simplest way is to create a template XML file and include the appropriate
+XML:
+
+    <?xml version='1.0' ?>
+    <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
+    <!ENTITY pandocMiddle PUBLIC '' 'middle.xml'>
+    <!ENTITY pandocBack   PUBLIC '' 'back.xml'>
+    ]>
+
+    <rfc ipr='trust200902' docName='draft-gieben-pandoc-rfcs-02'>
+     <front>
+        <title>Writing I-Ds and RFCs using Pandoc v2</title>
+    </front>
+
+    <middle>
+        &pandocMiddle;
+    </middle>
+
+    <back>
+        &pandocBack;
+    </back>
+
+    </rfc>
+^[fig:template::A minimal template.xml.]
+
+See the Makefile for an example of this. In this case you need to edit
+3 documents:
+
+1. middle.pdc - contains the main body of text;
+1. back.pdc - holds appendices and references;
+1. template.xml (probably a fairly static file);
+1. Reference the above template, see [](#fig:template).
+
+The draft (`draft.txt`) you are reading now, is automatically created when you call `make`. 
+The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
+
+## Dependencies
+
+It needs `xsltproc` and `pandoc` to be installed. See the [Pandoc user manual for
+the details](http://johnmacfarlane.net/pandoc/README.html) on how to type in Pandoc
+style. And ofcourse `xml2rfc` version two.
+
+When using Pandoc2rfc consider adding the following sentence to an Acknowledgements
+section:
+
+     This document was produced using the Pandoc2rfc tool.
+
+# Starting a new project
+When starting a new project with `pandoc2rfc` you'll need to copy the following files:
+
+* `Makefile`
+* `transform.xslt`
+* And the above mentioned files:
+    * `middle.pdc`
+    * `back.pdc`
+    * `template.xml`
+
+After that you can start editing.
+
+# Supported Features
+
+* Sections with an anchor and title attributes ([](#section));
+* Lists
+    * style=symbols ([](#symbol));
+    * style=numbers ([](#number));
+    * style=empty ([](#empty));
+    * style=format %i, use roman lowercase numerals, ([](#roman));
+    * style=format (%d), use roman uppercase numerals ([](#roman));
+    * style=letters (lower- and uppercase, [](#letter));
+    * style=hanging ([](#hanging));
+* Figure/artwork with a title ([](#figureartwork));
+* Block quote this is converted to
+    `<list style="empty">` paragraph ([](#block-quote));
+* References 
+    * external (eref) ([](#external)); 
+    * internal (xref) ([](#internal)), you can refer to:
+        * section (handled by Pandoc, see [](#references)));
+* Citations, by using internal references;
+* Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
+* Tables with an anchor and title ([](#tables)).
+
+# Unsupported Features
+
+* Lists inside a table (`xml2rfc` doesn't handle this);
+* Pandoc markup in the caption for figures/artwork. Pandoc markup for table captions
+  *is* supported;
+* crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
+
+
+# Acknowledgements
+
+The following people have helped to make Pandoc2rfc what it is today:
+Benno Overeinder, Erlend Hamnaberg, Matthijs Mekking, Trygve Laugstøl.
+
+This document was prepared using Pandoc2rfc.
+
+# Pandoc Constructs
+
+So, what syntax do you need to use to get the correct output? Well, it
+is *just* Pandoc. The best introduction to the Pandoc style is given
+in this [README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
+
+For convenience we list the most important ones in the following sections.
+
+## Paragraph
+
+Paragraphs are separated with an empty line.
+
+## Section
+Just use the normal sectioning commands available in Pandoc, for instance:
+
+    # Section1 One
+    Bla
+
+Converts to: `<section title="Section1 One" anchor="section1-one">`
+If you have another section that is also named "Section1 One", that
+anchor will be called "section1-one-1", but *only* when the sections are in
+the *same* source file!
+
+Referencing the section
+is done with `see [](#section1-one)`, as in see [](#section).
+
+## List Styles
+
+A good number of styles are supported.
+
+### Symbol
+
+    A symbol list.
+
+    * Item one;
+    * Item two.
+
+Converts to `<list style="symbol">`:
+
+* Item one;
+* Item two.
+
+### Number
+
+    A numbered list.
+
+    1. Item one;
+    1. Item two.
+
+Converts to `<list style="numbers">`:
+
+1. Item one;
+1. Item two.
+
+### Empty
+Using the default list markers from Pandoc:
+
+    A list using the default list markers.
+
+    #. Item one;
+    #. Item two.
+
+Converts to `<list style="empty">`:
+
+#. Item one;
+#. Item two.
+
+### Roman
+Use the supported Pandoc syntax:
+
+    ii. Item one;
+    ii. Item two.
+
+Converts to `<list style="format %i.">`:
+
+ii. Item one;
+ii. Item two.
+
+If you use uppercase Roman
+numerals, they convert to a different style:
+
+    II. Item one;
+    II. Item two.
+
+Yields `<list style="format (%d) ">`:
+
+II. Item one;
+II. Item two.
+
+### Letter
+
+A numbered list.
+
+    a.  Item one;
+    b.  Item two.
+
+Converts to `<list style="letters">`: 
+
+a.  Item one;
+b.  Item two.
+
+Uppercasing the letters works too (note two spaces after the letter.
+
+    A.  Item one;
+    B.  Item two.
+
+Becomes:
+
+A.  Item one;
+B.  Item two.
+
+### Hanging
+This is more like a description list, so we need to use:
+
+    First item that needs clarification:
+
+    :   Explanation one
+    More stuff, because item is difficult to explain.
+    * item1
+    * item2
+
+    Second item that needs clarification:
+
+    :   Explanation two
+
+Converts to: `<list style="hanging">` and `<t hangText="First item that...">`
+
+If you want a newline after the hangTexts, search for the string `OPTION` in `transform.xsl`
+and uncomment it.
+
+## Figure/Artwork
+Indent the paragraph with 4 spaces.
+
+    Like this
+
+Converts to: `<figure><artwork> ...`
+
+## Block Quote
+Any paragraph like:
+
+    > quoted text
+
+Converts to: `<t><list style="empty"> ...` paragraph, making it indented.
+
+## References
+### External
+Any reference like:
+
+    [Click here](URI)
+
+Converts to: `<ulink target="URI">Click here ...`
+
+### Internal
+Any reference like:
+
+    [Click here](#localid)
+
+Converts to: `<link target="localid">Click here ...`
+
+For referring to RFCs (for which you manually need add the reference source in the template,
+with an external XML entity), you can just use:
+
+    [](#RFC2119)
+
+And it does the right thing. Referencing sections is done with:
+
+    See [](#pandoc-constructs)
+
+The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
+For referencing figures/artworks see [](#figureartwork).
+For referencing tables see [](#tables).
+
+## Spanx Styles
+
+The verb style can be selected with back-tics: `` `text` ``
+Converts to: `<spanx style="verb"> ...`
+
+And the emphasis style with asterisks: `*text*` or underscores: `_text_`
+Converts to: `<spanx style="emph"> ...`
+
+And the emphasis style with double asterisks: `**text**`
+Converts to: `<spanx style="strong"> ...`
+
+## Tables
+A table can be entered as:
+
+      Right     Left     Center     Default                                                                  
+      -------   ------ ----------   -------                                                                  
+           12     12        12        12                                                                   
+          123     123       123       123                                                                   
+            1     1         1         1       
+
+      ^[tab::A caption describing the table.]
+^[fig:table::A caption describing the figure describing the table.]
+
+Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple styles
+as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
+The column alignment is copied over to the generated XML.
+
+# Usage guidelines
+
+## Working with multiple files
+As an author you will probably break up a draft in multiple files, each dealing with a
+subject or section. When doing so sections with the same title will clash with each other. 
+Pandoc can deal with this situation, but only if the different sections are in the *same*
+file or processed in the same Pandoc run. 
+Concatenating the different section files before processing them is a solution
+to this problem. You can, for instance, amend the `Makefile` and add something like this:
+
+    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc.3
+            cat $@ > allsections.pdc
+
+And then process `allsection.pdc` in the normal way.
+
+## Setting the title
+If you use double quotes in the documents title in the `docName` attribute, like:
+
+    <rfc ipr="trust200902" docName="draft-gieben-writing-rfcs-pandoc-02">
+
+The Makefile will pick this up automatically and make a symbolic link:
+
+    draft-gieben-writing-rfcs-pandoc-00.txt -> draft.txt
+
+This makes uploading the file to the i-d tracker a bit easier.
+
+## Uploading the XML/txt
+
+The `draft.xml` target will generate an XML file with all XML included, so you can upload
+just one file to the I-D tracker.
+
+## VIM syntax highlighting
+If you are a VIM user you might be interested in a syntax highlighting file (see [](#VIM)) that
+slightly lightens up your reading experience while viewing a draft.txt from VIM.
+
+# Security Considerations
+This document raises no security issues.
+
+# IANA Considerations
+This document has no actions for IANA.

@@ -6,11 +6,6 @@
     Version: @VERSION@
 -->
     <xsl:output method="xml" omit-xml-declaration="yes" />
-    <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'" />
-    <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
-    <xsl:variable name="ure" select="'igure: '" />
-    <xsl:variable name="Fig" select="concat('@F', $ure)" />
-    <xsl:variable name="fig" select="concat('@f', $ure)" />
     <xsl:template match="/">
         <xsl:comment> This document was prepared using Pandoc2rfc
      https://github.com/miekg/pandoc2rfc </xsl:comment>
@@ -365,8 +360,11 @@ Transform <programlisting> to <figure><artwork>
             <xsl:text>center</xsl:text>
          </xsl:attribute>
          <xsl:attribute name="title">
-          <xsl:value-of select="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
+          <xsl:copy-of select="substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')">
+           <xsl:apply-templates/>
+          </xsl:copy-of>
+           <!--          <xsl:value-of select="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/> -->
          </xsl:attribute>
 </xsl:if>
           <artwork>

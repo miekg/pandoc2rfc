@@ -33,7 +33,7 @@ jkasjksajassjasjsajsajkas
 ## Reference Tests
 
 Refer to [RFC 2119](#RFC2119) if you will.
-Or maybe you want to inspect [](#fig:a-minimal-) in [](#pandoc-to-rfc)
+Or maybe you want to inspect [](#fig:flow) in [](#pandoc-to-rfc)
 again. Or you might want to [Click here](http://miek.nl).
 
 ## Spanx Tests
@@ -224,7 +224,7 @@ List with a sublist with a paragraph above the sublist
     123     123       123          123
       1     1          1             1
 
-Table:  Demonstration of **simple** table syntax.
+^[tab:simple: Demonstration of **simple** table syntax.]
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -238,12 +238,7 @@ Table:  Demonstration of **simple** table syntax.
                                     rows.
 -------------------------------------------------------------
 
-Table: Here's the caption. It, too, may span
-multiple lines. This is a multiline table. This is `verbatim` text.
-
-[^2]
-
-[^2]: table!simple
+^[tab:multiline: Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -253,7 +248,7 @@ multiple lines. This is a multiline table. This is `verbatim` text.
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-Table: Sample grid table.
+^[tab:grid: Sample grid table.]
 
 Grid tables without a caption
 
@@ -272,13 +267,9 @@ Grid tables without a caption
 This table has no caption, and therefor no reference. But you can refer to 
 some of the other tables, with for instance:
 
-    See [](#tab:here-s-the)
+    See [](#tab:grid)
 
-Which will become "See [](#tab:here-s-the)".
-
-[^3]
-
-[^3]: table!grid
+Which will become "See [](#tab:grid)".
 
 ## Numbered examples
 

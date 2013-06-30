@@ -24,7 +24,6 @@ Remove the article info section, this should be handled
 in the <front> matter of the draft 
 -->
     <xsl:template match="articleinfo"></xsl:template>
-    <!-- Use footnotes for indexes (iref) -->
     <xsl:template match="footnote"></xsl:template>
     <!-- Merge section with the title tags into one section -->
     <xsl:template match="section | simplesect |    sect1 | sect2 | sect3 | sect4 | sect5">
@@ -349,46 +348,31 @@ Transform <blockquote> to <list style="empty">
         </t>
     </xsl:template>
     <!--
-Transform <screen> and <programlisting> to <figure><artwork>
+Transform <programlisting> to <figure><artwork>
 -->
     <xsl:template match="screen | programlisting">
         <figure>
-            <xsl:choose>
-                <xsl:when test="contains(., $Fig)">
-                    <xsl:attribute name="anchor">
-                        <xsl:text>fig:</xsl:text>
-                        <xsl:value-of select="translate(         translate(substring(normalize-space(         translate( substring-after(., $Fig) ,         &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),         &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
-                    </xsl:attribute>
-                    <!-- If there is an caption, center the figure -->
-                    <xsl:attribute name="align">
-                        <xsl:text>center</xsl:text>
-                    </xsl:attribute>
-                    <xsl:attribute name="title">
-                        <xsl:value-of select="normalize-space(             substring-after(., $Fig))" />
-                    </xsl:attribute>
-                    <artwork>
-                        <xsl:value-of select="substring-before(., $Fig)" />
-                    </artwork>
-                </xsl:when>
-                <xsl:when test="contains(., $fig)">
-                    <xsl:attribute name="anchor">
-                        <xsl:text>fig:</xsl:text>
-                        <xsl:value-of select="translate(             translate(substring(normalize-space(             translate( substring-after(., $fig) ,             &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),             &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
-                    </xsl:attribute>
-                    <xsl:attribute name="title">
-                        <xsl:value-of select="normalize-space(             substring-after(., $fig))" />
-                    </xsl:attribute>
-                    <artwork>
-                        <xsl:value-of select="substring-before(., $fig)" />
-                    </artwork>
-                </xsl:when>
-                <xsl:otherwise>
-                    <artwork>
-                        <xsl:value-of select="." />
-                    </artwork>
-                </xsl:otherwise>
-            </xsl:choose>
-        </figure>
+ <xsl:if test="normalize-space(
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+         <xsl:attribute name="anchor">
+          <xsl:value-of select="normalize-space(
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+         </xsl:attribute>
+</xsl:if>
+ <xsl:if test="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           <xsl:attribute name="align">
+            <xsl:text>center</xsl:text>
+         </xsl:attribute>
+         <xsl:attribute name="title">
+          <xsl:value-of select="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+         </xsl:attribute>
+</xsl:if>
+          <artwork>
+         <xsl:value-of select="."/>
+         </artwork>
+       </figure>
     </xsl:template>
     <xsl:template match="title" />
     <xsl:template match="literal">
@@ -428,28 +412,24 @@ Transform <screen> and <programlisting> to <figure><artwork>
     <!-- Tables -->
     <xsl:template match="table | informaltable">
         <texttable>
-            <!-- If there is a caption, fake an anchor attribute -->
-            <xsl:if test="./caption">
-                <xsl:attribute name="anchor">
-                    <xsl:text>tab:</xsl:text>
-                    <xsl:value-of select="translate(          translate(substring(normalize-space(translate(          ./caption, &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),          &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
-                </xsl:attribute>
-                <!-- create title attribute from the caption -->
-                <xsl:attribute name="title">
-                    <xsl:value-of select="./caption" />
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="./title">
-                <xsl:attribute name="anchor">
-                    <xsl:text>tab:</xsl:text>
-                    <xsl:value-of select="translate( translate(          substring(normalize-space(translate(./title,          &quot;&#xA;'&quot;, &quot;  &quot;)), 1, 10),          &quot; &quot;, &quot;-&quot;), $uppercase, $smallcase)" />
-                </xsl:attribute>
-                <!-- create title attribute from the title -->
-                <xsl:attribute name="title">
-                    <xsl:value-of select="./title" />
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:apply-templates />
+ <xsl:if test="normalize-space(
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+         <xsl:attribute name="anchor">
+          <xsl:value-of select="normalize-space(
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+         </xsl:attribute>
+</xsl:if>
+ <xsl:if test="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           <xsl:attribute name="align">
+            <xsl:text>center</xsl:text>
+         </xsl:attribute>
+         <xsl:attribute name="title">
+          <xsl:value-of select="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+         </xsl:attribute>
+</xsl:if>
+        <xsl:apply-templates />
         </texttable>
     </xsl:template>
     <!-- Table headers -->

@@ -353,7 +353,7 @@ Transform <programlisting> to <figure><artwork>
             <xsl:text>center</xsl:text>
          </xsl:attribute>
          <xsl:attribute name="title">
-           <xsl:value-of select="normalize-space(
+          <xsl:value-of select="normalize-space(
            substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>

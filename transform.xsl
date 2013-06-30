@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
-<!-- vim: set shiftwidth=1 tabstop=1: -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" extension-element-prefixes="exsl">
-    <!-- 
-    (c) Miek Gieben 2013. Hereby put in the public domain.
-    Version: @VERSION@
--->
+<!-- vim: set shiftwidth=1 tabstop=2: -->
+<xsl:stylesheet
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns:exsl="http://exslt.org/common" version="1.0" extension-element-prefixes="exsl">
+<!-- (c) Miek Gieben 2013. Hereby put in the public domain.  Version: @VERSION@ -->
     <xsl:output method="xml" omit-xml-declaration="yes" />
     <xsl:template match="/">
-        <xsl:comment> This document was prepared using Pandoc2rfc
-     https://github.com/miekg/pandoc2rfc </xsl:comment>
+<xsl:comment> This document was prepared using Pandoc2rfc, https://github.com/miekg/pandoc2rfc </xsl:comment>
         <xsl:apply-templates />
     </xsl:template>
     <xsl:template match="article">
@@ -21,7 +19,7 @@
     <xsl:template match="section | simplesect |    sect1 | sect2 | sect3 | sect4 | sect5">
         <section>
             <xsl:attribute name="title">
-                <xsl:value-of select="normalize-space(       translate(./title, '&#xA;', ' '))" />
+                <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))" />
             </xsl:attribute>
             <xsl:attribute name="anchor">
                 <xsl:value-of select="@id" />

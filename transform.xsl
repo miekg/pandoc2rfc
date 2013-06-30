@@ -14,10 +14,7 @@
     <xsl:template match="article">
         <xsl:apply-templates />
     </xsl:template>
-    <!-- 
-Remove the article info section, this should be handled
-in the <front> matter of the draft 
--->
+    <!-- Remove the article info section, this should be handled in the <front> matter of the draft -->
     <xsl:template match="articleinfo"></xsl:template>
     <xsl:template match="footnote"></xsl:template>
     <!-- Merge section with the title tags into one section -->
@@ -32,9 +29,7 @@ in the <front> matter of the draft
             <xsl:apply-templates />
         </section>
     </xsl:template>
-    <!--
-Transform a <para> to <t>, not in lists, then it is discarded 
--->
+    <!-- Transform a <para> to <t>, not in lists, then it is discarded -->
     <xsl:template match="para | simpara">
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">
@@ -360,11 +355,8 @@ Transform <programlisting> to <figure><artwork>
             <xsl:text>center</xsl:text>
          </xsl:attribute>
          <xsl:attribute name="title">
-          <xsl:copy-of select="substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')">
-           <xsl:apply-templates/>
-          </xsl:copy-of>
-           <!--          <xsl:value-of select="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/> -->
+           <xsl:value-of select="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>
           <artwork>

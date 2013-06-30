@@ -353,20 +353,20 @@ Transform <programlisting> to <figure><artwork>
     <xsl:template match="screen | programlisting">
         <figure>
  <xsl:if test="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
          <xsl:attribute name="anchor">
           <xsl:value-of select="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>
  <xsl:if test="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
            <xsl:attribute name="align">
             <xsl:text>center</xsl:text>
          </xsl:attribute>
          <xsl:attribute name="title">
           <xsl:value-of select="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>
           <artwork>
@@ -413,20 +413,20 @@ Transform <programlisting> to <figure><artwork>
     <xsl:template match="table | informaltable">
         <texttable>
  <xsl:if test="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
          <xsl:attribute name="anchor">
           <xsl:value-of select="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>
  <xsl:if test="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': ')) != ''">
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
            <xsl:attribute name="align">
             <xsl:text>center</xsl:text>
          </xsl:attribute>
          <xsl:attribute name="title">
           <xsl:value-of select="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, ': '))"/>
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
          </xsl:attribute>
 </xsl:if>
         <xsl:apply-templates />

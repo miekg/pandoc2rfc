@@ -1,4 +1,7 @@
-# QUICK INSTALL
+# README
+
+The documentation for Pandoc2rfc can be found at:
+http://tools.ietf.org/html/draft-gieben-pandoc2rfc-01
 
 ## Bare install
 
@@ -16,7 +19,7 @@ And/or create a Makefile.
 
 ## Packages
 
-Or you can install `Pandoc2rfc` on your system. Then copy `template.xsl`
+Or you can install `Pandoc2rfc` on your system. Then copy `template.xml`
 to your I-D directory. Modify according to your needs and run:
 
     pandoc2rfc *.mkd

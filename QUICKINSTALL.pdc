@@ -1,21 +1,35 @@
 # QUICK INSTALL
 
-Installation for other Unix-like systems should be alike. Test with done
-on Ubuntu.
+## Bare install
+
+Just copy `transform.xsl` and `template.xml` to your I-D directory. Modify
+`template.xml` according to your needs and run:
+
+    pandoc -t docbook -s <yourfile>.mkd | \ 
+    xsltproc --nonet transform.xsl - > <yourfile>.xml
+
+And to create a draft.txt
+
+    xml2rfc template.xml -f draft.txt --text
+
+And/or create a Makefile.
+
+## Packages
+
+Or you can install `Pandoc2rfc` on your system. Then copy `template.xsl`
+to your I-D directory. Modify according to your needs and run:
+
+    pandoc2rfc *.mkd
+
+Packages can be found for Debian/Ubuntu at:
+https://launchpad.net/~miek/+archive/pandoc2rfc, they should also install
+in previous Ubuntu versions.
+
+## XSLT 1.0
 
 Note that you don't even need `xsltproc` per se, just an XSLT transformer program.
 Also note that only `xsltproc` is tested.
 
 Pandoc2rfc v2 works with `xml2rfc` version 2.x
-
-## Pandoc
-
-For Linux/Ubuntu:
-
-* `apt-get install xsltproc pandoc`;
-* Get the version 2 of xml2rfc;
-* Read the Pandoc manual;
-* Edit `middle.pdc`, `back.pdc` and/or `template.xml`;
-* ./pandoc2rfc middle.pdc back.pdc
 
 Miek Gieben - 2012

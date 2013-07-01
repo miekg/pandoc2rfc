@@ -68,5 +68,5 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 `PANDOC` (1) and
 the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
 
-See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-00 for more information
+See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-01 for more information
 on how to typeset an I-D.

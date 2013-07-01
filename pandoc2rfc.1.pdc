@@ -8,7 +8,7 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-THXNRhvtx*] [*FILE*]...
+pandoc2rfc [*-THXNRhvtx*] \[*FILE*\]...
 
 # DESCRIPTION
 

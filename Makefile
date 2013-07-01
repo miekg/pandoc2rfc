@@ -12,14 +12,8 @@ version:
 pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
 
-draft.txt: back.mkd middle.mkd transform.xsl pandoc-readme.mkd
-	bash pandoc2rfc -t template.xml -x transform.xsl back.mkd middle.mkd pandoc-readme.mkd
-
-draft.html: back.mkd middle.mkd transform.xsl pandoc-readme.mkd
-	bash pandoc2rfc -t template.xml -x transform.xsl -M back.mkd middle.mkd pandoc-readme.mkd
-
 install:
-	@echo installing $(TAG)
+	@echo Installing $(TAG)
 	mkdir -p $(DESTDIR)/usr/bin
 	mkdir -p $(DESTDIR)/usr/share/man/man1
 	mkdir -p $(DESTDIR)/usr/lib/pandoc2rfc
@@ -37,6 +31,5 @@ uninstall:
 
 .PHONY: clean
 clean:
-	rm -f draft.txt
 	rm -f pandoc2rfc.1
 

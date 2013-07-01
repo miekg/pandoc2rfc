@@ -15,8 +15,51 @@
     <!-- Remove the article info section, this should be handled in the <front> matter of the draft -->
     <xsl:template match="articleinfo"></xsl:template>
     <xsl:template match="footnote"></xsl:template>
+<!--
+    <xsl:template match="comment()">
+     <xsl:variable name="rawcomment" select="normalize-space(.)"/>
+     <xsl:variable name="comment" select="substring-after($rawcomment, '::')"/>
+     <xsl:variable name="rawanchor" select="substring-before($rawcomment, '::')"/>
+     <xsl:variable name="anchor" select="substring-before($rawanchor, ':')"/>
+     <xsl:variable name="source" select="substring-after($rawanchor, ':')"/>
+        <xsl:choose>
+            <xsl:when test="ancestor::para">
+             <cref>
+              <xsl:if test="$source != ''">
+              <xsl:attribute name="source">
+               <xsl:value-of select="$source"/>
+              </xsl:attribute>
+              </xsl:if>
+              <xsl:if test="$anchor != ''">
+              <xsl:attribute name="anchor">
+               <xsl:value-of select="$anchor"/>
+              </xsl:attribute>
+              </xsl:if>
+              <xsl:value-of select="$comment"/>
+             </cref>
+             <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+             <t><cref>
+              <xsl:if test="$source != ''">
+              <xsl:attribute name="source">
+               <xsl:value-of select="$source"/>
+              </xsl:attribute>
+              </xsl:if>
+              <xsl:if test="$anchor != ''">
+              <xsl:attribute name="anchor">
+               <xsl:value-of select="$anchor"/>
+              </xsl:attribute>
+              </xsl:if>
+               <xsl:value-of select="$comment"/>
+             </cref></t>
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:apply-templates/>
+    </xsl:template>
+-->
     <!-- Merge section with the title tags into one section -->
-    <xsl:template match="section | simplesect |    sect1 | sect2 | sect3 | sect4 | sect5">
+    <xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
         <section>
             <xsl:attribute name="title">
                 <xsl:value-of select="normalize-space(translate(./title, '&#xA;', ' '))" />
@@ -58,9 +101,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <!--
-Transform a <listitem> to a <t> for lists, except in description lists
--->
+<!-- Transform a <listitem> to a <t> for lists, except in description lists -->
     <xsl:template match="listitem">
         <xsl:choose>
             <xsl:when test="parent::varlistentry">
@@ -73,9 +114,7 @@ Transform a <listitem> to a <t> for lists, except in description lists
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <!--
-Transform lists, for lists in list we do not put it in a new <t></t>
--->
+<!-- Transform lists, for lists in list we do not put it in a new <t></t> -->
     <xsl:template match="orderedlist">
         <xsl:choose>
             <xsl:when test="contains(@numeration,'arabic')">
@@ -262,9 +301,7 @@ Transform lists, for lists in list we do not put it in a new <t></t>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <!--
-Hanging lists are specified as <variablelist> 
--->
+<!-- Hanging lists are specified as <variablelist> -->
     <xsl:template match="variablelist">
         <xsl:choose>
             <xsl:when test="ancestor::orderedlist">
@@ -296,16 +333,12 @@ Hanging lists are specified as <variablelist>
             <xsl:attribute name="hangText">
                 <xsl:value-of select="normalize-space(translate(./term,        ' &#x9;&#xD;&#xA;', ' '))" />
             </xsl:attribute>
-            <!-- 
-OPTION: enable this to get a newline after the hangText
--->
+<!-- OPTION: enable this to get a newline after the hangText -->
             <!-- <xsl:element name="vspace"/> -->
             <xsl:apply-templates select="./listitem" />
         </t>
     </xsl:template>
-    <!--
-Transform <link> to <xref> crosslinks 
--->
+<!-- Transform <link> to <xref> crosslinks -->
     <xsl:template match="link">
         <xref>
             <xsl:attribute name="target">
@@ -314,9 +347,7 @@ Transform <link> to <xref> crosslinks
             <xsl:apply-templates />
         </xref>
     </xsl:template>
-    <!--
-Transform <ulink> to <eref> links 
--->
+<!-- Transform <ulink> to <eref> links -->
     <xsl:template match="ulink">
         <eref>
             <xsl:attribute name="target">
@@ -325,9 +356,7 @@ Transform <ulink> to <eref> links
             <xsl:apply-templates />
         </eref>
     </xsl:template>
-    <!--
-Transform <blockquote> to <list style="empty">
--->
+<!-- Transform <blockquote> to <list style="empty"> -->
     <xsl:template match="blockquote">
         <t>
             <list style="empty">
@@ -335,9 +364,7 @@ Transform <blockquote> to <list style="empty">
             </list>
         </t>
     </xsl:template>
-    <!--
-Transform <programlisting> to <figure><artwork>
--->
+<!-- Transform <programlisting> to <figure><artwork> -->
     <xsl:template match="screen | programlisting">
         <figure>
  <xsl:if test="normalize-space(

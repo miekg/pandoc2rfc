@@ -23,6 +23,12 @@ And
 >
 > > Quote in Quote
 
+A list in quotes
+
+> 1. First item
+> 1. Second item
+
+
 ## Verbatim code blocks
 
 ~~~~~

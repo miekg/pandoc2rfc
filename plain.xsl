@@ -23,6 +23,12 @@
       <xsl:when test="contains(@style,'verb')">
 <xsl:text>`</xsl:text><xsl:value-of select="."/><xsl:text>`</xsl:text> 
       </xsl:when>
+      <xsl:when test="contains(@style,'emph')">
+<xsl:text>_</xsl:text><xsl:value-of select="."/><xsl:text>_</xsl:text> 
+      </xsl:when>
+      <xsl:when test="contains(@style,'strong')">
+<xsl:text>*</xsl:text><xsl:value-of select="."/><xsl:text>*</xsl:text> 
+      </xsl:when>
      </xsl:choose>
     </xsl:template>
     <xsl:template match="section">
@@ -83,6 +89,7 @@
      </xsl:template>
      <xsl:template match="figure">
 <xsl:apply-templates/>
+<!-- if empty don't -->
 <xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>
      </xsl:template>
 </xsl:stylesheet>

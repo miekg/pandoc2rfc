@@ -8,20 +8,16 @@
     <xsl:preserve-space elements="artwork"/>
     <xsl:variable name="spaces" select="'                                                             '"/>
     <xsl:variable name="hashes" select="'#############################################################'"/>
-
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
-
     <xsl:template match="t">
-     <!--<xsl:value-of select="."/> -->
     <xsl:apply-templates/>
 <xsl:text>
 </xsl:text>
 <xsl:text>
 </xsl:text>
     </xsl:template>
-
     <xsl:template match="section">
 <xsl:text>#</xsl:text>
 <xsl:value-of select="substring($hashes, 0 , count(ancestor::section)  )"/>
@@ -31,11 +27,9 @@
 </xsl:text>
     <xsl:apply-templates/>
     </xsl:template>
-
     <xsl:template match="xref">
 <xsl:text>[](#</xsl:text><xsl:value-of select="@target"/><xsl:text>)</xsl:text>
     </xsl:template>
-
     <xsl:template match="list">
 <xsl:text>
 </xsl:text>
@@ -45,6 +39,7 @@
 <xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 4 )"/>
 <xsl:text>1.  </xsl:text>
 <xsl:apply-templates/>
+<!-- only when we exit then complete list -->
 <xsl:text>
 </xsl:text>
       </xsl:for-each>

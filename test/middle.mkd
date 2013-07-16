@@ -341,11 +341,11 @@ Converts to: `<spanx style="strong"> ...`
 ## Tables
 A table can be entered as:
 
-      Right     Left     Center     Default                                                                  
-      -------   ------ ----------   -------                                                                  
-           12     12        12        12                                                                   
-          123     123       123       123                                                                   
-            1     1         1         1       
+      Right     Left     Center   Default
+      -------  ------ ----------   -------
+       12     12        12           12 
+      123     123       123         123
+        1     1         1         1       
 
       ^[tab::A caption describing the table.]
 ^[fig:table::A caption describing the figure describing the table.]

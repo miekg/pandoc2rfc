@@ -76,6 +76,6 @@
     </xsl:choose>
     </xsl:template>
     <xsl:template match="artwork">
-<xsl:value-of select="."/>
+<xsl:value-of select='translate(".", &#10;, "    ")'/>
     </xsl:template>
 </xsl:stylesheet>

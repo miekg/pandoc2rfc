@@ -144,11 +144,31 @@
 </xsl:text>
 </xsl:if>
 <xsl:apply-templates/>
-<!-- if empty don't -->
 <xsl:if test="@anchor != '' or @title != ''">
 <xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>
 </xsl:if>
 <xsl:text>
 </xsl:text>
      </xsl:template>
+    <xsl:template match="texttable">
+     <xsl:for-each select="ttcol">
+<xsl:value-of select="."/></xsl:for-each>
+<xsl:text>
+---------------------------------------
+</xsl:text>
+    <xsl:for-each select="c">
+<xsl:value-of select="."/>
+<xsl:if test="position() mod count(../ttcol) = 0">
+<xsl:text>
+</xsl:text>
+</xsl:if>
+</xsl:for-each>
+<xsl:if test="@anchor != '' or @title != ''">
+<xsl:text>
+</xsl:text>
+<xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>
+</xsl:if>
+<xsl:text>
+</xsl:text>
+    </xsl:template>
 </xsl:stylesheet>

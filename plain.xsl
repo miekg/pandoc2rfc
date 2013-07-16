@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!-- vim: set shiftwidth=1 tabstop=2: -->
 <xsl:stylesheet
- xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns:exsl="http://exslt.org/strings" version="1.0" extension-element-prefixes="exsl">
 <!-- (c) Miek Gieben 2013. Hereby put in the public domain.  Version: @VERSION@ -->
     <xsl:output method="text" omit-xml-declaration="yes" />
     <xsl:strip-space elements="*"/>
-    <xsl:preserve-space elements="artwork"/>
     <xsl:variable name="spaces" select="'                                                             '"/>
     <xsl:variable name="hashes" select="'#############################################################'"/>
     <xsl:template match="/">
@@ -76,6 +76,9 @@
     </xsl:choose>
     </xsl:template>
     <xsl:template match="artwork">
-<xsl:value-of select='translate(".", &#10;, "    ")'/>
+      <xsl:for-each select="exsl:tokenize(., '&#xA;')">
+<xsl:text>    </xsl:text><xsl:value-of select="." /><xsl:text>
+</xsl:text>
+       </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

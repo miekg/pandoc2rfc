@@ -80,5 +80,9 @@
 <xsl:text>    </xsl:text><xsl:value-of select="." /><xsl:text>
 </xsl:text>
        </xsl:for-each>
-    </xsl:template>
+     </xsl:template>
+     <xsl:template match="figure">
+<xsl:apply-templates/>
+<xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>
+     </xsl:template>
 </xsl:stylesheet>

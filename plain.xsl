@@ -21,10 +21,10 @@
     <xsl:template match="spanx">
      <xsl:choose>
       <xsl:when test="contains(@style,'verb')">
-<xsl:text>`</xsl:text><xsl:value-of select="."/><xsl:text>`</xsl:text> 
+<xsl:text>`</xsl:text><xsl:value-of select="."/><xsl:text>`</xsl:text>
       </xsl:when>
       <xsl:when test="contains(@style,'emph')">
-<xsl:text>_</xsl:text><xsl:value-of select="."/><xsl:text>_</xsl:text> 
+<xsl:text>_</xsl:text><xsl:value-of select="."/><xsl:text>_</xsl:text>
       </xsl:when>
       <xsl:when test="contains(@style,'strong')">
 <xsl:text>*</xsl:text><xsl:value-of select="."/><xsl:text>*</xsl:text> 

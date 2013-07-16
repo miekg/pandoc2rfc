@@ -11,8 +11,9 @@
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="t">
-    <xsl:apply-templates/>
+<xsl:template match="front"/>
+<xsl:template match="references"/>
+<xsl:template match="t"><xsl:apply-templates/>
 <xsl:text>
 </xsl:text>
 <xsl:text>
@@ -52,6 +53,19 @@
 </xsl:text>
 </xsl:if>
     <xsl:choose>
+     <xsl:when test="contains(@style,'hanging')">
+      <xsl:for-each select="t">
+<xsl:value-of select="@hangText"/>
+<xsl:text>
+</xsl:text>
+<xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 5 )"/>
+<xsl:text>:   </xsl:text>
+<xsl:apply-templates/>
+<xsl:text>
+
+</xsl:text>
+      </xsl:for-each>
+     </xsl:when>
      <xsl:when test="contains(@style,'numbers')">
       <xsl:for-each select="t">
 <xsl:text>
@@ -79,6 +93,42 @@
 <xsl:apply-templates/>
       </xsl:for-each>
      </xsl:when>
+     <xsl:when test="contains(@style,'letters')">
+      <xsl:for-each select="t">
+<xsl:text>
+</xsl:text>
+<xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 5 )"/>
+<xsl:text>a.  </xsl:text>
+<xsl:apply-templates/>
+      </xsl:for-each>
+     </xsl:when>
+     <xsl:when test="contains(@style,'format %C.')">
+      <xsl:for-each select="t">
+<xsl:text>
+</xsl:text>
+<xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 5 )"/>
+<xsl:text>A.  </xsl:text>
+<xsl:apply-templates/>
+      </xsl:for-each>
+     </xsl:when>
+     <xsl:when test="contains(@style,'format %i.')">
+      <xsl:for-each select="t">
+<xsl:text>
+</xsl:text>
+<xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 5 )"/>
+<xsl:text>ii. </xsl:text>
+<xsl:apply-templates/>
+      </xsl:for-each>
+     </xsl:when>
+     <xsl:when test="contains(@style,'format (%d)')">
+      <xsl:for-each select="t">
+<xsl:text>
+</xsl:text>
+<xsl:value-of select="substring($spaces, 0, (count(ancestor::list) - 1) * 5 )"/>
+<xsl:text>II. </xsl:text>
+<xsl:apply-templates/>
+      </xsl:for-each>
+     </xsl:when>
     </xsl:choose>
     </xsl:template>
     <xsl:template match="artwork">
@@ -88,8 +138,17 @@
        </xsl:for-each>
      </xsl:template>
      <xsl:template match="figure">
+<xsl:if test="ancestor::list">
+<xsl:text>
+
+</xsl:text>
+</xsl:if>
 <xsl:apply-templates/>
 <!-- if empty don't -->
+<xsl:if test="@anchor != '' or @title != ''">
 <xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>
+</xsl:if>
+<xsl:text>
+</xsl:text>
      </xsl:template>
 </xsl:stylesheet>

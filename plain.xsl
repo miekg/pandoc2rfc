@@ -145,6 +145,7 @@
      </xsl:template>
      <xsl:template match="figure">
 <xsl:text>
+
 </xsl:text>
 <xsl:apply-templates/>
 <xsl:if test="@anchor != '' or @title != ''">

@@ -85,6 +85,11 @@
       </xsl:for-each>
      </xsl:when>
      <xsl:when test="contains(@style,'empty')">
+    <xsl:if test="count(t) = 1">
+<xsl:text>> </xsl:text>
+<xsl:apply-templates/>
+    </xsl:if>
+    <xsl:if test="count(t) &gt; 1">
       <xsl:for-each select="t">
 <xsl:text>
 </xsl:text>
@@ -92,6 +97,7 @@
 <xsl:text>#.  </xsl:text>
 <xsl:apply-templates/>
       </xsl:for-each>
+    </xsl:if>
      </xsl:when>
      <xsl:when test="contains(@style,'letters')">
       <xsl:for-each select="t">

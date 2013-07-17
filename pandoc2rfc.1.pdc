@@ -8,7 +8,7 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-THXNRhvtx*] \[*FILE*\]...
+pandoc2rfc [*-THXNRhvdtx*] \[*FILE*\]...
 
 # DESCRIPTION
 
@@ -29,7 +29,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Output a draft.txt, a text version with page breaks. This is the default.
 
 -R
-:   Output a draft.txt, a unpaginated text version.
+:   Output a draft.txt, a unpaginated (raw) text version.
 
 -H
 :   Output a draft.html.

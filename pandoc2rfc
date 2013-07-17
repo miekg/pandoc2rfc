@@ -37,19 +37,21 @@ function extension {
     echo ""
 }
 
+REV=""
 OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
 Q="-q"
-while getopts "vdht:x:THMXNRCV" o; do
+while getopts "vdht:x:THMXNRCV1" o; do
     case $o in
     T) ;;
     M) MARKUP="1";;
+    1) REV="1"; TRANS=/usr/lib/pandoc2rfc/plain.xsl;;
     R) OUT="-f draft.txt --raw";;
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;
     N) OUT="-f draft.nroff --nroff";;
-    C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff}
+    C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff} >&2
        rm -f draft.{txt,html,xml,nroff} && exit 0;;
     h) usage && exit 0;;
     V) echo $VERSION && exit 0;;
@@ -61,6 +63,12 @@ while getopts "vdht:x:THMXNRCV" o; do
 done
 shift $((OPTIND - 1))
 
+if [[ -n "$REV" ]]; then
+    [[ -n "$VERBOSE" ]] && echo xsltproc --nonet $TRANS - \< "$1" >&2
+    xsltproc --nonet $TRANS - < "$1"
+    exit
+fi
+
 XML=""
 for f in "$@"; do
     base=$(extension "$f")
@@ -68,24 +76,24 @@ for f in "$@"; do
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
-    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc --nonet $TRANS - \> "$base".xml
+    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc --nonet $TRANS - \> "$base".xml >&2
     pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
 # if XML is filled we have files to process otherwise process stdin
 if [[ -n "$XML" ]]; then
-    [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML
+    [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML >&2
     xml2rfc $Q $TEMPLATE $OUT && $RM $XML
     if [[ -n "$MARKUP" ]]; then
-        [[ -n "$VERBOSE" ]] && echo rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt
+        [[ -n "$VERBOSE" ]] && echo rfcmarkup url=file:///$PWD/draft.txt \> draft.html \&\& rm draft.txt >&2
         rfcmarkup url=file:///$PWD/draft.txt > draft.html && rm draft.txt
     fi
 else
     if [[ -n "$MARKUP" ]]; then
-        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - \| rfcmarkup url=file:///dev/stdin >&2  # to stderr, not clobber stdout
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - \| rfcmarkup url=file:///dev/stdin >&2
         pandoc -t docbook -s | xsltproc --nonet $TRANS - | rfcmarkup url=file:///dev/stdin || exit 1
     else 
-        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - >&2  # to stderr, not clobber stdout
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - >&2
         pandoc -t docbook -s | xsltproc --nonet $TRANS - || exit 1
     fi
 fi

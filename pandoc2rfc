@@ -17,7 +17,7 @@ function usage {
     echo "  -C                  Remove all drafts"
     echo "  -1                  Parse FILE as XML and output Pandoc"
     echo "  -v                  Be verbose (show warnings)"
-    echo "  -d                  Debug mode, do not delete intermediate xml files"
+    echo "  -d                  Debug mode, do not delete intermediate XML files"
     echo "  -t template.xml     Path to template.xml, defaults to current directory"
     echo "  -x transform.xsl    Path to transform.xsl, defaults to /usr/lib/pandoc2rfc/transform.xsl"
     echo "  -h                  This help"

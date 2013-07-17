@@ -47,8 +47,8 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Remove all drafts.
 
 -1
-:   Reverse operation. Parse *FILE* as an XML document and output Pandoc syntax on standard
-    output.
+:   Reverse operation. Parse *FILE* as an XML (with all references expanded) document and output 
+    Pandoc syntax on standard output.
 
 -t TEMPLATE
 :   Path to the `template.xml`, defaults to the current directory.

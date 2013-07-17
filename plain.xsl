@@ -144,11 +144,9 @@
        </xsl:for-each>
      </xsl:template>
      <xsl:template match="figure">
-<xsl:if test="ancestor::list">
 <xsl:text>
 
 </xsl:text>
-</xsl:if>
 <xsl:apply-templates/>
 <xsl:if test="@anchor != '' or @title != ''">
 <xsl:text>^[</xsl:text><xsl:value-of select="@anchor"/>::<xsl:value-of select="@title"/><xsl:text>]</xsl:text>

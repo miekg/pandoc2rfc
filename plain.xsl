@@ -158,12 +158,12 @@
      </xsl:template>
     <xsl:template match="texttable">
      <xsl:for-each select="ttcol">
-<xsl:value-of select="."/></xsl:for-each>
+<xsl:value-of select="."/><xsl:text> | </xsl:text></xsl:for-each>
 <xsl:text>
 ---------------------------------------
 </xsl:text>
     <xsl:for-each select="c">
-<xsl:value-of select="."/>
+<xsl:value-of select="."/><xsl:text> | </xsl:text>
 <xsl:if test="position() mod count(../ttcol) = 0">
 <xsl:text>
 </xsl:text>

@@ -8,7 +8,7 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-THXNRhvdtx*] \[*FILE*\]...
+pandoc2rfc [*-1THXNRhvdtx*] \[*FILE*\]...
 
 # DESCRIPTION
 
@@ -46,11 +46,16 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -C
 :   Remove all drafts.
 
+-1
+:   Reverse operation. Parse *FILE* as an XML document and output Pandoc syntax on standard
+    output.
+
 -t TEMPLATE
-:   Path to the template.xml, defaults to the current directory.
+:   Path to the `template.xml`, defaults to the current directory.
 
 -x TRANSFORM
-:   Path to the transform.xsl XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl.
+:   Path to the `transform.xsl` XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl. If the *-1* option
+    is used this points to the `plain.xsl` XSLT file used for the reverse transformation.
 
 -v
 :   Be verbose and show the commands that are run and any warnings.
@@ -64,9 +69,17 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -V
 :   Show version.
 
+When using the *-1* option, be aware of the following limitations:
+
+* Tables will be parsed, but the output is not a correct table in Pandoc format, you will
+  need to edit this manually;
+* Front section is discarded, the back section is parsed, but is concatenated to the middle
+  section. You will need to manually split this;
+* Empty lines in artwork are discarded.
+
 # SEE ALSO
 `PANDOC` (1) and
 the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
 
-See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-01 for more information
+See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02 for more information
 on how to typeset an I-D.

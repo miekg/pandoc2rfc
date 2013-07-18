@@ -83,3 +83,10 @@ the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
 
 See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02 for more information
 on how to typeset an I-D.
+
+Although you can type Pandoc just fine, there are two things that are done 
+different in Pandoc2rfc:
+
+* Using Pandoc style citations is not supported, you must use internal references
+  for this.
+* Referencing figures and tables is done by (ab)using inline footnotes.

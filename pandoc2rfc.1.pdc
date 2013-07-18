@@ -87,6 +87,8 @@ on how to typeset an I-D.
 Although you can type Pandoc just fine, there are two things that are done 
 different in Pandoc2rfc:
 
-* Using Pandoc style citations is not supported, you must use internal references
-  for this.
+* Using Pandoc style citation are not supported, you must use internal references
+  for this. Using Pandoc's citations would mean citations are resolved when Pandoc
+  runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
+  from there will not be recognized as citations. Using references solves this.
 * Referencing figures and tables is done by (ab)using inline footnotes.

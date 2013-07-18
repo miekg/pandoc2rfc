@@ -175,4 +175,11 @@
 <xsl:text>
 </xsl:text>
     </xsl:template>
+    <xsl:template match="vspace">
+<xsl:text>&lt;vspace</xsl:text>
+<xsl:if test="@blankLines">
+<xsl:text> blankLines="</xsl:text><xsl:value-of select="@blankLines"/><xsl:text>"</xsl:text>
+</xsl:if>
+<xsl:text>/&gt;</xsl:text>
+</xsl:template>
 </xsl:stylesheet>

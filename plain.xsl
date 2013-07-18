@@ -8,6 +8,7 @@
     <xsl:strip-space elements="*"/>
     <xsl:variable name="spaces" select="'                                                             '"/>
     <xsl:variable name="hashes" select="'#############################################################'"/>
+    <xsl:variable name="dashes" select="'-------------------------------------------------------------'"/>
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
@@ -156,12 +157,28 @@
      </xsl:template>
     <xsl:template match="texttable">
      <xsl:for-each select="ttcol">
-<xsl:value-of select="."/><xsl:text> | </xsl:text></xsl:for-each>
+<xsl:value-of select="exsl:align(
+string(.),
+substring($spaces, 0, 80 div count(../ttcol) ),
+'left')"/>
+</xsl:for-each>
 <xsl:text>
----------------------------------------
 </xsl:text>
-    <xsl:for-each select="c">
-<xsl:value-of select="."/><xsl:text> | </xsl:text>
+     <xsl:for-each select="ttcol">
+<xsl:value-of select="exsl:align(
+substring($dashes, 0, string-length(.)),     
+substring($spaces, 0, 80 div count(../ttcol)),
+'left')"/>
+</xsl:for-each>
+<xsl:text>
+</xsl:text>
+   <xsl:for-each select="c">
+   <xsl:variable name="index" select="((position()-1) mod count(../ttcol)) + 1"/>
+<xsl:value-of select="exsl:align(
+string(.),
+substring($spaces, 0, 80 div count(../ttcol)),
+'left')"/>
+<!-- <xsl:value-of select="../ttcol[$index]"/> -->
 <xsl:if test="position() mod count(../ttcol) = 0">
 <xsl:text>
 </xsl:text>

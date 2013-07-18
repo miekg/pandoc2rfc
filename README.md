@@ -1,7 +1,15 @@
 # README
 
 The documentation for Pandoc2rfc can be found at:
-http://tools.ietf.org/html/draft-gieben-pandoc2rfc-01
+http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02
+
+## Differences with Pandoc
+
+Although you can type Pandoc just fine, there are two things that differ
+
+* Using Pandoc citations is not supported, you must use internal references
+  for this;
+* Referencing figures and tables is done by abusing inline footnotes.
 
 ## Bare install
 

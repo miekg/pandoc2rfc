@@ -173,11 +173,11 @@ substring($spaces, 0, 80 div count(../ttcol)),
 <xsl:text>
 </xsl:text>
    <xsl:for-each select="c">
-   <xsl:variable name="index" select="((position()-1) mod count(../ttcol)) + 1"/>
 <xsl:value-of select="exsl:align(
 string(.),
 substring($spaces, 0, 80 div count(../ttcol)),
 'left')"/>
+<!-- TODO: <xsl:variable name="index" select="((position()-1) mod count(../ttcol)) + 1"/>-->
 <!-- <xsl:value-of select="../ttcol[$index]"/> -->
 <xsl:if test="position() mod count(../ttcol) = 0">
 <xsl:text>

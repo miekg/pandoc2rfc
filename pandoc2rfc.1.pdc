@@ -72,24 +72,22 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 
 When using the *-1* option, be aware of the following limitations:
 
-* Tables will be parsed, but the output is not a correct table in Pandoc format, you will
+* Tables will be parsed, but the column alignment is lost, you will
   need to edit this manually;
-* Front section is discarded, the back section is parsed, but is concatenated to the middle
+* The front section is discarded, the back section is parsed, but is concatenated to the middle
   section. You will need to manually split this;
 * Empty lines in artwork are discarded.
-
-# SEE ALSO
-`PANDOC` (1) and
-the Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
-
-See http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02 for more information
-on how to typeset an I-D.
 
 Although you can type Pandoc just fine, there are two things that are done 
 different in Pandoc2rfc:
 
-* Using Pandoc style citation are not supported, you must use internal references
-  for this. Using Pandoc's citations would mean citations are resolved when Pandoc
+* Pandoc style citations are not supported, you must use internal references
+  for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
   from there will not be recognized as citations. Using references solves this.
 * Referencing figures and tables is done by (ab)using inline footnotes.
+
+# SEE ALSO
+The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
+Also see <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02> for more information
+on how to typeset an I-D.

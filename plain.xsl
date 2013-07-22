@@ -6,9 +6,9 @@
 <!-- (c) Miek Gieben 2013. Hereby put in the public domain.  Version: @VERSION@ -->
     <xsl:output method="text" omit-xml-declaration="yes" />
     <xsl:strip-space elements="*"/>
-    <xsl:variable name="spaces" select="'                                                             '"/>
-    <xsl:variable name="hashes" select="'#############################################################'"/>
-    <xsl:variable name="dashes" select="'-------------------------------------------------------------'"/>
+    <xsl:variable name="spaces" select="'                                                                                     '"/>
+    <xsl:variable name="hashes" select="'#####################################################################################'"/>
+    <xsl:variable name="dashes" select="'-------------------------------------------------------------------------------------'"/>
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>

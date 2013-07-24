@@ -64,8 +64,8 @@ done
 shift $((OPTIND - 1))
 
 if [[ -n "$REV" ]]; then
-    [[ -n "$VERBOSE" ]] && echo xsltproc --nonet $TRANS - \< "$1" >&2
-    xsltproc --nonet $TRANS - < "$1"
+    [[ -n "$VERBOSE" ]] && echo sed \'s/^ *//\' \< "$1" \| xsltproc --nonet $TRANS - >&2
+    sed 's/^ *//' < "$1" | xsltproc --nonet $TRANS -
     exit
 fi
 

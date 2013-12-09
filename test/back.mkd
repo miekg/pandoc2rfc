@@ -46,7 +46,8 @@ jkasjksajassjasjsajsajkas
 
 In between text
 
-| hello!
+| hel
+| lo!
 
 ## Reference Tests
 

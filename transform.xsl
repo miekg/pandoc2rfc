@@ -632,47 +632,4 @@ Every even position() need to be dealt with:
        </xsl:if>
      </vspace>
     </xsl:template>
-<!--
-    <xsl:template match="comment()">
-     <xsl:variable name="rawcomment" select="normalize-space(.)"/>
-     <xsl:variable name="comment" select="substring-after($rawcomment, '::')"/>
-     <xsl:variable name="rawanchor" select="substring-before($rawcomment, '::')"/>
-     <xsl:variable name="anchor" select="substring-before($rawanchor, ':')"/>
-     <xsl:variable name="source" select="substring-after($rawanchor, ':')"/>
-        <xsl:choose>
-            <xsl:when test="ancestor::para">
-             <cref>
-              <xsl:if test="$source != ''">
-              <xsl:attribute name="source">
-               <xsl:value-of select="$source"/>
-              </xsl:attribute>
-              </xsl:if>
-              <xsl:if test="$anchor != ''">
-              <xsl:attribute name="anchor">
-               <xsl:value-of select="$anchor"/>
-              </xsl:attribute>
-              </xsl:if>
-              <xsl:value-of select="$comment"/>
-             </cref>
-             <xsl:apply-templates />
-            </xsl:when>
-            <xsl:otherwise>
-             <t><cref>
-              <xsl:if test="$source != ''">
-              <xsl:attribute name="source">
-               <xsl:value-of select="$source"/>
-              </xsl:attribute>
-              </xsl:if>
-              <xsl:if test="$anchor != ''">
-              <xsl:attribute name="anchor">
-               <xsl:value-of select="$anchor"/>
-              </xsl:attribute>
-              </xsl:if>
-               <xsl:value-of select="$comment"/>
-             </cref></t>
-            </xsl:otherwise>
-        </xsl:choose>
-        <xsl:apply-templates/>
-    </xsl:template>
--->
 </xsl:stylesheet>

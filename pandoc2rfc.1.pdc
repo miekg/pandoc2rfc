@@ -55,7 +55,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Path to the `template.xml`, defaults to the current directory.
 
 -x TRANSFORM
-:   Path to the `transform.xsl` XSLT file, defaults to /usr/lib/pandoc2rfc/transform.xsl. If the *-1* option
+:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl. If the *-1* option
     is used this points to the `plain.xsl` XSLT file used for the reverse transformation.
 
 -v
@@ -89,5 +89,5 @@ different in Pandoc2rfc:
 
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
-Also see <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-02> for more information
+Also see <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03> for more information
 on how to typeset an I-D.

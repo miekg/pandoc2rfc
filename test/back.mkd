@@ -36,6 +36,13 @@ A verbatim code block
 jkasjksajassjasjsajsajkas
 ~~~~~
 
+## Line blocks
+
+| this is a line block
+|
+| more
+| And another line
+
 ## Reference Tests
 
 Refer to [RFC 2119](#RFC2119) if you will.

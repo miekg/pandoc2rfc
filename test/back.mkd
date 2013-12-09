@@ -47,7 +47,7 @@ jkasjksajassjasjsajsajkas
 In between text
 
 | hel
-| lo!
+| lo! and a [RFC2119](#RFC2119) reference.
 
 ## Reference Tests
 

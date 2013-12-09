@@ -38,10 +38,15 @@ jkasjksajassjasjsajsajkas
 
 ## Line blocks
 
-| this is a line block
+| this is a line block, empty line after this one
 |
-| more
+| Should be followed by a new line
+|    starts with 3 spaces.
 | And another line
+
+In between text
+
+| hello!
 
 ## Reference Tests
 

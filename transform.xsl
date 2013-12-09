@@ -316,6 +316,12 @@
             <xsl:apply-templates />
         </eref>
     </xsl:template>
+<!-- Deal with line blocks -->
+    <xsl:template match="literallayout">
+        <xsl:apply-templates />
+        <!-- hack assuming in a literal layout, we want to see a newline -->
+        <vspace/>
+   </xsl:template>
 <!-- Transform <blockquote> to <list style="empty"> -->
     <xsl:template match="blockquote">
         <t>

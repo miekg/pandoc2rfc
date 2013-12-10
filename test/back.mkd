@@ -11,9 +11,17 @@ Test a very long title.
 
 This is discarded by `xml2rfc`.
 
+## Unnumered section {-}
+
+An unnumbered section. Does not work.
+
 ## Blockquote
 
 > This is a blockquote, how does it look?
+
+And a line:
+
+-------
 
 And
 

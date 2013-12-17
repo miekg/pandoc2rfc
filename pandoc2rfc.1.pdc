@@ -51,6 +51,12 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
     Pandoc syntax on standard output. This convertion is not 100%. A manual inspection of the generated
     document is advised.
 
+-2
+:   Output xml2rfc XML version 2. This is the default.
+
+-3
+:   Output xml2rfc XML version 3. This is currently a noop.
+
 -t TEMPLATE
 :   Path to the `template.xml`, defaults to the current directory.
 

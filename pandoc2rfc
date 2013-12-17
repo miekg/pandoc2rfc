@@ -16,6 +16,8 @@ function usage {
     echo "  -N                  create a draft.nroff"
     echo "  -C                  remove all drafts"
     echo "  -1                  parse FILE as XML and output Pandoc"
+    echo "  -2                  set output to xml2rfc v2 XML"
+    echo "  -3                  set output to xml2rfc v3 XML"
     echo "  -v                  be verbose (show warnings)"
     echo "  -d                  debug mode, do not delete intermediate XML files"
     echo "  -t template.xml     path to template.xml, defaults to current directory"
@@ -42,11 +44,13 @@ OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
 Q="-q"
-while getopts "vdht:x:THMXNRCV1" o; do
+while getopts "vdht:x:THMXNRCV123" o; do
     case $o in
     T) ;;
     M) MARKUP="1";;
     1) REV="1"; TRANS=/usr/share/pandoc2rfc/plain.xsl;;
+    2) :;;
+    3) :;;
     R) OUT="-f draft.txt --raw";;
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;

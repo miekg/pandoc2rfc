@@ -351,7 +351,13 @@
          </xsl:attribute>
 </xsl:if>
           <artwork>
+ <xsl:if test="normalize-space(
+           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
+           <xsl:attribute name="align">
+            <xsl:text>center</xsl:text>
+         </xsl:attribute>
          <xsl:value-of select="."/>
+</xsl:if>
          </artwork>
        </figure>
     </xsl:template>

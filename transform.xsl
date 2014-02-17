@@ -3,7 +3,7 @@
 <xsl:stylesheet
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:exsl="http://exslt.org/common" version="1.0" extension-element-prefixes="exsl">
-<!-- (c) Miek Gieben 2013. Hereby put in the public domain.  Version: @VERSION@ -->
+<!-- (c) Miek Gieben 2013. Hereby put in the public domain.  Version: 2.11 -->
     <xsl:output method="xml" omit-xml-declaration="yes" />
     <xsl:template match="/">
 <xsl:comment> This document was prepared using Pandoc2rfc, https://github.com/miekg/pandoc2rfc </xsl:comment>
@@ -356,8 +356,8 @@
            <xsl:attribute name="align">
             <xsl:text>center</xsl:text>
          </xsl:attribute>
-         <xsl:value-of select="."/>
 </xsl:if>
+         <xsl:value-of select="."/>
          </artwork>
        </figure>
     </xsl:template>

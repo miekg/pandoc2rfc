@@ -42,8 +42,8 @@ Or see <http://pandoc2rfc.implementers.org/> for proper Debian packages.
 
 ## XSLT 1.0
 
-Note that you don't even need `xsltproc` per se, just an XSLT transformer program.
-Also note that only `xsltproc` is tested.
+Note that you don't even need `xsltproc` per se, just an XSLT transformer
+program. Also note that only `xsltproc` is tested.
 
 Pandoc2rfc v2 works with `xml2rfc` version 2.x
 

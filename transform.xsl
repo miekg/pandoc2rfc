@@ -33,19 +33,7 @@
     <!-- Transform a <para> to <t>, not in lists, then it is discarded -->
     <xsl:template match="para | simpara">
         <xsl:choose>
-            <xsl:when test="ancestor::orderedlist">
-                <xsl:if test="position() &gt; 2">
-                    <vspace blankLines="1" />
-                </xsl:if>
-                <xsl:apply-templates />
-            </xsl:when>
-            <xsl:when test="ancestor::itemizedlist">
-                <xsl:if test="position() &gt; 2">
-                    <vspace blankLines="1" />
-                </xsl:if>
-                <xsl:apply-templates />
-            </xsl:when>
-            <xsl:when test="ancestor::variablelist">
+            <xsl:when test="parent::listitem">
                 <xsl:if test="position() &gt; 2">
                     <vspace blankLines="1" />
                 </xsl:if>
@@ -324,11 +312,20 @@
    </xsl:template>
 <!-- Transform <blockquote> to <list style="empty"> -->
     <xsl:template match="blockquote">
-        <t>
-            <list style="empty">
-                <xsl:apply-templates />
-            </list>
-        </t>
+        <xsl:choose>
+            <xsl:when test="parent::listitem">
+                <list style="empty">
+                    <xsl:apply-templates />
+                </list>
+            </xsl:when>
+            <xsl:otherwise>
+                <t>
+                  <list style="empty">
+                      <xsl:apply-templates />
+                  </list>
+                </t>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 <!-- Transform <programlisting> to <figure><artwork> -->
     <xsl:template match="screen | programlisting">

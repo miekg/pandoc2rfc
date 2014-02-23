@@ -18,6 +18,7 @@ function usage {
     echo "  -1                  parse FILE as XML and output Pandoc"
     echo "  -2                  set output to xml2rfc v2 XML"
     echo "  -3                  set output to xml2rfc v3 XML"
+    echo "  -n                  pass --nonet to xsltproc"
     echo "  -v                  be verbose (show warnings)"
     echo "  -d                  debug mode, do not delete intermediate XML files"
     echo "  -t template.xml     path to template.xml, defaults to current directory"
@@ -43,8 +44,9 @@ REV=""
 OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
+NONOT=""
 Q="-q"
-while getopts "vdht:x:THMXNRCV123" o; do
+while getopts "nvdht:x:THMXNRCV123" o; do
     case $o in
     T) ;;
     M) MARKUP="1";;
@@ -55,6 +57,7 @@ while getopts "vdht:x:THMXNRCV123" o; do
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;
     N) OUT="-f draft.nroff --nroff";;
+    n) NONET="--nonet";;
     C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff} >&2
        rm -f draft.{txt,html,xml,nroff} && exit 0;;
     h) usage && exit 0;;
@@ -68,8 +71,8 @@ done
 shift $((OPTIND - 1))
 
 if [[ -n "$REV" ]]; then
-    [[ -n "$VERBOSE" ]] && echo sed \'s/^ *//\' \< "$1" \| xsltproc --nonet $TRANS - >&2
-    sed 's/^ *//' < "$1" | xsltproc --nonet $TRANS -
+    [[ -n "$VERBOSE" ]] && echo sed \'s/^ *//\' \< "$1" \| xsltproc $NONET $TRANS - >&2
+    sed 's/^ *//' < "$1" | xsltproc $NONET $TRANS -
     exit
 fi
 
@@ -80,8 +83,8 @@ for f in "$@"; do
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
-    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc --nonet $TRANS - \> "$base".xml >&2
-    pandoc -t docbook -s "$f" | xsltproc --nonet $TRANS - > "$base".xml || exit 1
+    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc $NONET $TRANS - \> "$base".xml >&2
+    pandoc -t docbook -s "$f" | xsltproc $NONET $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
 # if XML is filled we have files to process otherwise process stdin
@@ -94,10 +97,10 @@ if [[ -n "$XML" ]]; then
     fi
 else
     if [[ -n "$MARKUP" ]]; then
-        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - \| rfcmarkup url=file:///dev/stdin >&2
-        pandoc -t docbook -s | xsltproc --nonet $TRANS - | rfcmarkup url=file:///dev/stdin || exit 1
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc $NONET $TRANS - \| rfcmarkup url=file:///dev/stdin >&2
+        pandoc -t docbook -s | xsltproc $NONET $TRANS - | rfcmarkup url=file:///dev/stdin || exit 1
     else 
-        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc --nonet $TRANS - >&2
-        pandoc -t docbook -s | xsltproc --nonet $TRANS - || exit 1
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc $NONET $TRANS - >&2
+        pandoc -t docbook -s | xsltproc $NONET $TRANS - || exit 1
     fi
 fi

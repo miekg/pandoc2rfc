@@ -14,7 +14,7 @@ function usage {
     echo "  -M                  create a draft.html (using rfcmarkup)"
     echo "  -X                  create a draft.xml"
     echo "  -N                  create a draft.nroff"
-    echo "  -C                  clean; remove all drafts"
+    echo "  -C                  clean, remove all drafts"
     echo "  -1                  parse FILE as XML and output Pandoc"
     echo "  -2                  set output to xml2rfc v2 XML"
     echo "  -3                  set output to xml2rfc v3 XML"

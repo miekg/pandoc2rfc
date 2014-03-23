@@ -14,10 +14,10 @@ pandoc2rfc [*-1THXNRhvdtx*] \[*FILE*\]...
 
 Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML file.
 When all files are converted, xml2rfc is called and a draft is created. 
-The intermediate XML files are removed afterwards.
+The intermediate XML files are removed afterwards (unless the -d flag is given).
 
 The current directory must contain a file `template.xml` (otherwise use the
-`-t` switch) which holds the "front" section of the I-D you are building.
+`-t` flag) which holds the "front" section of the I-D you are building.
 
 Currently there isn't a standard extension for Pandoc source files, so the
 following extension are recognized for the input files: `.pdc`, `.pandoc`,
@@ -61,7 +61,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Path to the `template.xml`, defaults to the current directory.
 
 -x TRANSFORM
-:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl. If the *-1* option
+:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl. If the *-1* flag
     is used this points to the `plain.xsl` XSLT file used for the reverse transformation.
 
 -v
@@ -76,7 +76,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -V
 :   Show version.
 
-When using the *-1* option, be aware of the following limitations:
+When using the *-1* flag, be aware of the following limitations:
 
 * Tables will be parsed, but the column alignment is lost, you will
   need to edit this manually;

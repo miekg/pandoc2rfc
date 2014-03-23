@@ -37,14 +37,14 @@ A list in quotes
 > 1. Second item
 
 
-## Verbatim code blocks
+## Verbatim Code Blocks Test
 
 ~~~~~
 A verbatim code block
 jkasjksajassjasjsajsajkas
 ~~~~~
 
-## Line blocks
+## Line blocks Test
 
 | this is a line block, empty line after this one
 |

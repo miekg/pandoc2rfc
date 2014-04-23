@@ -1,7 +1,10 @@
 # README
 
+Pandoc2rfc translates text written in the Markdown variant Pandoc to documents
+in xml2rfc format. It's an easy way to write RFCs.
+
 The documentation for Pandoc2rfc can be found at:
-http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03
+<http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>
 
 ## Differences with Pandoc
 
@@ -11,6 +14,10 @@ Although you can type Pandoc just fine, there are two things that differ
   for this;
 * Referencing figures and tables is done by abusing inline footnotes, which are
   typeset directly after the figure or table.
+
+As said, more extensive docs are here:
+<http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>. But after some setup, it
+is *just* typing Pandoc syntax in $EDITOR.
 
 ## Bare install
 
@@ -45,6 +52,6 @@ Or see <http://pandoc2rfc.implementers.org/> for proper Debian packages.
 Note that you don't even need `xsltproc` per se, just an XSLT transformer
 program. Also note that only `xsltproc` is tested.
 
-Pandoc2rfc v2 works with `xml2rfc` version 2.x
+Pandoc2rfc v2 works with `xml2rfc` version 2.x.
 
 Miek Gieben - 2012

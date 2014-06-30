@@ -347,3 +347,6 @@ This is ~subscript~ and ^superscript^.
 (@good)  My first example will be numbered (1).
 
 as (@good) shows.
+
+blal bla 
+^[index:word::the rest.]

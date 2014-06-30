@@ -41,7 +41,7 @@ A list in quotes
 
 ~~~~~
 A verbatim code block
-jkasjksajassjasjsajsajkas
+A verbatim code block
 ~~~~~
 
 ## Line blocks Test
@@ -328,3 +328,22 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
 This is text, now insert 4 blank lines
 <vspace blankLines="4"/>
 And some more text
+
+## Sub and super script
+
+This is ~subscript~ and ^superscript^.
+
+## Lists
+
+9)  Ninth
+10)  Tenth
+11)  Eleventh
+    i. subone
+    ii. subtwo
+    iii. subthree
+
+## Example lists
+
+(@good)  My first example will be numbered (1).
+
+as (@good) shows.

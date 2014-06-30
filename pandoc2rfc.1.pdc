@@ -34,9 +34,6 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -H
 :   Output a draft.html.
 
--M
-:   Output a draft.html, but use `rfcmarkup` to create the html.
-
 -X
 :   Output a draft.xml, with all references expanded.
 

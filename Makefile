@@ -4,11 +4,6 @@ endif
 
 all:	pandoc2rfc.1
 
-.PHONY: version
-version:
-	sed -i "s/\@VERSION\@/$(TAG)/" pandoc2rfc
-	sed -i "s/\@VERSION\@/$(TAG)/" transform.xsl
-
 pandoc2rfc.1: pandoc2rfc.1.pdc
 	pandoc -s -w man pandoc2rfc.1.pdc -o pandoc2rfc.1
 

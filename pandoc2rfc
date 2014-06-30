@@ -2,7 +2,7 @@
 # (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and xml2rfc to create an I-D.
 TRANS=/usr/share/pandoc2rfc/transform.xsl
 TEMPLATE=template.xml
-VERSION="@VERSION@"
+VERSION="3.0.0"
 
 function usage {
     echo "Usage: pandoc2rfc [-THXNRh] [FILE]..."

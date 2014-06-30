@@ -23,7 +23,6 @@ install:
 	chmod 755 $(DESTDIR)/usr/bin/rfcmarkup
 	cp pandoc2rfc.1 $(DESTDIR)/usr/share/man/man1
 	cp transform.xsl $(DESTDIR)/usr/share/pandoc2rfc
-	cp plain.xsl $(DESTDIR)/usr/share/pandoc2rfc
 
 uninstall:
 	rm -rf $(DESTDIR)/usr/share/pandoc2rfc/

@@ -1,6 +1,6 @@
 % PANDOC2RFC(1) Pandoc2rfc User Manual
 % Miek Gieben
-% January 20, 2013
+% June 30, 2014
 
 # NAME
 
@@ -8,12 +8,12 @@ pandoc2rfc - Process files with Pandoc syntax and run xml2rfc on them.
 
 # SYNOPSIS
 
-pandoc2rfc [*-1THXNRhvdtx*] \[*FILE*\]...
+pandoc2rfc [*-THXNRhvdtx*] \[*FILE*\]...
 
 # DESCRIPTION
 
 Pandoc2rfc converts each file containing Pandoc syntax to a DOCBOOK XML file.
-When all files are converted, xml2rfc is called and a draft is created. 
+When all files are converted, xml2rfc (version 3) is called and a draft is created. 
 The intermediate XML files are removed afterwards (unless the -d flag is given).
 
 The current directory must contain a file `template.xml` (otherwise use the
@@ -46,17 +46,6 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -C
 :   Remove all drafts.
 
--1
-:   Reverse operation. Parse *FILE* as an XML (with all references expanded) document and output 
-    Pandoc syntax on standard output. This convertion is not 100%. A manual inspection of the generated
-    document is advised.
-
--2
-:   Output xml2rfc XML version 2. This is the default.
-
--3
-:   Output xml2rfc XML version 3. This is currently a noop.
-
 -t TEMPLATE
 :   Path to the `template.xml`, defaults to the current directory.
 
@@ -75,14 +64,6 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 
 -V
 :   Show version.
-
-When using the *-1* flag, be aware of the following limitations:
-
-* Tables will be parsed, but the column alignment is lost, you will
-  need to edit this manually;
-* The front section is discarded, the back section is parsed, but is concatenated to the middle
-  section. You will need to manually split this;
-* Empty lines in artwork are discarded.
 
 Although you can type Pandoc just fine, there are two things that are done 
 different in Pandoc2rfc:

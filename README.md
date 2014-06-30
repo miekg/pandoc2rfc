@@ -45,6 +45,6 @@ Or see <http://pandoc2rfc.implementers.org/> for proper Debian packages.
 Note that you don't even need `xsltproc` per se, just an XSLT transformer
 program. Also note that only `xsltproc` is tested.
 
-Pandoc2rfc v2 works with `xml2rfc` version 2.x
+Pandoc2rfc v2 works with `xml2rfc` version 3.x
 
 Miek Gieben - 2012

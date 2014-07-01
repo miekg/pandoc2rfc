@@ -327,14 +327,13 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    <xsl:template match="footnote/para/link[position()=1]"></xsl:template>
 <!-- Transform <programlisting> to <figure><artwork> -->
     <xsl:template match="screen | programlisting">
         <figure>
- <xsl:if test="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
+         <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/link">
          <xsl:attribute name="anchor">
-          <xsl:value-of select="normalize-space(
-           substring-before(following-sibling::*[position()=1][name()='para']/footnote/para, '::'))"/>
+          <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/link/@linked"/>
          </xsl:attribute>
 </xsl:if>
  <xsl:if test="normalize-space(
@@ -348,12 +347,9 @@
          </xsl:attribute>
 </xsl:if>
           <artwork>
- <xsl:if test="normalize-space(
-           substring-after(following-sibling::*[position()=1][name()='para']/footnote/para, '::')) != ''">
-           <xsl:attribute name="align">
-            <xsl:text>center</xsl:text>
-         </xsl:attribute>
-</xsl:if>
+           <titleelement>
+            <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para"/>
+            </titleelement>
          <xsl:value-of select="."/>
          </artwork>
        </figure>

@@ -327,8 +327,8 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    <!-- eat these links, so we can search for them when actually seeing a programlisting -->
     <xsl:template match="footnote/para/link[position()=1]"></xsl:template>
-<!-- Transform <programlisting> to <figure><artwork> -->
     <xsl:template match="screen | programlisting">
         <figure>
          <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/link">
@@ -348,12 +348,20 @@
 </xsl:if>
           <artwork>
            <titleelement>
-            <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para"/>
+            <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
             </titleelement>
          <xsl:value-of select="."/>
          </artwork>
        </figure>
     </xsl:template>
+    <!-- subset of allowed items in titles -->
+    <xsl:template mode="span" match="literal">
+    <spanx style="verb"><xsl:apply-templates mode="span" /></spanx>
+    </xsl:template>
+    <xsl:template mode="span" match="emphasis">
+    <spanx style="emphasis"><xsl:apply-templates mode="span" /></spanx>
+    </xsl:template>
+     
     <xsl:template match="title" />
     <xsl:template match="literal">
         <xsl:choose>

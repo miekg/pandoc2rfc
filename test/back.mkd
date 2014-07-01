@@ -316,7 +316,7 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
 
     This is a figure
     This is a figure
-^[noref::A non centered figure, and some *markup*, and more `ls`.]
+^[[](#ref) A non centered figure, and some *markup*, and more `ls`.]
 
 ## Verse tests
 

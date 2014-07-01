@@ -79,7 +79,6 @@
     </eref>
   </xsl:template>
   <!-- Eat these links, so we can search for them when actually seeing a programlisting. -->
-  <xsl:template match="footnote/para/link[position()=1]"/>
   <xsl:template match="programlisting">
     <figure>
       <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/subscript">
@@ -113,4 +112,14 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  <xsl:template match="footnote/para/superscript">
+      <iref>
+          <xsl:attribute name="item">
+              <xsl:value-of select="."/>
+          </xsl:attribute>
+          <xsl:attribute name="subitem">
+              <xsl:value-of select="../text()"/>
+          </xsl:attribute>
+    </iref>
+    </xsl:template>
 </xsl:stylesheet>

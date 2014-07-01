@@ -41,7 +41,7 @@ This is ~subscript~ and ^superscript^.
 
 ## Indexes
 
-^[~sub~actual text]
+^[ ^sup^ item]
 
 ## Footnotes in footnotes
 

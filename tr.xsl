@@ -3,14 +3,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes"/>
   <xsl:template match="/">
-    <xsl:comment> This document was prepared using Pandoc2rfc, https://github.com/miekg/pandoc2rfc </xsl:comment>
+    <xsl:comment> This document was prepared using Pandoc2rfc 3.0.0, https://github.com/miekg/pandoc2rfc </xsl:comment>
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="article">
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="articleinfo"/>
-  <xsl:template match="footnote"/>
   <xsl:template match="emphesis">
     <em>
       <xsl:apply-templates/>
@@ -112,6 +111,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  <xsl:template match="footnote"/>
   <xsl:template match="footnote/para/superscript">
       <iref>
           <xsl:attribute name="item">

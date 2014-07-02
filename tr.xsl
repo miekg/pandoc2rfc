@@ -166,4 +166,9 @@
       <xsl:apply-templates/>
     </section>
   </xsl:template>
+  <xsl:template match="para">
+    <t>
+      <xsl:apply-templates/>
+    </t>
+  </xsl:template>
 </xsl:stylesheet>

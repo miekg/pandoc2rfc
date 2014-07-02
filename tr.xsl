@@ -171,4 +171,18 @@
       <xsl:apply-templates/>
     </t>
   </xsl:template>
+  <xsl:template match="orderedlist">
+    <ol>
+      <xsl:if test="listitem/@override">
+        <xsl:attribute name="start">
+          <xsl:value-of select="listitem/@override"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:for-each select="listitem">
+        <li>
+          <xsl:apply-templates/>
+        </li>
+      </xsl:for-each>
+    </ol>
+  </xsl:template>
 </xsl:stylesheet>

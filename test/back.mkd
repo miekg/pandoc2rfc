@@ -54,3 +54,9 @@ This is ~subscript~ and ^superscript^.
 ## Footnotes in footnotes
 
 ^[footnote with a ^[footnote].]
+
+## Lists
+
+5. item
+6. item
+7. item

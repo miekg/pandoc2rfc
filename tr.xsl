@@ -134,18 +134,26 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <!-- Catch the complete footnote here, but only act with there is a footnote/para/superscript -->
-  <xsl:template match="footnote/para/superscript">
-    <iref>
-      <xsl:attribute name="item">
-        <xsl:value-of select="."/>
-      </xsl:attribute>
-      <xsl:attribute name="subitem">
-        <xsl:value-of select=".."/>
-      </xsl:attribute>
-    </iref>
+  <xsl:template match="footnote/para">
+    <xsl:choose>
+      <xsl:when test="child::superscript">
+        <iref>
+          <xsl:attribute name="item">
+            <xsl:value-of select="superscript"/>
+          </xsl:attribute>
+          <xsl:attribute name="subitem">
+            <xsl:for-each select="./text()[not(ancestor::superscript)]">
+              <xsl:value-of select="normalize-space(translate(., '&#10;', ' '))"/>
+            </xsl:for-each>
+          </xsl:attribute>
+        </iref>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- discard -->
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
-  <!-- Discard these as we echo them for <sectio> -->
+  <!-- Discard these as we echo them when we parse <section> -->
   <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title"/>
   <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5">
     <section>

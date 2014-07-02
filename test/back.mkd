@@ -49,6 +49,8 @@ This is ~subscript~ and ^superscript^.
 
 ^[ ^sup^ item]
 
+^[ ^sup2^ ]
+
 ## Footnotes in footnotes
 
 ^[footnote with a ^[footnote].]

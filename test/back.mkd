@@ -1,11 +1,13 @@
 #  Tests
 
-These are some tests
+These are some tests. Each section lists the name of the text entity as specified in `<draft>`.
 
 ## Blockquote
 
 > This is a blockquote, how does it look?
 > More blockquoting
+
+## Aside
 
 > > Quote in Quote will become an aside
 

@@ -15,6 +15,20 @@
       <xsl:apply-templates/>
     </em>
   </xsl:template>
+    <xsl:template match="emphasis">
+                <xsl:choose>
+                    <xsl:when test="contains(@role,'strong')">
+                        <strong>
+                            <xsl:apply-templates />
+                        </strong>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <em>
+                            <xsl:apply-templates />
+                        </em>
+                    </xsl:otherwise>
+                </xsl:choose>
+    </xsl:template>
   <xsl:template match="literal">
     <tt>
       <xsl:apply-templates/>
@@ -48,9 +62,18 @@
   </xsl:template>
   <!-- Set of span elements that we need for titleelement and other fluff. -->
   <xsl:template match="emphesis" mode="span">
-    <em>
-      <xsl:apply-templates/>
-    </em>
+                <xsl:choose>
+                    <xsl:when test="contains(@role,'strong')">
+                        <strong>
+                            <xsl:apply-templates mode="span"/>
+                        </strong>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <em>
+                            <xsl:apply-templates mode="span"/>
+                        </em>
+                    </xsl:otherwise>
+                </xsl:choose>
   </xsl:template>
   <xsl:template match="literal" mode="span">
     <tt>

@@ -111,14 +111,14 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  <xsl:template match="footnote"/>
+  <!-- Catch the complete footnote here, but only act with there is a footnote/para/superscript -->
   <xsl:template match="footnote/para/superscript">
       <iref>
           <xsl:attribute name="item">
               <xsl:value-of select="."/>
           </xsl:attribute>
           <xsl:attribute name="subitem">
-              <xsl:value-of select="../text()"/>
+              <xsl:value-of select=".."/>
           </xsl:attribute>
     </iref>
     </xsl:template>

@@ -113,13 +113,26 @@
   </xsl:template>
   <!-- Catch the complete footnote here, but only act with there is a footnote/para/superscript -->
   <xsl:template match="footnote/para/superscript">
-      <iref>
-          <xsl:attribute name="item">
-              <xsl:value-of select="."/>
-          </xsl:attribute>
-          <xsl:attribute name="subitem">
-              <xsl:value-of select=".."/>
-          </xsl:attribute>
+    <iref>
+      <xsl:attribute name="item">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+      <xsl:attribute name="subitem">
+        <xsl:value-of select=".."/>
+      </xsl:attribute>
     </iref>
-    </xsl:template>
+  </xsl:template>
+  <!-- Discard these as we echo them for <sectio> -->
+  <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title"/>
+  <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5">
+    <section>
+      <xsl:attribute name="anchor">
+        <xsl:value-of select="@id"/>
+      </xsl:attribute>
+      <titleelement>
+        <xsl:apply-templates select="./title" mode="span"/>
+      </titleelement>
+      <xsl:apply-templates/>
+    </section>
+  </xsl:template>
 </xsl:stylesheet>

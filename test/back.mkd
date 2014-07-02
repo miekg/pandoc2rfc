@@ -2,6 +2,10 @@
 
 These are some tests
 
+## Backtick `in a title`
+
+Sheep
+
 ## Blockquote
 
 > This is a blockquote, how does it look?

@@ -60,3 +60,9 @@ This is ~subscript~ and ^superscript^.
 5. item
 6. item
 7. item
+
+# Unnumered section {-}
+
+Convert ot <note.
+
+Newly supported.

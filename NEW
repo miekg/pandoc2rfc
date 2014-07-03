@@ -1,0 +1,14 @@
+subscript   -  direct support ^superscript^
+superscript -  direct support ~subscript~
+blockquote  -  direct support >
+aside       -  blockquote *inside* blockquote
+emph in emph ? bold?
+
+sourcecode vs artwork?
+
+hijack for footnotes for more stuff
+    index    footnote + supersciprt
+    ....     footnore + supscript
+    preamble in figures
+
+**MUST** will be <bcp14>MUST</bcp14>

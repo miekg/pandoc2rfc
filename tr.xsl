@@ -18,9 +18,19 @@
   <xsl:template match="emphasis">
     <xsl:choose>
       <xsl:when test="contains(@role,'strong')">
-        <strong>
-          <xsl:apply-templates/>
-        </strong>
+        <xsl:choose>
+          <!-- RFC 2119 keywords -->
+          <xsl:when test="text() = 'MUST' or text() = 'MUST NOT' or text() = 'REQUIRED' or text() = 'SHALL' or text() = 'SHALL NOT' or text() = 'SHOULD' or text() = 'SHOULD NOT' or text() = 'RECOMMENDED' or text() = 'MAY' or text = 'OPTIONAL'">
+            <bcp14>
+              <xsl:value-of select="text()"/>
+            </bcp14>
+          </xsl:when>
+          <xsl:otherwise>
+            <strong>
+              <xsl:apply-templates/>
+            </strong>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
         <em>

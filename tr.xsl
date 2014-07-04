@@ -177,9 +177,17 @@
     </section>
   </xsl:template>
   <xsl:template match="para">
-    <t>
-      <xsl:apply-templates/>
-    </t>
+    <xsl:choose>
+      <xsl:when test="ancestor::tbody">
+          <!-- <t> is not allowed in tables' <c> -->
+        <xsl:apply-templates/>
+      </xsl:when>
+      <xsl:otherwise>
+        <t>
+          <xsl:apply-templates/>
+        </t>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="orderedlist">
     <ol>
@@ -226,8 +234,7 @@
   </xsl:template>
   <xsl:template match="informaltable/tgroup/tbody/row/entry">
     <c>
-      <!-- Doing mode="span" here, saves the hassle of filtering out tables in the <t> conversion. -->
-      <xsl:apply-templates mode="span"/>
+      <xsl:apply-templates/>
     </c>
   </xsl:template>
 </xsl:stylesheet>

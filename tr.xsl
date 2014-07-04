@@ -224,4 +224,10 @@
       </xsl:if>
     </xsl:if>
   </xsl:template>
+  <xsl:template match="informaltable/tgroup/tbody/row/entry">
+    <c>
+      <!-- Doing mode="span" here, saves the hassle of filtering out tables in the <t> conversion. -->
+      <xsl:apply-templates mode="span"/>
+    </c>
+  </xsl:template>
 </xsl:stylesheet>

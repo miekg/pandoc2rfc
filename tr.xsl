@@ -195,4 +195,33 @@
       </xsl:for-each>
     </ol>
   </xsl:template>
+  <xsl:template match="informaltable">
+    <texttable>
+      <xsl:apply-templates/>
+    </texttable>
+  </xsl:template>
+  <xsl:template match="informaltable/tgroup/thead/row">
+    <xsl:for-each select="entry">
+      <ttcol>
+        <xsl:call-template name="colspec">
+          <xsl:with-param name="column" select="round(position() div 2)+1"/>
+        </xsl:call-template>
+        <xsl:apply-templates/>
+      </ttcol>
+    </xsl:for-each>
+  </xsl:template>
+  <xsl:template name="colspec">
+    <xsl:param name="column"/>
+    <xsl:if test="../../../../tgroup/colspec[$column]">
+      <xsl:attribute name="align">
+        <xsl:value-of select="../../../../tgroup/colspec[$column]/@align"/>
+      </xsl:attribute>
+      <!-- Optionally colwidth, translate * to % . -->
+      <xsl:if test="../../../../tgroup/colspec[$column]/@colwidth">
+        <xsl:attribute name="width">
+          <xsl:value-of select="translate(../../../../tgroup/colspec[$column]/@colwidth,'*', '%')"/>
+        </xsl:attribute>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>

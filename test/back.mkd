@@ -71,3 +71,15 @@ Newly supported.
 
 This is a MUST hello
 THIS IS a **must** and this is a **MUST**, this **SHOULD NOT** be done.
+
+## Tables
+
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | built-in wrapper   |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | cures scurvy       |
++---------------+---------------+--------------------+
+
+^[~tab:grid~Sample grid table.]

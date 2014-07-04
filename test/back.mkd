@@ -83,3 +83,35 @@ THIS IS a **must** and this is a **MUST**, this **SHOULD NOT** be done.
 +---------------+---------------+--------------------+
 
 ^[~tab:grid~Sample grid table.]
+
+## Images
+
+* Inline, but using XInclude `<artwork type="svg"><xi:include href=...`)               
+
+![la lune](lalune.svg "Voyage to the moon")
+
+![movie reel]
+
+[movie reel]: movie.svg
+
+An image occurring by itself in a paragraph will be rendered as a figure with a
+caption.4 (In LaTeX, a figure environment will be used; in HTML, the image will
+be placed in a div with class figure, together with a caption in a p with class
+caption.) The image’s alt text will be used as the caption.
+
+![This is the caption](/url/of/image.svg)
+
+
+# section
+
+    <figure>
+      <title>la lune</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="lalune.svg" />
+        </imageobject>
+        <textobject><phrase>la lune</phrase></textobject>
+      </mediaobject>
+    </figure>
+    <figure>
+

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- (c) Miek Gieben 2014. Hereby put in the public domain. -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes"/>
   <xsl:template match="/">
     <xsl:comment> This document was prepared using Pandoc2rfc 3.0.0, https://github.com/miekg/pandoc2rfc </xsl:comment>
@@ -121,9 +121,9 @@
       <titleelement>
         <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
       </titleelement>
-      <artwork>
+      <sourcecode>
         <xsl:value-of select="."/>
-      </artwork>
+      </sourcecode>
     </figure>
   </xsl:template>
   <!-- Discard these links because we want them for <aside>. -->
@@ -179,7 +179,7 @@
   <xsl:template match="para">
     <xsl:choose>
       <xsl:when test="ancestor::tbody">
-          <!-- <t> is not allowed in tables' <c> -->
+        <!-- <t> is not allowed in tables' <c> -->
         <xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
@@ -236,5 +236,22 @@
     <c>
       <xsl:apply-templates/>
     </c>
+  </xsl:template>
+  <xsl:template match="figure">
+    <figure>
+      <xsl:if test="title">
+        <titleelement>
+          <xsl:apply-templates select="title" mode="span"/>
+        </titleelement>
+      </xsl:if>
+      <artwork type="svg">
+        <xi:include>
+          <xsl:attribute name="href">
+            <xsl:value-of select="mediaobject/imageobject/imagedata/@fileref"/>
+          </xsl:attribute>
+        </xi:include>
+      </artwork>
+      <!-- caption? <textobject><phrase>... -->
+    </figure>
   </xsl:template>
 </xsl:stylesheet>

@@ -11,4 +11,8 @@ hijack for footnotes for more stuff
     ....     footnore + supscript
     preamble in figures
 
-**MUST** will be <bcp14>MUST</bcp14>
+# Misc. New Features
+
+* `**MUST**` will translated to `<bcp15>MUST</bcp14>`, same if true for all other [](#RFC2119) keywords.
+
+* blockquote in blockquote will be translated to aside

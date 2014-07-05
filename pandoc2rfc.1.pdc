@@ -17,11 +17,11 @@ When all files are converted, xml2rfc (version 3) is called and a draft is creat
 The intermediate XML files are removed afterwards (unless the -d flag is given).
 
 The current directory must contain a file `template.xml` (otherwise use the
-`-t` flag) which holds the "front" section of the I-D you are building.
+`-t` flag) which holds the "front" (and "back") section of the I-D you are building.
 
 Currently there isn't a standard extension for Pandoc source files, so the
 following extension are recognized for the input files: `.pdc`, `.pandoc`,
-`.mkd`, `.markdown`, `.md` and `.txt`
+`.mkd`, `.markdown`, and `.md`.
 
 # OPTIONS
 
@@ -47,8 +47,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Path to the `template.xml`, defaults to the current directory.
 
 -x TRANSFORM
-:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl. If the *-1* flag
-    is used this points to the `plain.xsl` XSLT file used for the reverse transformation.
+:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl.
 
 -v
 :   Be verbose and show the commands that are run and any warnings.
@@ -69,7 +68,8 @@ different in Pandoc2rfc:
   for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
   from there will not be recognized as citations. Using references solves this.
-* Referencing figures and tables is done by (ab)using inline footnotes.
+* Referencing figures and tables is done by (ab)using inline footnotes, which 
+  are typeset directly after the figure or table.
 
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.

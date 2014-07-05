@@ -11,7 +11,6 @@ function usage {
     echo "  -T                  create a draft.txt (with page breaks), this is the default"
     echo "  -R                  create a draft.txt (raw, unpaginated)"
     echo "  -H                  create a draft.html"
-    echo "  -M                  create a draft.html (using rfcmarkup)"
     echo "  -X                  create a draft.xml"
     echo "  -N                  create a draft.nroff"
     echo "  -C                  clean, remove all drafts"
@@ -27,7 +26,7 @@ function usage {
 # As the extension for Pandoc is not really fixed, we try
 # .pdc, .pandoc, .mkd, .markdown, .md and .txt
 function extension {
-    for ext in .pdc .pandoc .mkd .markdown .md .txt; do
+    for ext in .pdc .pandoc .mkd .markdown .md; do
         base=$(basename "$1" $ext)
         if [[ "$base" != $1 ]]; then
             echo $base
@@ -37,7 +36,6 @@ function extension {
     echo ""
 }
 
-REV=""
 OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
@@ -62,12 +60,6 @@ while getopts "nvdht:x:THMXNRCV" o; do
     esac
 done
 shift $((OPTIND - 1))
-
-if [[ -n "$REV" ]]; then
-    [[ -n "$VERBOSE" ]] && echo sed \'s/^ *//\' \< "$1" \| xsltproc $NONET $TRANS - >&2
-    sed 's/^ *//' < "$1" | xsltproc $NONET $TRANS -
-    exit
-fi
 
 XML=""
 for f in "$@"; do

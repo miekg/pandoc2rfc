@@ -255,7 +255,7 @@ List with a sublist with a paragraph above the sublist
     123     123       123          123
       1     1          1             1
 
-^[tab:simple::Demonstration of **simple** table syntax.]
+^[ ~tab:simple~ Demonstration of **simple** table syntax.]
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -269,7 +269,7 @@ List with a sublist with a paragraph above the sublist
                                     rows.
 -------------------------------------------------------------
 
-^[tab:multiline::Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
+^[ ~tab:multiline~ Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -279,7 +279,7 @@ List with a sublist with a paragraph above the sublist
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-^[tab:grid::Sample grid table.]
+^[ ~tab:grid~ Sample grid table.]
 
 Grid tables without a caption
 
@@ -316,13 +316,13 @@ as (@good) shows...
     This is a figure
     This is a figure
     This is a figure
-^[This is the caption, with text in `typewriter`. Which isnt converted to a `<spanx>` style, because this is copied as-is.]
+^[This is the caption, with text in `typewriter`.]
 
 And how a figure that is not centered, do to using `figure` and not `Figure`.
 
     This is a figure
     This is a figure
-^[noref::A non centered figure, and some *markup*, and more `ls`.]
+^[ ~noref~ A non centered figure, and some *markup*, and more `ls`.]
 
 ## Code
 

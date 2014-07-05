@@ -1,17 +1,17 @@
 all:	draft.txt
 
-draft.txt: back.mkd middle.mkd ../transform.xsl
-	bash ../pandoc2rfc -t template.xml -x ../transform.xsl back.mkd middle.mkd
+draft.txt: back.md middle.md ../transform.xsl
+	bash ../pandoc2rfc -t template.xml -x ../tr.xsl back.md middle.md
 
-draft.html: back.mkd middle.mkd ../transform.xsl
-	bash ../pandoc2rfc -t template.xml -x ../transform.xsl -M back.mkd middle.mkd
+draft.html: back.md middle.md ../transform.xsl
+	bash ../pandoc2rfc -t template.xml -x ../tr.xsl -M back.md middle.md
 
-draft.xml: back.mkd middle.mkd ../transform.xsl
-	bash ../pandoc2rfc -t template.xml -x ../transform.xsl -X back.mkd middle.mkd
+draft.xml: back.md middle.md ../transform.xsl
+	bash ../pandoc2rfc -t template.xml -x ../tr.xsl -X back.md middle.md
 
 .PHONY: debug
 debug:
-	bash ../pandoc2rfc -dt template.xml -x ../transform.xsl back.mkd middle.mkd
+	bash ../pandoc2rfc -dt template.xml -x ../tr.xsl back.md middle.md
 
 .PHONY: clean
 clean:

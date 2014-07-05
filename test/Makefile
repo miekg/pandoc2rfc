@@ -11,7 +11,11 @@ draft.xml: back.md middle.md ../transform.xsl
 
 .PHONY: debug
 debug:
-	@bash ../pandoc2rfc -Dt template.xml -x ../tr.xsl middle.md back.md
+	bash ../pandoc2rfc -dt template.xml -x ../tr.xsl middle.md back.md
+
+.PHONY: validate
+validate:
+	xmllint --xinclude --noout --relaxng ../xml2rfcv3-08.rng template.xml
 
 .PHONY: clean
 clean:

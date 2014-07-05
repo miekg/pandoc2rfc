@@ -5,6 +5,10 @@ This appendix consists out of a few tests that should all render to proper
 
 ## A Very Long Title Considerations With Regards to the Already Deployed Routing Policy
 
+## RFC 2119 Test
+
+**MUST** becomes tagged, MUST does not.
+
 Test a very long title.
 
 ## *Markup* in heading
@@ -152,7 +156,7 @@ Item to explain:
 Another item to explain again:
 :   More explaining
 
-list with description lists.
+### List with Description Lists
 
 1. More
 
@@ -180,8 +184,6 @@ Multiple paragraphs in a list.
 
 xml2rfc does not allow this, so the second paragraph is faked with a
 
-    <vspace blankLines='1'>
-
 Ordered lists.
 
 1. First item
@@ -198,9 +200,7 @@ I.  Item1
 II.  Item2
 II.  Item 3
 
-And default list markers.[^1]
-
-[^1]: list!default markers
+And default list markers ^[ ^list^ default markers ].
 
 Some surrounding text, to make it look better.
 
@@ -223,11 +223,7 @@ Uppercase letters list.
 A.  First item
 B.  Second item
 
-[^4]
-
-[^4]: list!uppercase letters
-
-And artwork in a description list.
+### Artwork In Description List
 
 Item1:
 

@@ -10,11 +10,6 @@
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="articleinfo"/>
-  <xsl:template match="emphesis">
-    <em>
-      <xsl:apply-templates/>
-    </em>
-  </xsl:template>
   <xsl:template match="emphasis">
     <xsl:choose>
       <xsl:when test="contains(@role,'strong')">
@@ -71,7 +66,7 @@
     </eref>
   </xsl:template>
   <!-- Set of span elements that we need for titleelement and other fluff. -->
-  <xsl:template match="emphesis" mode="span">
+  <xsl:template match="emphasis" mode="span">
     <xsl:choose>
       <xsl:when test="contains(@role,'strong')">
         <strong>

@@ -10,7 +10,7 @@
 This document presents a technique for using Pandoc syntax as a source format for
 documents in the Internet-Drafts (I-Ds) and Request for Comments (RFC) series.
 
-This version is adapted to work with `xml2rfc` version 2.x.
+This version is adapted to work with `xml2rfc` version 3.x.
 
 Pandoc is an "almost plain text" format and therefor particularly well suited
 for editing RFC-like documents.
@@ -54,7 +54,7 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+    xml2rfc  +---------+ 
           | PLAIN TEXT |  <--------  | XML2RFC | 
           +------------+             +---------+ 
-^[fig:flow::This is an *inline* note for the above figure.]
+^[ ~fig:flow~ This is an *inline* note for the above figure.]
 
 The XML generated (the output after the `xsltproc` step in [](#fig:flow)) 
 is suitable for inclusion in either the `middle` or `back` section
@@ -81,7 +81,7 @@ XML:
     </back>
 
     </rfc>
-^[fig:template::A minimal template.xml.]
+^[ ~fig:template~ A minimal template.xml.]
 
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
@@ -109,10 +109,10 @@ section:
 When starting a new project with `pandoc2rfc` you'll need to copy the following files:
 
 * `Makefile`
-* `transform.xslt`
+* `tr.xslt`
 * And the above mentioned files:
-    * `middle.pdc`
-    * `back.pdc`
+    * `middle.md`
+    * `back.md`
     * `template.xml`
 
 After that you can start editing.
@@ -135,17 +135,10 @@ After that you can start editing.
     * external (eref) ([](#external)); 
     * internal (xref) ([](#internal)), you can refer to:
         * section (handled by Pandoc, see [](#references)));
+* Index, but using the footnote syntax;
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
 * Tables with an anchor and title ([](#tables)).
-
-# Unsupported Features
-
-* Lists inside a table (`xml2rfc` doesn't handle this);
-* Pandoc markup in the caption for figures/artwork. Pandoc markup for table captions
-  *is* supported;
-* crefs: for comments (no input syntax available), use HTML comments: `<!-- ... -->`;
-
 
 # Acknowledgements
 
@@ -156,30 +149,11 @@ This document was prepared using Pandoc2rfc.
 
 # Pandoc Constructs
 
-So, what syntax do you need to use to get the correct output? Well, it
-<!-- comm1:miek::is this really what we want? -->
-is *just* Pandoc. The best introduction to the Pandoc style is given
+The best introduction to the Pandoc style is given
 in this [README from Pandoc itself](http://johnmacfarlane.net/pandoc/README.html).
 
-For convenience we list the most important ones in the following sections.
-
-## Paragraph
-
-Paragraphs are separated with an empty line.
-
-## Section
-Just use the normal sectioning commands available in Pandoc, for instance:
-
-    # Section1 One
-    Bla
-
-Converts to: `<section title="Section1 One" anchor="section1-one">`
-If you have another section that is also named "Section1 One", that
-anchor will be called "section1-one-1", but *only* when the sections are in
-the *same* source file!
-
-Referencing the section
-is done with `see [](#section1-one)`, as in see [](#section).
+What follows here is a list of slight changes, where the syntax of Pandoc is used but
+in a non standard way.
 
 ## List Styles
 
@@ -266,25 +240,6 @@ Becomes:
 A.  Item one;
 B.  Item two.
 
-### Hanging
-This is more like a description list, so we need to use:
-
-    First item that needs clarification:
-
-    :   Explanation one
-    More stuff, because item is difficult to explain.
-    * item1
-    * item2
-
-    Second item that needs clarification:
-
-    :   Explanation two
-
-Converts to: `<list style="hanging">` and `<t hangText="First item that...">`
-
-If you want a newline after the hangTexts, search for the string `OPTION` in `transform.xsl`
-and uncomment it.
-
 ## Figure/Artwork
 Indent the paragraph with 4 spaces.
 
@@ -299,15 +254,7 @@ Any paragraph like:
 
 Converts to: `<t><list style="empty"> ...` paragraph, making it indented.
 
-## References
-### External
-Any reference like:
-
-    [Click here](URI)
-
-Converts to: `<ulink target="URI">Click here ...`
-
-### Internal
+### Internal References
 Any reference like:
 
     [Click here](#localid)
@@ -327,17 +274,6 @@ The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 For referencing figures/artworks see [](#figureartwork).
 For referencing tables see [](#tables).
 
-## Spanx Styles
-
-The verb style can be selected with back-tics: `` `text` ``
-Converts to: `<spanx style="verb"> ...`
-
-And the emphasis style with asterisks: `*text*` or underscores: `_text_`
-Converts to: `<spanx style="emph"> ...`
-
-And the emphasis style with double asterisks: `**text**`
-Converts to: `<spanx style="strong"> ...`
-
 ## Tables Test
 A table can be entered as:
 
@@ -347,50 +283,5 @@ A table can be entered as:
       123     123       123         123
         1     1         1         1       
 
-      ^[tab::A caption describing the table.]
-^[fig:table::A caption describing the figure describing the table.]
-
-Is translated to `<texttable>` element in `xml2rfc`. You can choose multiple styles
-as input, but they all are converted to the same style (plain `<texttable>`) table in `xml2rfc`.
-The column alignment is copied over to the generated XML.
-
-# Usage guidelines
-
-## Working with multiple files
-As an author you will probably break up a draft in multiple files, each dealing with a
-subject or section. When doing so sections with the same title will clash with each other. 
-Pandoc can deal with this situation, but only if the different sections are in the *same*
-file or processed in the same Pandoc run. 
-Concatenating the different section files before processing them is a solution
-to this problem. You can, for instance, amend the `Makefile` and add something like this:
-
-    allsections.pdc: section.pdc.1 section.pdc.2 section.pdc.3
-            cat $@ > allsections.pdc
-
-And then process `allsection.pdc` in the normal way.
-
-## Setting the title
-If you use double quotes in the documents title in the `docName` attribute, like:
-
-    <rfc ipr="trust200902" docName="draft-gieben-writing-rfcs-pandoc-02">
-
-The Makefile will pick this up automatically and make a symbolic link:
-
-    draft-gieben-writing-rfcs-pandoc-00.txt -> draft.txt
-
-This makes uploading the file to the i-d tracker a bit easier.
-
-## Uploading the XML/txt
-
-The `draft.xml` target will generate an XML file with all XML included, so you can upload
-just one file to the I-D tracker.
-
-## VIM syntax highlighting
-If you are a VIM user you might be interested in a syntax highlighting file (see [](#VIM)) that
-slightly lightens up your reading experience while viewing a draft.txt from VIM.
-
-# Security Considerations
-This document raises no security issues.
-
-# IANA Considerations
-This document has no actions for IANA.
+      ^[ ~tab~ A caption describing the table.]
+^[ ~fig:table~ A caption describing the figure describing the table.]

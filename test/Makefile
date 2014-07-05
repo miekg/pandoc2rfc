@@ -11,7 +11,7 @@ draft.xml: back.md middle.md ../transform.xsl
 
 .PHONY: debug
 debug:
-	bash ../pandoc2rfc -dt template.xml -x ../tr.xsl back.md middle.md
+	@bash ../pandoc2rfc -Dt template.xml -x ../tr.xsl back.md middle.md
 
 .PHONY: clean
 clean:

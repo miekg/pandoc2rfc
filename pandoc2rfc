@@ -17,6 +17,7 @@ function usage {
     echo "  -n                  pass --nonet to xsltproc"
     echo "  -v                  be verbose (show warnings)"
     echo "  -d                  debug mode, do not delete intermediate XML files"
+    echo "  -D                  debug mode, output XML to standard output, don't create final ouput"
     echo "  -t template.xml     path to template.xml, defaults to current directory"
     echo "  -x transform.xsl    path to transform.xsl, defaults to /usr/share/pandoc2rfc/transform.xsl"
     echo "  -h                  this help"
@@ -41,13 +42,14 @@ MARKUP=""
 RM=rm
 NONET=""
 Q="-q"
-while getopts "nvdht:x:THMXNRCV" o; do
+while getopts "nvdht:x:THMXNRCVD" o; do
     case $o in
     T) ;;
     R) OUT="-f draft.txt --raw";;
     H) OUT="-f draft.html --html";;
     X) OUT="-f draft.xml --exp";;
     N) OUT="-f draft.nroff --nroff";;
+    D) OUT="DEBUG";;
     n) NONET="--nonet";;
     C) [[ -n "$VERBOSE" ]] && echo rm -f draft.{txt,html,xml,nroff} >&2
        rm -f draft.{txt,html,xml,nroff} && exit 0;;
@@ -68,10 +70,16 @@ for f in "$@"; do
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
+    if [[ "$OUT" == "DEBUG" ]]; then
+        [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc $NONET $TRANS - >&2
+        pandoc -t docbook -s "$f" | xsltproc $NONET $TRANS - || exit 1
+        continue
+    fi
     [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc $NONET $TRANS - \> "$base".xml >&2
     pandoc -t docbook -s "$f" | xsltproc $NONET $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
+[[ "$OUT" == "DEBUG" ]] && exit
 # if XML is filled we have files to process otherwise process stdin
 if [[ -n "$XML" ]]; then
     [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML >&2

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- (c) Miek Gieben 2014. Hereby put in the public domain. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi" version="1.0">
-  <xsl:output method="xml" omit-xml-declaration="yes"/>
+  <xsl:output method="xml" omit-xml-declaration="yes" indent="yes"/>
   <xsl:template match="/">
     <xsl:comment>This document was prepared using Pandoc2rfc 3.0.0, https://github.com/miekg/pandoc2rfc.</xsl:comment>
     <xsl:apply-templates/>
@@ -164,7 +164,7 @@
     </xsl:choose>
   </xsl:template>
   <!-- Discard these as we echo them when we parse <section> -->
-      <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title | simplesect/title"/>
+  <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title | simplesect/title"/>
   <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5 | simplesect">
     <section>
       <xsl:attribute name="anchor">
@@ -203,6 +203,20 @@
       </xsl:for-each>
     </ol>
   </xsl:template>
+  <xsl:template match="variablelist">
+    <dl>
+          <xsl:apply-templates/>
+    </dl>
+  </xsl:template>
+  <xsl:template match="varlistentry">
+        <dt>
+          <xsl:apply-templates select="term"/>
+        </dt>
+        <dd>
+          <xsl:apply-templates select="listitem"/>
+        </dd>
+
+    </xsl:template>
   <xsl:template match="informaltable">
     <texttable>
       <xsl:apply-templates/>
@@ -245,11 +259,11 @@
         </titleelement>
       </xsl:if>
       <artwork type="svg">
-          <xi:include>
+        <xi:include>
           <xsl:attribute name="href">
             <xsl:value-of select="mediaobject/imageobject/imagedata/@fileref"/>
           </xsl:attribute>
-      </xi:include>
+        </xi:include>
       </artwork>
       <!-- caption? <textobject><phrase>... -->
     </figure>

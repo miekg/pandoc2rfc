@@ -1,75 +1,60 @@
-<?xml version="1.0" ?>
-<!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
-<!ENTITY pandocMiddle PUBLIC '' 'middle.xml'>
-<!ENTITY pandocBack   PUBLIC '' 'back.xml'>
-
-<!ENTITY pandocRefVim   PUBLIC '' '../bib/reference.github.vim.xml'>
-<!ENTITY pandocRef2119  PUBLIC '' '../bib/reference.RFC.2119.xml'>
-<!ENTITY pandocRef4641  PUBLIC '' '../bib/reference.RFC.4641.xml'>
-]>
-
-<rfc ipr="trust200902" category="info" docName="draft-gieben-writing-rfcs-pandoc-02">
- <front>
-        <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
-
-        <author initials="R." surname="Gieben"
-                fullname="R. (Miek) Gieben">
-            <organization>Google</organization>
-
-            <address>
-                <postal>
-                    <street>123 Buckingham Palace Road</street>
-                    <street></street>
-                    <city>London</city> <region></region>
-                    <code>SW1W 9SH</code>
-                    <country>UK</country>
-                </postal>
-
-                <phone></phone>
-                <email>miek@miek.nl</email>
-                <uri>http://miek.nl/</uri>
-            </address>
-        </author>
-
-        <date month="January" year="2013"/>
-
-        <area>General</area>
-        <workgroup>RFC Beautification Working Group</workgroup>
-        <keyword>RFC</keyword>
-        <keyword>Request for Comments</keyword>
-        <keyword>I-D</keyword>
-        <keyword>Internet-Draft</keyword>
-        <keyword>XML</keyword>
-        <keyword>Pandoc</keyword>
-        <keyword>Extensible Markup Language</keyword>
-        <abstract>
-            <t>This memo presents a technique for using Pandoc 
+<?xml version="1.0"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-gieben-writing-rfcs-pandoc-02">
+  <front>
+    <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
+    <author initials="R." surname="Gieben" fullname="R. (Miek) Gieben">
+      <organization>Google</organization>
+      <address>
+        <postal>
+          <street>123 Buckingham Palace Road</street>
+          <street/>
+          <city>London</city>
+          <region/>
+          <code>SW1W 9SH</code>
+          <country>UK</country>
+        </postal>
+        <phone/>
+        <email>miek@miek.nl</email>
+        <uri>http://miek.nl/</uri>
+      </address>
+    </author>
+    <date month="January" year="2013"/>
+    <area>General</area>
+    <workgroup>RFC Beautification Working Group</workgroup>
+    <keyword>RFC</keyword>
+    <keyword>Request for Comments</keyword>
+    <keyword>I-D</keyword>
+    <keyword>Internet-Draft</keyword>
+    <keyword>XML</keyword>
+    <keyword>Pandoc</keyword>
+    <keyword>Extensible Markup Language</keyword>
+    <abstract>
+      <t>This memo presents a technique for using Pandoc 
             syntax as a source format
             for documents in the Internet-Drafts (I-Ds) and
             Request for Comments (RFC) series.
             </t>
-            <t>
-            This version is adapted to work with "xml2rfc" version 2.x.
+      <t>
+            This version is adapted to work with "xml2rfc" version 3.x.
             </t>
-            <t>
+      <t>
                 The text you reading now is mostly for testing Pandoc2rfc, the
                 canonical documention is draft-gieben-pandoc2rfc-XX.txt.
             </t>
-        </abstract>
-</front>
-
-<middle>
-&pandocMiddle;
-</middle>
-
-<back>
+    </abstract>
+  </front>
+  <middle>
+    <xi:include href="middle.xml'"/>
+  </middle>
+  <back>
     <references title="Informative References">
-        &pandocRefVim;
+      <xi:include href="../bib/reference.github.vim.xml'"/>
     </references>
     <references title="Normative References">
-        &pandocRef2119;
-        &pandocRef4641;
+      <xi:include href="../bib/reference.RFC.2119.xml'"/>
+      <xi:include href="../bib/reference.RFC.4641.xml'"/>
     </references>
-        &pandocBack;
-</back>
+    <xi:include href="back.xml'"/>
+  </back>
 </rfc>

@@ -121,9 +121,22 @@
       <titleelement>
         <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
       </titleelement>
-      <sourcecode>
-        <xsl:value-of select="."/>
-      </sourcecode>
+      <!-- If there is a language= tag we use source code, otherwise artwork -->
+      <xsl:choose>
+          <xsl:when test="@language">
+        <sourcecode>
+            <xsl:attribute name="type">
+                <xsl:value-of select="@language"/>
+            </xsl:attribute>
+          <xsl:value-of select="."/>
+        </sourcecode>
+    </xsl:when>
+    <xsl:otherwise>
+        <artwork>
+          <xsl:value-of select="."/>
+        </artwork>
+    </xsl:otherwise>
+      </xsl:choose>
     </figure>
   </xsl:template>
   <!-- Discard these links because we want them for <aside>. -->
@@ -205,18 +218,17 @@
   </xsl:template>
   <xsl:template match="variablelist">
     <dl>
-          <xsl:apply-templates/>
+      <xsl:apply-templates/>
     </dl>
   </xsl:template>
   <xsl:template match="varlistentry">
-        <dt>
-          <xsl:apply-templates select="term"/>
-        </dt>
-        <dd>
-          <xsl:apply-templates select="listitem"/>
-        </dd>
-
-    </xsl:template>
+    <dt>
+      <xsl:apply-templates select="term"/>
+    </dt>
+    <dd>
+      <xsl:apply-templates select="listitem"/>
+    </dd>
+  </xsl:template>
   <xsl:template match="informaltable">
     <texttable>
       <xsl:apply-templates/>

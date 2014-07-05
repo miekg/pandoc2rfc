@@ -5,11 +5,12 @@ This appendix consists out of a few tests that should all render to proper
 
 ## A Very Long Title Considerations With Regards to the Already Deployed Routing Policy
 
-## RFC 2119 Test
+Test a very long title.
+
+## RFC 2119
 
 **MUST** becomes tagged, MUST does not.
 
-Test a very long title.
 
 ## *Markup* in heading
 
@@ -40,14 +41,7 @@ A list in quotes
 > 1. Second item
 
 
-## Verbatim Code Blocks Test
-
-~~~~~
-A verbatim code block
-jkasjksajassjasjsajsajkas
-~~~~~
-
-## Line blocks Test
+## Line blocks
 
 | this is a line block, empty line after this one
 |
@@ -60,13 +54,13 @@ In between text
 | hel
 | lo! and a [RFC2119](#RFC2119) reference.
 
-## Reference Tests
+## Reference
 
 Refer to [RFC 2119](#RFC2119) if you will.
 Or maybe you want to inspect [](#fig:flow) in [](#pandoc-to-rfc)
 again. Or you might want to [Click here](http://miek.nl).
 
-## Spanx Tests
+## Spanx
 
 #. underscores: _underscores_
 #. asterisks: *asterisks*
@@ -84,7 +78,7 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ![This is the caption](/url/of/image.png)
 
-## List Tests
+## List 
 
 ### List start numbers
 
@@ -253,7 +247,7 @@ List with a sublist with a paragraph above the sublist
     a. But what do you know
     a. This is another list
 
-## Table Tests
+## Table
 
   Right     Left     Center     Default
 -------     ------ ----------   -------
@@ -330,13 +324,23 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
     This is a figure
 ^[noref::A non centered figure, and some *markup*, and more `ls`.]
 
+## Code
+
+~~~~ {.haskell}
+qsort []     = []
+qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+qsort (filter (>= x) xs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+### Verbatim Code Blocks
+
+~~~~~
+A verbatim code block
+jkasjksajassjasjsajsajkas
+~~~~~
+
+
 ## Verse tests
 
 | This is a verse text
 | This is another line
-
-## vspace
-
-This is text, now insert 4 blank lines
-<vspace blankLines="4"/>
-And some more text

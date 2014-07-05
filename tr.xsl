@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- (c) Miek Gieben 2014. Hereby put in the public domain. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi" version="1.0">
-  <xsl:output method="xml" omit-xml-declaration="yes" indent="yes"/>
+  <xsl:output method="xml" omit-xml-declaration="yes"/>
   <xsl:template match="/">
     <xsl:comment>This document was prepared using Pandoc2rfc 3.0.0, https://github.com/miekg/pandoc2rfc.</xsl:comment>
     <xsl:apply-templates/>

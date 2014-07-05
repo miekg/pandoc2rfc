@@ -2,6 +2,8 @@
 
 These are some tests. Each section lists the name of the text entity as specified in `<draft>`.
 
+# More tests
+
 ## Backtick `in a title`
 
 Sheep
@@ -72,17 +74,6 @@ Newly supported.
 This is a MUST hello
 THIS IS a **must** and this is a **MUST**, this **SHOULD NOT** be done.
 
-## Tables
-
-+---------------+---------------+--------------------+
-| Fruit         | Price         | Advantages         |
-+===============+===============+====================+
-| Bananas       | $1.34         | built-in wrapper   |
-+---------------+---------------+--------------------+
-| Oranges       | $2.10         | cures scurvy       |
-+---------------+---------------+--------------------+
-
-^[~tab:grid~Sample grid table.]
 
 ## Images
 
@@ -99,19 +90,27 @@ caption.4 (In LaTeX, a figure environment will be used; in HTML, the image will
 be placed in a div with class figure, together with a caption in a p with class
 caption.) The image’s alt text will be used as the caption.
 
-![This is the caption](/url/of/image.svg)
 
 
-# section
 
-    <figure>
-      <title>la lune</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="lalune.svg" />
-        </imageobject>
-        <textobject><phrase>la lune</phrase></textobject>
-      </mediaobject>
-    </figure>
-    <figure>
+## Tables
 
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | built-in wrapper   |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | cures scurvy       |
++---------------+---------------+--------------------+
+
+^[~tab:grid~Sample grid table.]
+
+## section1
+
+dkjdsk
+
+### section
+#### section
+##### section
+###### section
+### section

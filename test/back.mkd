@@ -24,11 +24,6 @@ An unnumbered section. Should work.
 
 > This is a blockquote, how does it look?
 
-And a line:
-
--------
-
-And
 
 > This is another
 > More blockquoting
@@ -40,6 +35,11 @@ A list in quotes
 > 1. First item
 > 1. Second item
 
+## Lines
+
+And a line, which does not show up, because there is no docbook equivalent.
+
+-------
 
 ## Line blocks
 

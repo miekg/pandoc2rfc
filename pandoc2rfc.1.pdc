@@ -55,9 +55,6 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -d
 :   Debug mode, do not remove the intermediate XML files.
 
--D
-:   Debug mode, output the XML to standard output and do not create any output.
-
 -h
 :   Show a short help message.
 

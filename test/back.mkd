@@ -339,8 +339,12 @@ A verbatim code block
 jkasjksajassjasjsajsajkas
 ~~~~~
 
+## Heading {#foo}
 
-## Verse tests
+Heading with anchor.
+Just works, because the outputted docbook XML is the same.
+
+## Verse
 
 | This is a verse text
 | This is another line

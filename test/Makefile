@@ -12,7 +12,7 @@ draft.xml: ../transform.xsl $(SOURCES)
 
 .PHONY: debug
 debug:
-	bash ../pandoc2rfc -dt template.xml -x ../tr.xsl $(SOURCES)
+	for i in $(SOURCES); do pandoc -st docbook $$i | xsltproc ../tr.xsl > $$(basename $$i md)xml; done
 
 .PHONY: validate
 validate:

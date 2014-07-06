@@ -28,6 +28,11 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
+      <xsl:when test="contains(@role,'strikethrough')">
+        <xsl:message>
+         pandoc2rfc: strikethrough is not supported.
+       </xsl:message>
+      </xsl:when>
       <xsl:otherwise>
         <em>
           <xsl:apply-templates/>
@@ -183,24 +188,24 @@
       </xsl:when>
       <xsl:when test="name() = 'sect1' and @id = 'note0'">
         <note>
-      <titleelement>
-        <xsl:apply-templates select="./title" mode="span"/>
-      </titleelement>
+          <titleelement>
+            <xsl:apply-templates select="./title" mode="span"/>
+          </titleelement>
           <xsl:apply-templates/>
         </note>
       </xsl:when>
-    <xsl:otherwise>
-    <section>
-      <xsl:attribute name="anchor">
-        <xsl:value-of select="@id"/>
-      </xsl:attribute>
-      <titleelement>
-        <xsl:apply-templates select="./title" mode="span"/>
-      </titleelement>
-      <xsl:apply-templates/>
-    </section>
-  </xsl:otherwise>
-  </xsl:choose>
+      <xsl:otherwise>
+        <section>
+          <xsl:attribute name="anchor">
+            <xsl:value-of select="@id"/>
+          </xsl:attribute>
+          <titleelement>
+            <xsl:apply-templates select="./title" mode="span"/>
+          </titleelement>
+          <xsl:apply-templates/>
+        </section>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="para">
     <xsl:choose>
@@ -292,5 +297,11 @@
       </artwork>
       <!-- caption? <textobject><phrase>... -->
     </figure>
+  </xsl:template>
+  <!-- Warn about unused constructs. -->
+  <xsl:template match="literallayout">
+    <xsl:message>
+         pandoc2rfc: literallayout is not supported.
+       </xsl:message>
   </xsl:template>
 </xsl:stylesheet>

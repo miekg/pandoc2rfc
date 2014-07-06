@@ -61,16 +61,17 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -V
 :   Show version.
 
-Although you can type Pandoc just fine, there are two things that are done 
-different in Pandoc2rfc:
+Although you can type Pandoc syntax just fine, the following items are achieved
+by misuing some of the syntax:
 
 * Pandoc style citations are not supported, you must use internal references
   for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
-  from there will not be recognized as citations. Using references solves this.
+  from there will not be recognized as citations. Using references solves this;
 * Referencing figures and tables is done by (ab)using inline footnotes, which 
-  are typeset directly after the figure or table.
-* Strike through text will become:...
+  are typeset directly after the figure or table. An anchor is denoted by text
+  in subscript in the footnote: `^[ ~anchor~ Title text.]`;
+* Strike through text will become:...TODO.
 
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.

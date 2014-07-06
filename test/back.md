@@ -324,6 +324,11 @@ And how a figure that is not centered, do to using `figure` and not `Figure`.
     This is a figure
 ^[ ~noref~ A non centered figure, and some *markup*, and more `ls`.]
 
+Figure:
+
+1. With anchor -> inside an figure;
+2. Without anchor -> standaline.
+
 ## Code
 
 ~~~~ {.haskell}
@@ -332,11 +337,13 @@ qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
 qsort (filter (>= x) xs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This will translate to `<sourcecode>`, without the code thingy it will
+become an artwork. Further more same rules applies as to Figures.
+
 ### Verbatim Code Blocks
 
 ~~~~~
 A verbatim code block
-jkasjksajassjasjsajsajkas
 ~~~~~
 
 ## Heading {#foo}
@@ -344,10 +351,13 @@ jkasjksajassjasjsajsajkas
 Heading with anchor.
 Just works, because the outputted docbook XML is the same.
 
+Special headings for `#note0` and `abstract0` which are translated into 
+a `<note>` and `<abstract>` respectively.
+
 ## Verse
 
-| This is a verse text
-| This is another line
+| This is a    verse text
+|     This is another line
 
 ## Strikout
 

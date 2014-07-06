@@ -29,20 +29,7 @@
     <keyword>XML</keyword>
     <keyword>Pandoc</keyword>
     <keyword>Extensible Markup Language</keyword>
-    <abstract>
-      <t>This memo presents a technique for using Pandoc 
-            syntax as a source format
-            for documents in the Internet-Drafts (I-Ds) and
-            Request for Comments (RFC) series.
-            </t>
-      <t>
-            This version is adapted to work with "xml2rfc" version 3.x.
-            </t>
-      <t>
-                The text you reading now is mostly for testing Pandoc2rfc, the
-                canonical documention is draft-gieben-pandoc2rfc-XX.txt.
-            </t>
-    </abstract>
+    <xi:include href="abstract.xml'"/>
   </front>
   <middle>
     <xi:include href="middle.xml'"/>

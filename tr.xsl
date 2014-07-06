@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!-- # vim:set sw=2 expandtab: -->
 <!-- (c) Miek Gieben 2014. Hereby put in the public domain. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -174,15 +175,25 @@
   <!-- Discard these as we echo them when we parse <section> -->
   <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title | simplesect/title"/>
   <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5 | simplesect">
-    <section>
-      <xsl:attribute name="anchor">
-        <xsl:value-of select="@id"/>
-      </xsl:attribute>
-      <titleelement>
-        <xsl:apply-templates select="./title" mode="span"/>
-      </titleelement>
-      <xsl:apply-templates/>
-    </section>
+    <!-- detect abstract -->
+    <xsl:choose>
+      <xsl:when test="./title/text() = 'Abstract'">
+        <abstract>
+          <xsl:apply-templates/>
+        </abstract>
+      </xsl:when>
+      <xsl:otherwise>
+        <section>
+          <xsl:attribute name="anchor">
+            <xsl:value-of select="@id"/>
+          </xsl:attribute>
+          <titleelement>
+            <xsl:apply-templates select="./title" mode="span"/>
+          </titleelement>
+          <xsl:apply-templates/>
+        </section>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="para">
     <xsl:choose>

@@ -57,7 +57,7 @@ In between text
 ## Reference
 
 Refer to [RFC 2119](#RFC2119) if you will.
-Or maybe you want to inspect [](#fig:flow) in [](#pandoc-to-rfc)
+Or maybe you want to inspect [](#fig-flow) in [](#pandoc-to-rfc)
 again. Or you might want to [Click here](http://miek.nl).
 
 ## Spanx
@@ -255,7 +255,7 @@ List with a sublist with a paragraph above the sublist
     123     123       123          123
       1     1          1             1
 
-^[ ~tab:simple~ Demonstration of **simple** table syntax.]
+^[ ~tab-simple~ Demonstration of **simple** table syntax.]
 
 -------------------------------------------------------------
  Centered   Default           Right Left
@@ -269,7 +269,7 @@ List with a sublist with a paragraph above the sublist
                                     rows.
 -------------------------------------------------------------
 
-^[ ~tab:multiline~ Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
+^[ ~tab-multiline~ Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -279,7 +279,7 @@ List with a sublist with a paragraph above the sublist
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-^[ ~tab:grid~ Sample grid table.]
+^[ ~tab-grid~ Sample grid table.]
 
 Grid tables without a caption
 
@@ -298,9 +298,9 @@ Grid tables without a caption
 This table has no caption, and therefor no reference. But you can refer to 
 some of the other tables, with for instance:
 
-    See [](#tab:grid)
+    See [](#tab-grid)
 
-Which will become "See [](#tab:grid)".
+Which will become "See [](#tab-grid)".
 
 ## Numbered examples
 

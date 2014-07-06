@@ -12,10 +12,10 @@ draft.xml: ../transform.xsl $(SOURCES)
 
 .PHONY: debug
 debug:
-	for i in $(SOURCES); do pandoc -st docbook $$i | xsltproc ../tr.xsl > $$(basename $$i md)xml; done
+	for i in $(SOURCES); do pandoc -st docbook $$i | xsltproc ../tr.xsl -> $$(basename $$i md)xml; done
 
 .PHONY: validate
-validate:
+validate: debug
 	xmllint --xinclude --noout --relaxng ../xml2rfcv3-08.rng template.xml
 
 .PHONY: clean

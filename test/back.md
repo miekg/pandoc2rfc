@@ -16,7 +16,7 @@ Test a very long title.
 
 This works now in `xml2rfc`.
 
-## Unnumered section {-}
+## Unnumered section {:nonumber0}
 
 An unnumbered section. Should work.
 
@@ -70,13 +70,13 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ## Images
 
-![la lune](lalune.jpg "Voyage to the moon")
+    ![la lune](lalune.jpg "Voyage to the moon")
 
-![movie reel]
+    ![movie reel]
 
-[movie reel]: movie.gif
+    [movie reel]: movie.gif
 
-![This is the caption](/url/of/image.png)
+    ![This is the caption](/url/of/image.png)
 
 ## List 
 
@@ -349,7 +349,6 @@ Just works, because the outputted docbook XML is the same.
 | This is a verse text
 | This is another line
 
-<references title="Normative References">
-<xi:include href="../bib/reference.RFC.2119.xml'"/>
-<xi:include href="../bib/reference.RFC.4641.xml'"/>
-</references>
+## Strikout
+
+ ~~is deleted text.~~

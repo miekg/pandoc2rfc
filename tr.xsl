@@ -175,6 +175,21 @@
   <!-- Discard these as we echo them when we parse <section> -->
   <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title | simplesect/title"/>
   <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5 | simplesect">
+    <xsl:choose>
+      <xsl:when test="name() = 'sect1' and @id = 'abstract0'">
+        <abstract>
+          <xsl:apply-templates/>
+        </abstract>
+      </xsl:when>
+      <xsl:when test="name() = 'sect1' and @id = 'note0'">
+        <note>
+      <titleelement>
+        <xsl:apply-templates select="./title" mode="span"/>
+      </titleelement>
+          <xsl:apply-templates/>
+        </note>
+      </xsl:when>
+    <xsl:otherwise>
     <section>
       <xsl:attribute name="anchor">
         <xsl:value-of select="@id"/>
@@ -184,6 +199,8 @@
       </titleelement>
       <xsl:apply-templates/>
     </section>
+  </xsl:otherwise>
+  </xsl:choose>
   </xsl:template>
   <xsl:template match="para">
     <xsl:choose>

@@ -29,7 +29,9 @@
     <keyword>XML</keyword>
     <keyword>Pandoc</keyword>
     <keyword>Extensible Markup Language</keyword>
+    <abstract>
     <xi:include href="abstract.xml'"/>
+</abstract>
   </front>
   <middle>
     <xi:include href="middle.xml'"/>

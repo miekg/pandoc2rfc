@@ -348,3 +348,8 @@ Just works, because the outputted docbook XML is the same.
 
 | This is a verse text
 | This is another line
+
+<references title="Normative References">
+<xi:include href="../bib/reference.RFC.2119.xml'"/>
+<xi:include href="../bib/reference.RFC.4641.xml'"/>
+</references>

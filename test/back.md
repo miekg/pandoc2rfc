@@ -351,4 +351,10 @@ Just works, because the outputted docbook XML is the same.
 
 ## Strikout
 
- ~~is deleted text.~~
+~~is deleted text.~~
+
+## Citation
+
+Won't work.
+
+Blah blah [@smith04; @doe99].

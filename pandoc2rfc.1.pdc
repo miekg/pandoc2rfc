@@ -70,6 +70,7 @@ different in Pandoc2rfc:
   from there will not be recognized as citations. Using references solves this.
 * Referencing figures and tables is done by (ab)using inline footnotes, which 
   are typeset directly after the figure or table.
+* Strike through text will become:...
 
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.

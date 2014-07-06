@@ -32,7 +32,7 @@
     <xi:include href="note.xml"/>
   </front>
   <middle>
-    <xi:include href="middle.xml"/>
+    <xi:include parse="text" href="middle.xml"/>
   </middle>
   <back>
     <references title="Informative References">
@@ -42,6 +42,6 @@
       <xi:include href="../bib/reference.RFC.2119.xml"/>
       <xi:include href="../bib/reference.RFC.4641.xml"/>
     </references>
-    <xi:include href="back.xml"/>
+    <xi:include parse="text" href="back.xml"/>
   </back>
 </rfc>

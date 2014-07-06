@@ -118,19 +118,19 @@
       </titleelement>
       <!-- If there is a language= tag we use source code, otherwise artwork -->
       <xsl:choose>
-          <xsl:when test="@language">
-        <sourcecode>
+        <xsl:when test="@language">
+          <sourcecode>
             <xsl:attribute name="type">
-                <xsl:value-of select="@language"/>
+              <xsl:value-of select="@language"/>
             </xsl:attribute>
-          <xsl:value-of select="."/>
-        </sourcecode>
-    </xsl:when>
-    <xsl:otherwise>
-        <artwork>
-          <xsl:value-of select="."/>
-        </artwork>
-    </xsl:otherwise>
+            <xsl:value-of select="."/>
+          </sourcecode>
+        </xsl:when>
+        <xsl:otherwise>
+          <artwork>
+            <xsl:value-of select="."/>
+          </artwork>
+        </xsl:otherwise>
       </xsl:choose>
     </figure>
   </xsl:template>

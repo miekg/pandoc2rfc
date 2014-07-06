@@ -247,6 +247,9 @@ Indent the paragraph with 4 spaces.
 
 Converts to: `<figure><artwork> ...`
 
+Indented paragraph will be an artwork, unless it has a caption then it will
+become a `<figure><artwork>`
+
 ## Block Quote
 Any paragraph like:
 

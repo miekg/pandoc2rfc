@@ -16,7 +16,7 @@ debug:
 
 .PHONY: validate
 validate: debug
-	xmllint --xinclude --noout --relaxng ../xml2rfcv3-08.rng template.xml
+	xmllint --xinclude --nonet --noout --relaxng ../xml2rfcv3-??.rng template.xml
 
 .PHONY: clean
 clean:

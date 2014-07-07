@@ -54,9 +54,9 @@ off with (almost) plain text, use elaborate XML and end up with plain text again
           +------------+    xml2rfc  +---------+ 
           | PLAIN TEXT |  <--------  | XML2RFC | 
           +------------+             +---------+ 
-^[ ~fig:flow~ This is an *inline* note for the above figure.]
+^[ ~fig-flow~ This is an *inline* note for the above figure.]
 
-The XML generated (the output after the `xsltproc` step in [](#fig:flow)) 
+The XML generated (the output after the `xsltproc` step in [](#fig-flow)) 
 is suitable for inclusion in either the `middle` or `back` section
 of an RFC. The simplest way is to create a template XML file and include the appropriate
 XML:
@@ -81,7 +81,7 @@ XML:
     </back>
 
     </rfc>
-^[ ~fig:template~ A minimal template.xml.]
+^[ ~fig-template~ A minimal template.xml.]
 
 See the Makefile for an example of this. In this case you need to edit
 3 documents:
@@ -89,7 +89,7 @@ See the Makefile for an example of this. In this case you need to edit
 1. middle.pdc - contains the main body of text;
 1. back.pdc - holds appendices and references;
 1. template.xml (probably a fairly static file);
-1. Reference the above template, see [](#fig:template).
+1. Reference the above template, see [](#fig-template).
 
 The draft (`draft.txt`) you are reading now, is automatically created when you call `make`. 
 The homepage of Pandoc2rfc is [this github repository](https://github.com/miekg/pandoc2rfc).
@@ -116,29 +116,6 @@ When starting a new project with `pandoc2rfc` you'll need to copy the following 
     * `template.xml`
 
 After that you can start editing.
-
-# Supported Features
-
-* Sections with an anchor and title attributes ([](#section));
-* Lists
-    * style=symbols ([](#symbol));
-    * style=numbers ([](#number));
-    * style=empty ([](#empty));
-    * style=format %i, use roman lowercase numerals, ([](#roman));
-    * style=format (%d), use roman uppercase numerals ([](#roman));
-    * style=letters (lower- and uppercase, [](#letter));
-    * style=hanging ([](#hanging));
-* Figure/artwork with a title ([](#figureartwork));
-* Block quote this is converted to
-    `<list style="empty">` paragraph ([](#block-quote));
-* References 
-    * external (eref) ([](#external)); 
-    * internal (xref) ([](#internal)), you can refer to:
-        * section (handled by Pandoc, see [](#references)));
-* Index, but using the footnote syntax;
-* Citations, by using internal references;
-* Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
-* Tables with an anchor and title ([](#tables)).
 
 # Acknowledgements
 
@@ -287,4 +264,4 @@ A table can be entered as:
         1     1         1         1       
 
       ^[ ~tab~ A caption describing the table.]
-^[ ~fig:table~ A caption describing the figure describing the table.]
+^[ ~fig-table~ A caption describing the figure describing the table.]

@@ -252,7 +252,6 @@ And it does the right thing. Referencing sections is done with:
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 For referencing figures/artworks see [](#figureartwork).
-For referencing tables see [](#tables).
 
 ## Tables Test
 A table can be entered as:

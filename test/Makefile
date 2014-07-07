@@ -21,3 +21,6 @@ validate: debug
 .PHONY: clean
 clean:
 	rm -f draft.txt
+
+
+# trang rnc -> rng

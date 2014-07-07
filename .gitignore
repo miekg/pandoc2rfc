@@ -1,6 +1,13 @@
 *.html
 abstract.xml
+note.xml
 middle.xml
 back.xml
 draft.xml
-debian
+test/abstract.xml
+test/note.xml
+test/middle.xml
+test/back.xml
+test/draft.xml
+test/draft.txt
+pandoc2rfc.1

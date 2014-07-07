@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
+<!-- # vim:set sw=2 expandtab: -->
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY abstract PUBLIC "" "abstract.xml">
+<!ENTITY note PUBLIC "" "note.xml">
 <!ENTITY middle PUBLIC "" "middle.xml">
 <!ENTITY back PUBLIC "" "back.xml">
 ]>
+
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-gieben-writing-rfcs-pandoc-02">
   <front>
     <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
@@ -32,13 +36,20 @@
     <keyword>XML</keyword>
     <keyword>Pandoc</keyword>
     <keyword>Extensible Markup Language</keyword>
-    <xi:include href="abstract.xml"/>
-    <xi:include href="note.xml"/>
+    &abstract;
+    &note;
   </front>
   <middle>
-&middle;
+    &middle;
   </middle>
-  <back><references title="Informative References"><xi:include href="../bib/reference.github.vim.xml"/></references><references title="Normative References"><xi:include href="../bib/reference.RFC.2119.xml"/><xi:include href="../bib/reference.RFC.4641.xml"/></references>
+  <back>
+    <references title="Informative References">
+      <xi:include href="../bib/reference.github.vim.xml"/>
+      </references>
+    <references title="Normative References">
+      <xi:include href="../bib/reference.RFC.2119.xml"/>
+      <xi:include href="../bib/reference.RFC.4641.xml"/>
+    </references>
     &back;
   </back>
 </rfc>

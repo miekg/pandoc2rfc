@@ -78,6 +78,10 @@ Use `style="format REQ%d."`, by using the following strikethrough syntax:
 1. ~~REQ%d.~~ This is the firs item;
 2. Should be type set as REQ2.
 
+This will be generating an index
+
+^[ ^list^ format styles]
+
 More
 
 1. First we do

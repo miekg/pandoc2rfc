@@ -27,6 +27,10 @@ Although you can type Pandoc just fine, there are two things that differ
 
 * An index is done by (yet again) by using a foonote, but the first item is a subscript:
 
+        ^[ ^list^ format styles]
+
+  The rest of the content is the "subitem"
+
 As said, more extensive docs are here:
 <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>. But after some setup, it
 is *just* typing Pandoc syntax in $EDITOR.

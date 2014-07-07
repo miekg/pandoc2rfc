@@ -12,7 +12,25 @@
   </xsl:template>
   <!-- Remove the article info section, this should be handled in the <front> matter of the draft -->
   <xsl:template match="articleinfo"/>
-  <xsl:template match="footnote"/>
+  <xsl:template match="footnote">
+    <xsl:choose>
+     <xsl:when test="child::para/superscript">
+        <iref>
+          <xsl:attribute name="item">
+           <xsl:value-of select="para/superscript"/>
+          </xsl:attribute>
+          <xsl:attribute name="subitem">
+           <xsl:for-each select="./para/text()[not(ancestor::superscript)]">
+              <xsl:value-of select="normalize-space(translate(., '&#10;', ' '))"/>
+            </xsl:for-each>
+          </xsl:attribute>
+        </iref>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- discard -->
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <!-- Merge section with the title tags into one section -->
   <xsl:template match="section | simplesect | sect1 | sect2 | sect3 | sect4 | sect5">
     <section>

@@ -63,8 +63,8 @@ XML:
 
     <?xml version='1.0' ?>
     <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
-    <!ENTITY pandocMiddle PUBLIC '' 'middle.xml'>
-    <!ENTITY pandocBack   PUBLIC '' 'back.xml'>
+    <!ENTITY middle PUBLIC '' 'middle.xml'>
+    <!ENTITY back PUBLIC '' 'back.xml'>
     ]>
 
     <rfc ipr='trust200902' docName='draft-gieben-pandoc-rfcs-02'>
@@ -73,11 +73,11 @@ XML:
     </front>
 
     <middle>
-        &pandocMiddle;
+        &middle;
     </middle>
 
     <back>
-        &pandocBack;
+        &back;
     </back>
 
     </rfc>

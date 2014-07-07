@@ -249,6 +249,14 @@
   </xsl:template>
   <xsl:template match="informaltable">
     <texttable>
+      <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/subscript">
+        <xsl:attribute name="anchor">
+          <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/subscript"/>
+        </xsl:attribute>
+      </xsl:if>
+      <titleelement>
+        <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
+      </titleelement>
       <xsl:apply-templates/>
     </texttable>
   </xsl:template>
@@ -304,5 +312,4 @@
          pandoc2rfc: literallayout is not supported.
        </xsl:message>
   </xsl:template>
-  <!-- table anchors and caption stuff does not work -->
 </xsl:stylesheet>

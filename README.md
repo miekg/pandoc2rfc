@@ -13,7 +13,19 @@ Although you can type Pandoc just fine, there are two things that differ
 * Using Pandoc citations is not supported, you must use internal references
   for this;
 * Referencing figures and tables is done by abusing inline footnotes, which are
-  typeset directly after the figure or table.
+  typeset directly after the figure or table. Like so:
+
+        ^[tab:simple::Demonstration of **simple** table syntax.]
+
+  Where `tab:simple` will be the anchor and the text after `::` as used for the title.
+
+* List with `style=format REG%d` are typeset with strikethrough text in the
+  first element, as such:
+    
+        1. ~~REQ%d~~ First REQ1 item;
+        2. Second REQ2 item.
+
+* An index is done by (yet again) by using a foonote, but the first item is a subscript:
 
 As said, more extensive docs are here:
 <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>. But after some setup, it

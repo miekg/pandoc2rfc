@@ -304,4 +304,5 @@
          pandoc2rfc: literallayout is not supported.
        </xsl:message>
   </xsl:template>
+  <!-- table anchors and caption stuff does not work -->
 </xsl:stylesheet>

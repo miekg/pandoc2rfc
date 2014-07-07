@@ -1,4 +1,4 @@
-% PANDOC2RFC(1) Pandoc2rfc User Manual
+% PANDOC2RFC(1) Pandoc2rfc 3 User Manual
 % Miek Gieben
 % June 30, 2014
 
@@ -47,7 +47,7 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 :   Path to the `template.xml`, defaults to the current directory.
 
 -x TRANSFORM
-:   Path to the `transform.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/transform.xsl.
+:   Path to the `tr.xsl` XSLT file, defaults to /usr/share/pandoc2rfc/tr.xsl.
 
 -v
 :   Be verbose and show the commands that are run and any warnings.
@@ -71,6 +71,8 @@ by misuing some of the syntax:
 * Referencing figures and tables is done by (ab)using inline footnotes, which 
   are typeset directly after the figure or table. An anchor is denoted by text
   in subscript in the footnote: `^[ ~anchor~ Title text.]`;
+* An abstract is typeset by giving a section the special anchor: `# An abstract {#abstract0}`
+* A note is typeset by giving a section the special anchor: `# A Note {#note0}`
 * Strike through text will become:...TODO.
 
 # SEE ALSO

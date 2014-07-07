@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- # vim:set sw=2 expandtab: -->
+<!-- vim:set sw=2 expandtab: -->
 <!-- (c) Miek Gieben 2014. Hereby put in the public domain. -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xi="http://www.w3.org/2001/XInclude" exclude-result-prefixes="xi" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes"/>
@@ -222,6 +222,11 @@
   </xsl:template>
   <xsl:template match="orderedlist">
     <ol>
+      <xsl:if test="listitem/para/emphasis/@role = 'strikethrough'">
+        <xsl:attribute name="style">
+          <xsl:value-of select="listitem/para/emphasis"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="listitem/@override">
         <xsl:attribute name="start">
           <xsl:value-of select="listitem/@override"/>

@@ -80,7 +80,13 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ## List 
 
-### List start numbers
+### List with Custom Labels
+
+1. ~~[REQ%d]~~ This is the first item;
+2. This is the second itema;
+3. This should be all typeset with REQ%d.
+
+### List Start Numbers
 
 4. four
 5. five
@@ -127,7 +133,7 @@ Another item to explain:
 
      Multiple paragraphs in such a list.
 
-### Lists in Description Lists
+### Description Lists with Lists
 
 Item to explain:
 :   It works because of

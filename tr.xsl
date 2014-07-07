@@ -220,6 +220,15 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  <!-- Discard because used for style='a format %d' -->
+  <xsl:template match="orderedlist/listitem/para/emphasis">
+    <xsl:choose>
+      <xsl:when test="@role = 'strikethrough'"/>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <xsl:template match="orderedlist">
     <ol>
       <xsl:if test="listitem/para/emphasis/@role = 'strikethrough'">

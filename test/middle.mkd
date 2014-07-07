@@ -137,7 +137,6 @@ After that you can start editing.
         * section (handled by Pandoc, see [](#references)));
 * Citations, by using internal references;
 * Spanx style=verb, style=emph and style=strong ([](#spanx-styles));
-* Tables with an anchor and title ([](#tables)).
 
 # Unsupported Features
 
@@ -325,7 +324,6 @@ And it does the right thing. Referencing sections is done with:
 
 The word 'Section' is inserted automatically: ... see [](#pandoc-constructs) ...
 For referencing figures/artworks see [](#figureartwork).
-For referencing tables see [](#tables).
 
 ## Spanx Styles
 

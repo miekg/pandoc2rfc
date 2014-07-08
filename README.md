@@ -25,7 +25,7 @@ Although you can type Pandoc just fine, there are two things that differ
         1. ~~REQ%d~~ First REQ1 item;
         2. Second REQ2 item.
 
-* An index is done by (yet again) by using a foonote, but the first item is a subscript:
+* An index is done by (yet again) by using a foonote, but the first item is a superscript:
 
         ^[ ^list^ format styles]
 

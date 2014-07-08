@@ -82,6 +82,8 @@ This will be generating an index
 
 ^[ ^list^ format styles]
 
+And this is just list ^[ ^list^ ]
+
 More
 
 1. First we do

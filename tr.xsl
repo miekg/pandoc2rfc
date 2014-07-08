@@ -71,7 +71,7 @@
       <xsl:apply-templates/>
     </eref>
   </xsl:template>
-  <!-- Set of span elements that we need for titleelement and other fluff. -->
+  <!-- Set of span elements that we need for name and other fluff. -->
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
       <xsl:when test="contains(@role,'strong')">
@@ -92,7 +92,7 @@
     </tt>
   </xsl:template>
   <!-- The sup and sub tags script are not allowed, so kill the content.-->
-  <!-- We use this in the titleelement to create references. -->
+  <!-- We use this in the name to create references. -->
   <xsl:template match="subscript" mode="span"/>
   <xsl:template match="superscript" mode="span"/>
   <xsl:template match="link" mode="span">
@@ -119,9 +119,9 @@
           <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/subscript"/>
         </xsl:attribute>
       </xsl:if>
-      <titleelement>
+      <name>
         <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
-      </titleelement>
+      </name>
       <!-- If there is a language= tag we use source code, otherwise artwork -->
       <xsl:choose>
         <xsl:when test="@language">
@@ -188,9 +188,9 @@
       </xsl:when>
       <xsl:when test="name() = 'sect1' and @id = 'note0'">
         <note>
-          <titleelement>
+          <name>
             <xsl:apply-templates select="./title" mode="span"/>
-          </titleelement>
+          </name>
           <xsl:apply-templates/>
         </note>
       </xsl:when>
@@ -199,9 +199,9 @@
           <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
-          <titleelement>
+          <name>
             <xsl:apply-templates select="./title" mode="span"/>
-          </titleelement>
+          </name>
           <xsl:apply-templates/>
         </section>
       </xsl:otherwise>
@@ -268,9 +268,9 @@
           <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/subscript"/>
         </xsl:attribute>
       </xsl:if>
-      <titleelement>
+      <name>
         <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
-      </titleelement>
+      </name>
       <xsl:apply-templates/>
     </texttable>
   </xsl:template>
@@ -306,9 +306,9 @@
   <xsl:template match="figure">
     <figure>
       <xsl:if test="title">
-        <titleelement>
+        <name>
           <xsl:apply-templates select="title" mode="span"/>
-        </titleelement>
+        </name>
       </xsl:if>
       <artwork type="svg">
         <xi:include>

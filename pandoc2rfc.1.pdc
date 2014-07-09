@@ -84,15 +84,23 @@ When using the *-1* flag, be aware of the following limitations:
   section. You will need to manually split this;
 * Empty lines in artwork are discarded.
 
+# TYPE SETTING TEXT
+
 Although you can type Pandoc just fine, there are two things that are done 
 different in Pandoc2rfc:
 
 * Pandoc style citations are not supported, you must use internal references
   for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
-  from there will not be recognized as citations. Using references solves this.
-* Referencing figures and tables is done by (ab)using inline footnotes.
-
+  from there will not be recognized as citations. Using references solves this;
+* Referencing figures and tables is done by (ab)using inline footnotes, which 
+  are typeset directly after the figure or table. An anchor is denoted by text
+  in a footnote: `^[anchor::Title text.]`;
+* An index is supported with `^[ ^item^ subitem ]`.
+* A huge numer of list styles is possible, including `style=format ...`, which
+  can be done with strikethrough text as the first text in the first element:
+  `* ~~REQ%d.~~ item`
+    
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
 Also see <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03> for more information

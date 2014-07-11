@@ -74,6 +74,7 @@
   <!-- Set of span elements that we need for name and other fluff. -->
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
+      <xsl:when test="contains(@role,'strikethrough')"/> <!-- Discard -->
       <xsl:when test="contains(@role,'strong')">
         <strong>
           <xsl:apply-templates mode="span"/>
@@ -147,7 +148,7 @@
   <!-- Strikethrough text signals the cite -->
   <xsl:template match="blockquote/para/emphasis">
     <xsl:choose>
-      <xsl:when test="@role = 'strikethrough'"/>
+      <xsl:when test="contains(@role,'strikethrough')"/>
       <xsl:otherwise>
         <xsl:apply-templates/>
       </xsl:otherwise>
@@ -162,7 +163,7 @@
       </xsl:when>
       <xsl:otherwise>
         <blockquote>
-      <xsl:if test="para/emphasis/@role = 'strikethrough'">
+      <xsl:if test="contains(para/emphasis/@role,'strikethrough')">
         <xsl:attribute name="cite">
           <xsl:value-of select="para/emphasis"/>
         </xsl:attribute>
@@ -200,12 +201,12 @@
   <xsl:template match="sect1/title | sect2/title | sect3/title | sect4/title | sect5/title | simplesect/title"/>
   <xsl:template match="sect1 | sect2 | sect3 | sect4 | sect5 | simplesect">
     <xsl:choose>
-      <xsl:when test="name() = 'sect1' and @id = 'abstract0'">
+      <xsl:when test="name() = 'sect1' and contains(title/emphasis/@role,'strikethrough') and title/emphasis/text() = 'abstract'">
         <abstract>
           <xsl:apply-templates/>
         </abstract>
       </xsl:when>
-      <xsl:when test="name() = 'sect1' and @id = 'note0'">
+      <xsl:when test="name() = 'sect1' and contains(title/emphasis/@role, 'strikethrough') and title/emphasis/text() = 'note'">
         <note>
           <name>
             <xsl:apply-templates select="./title" mode="span"/>
@@ -242,7 +243,7 @@
   <!-- Discard because used for style='a format %d' -->
   <xsl:template match="orderedlist/listitem/para/emphasis">
     <xsl:choose>
-      <xsl:when test="@role = 'strikethrough'"/>
+      <xsl:when test="contains(@role,'strikethrough')"/>
       <xsl:otherwise>
         <xsl:apply-templates/>
       </xsl:otherwise>
@@ -250,7 +251,7 @@
   </xsl:template>
   <xsl:template match="orderedlist">
     <ol>
-      <xsl:if test="listitem/para/emphasis/@role = 'strikethrough'">
+      <xsl:if test="contains(listitem/para/emphasis/@role,'strikethrough')">
         <xsl:attribute name="style">
           <xsl:value-of select="listitem/para/emphasis"/>
         </xsl:attribute>

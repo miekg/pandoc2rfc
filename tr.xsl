@@ -144,6 +144,15 @@
   <xsl:template match="blockquote/blockquote">
     <xsl:apply-templates/>
   </xsl:template>
+  <!-- Strikethrough text signals the cite -->
+  <xsl:template match="blockquote/para/emphasis">
+    <xsl:choose>
+      <xsl:when test="@role = 'strikethrough'"/>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <xsl:template match="blockquote">
     <xsl:choose>
       <xsl:when test="child::blockquote">
@@ -153,6 +162,16 @@
       </xsl:when>
       <xsl:otherwise>
         <blockquote>
+      <xsl:if test="para/emphasis/@role = 'strikethrough'">
+        <xsl:attribute name="cite">
+          <xsl:value-of select="para/emphasis"/>
+        </xsl:attribute>
+      </xsl:if>
+          <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/subscript">
+            <xsl:attribute name="anchor">
+              <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/subscript"/>
+            </xsl:attribute>
+          </xsl:if>
           <xsl:apply-templates/>
         </blockquote>
       </xsl:otherwise>

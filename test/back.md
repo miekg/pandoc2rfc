@@ -25,15 +25,21 @@ An unnumbered section. Should work.
 > This is a blockquote, how does it look?
 
 
-> This is another
-> More blockquoting
+> This is another with an anchor 
 
-> > Quote in Quote
+^[ ~quote-simple~ Creates an anchor. ]
+
+> > Quote in Quote which will become an `<aside>`.
 
 A list in quotes
 
 > 1. First item
 > 1. Second item
+
+Each blockquote needs a citation, it's a mandatory element, we signal this with .. strikethrough text as
+the first work.
+
+> ~~http://miek.nl/~~ Put this in the cite, and further blockquotes.
 
 ## Lines
 
@@ -82,7 +88,7 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ### List with Custom Labels
 
-1. ~~[REQ%d]~~ This is the first item;
+1. ~~[REQ%d].~~ This is the first item;
 2. This is the second itema;
 3. This should be all typeset with REQ%d.
 
@@ -343,7 +349,7 @@ qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
 qsort (filter (>= x) xs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This will translate to `<sourcecode>`, without the code thingy it will
+This will translate to `<sourcecode>`, without the code type it will
 become an artwork. Further more same rules applies as to Figures.
 
 ### Verbatim Code Blocks

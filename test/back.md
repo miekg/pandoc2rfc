@@ -363,9 +363,6 @@ A verbatim code block
 Heading with anchor.
 Just works, because the outputted docbook XML is the same.
 
-Special headings for `#note0` and `abstract0` which are translated into 
-a `<note>` and `<abstract>` respectively.
-
 ## Verse
 
 | This is a    verse text

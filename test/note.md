@@ -1,3 +1,3 @@
-# This is a note {#note0}
+# ~~note~~ This is a note
 
 A note.

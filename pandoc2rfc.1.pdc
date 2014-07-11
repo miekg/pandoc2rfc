@@ -61,19 +61,31 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 -V
 :   Show version.
 
+# TYPESETTING TEXT
+
 Although you can type Pandoc syntax just fine, the following items are achieved
-by misuing some of the syntax:
+by misusing some of the syntax:
 
 * Pandoc style citations are not supported, you must use internal references
   for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
   from there will not be recognized as citations. Using references solves this;
-* Referencing figures and tables is done by (ab)using inline footnotes, which 
+* Referencing figures, tables and blockquote (anything that isn't a section 
+  basically) is done by (ab)using inline footnotes, which 
   are typeset directly after the figure or table. An anchor is denoted by text
   in subscript in the footnote: `^[ ~anchor~ Title text.]`;
-* An abstract is typeset by giving a section the special anchor: `# An abstract {#abstract0}`
-* A note is typeset by giving a section the special anchor: `# A Note {#note0}`
-* Strike through text will become:...TODO.
+* Strike through text is discarded, except a in few places we it is used to signal
+  special options: in lists it can be used as the first text in the first item:
+  `1. ~~REQ%d.~~ item text`, this will make the counter be REQ1, etc. 
+  And in blockquote the citation line is given in strikethrough text:
+  `> ~~cite URI~~ quote text`.
+* An abstract is typeset by giving a section the special anchor: `# ~~abstract~~ An abstract`
+* A note is typeset by giving a section the special anchor: `# ~~note~~ A Note`
+
+These differences can be summed up as:
+
+1. If there is no Pandoc syntax to create a reference use footnote plus subscript: `^[ ~anchor~ Caption text ]`
+2. If some extra attribute needs to be set strike-through text is used: `~~foo~~~`.
 
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.

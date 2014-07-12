@@ -1,0 +1,28 @@
+# Upgrading
+
+The XML2RFC v3 is much more sane (XML-wise) then the v2 standard. Things like
+emphasised text in headers is allowed because the title *attribute* is now a
+`<name>`-element.
+
+There is one place where v2 Pandoc documents will not be v3 documents and that
+is when referencing figures and table with a footnote.
+
+In v2:
+
+:    A figure/table is referenced with
+
+        ^[anchor::caption]
+
+In v3:
+
+:   A figure/table/blockquote/image/etc. is referenced with
+
+        ~[ ~anchor~ caption ]
+
+    Where caption can contain markup. And where the anchor is signaled
+    by using subscript text.
+
+This can be made with a simple `sed` command, but do keep in mind this is a textual change
+not an not a semantical one, so it may change too much or too little.
+
+    sed 's/\^\[\(.*\)\:\:/^[ ~\1~ /'

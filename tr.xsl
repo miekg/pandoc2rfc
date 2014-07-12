@@ -74,7 +74,8 @@
   <!-- Set of span elements that we need for name and other fluff. -->
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
-      <xsl:when test="contains(@role,'strikethrough')"/> <!-- Discard -->
+      <xsl:when test="contains(@role,'strikethrough')"/>
+      <!-- Discard -->
       <xsl:when test="contains(@role,'strong')">
         <strong>
           <xsl:apply-templates mode="span"/>
@@ -163,11 +164,11 @@
       </xsl:when>
       <xsl:otherwise>
         <blockquote>
-      <xsl:if test="contains(para/emphasis/@role,'strikethrough')">
-        <xsl:attribute name="cite">
-          <xsl:value-of select="para/emphasis"/>
-        </xsl:attribute>
-      </xsl:if>
+          <xsl:if test="contains(para/emphasis/@role,'strikethrough')">
+            <xsl:attribute name="cite">
+              <xsl:value-of select="para/emphasis"/>
+            </xsl:attribute>
+          </xsl:if>
           <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/subscript">
             <xsl:attribute name="anchor">
               <xsl:value-of select="following-sibling::*[position()=1][name()='para']/footnote/para/subscript"/>
@@ -323,27 +324,48 @@
       <xsl:apply-templates/>
     </c>
   </xsl:template>
-  <xsl:template match="figure">
-    <figure>
-      <xsl:if test="title">
-        <name>
-          <xsl:apply-templates select="title" mode="span"/>
-        </name>
-      </xsl:if>
-      <artwork type="svg">
-        <xi:include>
-          <xsl:attribute name="href">
-            <xsl:value-of select="mediaobject/imageobject/imagedata/@fileref"/>
-          </xsl:attribute>
-        </xi:include>
-      </artwork>
-      <!-- caption? <textobject><phrase>... -->
-    </figure>
+
+  <xsl:template match="inlinemediaobject">
+    <xsl:choose>
+      <xsl:when test="following-sibling::*[position()=1][name()='footnote']">
+        <figure>
+          <xsl:if test="following-sibling::*[position()=1][name()='footnote']/para/subscript">
+            <xsl:attribute name="anchor">
+              <xsl:value-of select="following-sibling::*[position()=1][name()='footnote']/para/subscript"/>
+            </xsl:attribute>
+          </xsl:if>
+          <name>
+            <xsl:apply-templates select="following-sibling::*[position()=1][name()='footnote']/para" mode="span"/>
+          </name>
+          <artwork type="svg">
+            <xi:include>
+              <xsl:attribute name="href">
+                <xsl:value-of select="imageobject/imagedata/@fileref"/>
+              </xsl:attribute>
+            </xi:include>
+          </artwork>
+        </figure>
+      </xsl:when>
+      <xsl:otherwise>
+        <artwork type="svg">
+          <xi:include>
+            <xsl:attribute name="href">
+              <xsl:value-of select="imageobject/imagedata/@fileref"/>
+            </xsl:attribute>
+          </xi:include>
+        </artwork>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <!-- Warn about unused constructs. -->
   <xsl:template match="literallayout">
     <xsl:message>
          pandoc2rfc: literallayout is not supported.
+       </xsl:message>
+  </xsl:template>
+  <xsl:template match="figure">
+    <xsl:message>
+         pandoc2rfc: figure as such is not supported.
        </xsl:message>
   </xsl:template>
 </xsl:stylesheet>

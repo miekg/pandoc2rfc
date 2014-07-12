@@ -76,13 +76,18 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ## Images
 
-    ![la lune](lalune.jpg "Voyage to the moon")
+![la lune](lalune.jpg "Voyage to the moon")
 
-    ![movie reel]
+^[ ~fig-reference1~ Caption text `ffd`.]
 
-    [movie reel]: movie.gif
+![This is the caption](/url/of/image.png)
 
-    ![This is the caption](/url/of/image.png)
+"Empty" artwork without a figure: ![](/url/of/image/svg)
+
+
+Figure with artwork, anchor and a caption.
+![](/url/of/image/svg)
+^[ ~fig-reference~ Caption text `ffd`.]
 
 ## List 
 

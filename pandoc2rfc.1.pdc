@@ -70,7 +70,7 @@ by misusing some of the syntax:
   for this. Using Pandoc's citations means citations are resolved when Pandoc
   runs and they would show up as plain text in the intermediate XML `[RFC2535]`, and
   from there will not be recognized as citations. Using references solves this;
-* Referencing figures, tables and blockquote (anything that isn't a section 
+* Referencing figures, images, artwork, tables and blockquote (anything that isn't a section 
   basically) is done by (ab)using inline footnotes, which 
   are typeset directly after the figure or table. An anchor is denoted by text
   in subscript in the footnote: `^[ ~anchor~ Title text.]`;

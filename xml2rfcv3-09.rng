@@ -502,6 +502,8 @@
           <ref name="i"/>
           <ref name="sub"/>
           <ref name="sup"/>
+          <ref name="t"/>
+          <ref name="ol"/>
         </choice>
       </zeroOrMore>
     </element>

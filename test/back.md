@@ -87,7 +87,7 @@ again. Or you might want to [Click here](http://miek.nl).
 
 Figure with artwork, anchor and a caption.
 ![](/url/of/image/svg)
-^[ ~fig-reference~ Caption text `ffd`.]
+^[ ~fig:reference~ Caption text `ffd`.]
 
 ## List 
 

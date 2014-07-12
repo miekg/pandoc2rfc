@@ -251,6 +251,18 @@
     </xsl:choose>
   </xsl:template>
   <xsl:template match="orderedlist">
+    <xsl:choose>
+      <xsl:when test="ancestor::para">
+        <xsl:call-template name="orderedlist"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <t>
+          <xsl:call-template name="orderedlist"/>
+        </t>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template name="orderedlist">
     <ol>
       <xsl:if test="contains(listitem/para/emphasis/@role,'strikethrough')">
         <xsl:attribute name="style">
@@ -270,6 +282,18 @@
     </ol>
   </xsl:template>
   <xsl:template match="variablelist">
+    <xsl:choose>
+      <xsl:when test="ancestor::para">
+        <xsl:call-template name="variablelist"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <t>
+          <xsl:call-template name="variablelist"/>
+        </t>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template name="variablelist">
     <dl>
       <xsl:apply-templates/>
     </dl>

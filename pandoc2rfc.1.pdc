@@ -75,12 +75,12 @@ with Pandoc you can not reference code blocks, tables and images.
   basically) is done by (ab)using inline footnotes, which 
   are typeset directly after the figure or table. An anchor is denoted by text
   in subscript in the footnote: `^[ ~anchor~ Title text.]`;
-* Strike through text is discarded, except a in few places we it is used to signal
+* Strike through text is discarded, except a in few places where it is used to signal
   special options: in lists it can be used as the first text in the first item:
-  `1. ~~REQ%d.~~ item text`, this will make the counter be REQ1, etc. 
+  `1. ~~REQ%d~~ item text`, this will make the counter be REQ1, etc. 
   And in blockquote the citation line is given in strikethrough text:
   `> ~~cite URI~~ quote text`.
-  When a section must not be included in the final you can use the strike through text
+  When a section must not be included in the final RFC you can use the strike through text
   `~~removeInRFC~~` as the first text of the first paragraph.
 * An abstract is typeset by giving a section the special name: `# ~~abstract~~ An abstract`
 * A note is typeset by giving a section the special name: `# ~~note~~ A Note`

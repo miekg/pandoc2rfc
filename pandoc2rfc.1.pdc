@@ -79,8 +79,10 @@ by misusing some of the syntax:
   `1. ~~REQ%d.~~ item text`, this will make the counter be REQ1, etc. 
   And in blockquote the citation line is given in strikethrough text:
   `> ~~cite URI~~ quote text`.
-* An abstract is typeset by giving a section the special anchor: `# ~~abstract~~ An abstract`
-* A note is typeset by giving a section the special anchor: `# ~~note~~ A Note`
+  When a section must not be included in the final you can use the strike through text
+  `~~removeInRFC~~` as the first text of the first paragraph.
+* An abstract is typeset by giving a section the special name: `# ~~abstract~~ An abstract`
+* A note is typeset by giving a section the special name: `# ~~note~~ A Note`
 
 These differences can be summed up as:
 

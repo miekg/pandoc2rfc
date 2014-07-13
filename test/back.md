@@ -382,3 +382,9 @@ Just works, because the outputted docbook XML is the same.
 Won't work.
 
 Blah blah [@smith04; @doe99].
+
+## This section needs to be removed in the final RFC
+
+~~removeInRFC~~ This section should be removed in the final RFC.
+
+bla bla bla

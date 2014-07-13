@@ -217,6 +217,12 @@
       </xsl:when>
       <xsl:otherwise>
         <section>
+          <xsl:if test="contains(para/emphasis/@role,'strikethrough') and para/emphasis/text() = 'removeInRFC'">
+        <xsl:attribute name="removeInRFC">
+          <xsl:text>yes</xsl:text>
+        </xsl:attribute>
+      </xsl:if>
+
           <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
@@ -348,7 +354,6 @@
       <xsl:apply-templates/>
     </c>
   </xsl:template>
-
   <xsl:template match="inlinemediaobject">
     <xsl:choose>
       <xsl:when test="following-sibling::*[position()=1][name()='footnote']">

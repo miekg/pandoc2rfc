@@ -216,13 +216,12 @@
         </note>
       </xsl:when>
       <xsl:otherwise>
-        <section>
+        <xsl:element name="section">
           <xsl:if test="contains(para/emphasis/@role,'strikethrough') and para/emphasis/text() = 'removeInRFC'">
-        <xsl:attribute name="removeInRFC">
-          <xsl:text>yes</xsl:text>
-        </xsl:attribute>
-      </xsl:if>
-
+            <xsl:attribute name="removeInRFC">
+              <xsl:text>yes</xsl:text>
+            </xsl:attribute>
+          </xsl:if>
           <xsl:attribute name="anchor">
             <xsl:value-of select="@id"/>
           </xsl:attribute>
@@ -230,7 +229,7 @@
             <xsl:apply-templates select="./title" mode="span"/>
           </name>
           <xsl:apply-templates/>
-        </section>
+        </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -241,9 +240,9 @@
         <xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-        <t>
+        <xsl:element name="t">
           <xsl:apply-templates/>
-        </t>
+        </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -350,9 +349,9 @@
     </xsl:if>
   </xsl:template>
   <xsl:template match="informaltable/tgroup/tbody/row/entry">
-    <c>
+    <xsl:element name="c">
       <xsl:apply-templates/>
-    </c>
+    </xsl:element>
   </xsl:template>
   <xsl:template match="inlinemediaobject">
     <xsl:choose>
@@ -395,6 +394,11 @@
   <xsl:template match="figure">
     <xsl:message>
          pandoc2rfc: figure as such is not supported.
+       </xsl:message>
+  </xsl:template>
+  <xsl:template match="processing-instruction('rfc')">
+    <xsl:message>
+         pandoc2rfc: processing instructions are best put in the template, ignoring.
        </xsl:message>
   </xsl:template>
 </xsl:stylesheet>

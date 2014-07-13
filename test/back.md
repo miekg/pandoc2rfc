@@ -80,14 +80,15 @@ again. Or you might want to [Click here](http://miek.nl).
 
 ^[ ~fig-reference1~ Caption text `ffd`.]
 
-![This is the caption](/url/of/image.png)
-
 "Empty" artwork without a figure: ![](/url/of/image/svg)
-
 
 Figure with artwork, anchor and a caption.
 ![](/url/of/image/svg)
 ^[ ~fig:reference~ Caption text `ffd`.]
+
+And nothing:
+
+![This is the caption](/url/of/image.png)
 
 ## List 
 

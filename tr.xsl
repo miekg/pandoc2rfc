@@ -17,14 +17,14 @@
         <xsl:choose>
           <!-- RFC 2119 keywords -->
           <xsl:when test="text() = 'MUST' or text() = 'MUST NOT' or text() = 'REQUIRED' or text() = 'SHALL' or text() = 'SHALL NOT' or text() = 'SHOULD' or text() = 'SHOULD NOT' or text() = 'RECOMMENDED' or text() = 'MAY' or text = 'OPTIONAL'">
-            <bcp14>
+            <xsl:element name="bcp14">
               <xsl:value-of select="text()"/>
-            </bcp14>
+            </xsl:element>
           </xsl:when>
           <xsl:otherwise>
-            <strong>
+            <xsl:element name="strong">
               <xsl:apply-templates/>
-            </strong>
+            </xsl:element>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
@@ -32,9 +32,9 @@
         <xsl:message>pandoc2rfc: strikethrough is not supported.</xsl:message>
       </xsl:when>
       <xsl:otherwise>
-        <em>
+        <xsl:element name="em">
           <xsl:apply-templates/>
-        </em>
+        </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -290,9 +290,9 @@
         <xsl:call-template name="variablelist"/>
       </xsl:when>
       <xsl:otherwise>
-        <t>
+        <xsl:element name="t">
           <xsl:call-template name="variablelist"/>
-        </t>
+        </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -324,12 +324,12 @@
   </xsl:template>
   <xsl:template match="informaltable/tgroup/thead/row">
     <xsl:for-each select="entry">
-      <ttcol>
+      <xsl:element name="ttcol">
         <xsl:call-template name="colspec">
           <xsl:with-param name="column" select="round(position() div 2)+1"/>
         </xsl:call-template>
         <xsl:apply-templates/>
-      </ttcol>
+      </xsl:element>
     </xsl:for-each>
   </xsl:template>
   <xsl:template name="colspec">
@@ -348,7 +348,7 @@
   </xsl:template>
   <xsl:template match="informaltable/tgroup/tbody/row/entry">
     <xsl:element name="c">
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="span"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="inlinemediaobject">

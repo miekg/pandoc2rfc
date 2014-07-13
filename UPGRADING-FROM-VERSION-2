@@ -2,7 +2,8 @@
 
 The XML2RFC v3 is much more sane (XML-wise) then the v2 standard. Things like
 emphasised text in headers is allowed because the title *attribute* is now a
-`<name>`-element.
+`<name>`-element. The XSLT file is now called `tr.xsl` to avoid any confusion
+with the older one (`transform.xsl`).
 
 There is one place where v2 Pandoc documents will not be v3 documents and that
 is when referencing figures and table with a footnote.

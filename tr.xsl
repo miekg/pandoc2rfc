@@ -29,9 +29,7 @@
         </xsl:choose>
       </xsl:when>
       <xsl:when test="contains(@role,'strikethrough')">
-        <xsl:message>
-         pandoc2rfc: strikethrough is not supported.
-       </xsl:message>
+        <xsl:message>pandoc2rfc: strikethrough is not supported.</xsl:message>
       </xsl:when>
       <xsl:otherwise>
         <em>
@@ -387,18 +385,12 @@
   </xsl:template>
   <!-- Warn about unused constructs. -->
   <xsl:template match="literallayout">
-    <xsl:message>
-         pandoc2rfc: literallayout is not supported.
-       </xsl:message>
+    <xsl:message>pandoc2rfc: literallayout is not supported.</xsl:message>
   </xsl:template>
   <xsl:template match="figure">
-    <xsl:message>
-         pandoc2rfc: figure as such is not supported.
-       </xsl:message>
+    <xsl:message>pandoc2rfc: figure as such is not supported.</xsl:message>
   </xsl:template>
   <xsl:template match="processing-instruction('rfc')">
-    <xsl:message>
-         pandoc2rfc: processing instructions are best put in the template, ignoring.
-       </xsl:message>
+    <xsl:message>pandoc2rfc: processing instructions are best put in the template, ignoring.</xsl:message>
   </xsl:template>
 </xsl:stylesheet>

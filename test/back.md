@@ -16,9 +16,9 @@ Test a very long title.
 
 This works now in `xml2rfc`.
 
-## Unnumered section {:nonumber0}
+## Unnumered section
 
-An unnumbered section. Should work.
+Does not work.
 
 ## Blockquote
 

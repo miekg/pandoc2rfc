@@ -1,6 +1,6 @@
 #!/bin/bash
 # (c) Miek Gieben, 2013, A small wrapper around Pandoc, xsltproc and xml2rfc to create an I-D.
-TRANS=/usr/share/pandoc2rfc/transform.xsl
+TRANS=/usr/share/pandoc2rfc/tr.xsl
 TEMPLATE=template.xml
 VERSION="3.0.0"
 
@@ -18,7 +18,7 @@ function usage {
     echo "  -v                  be verbose (show warnings)"
     echo "  -d                  debug mode, do not delete intermediate XML files"
     echo "  -t template.xml     path to template.xml, defaults to current directory"
-    echo "  -x transform.xsl    path to transform.xsl, defaults to /usr/share/pandoc2rfc/transform.xsl"
+    echo "  -x tr.xsl           path to tr.xsl, defaults to /usr/share/pandoc2rfc/tr.xsl"
     echo "  -h                  this help"
     echo "  -V                  show version ($VERSION)"
 }

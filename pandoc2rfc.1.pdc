@@ -64,7 +64,8 @@ following extension are recognized for the input files: `.pdc`, `.pandoc`,
 # TYPESETTING TEXT
 
 Although you can type Pandoc syntax just fine, the following items are achieved
-by misusing some of the syntax:
+by misusing some of the syntax. Most of these changes stem from the fact that
+with Pandoc you can not reference code blocks, tables and images.
 
 * Pandoc style citations are not supported, you must use internal references
   for this. Using Pandoc's citations means citations are resolved when Pandoc

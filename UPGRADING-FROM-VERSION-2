@@ -5,6 +5,8 @@ emphasised text in headers is allowed because the title *attribute* is now a
 `<name>`-element. The XSLT file is now called `tr.xsl` to avoid any confusion
 with the older one (`transform.xsl`).
 
+## References
+
 There is one place where v2 Pandoc documents will not be v3 documents and that
 is when referencing figures and table with a footnote.
 

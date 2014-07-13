@@ -259,9 +259,9 @@
         <xsl:call-template name="orderedlist"/>
       </xsl:when>
       <xsl:otherwise>
-        <t>
+        <xsl:element name="t">
           <xsl:call-template name="orderedlist"/>
-        </t>
+        </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

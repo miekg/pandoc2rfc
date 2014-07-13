@@ -19,7 +19,7 @@ validate: debug full.xml
 
 .PHONY: debug
 debug:
-	for i in $(SOURCES); do pandoc -st docbook $$i | xsltproc ../tr.xsl -> $$(basename $$i md)xml; done
+	for i in $(SOURCES); do pandoc --columns 100 -st docbook $$i | xsltproc ../tr.xsl -> $$(basename $$i md)xml; done
 
 .PHONY: clean
 clean:

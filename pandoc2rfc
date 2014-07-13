@@ -36,6 +36,7 @@ function extension {
     echo ""
 }
 
+COL="--columns 100"
 OUT="-f draft.txt --text"
 MARKUP=""
 RM=rm
@@ -68,8 +69,8 @@ for f in "$@"; do
         echo $0: Could not detect extension for $f >&2
         exit 1
     fi
-    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s $f \| xsltproc $NONET $TRANS - \> "$base".xml >&2
-    pandoc -t docbook -s "$f" | xsltproc $NONET $TRANS - > "$base".xml || exit 1
+    [[ -n "$VERBOSE" ]] && echo pandoc $COL -st docbook -s $f \| xsltproc $NONET $TRANS - \> "$base".xml >&2
+    pandoc $COL -st docbook -s "$f" | xsltproc $NONET $TRANS - > "$base".xml || exit 1
     XML="$XML $base.xml"
 done
 # if XML is filled we have files to process otherwise process stdin
@@ -77,6 +78,6 @@ if [[ -n "$XML" ]]; then
     [[ -n "$VERBOSE" ]] && echo xml2rfc $Q $TEMPLATE $OUT \&\& $RM $XML >&2
     xml2rfc $Q $TEMPLATE $OUT && $RM $XML
 else
-    [[ -n "$VERBOSE" ]] && echo pandoc -t docbook -s \| xsltproc $NONET $TRANS - >&2
-    pandoc -t docbook -s | xsltproc $NONET $TRANS - || exit 1
+    [[ -n "$VERBOSE" ]] && echo pandoc $COL -st docbook -s \| xsltproc $NONET $TRANS - >&2
+    pandoc $COL -st docbook -s | xsltproc $NONET $TRANS - || exit 1
 fi

@@ -286,7 +286,7 @@ List with a sublist with a paragraph above the sublist
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-^[tab:grid::Sample grid table.]
+^[ tab:grid::Sample grid table. ~~We will make this a postamble~~ ]
 
 Grid tables without a caption
 
@@ -323,12 +323,11 @@ as (@good) shows...
     This is a figure
     This is a figure
     This is a figure
-^[This is the caption, with text in `typewriter`. Which isnt converted to a `<spanx>` style, because this is copied as-is.]
-
+^[noref0::This is the caption, with text in `typewriter`. Which isnt converted to a `<spanx>` style, because this is copied as-is. ~~We will make this a postamble~~]
 
     This is a figure
     This is a figure
-^[noref::A centered figure, because it has an anchor and some *markup*, and more `ls`.]
+^[noref1::A centered figure, because it has an anchor and some *markup*, and more `ls`.]
 
 ## Verse tests
 

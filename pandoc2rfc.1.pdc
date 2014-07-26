@@ -103,5 +103,5 @@ different in Pandoc2rfc:
     
 # SEE ALSO
 The Pandoc documentation found at <http://johnmacfarlane.net/pandoc/>.
-Also see <http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03> for more information
+Also see [RFC 7328](http://tools.ietf.org/html/rfc7328) for more information
 on how to typeset an I-D.

@@ -72,8 +72,9 @@
   <!-- Set of span elements that we need for name and other fluff. -->
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
-      <xsl:when test="contains(@role,'strikethrough')"/>
-      <!-- Discard -->
+      <xsl:when test="contains(@role,'strikethrough')">
+        <xsl:apply-templates mode="span"/>
+      </xsl:when>
       <xsl:when test="contains(@role,'strong')">
         <strong>
           <xsl:apply-templates mode="span"/>
@@ -319,6 +320,11 @@
       <name>
         <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para" mode="span"/>
       </name>
+      <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/emphasis[@role='strikethrough']">
+        <xsl:element name="postamble">
+          <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para/emphasis[@role='strikethrough']" mode="span"/>
+        </xsl:element>
+      </xsl:if>
       <xsl:apply-templates/>
     </texttable>
   </xsl:template>
@@ -391,6 +397,6 @@
     <xsl:message>pandoc2rfc: figure as such is not supported.</xsl:message>
   </xsl:template>
   <xsl:template match="processing-instruction('rfc')">
-    <xsl:message>pandoc2rfc: processing instructions are best put in the template, ignoring.</xsl:message>
+    <xsl:message>pandoc2rfc: processing instructions must be put in the template, ignoring.</xsl:message>
   </xsl:template>
 </xsl:stylesheet>

@@ -287,7 +287,7 @@ List with a sublist with a paragraph above the sublist
                                     rows.
 -------------------------------------------------------------
 
-^[ ~tab-multiline~ Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
+^[ ~~postamble~~ ~tab-multiline~ Here's the caption. It, too, may span multiple lines. This is a multiline table. This is `verbatim` text.]
 
 +---------------+---------------+--------------------+
 | Fruit         | Price         | Advantages         |
@@ -297,7 +297,7 @@ List with a sublist with a paragraph above the sublist
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-^[ ~tab-grid~ Sample grid table. ~~This is a postamble ~~]
+^[ ~~This is a postamble~~ ~tab-grid~ Sample grid table. ]
 
 Grid tables without a caption
 

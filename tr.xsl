@@ -73,7 +73,8 @@
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
       <xsl:when test="contains(@role,'strikethrough')">
-        <xsl:apply-templates mode="span"/>
+        <!-- discard, except when parent is footnote, then leave the text -->
+        <!-- <xsl:apply-templates mode="span"/> -->
       </xsl:when>
       <xsl:when test="contains(@role,'strong')">
         <strong>

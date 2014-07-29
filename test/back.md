@@ -297,7 +297,7 @@ List with a sublist with a paragraph above the sublist
 | Oranges       | $2.10         | cures scurvy       |
 +---------------+---------------+--------------------+
 
-^[ ~~This is a postamble~~ ~tab-grid~ Sample grid table. ]
+^[ ~~This is a postamble, even with `markup`~~ ~tab-grid~ Sample grid table. ]
 
 Grid tables without a caption
 

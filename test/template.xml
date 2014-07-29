@@ -9,7 +9,7 @@
 
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-gieben-writing-rfcs-pandoc-02">
   <front>
-    <title abbrev="Pandoc2rfc Version 2">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
+    <title abbrev="Pandoc2rfc Version 3">Writing I-Ds and RFCs using Pandoc and xml2rfc 2.x</title>
     <author initials="R." surname="Gieben" fullname="R. (Miek) Gieben">
       <organization>Google</organization>
       <address>

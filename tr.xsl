@@ -73,8 +73,7 @@
   <xsl:template match="emphasis" mode="span">
     <xsl:choose>
       <xsl:when test="contains(@role,'strikethrough')">
-        <!-- discard, except when parent is footnote, then leave the text -->
-        <!-- <xsl:apply-templates mode="span"/> -->
+            <xsl:message>pandoc2rfc: strikethrough is ignored here.</xsl:message>
       </xsl:when>
       <xsl:when test="contains(@role,'strong')">
         <strong>
@@ -93,24 +92,67 @@
       <xsl:apply-templates/>
     </tt>
   </xsl:template>
+  <!-- Set of span elements that we need postamble. -->
+  <xsl:template match="emphasis" mode="postamble">
+    <xsl:choose>
+      <xsl:when test="contains(@role,'strikethrough')">
+          <xsl:apply-templates mode="postamble"/>
+      </xsl:when>
+      <xsl:when test="contains(@role,'strong')">
+        <strong>
+          <xsl:apply-templates mode="postamble"/>
+        </strong>
+      </xsl:when>
+      <xsl:otherwise>
+        <em>
+          <xsl:apply-templates mode="postamble"/>
+        </em>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template match="literal" mode="postamble">
+    <tt>
+      <xsl:apply-templates/>
+    </tt>
+  </xsl:template>
   <!-- The sup and sub tags script are not allowed, so kill the content.-->
   <!-- We use this in the name to create references. -->
-  <xsl:template match="subscript" mode="span"/>
-  <xsl:template match="superscript" mode="span"/>
-  <xsl:template match="link" mode="span">
+  <xsl:template match="subscript" mode="postamble"/>
+  <xsl:template match="superscript" mode="postamble"/>
+  <xsl:template match="link" mode="postamble">
     <xref>
       <xsl:attribute name="target">
         <xsl:value-of select="@linkend"/>
       </xsl:attribute>
-      <xsl:apply-templates mode="span"/>
+      <xsl:apply-templates mode="postamble"/>
     </xref>
   </xsl:template>
-  <xsl:template match="ulink" mode="span">
+  <xsl:template match="ulink" mode="postamble">
     <eref>
       <xsl:attribute name="target">
         <xsl:value-of select="@url"/>
       </xsl:attribute>
-      <xsl:apply-templates mode="span"/>
+      <xsl:apply-templates mode="postamble"/>
+    </eref>
+  </xsl:template>
+  <!-- The sup and sub tags script are not allowed, so kill the content.-->
+  <!-- We use this in the name to create references. -->
+  <xsl:template match="subscript" mode="postamble"/>
+  <xsl:template match="superscript" mode="postamble"/>
+  <xsl:template match="link" mode="postamble">
+    <xref>
+      <xsl:attribute name="target">
+        <xsl:value-of select="@linkend"/>
+      </xsl:attribute>
+      <xsl:apply-templates mode="postamble"/>
+    </xref>
+  </xsl:template>
+  <xsl:template match="ulink" mode="postamble">
+    <eref>
+      <xsl:attribute name="target">
+        <xsl:value-of select="@url"/>
+      </xsl:attribute>
+      <xsl:apply-templates mode="postamble"/>
     </eref>
   </xsl:template>
   <!-- Eat these links, so we can search for them when actually seeing a programlisting. -->
@@ -323,7 +365,7 @@
       </name>
       <xsl:if test="following-sibling::*[position()=1][name()='para']/footnote/para/emphasis[@role='strikethrough']">
         <xsl:element name="postamble">
-          <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para/emphasis[@role='strikethrough']" mode="span"/>
+          <xsl:apply-templates select="following-sibling::*[position()=1][name()='para']/footnote/para/emphasis[@role='strikethrough']" mode="postamble"/>
         </xsl:element>
       </xsl:if>
       <xsl:apply-templates/>

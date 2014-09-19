@@ -4,7 +4,7 @@ Pandoc2rfc translates text written in the Markdown variant Pandoc to documents
 in xml2rfc format. It's an easy way to write RFCs.
 
 The documentation for Pandoc2rfc can be found at:
-<http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>
+<http://www.rfc-editor.org/rfc/rfc7328.txt>.
 
 ## Differences with Pandoc
 
@@ -32,8 +32,8 @@ Although you can type Pandoc just fine, there are two things that differ
   The rest of the content is the "subitem"
 
 As said, more extensive docs are here:
-<http://tools.ietf.org/html/draft-gieben-pandoc2rfc-03>. But after some setup, it
-is *just* typing Pandoc syntax in $EDITOR.
+<http://www.rfc-editor.org/rfc/rfc7328.txt>.
+But after some setup, it is *just* typing Pandoc syntax in $EDITOR.
 
 ## Bare install
 

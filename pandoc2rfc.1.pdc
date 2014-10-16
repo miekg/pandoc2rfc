@@ -23,6 +23,8 @@ Currently there isn't a standard extension for Pandoc source files, so the
 following extension are recognized for the input files: `.pdc`, `.pandoc`,
 `.mkd`, `.markdown`, `.md` and `.txt`
 
+By default Pandoc will expand tabs to four spaces when parsing the input.
+
 # OPTIONS
 
 -T

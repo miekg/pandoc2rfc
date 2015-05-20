@@ -6,6 +6,10 @@ in xml2rfc format. It's an easy way to write RFCs.
 The documentation for Pandoc2rfc can be found at:
 <http://www.rfc-editor.org/rfc/rfc7328.txt>.
 
+> Note that I consider [mmark](https://github.com/miekg/mmark) the logical successor of Pandoc2rfc.
+> Pandoc2rfc can't output XML2RFC v3 XML, so when the IETF switches over to that format, you'll
+> need something else. Mmark can output v3 (and v2 for that matter).
+
 ## Differences with Pandoc
 
 Although you can type Pandoc just fine, there are two things that differ
@@ -21,7 +25,7 @@ Although you can type Pandoc just fine, there are two things that differ
 
 * List with `style=format REG%d` are typeset with strikethrough text in the
   first element, as such:
-    
+
         1. ~~REQ%d~~ First REQ1 item;
         2. Second REQ2 item.
 
@@ -40,7 +44,7 @@ But after some setup, it is *just* typing Pandoc syntax in $EDITOR.
 Just copy `transform.xsl` and `template.xml` to your I-D directory. Modify
 `template.xml` according to your needs and run:
 
-    pandoc -t docbook -s <yourfile>.mkd | \ 
+    pandoc -t docbook -s <yourfile>.mkd | \
     xsltproc --nonet transform.xsl - > <yourfile>.xml
 
 And to create a draft.txt

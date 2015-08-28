@@ -1,3 +1,9 @@
+# NOTE NOTE
+
+Pandoc2rfc will not be able to generate XML2RFC v3 documents, as pandoc syntax
+lacks the power to do so. For this reason [mmark](https://github.com/miekg/mmark)
+exists.
+
 # README
 
 Pandoc2rfc translates text written in the Markdown variant Pandoc to documents

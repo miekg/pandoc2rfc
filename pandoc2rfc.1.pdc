@@ -50,7 +50,7 @@ By default Pandoc will expand tabs to four spaces when parsing the input.
 
 -1
 :   Reverse operation. Parse *FILE* as an XML (with all references expanded) document and output 
-    Pandoc syntax on standard output. This convertion is not 100%. A manual inspection of the generated
+    Pandoc syntax on standard output. This conversion is not 100%. A manual inspection of the generated
     document is advised.
 
 -2
